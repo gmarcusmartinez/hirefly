@@ -1,0 +1,51 @@
+.about-us__block {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 34rem;
+  justify-content: center;
+  margin: var(--margin-sm) 0;
+  position: relative;
+  width: 34rem;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    cursor: pointer;
+    filter: brightness(20%);
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+    z-index: -1;
+  }
+  h3 {
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 300;
+    letter-spacing: var(--letter-spacing-lg);
+    text-align: center;
+    text-transform: uppercase;
+    max-width: 26rem;
+    z-index: 0;
+  }
+}
+.z {
+  z-index: -1;
+}
+
+@include respond(desktop) {
+  .about-us__block {
+    margin: 8rem 0.25rem;
+    height: 31vw;
+    width: 31vw;
+    z-index: 0;
+    &:hover,
+    &:active {
+      img {
+        filter: brightness(40%);
+      }
+    }
+  }
+}

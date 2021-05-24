@@ -1,0 +1,38 @@
+.navigation__link {
+  background-color: var(--color-white);
+  color: #000;
+  font-weight: 300;
+  font-size: 1.4rem;
+  line-height: 16rem;
+  height: 100%;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  &:hover {
+    color: var(--color-primary);
+    font-weight: 400;
+  }
+  &:active {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-weight: 400;
+  }
+}
+
+@include respond(desktop) {
+  .navigation__link {
+    @include btn_hover_animation;
+    background-color: transparent;
+
+    font-size: 1.25rem;
+    height: 10vh;
+    letter-spacing: var(--letter-spacing-md);
+    line-height: 10vh;
+    position: relative;
+    width: 10rem;
+    &:hover {
+      color: #fff;
+      transition-delay: 0.4s;
+    }
+  }
+}

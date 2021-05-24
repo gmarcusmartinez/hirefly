@@ -1,0 +1,25 @@
+$nav-link-animation-height: 100%;
+$nav-link-animation-width: 1rem;
+$nav-link-animation-transform: scaleY(0);
+$nav-link-animation-transition: transform 0.2s,
+  width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s, background-color 0.1s;
+$nav-link-animation-z-index: -1;
+
+@mixin btn_hover_animation {
+  cursor: pointer;
+  &:hover::before,
+  &::before {
+    transform: scaleY(1);
+    width: 100%;
+  }
+  &::before {
+    @include absolute_tl;
+    background-color: var(--color-primary);
+    content: '';
+    height: $nav-link-animation-height;
+    transform: $nav-link-animation-transform;
+    transition: $nav-link-animation-transition;
+    width: $nav-link-animation-width;
+    z-index: $nav-link-animation-z-index;
+  }
+}

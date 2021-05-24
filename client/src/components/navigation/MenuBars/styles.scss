@@ -1,0 +1,29 @@
+.menu-bars {
+  align-self: center;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: 2rem;
+  width: 3.5rem;
+}
+@include respond(desktop) {
+  .menu-bars {
+    display: none;
+  }
+}
+
+.bar {
+  width: 3.5rem;
+  height: 0.2rem;
+  background-color: #000;
+  margin: 0.8rem 0;
+  transition: 0.25s;
+}
+.bar:nth-of-type(1).change {
+  transform: rotate(-45deg) translate(-7px, 8px);
+}
+.bar:nth-of-type(2).change {
+  opacity: 0;
+}
+.bar:nth-of-type(3).change {
+  transform: rotate(45deg) translate(-6px, -8px);
+}

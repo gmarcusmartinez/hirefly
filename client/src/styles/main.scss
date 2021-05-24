@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+@import './base/base.scss';
+@import './abstracts/mixins.scss';
+
+@import './animations/btn-hover.scss';
+@import './animations/input-focus.scss';
+@import './animations/nav.scss';
+@import './animations/slide-in-from-right.scss';
+
+@import './components/btn.scss';
+
+@import '../components/about-us/Block/styles.scss';
+@import '../components/about-us/BlockInfo/styles.scss';
+@import '../components/auth/styles.scss';
+@import '../components/common/TextInput/styles.scss';
+@import '../components/chat/Connections/styles.scss';
+@import '../components/chat/Messenger/styles.scss';
+@import '../components/modal/styles.scss';
+@import '../components/navigation/styles.scss';
+@import '../components/navigation/Footer/styles.scss';
+@import '../components/navigation/MenuBars/styles.scss';
+@import '../components/navigation/NavLink/styles.scss';
+
+@import '../screens/AboutUs/styles.scss';
+@import '../screens/Auth/styles.scss';
+@import '../screens/Chat/styles.scss';

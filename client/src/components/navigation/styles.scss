@@ -1,0 +1,58 @@
+// Common Styles
+.navigation {
+  background-color: var(--color-white);
+  display: flex;
+  z-index: 2;
+
+  &__links {
+    display: grid;
+
+    height: 90vh;
+    justify-content: stretch;
+    letter-spacing: var(--letter-spacing-lg);
+
+    position: absolute;
+    top: calc(10vh + 0.1rem);
+    width: 100%;
+
+    &.auth-layout {
+      grid-template-rows: 22vh 22vh 22vh 24vh;
+    }
+    &.guest-layout {
+      grid-template-rows: 25% 25% 50%;
+    }
+  }
+}
+// Media Queries
+.navigation {
+  box-shadow: 0.1rem 0.1rem 0.2rem #c4c4c4;
+  height: 10vh;
+  width: 100%;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+@include respond(desktop) {
+  .navigation {
+    &__links {
+      display: none;
+    }
+  }
+}
+
+.hide {
+  z-index: -1;
+}
+
+.desktop-links {
+  display: none;
+  @include respond(desktop) {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    margin-left: auto;
+    position: unset;
+    width: min-content;
+  }
+}

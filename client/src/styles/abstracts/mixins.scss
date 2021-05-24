@@ -1,0 +1,48 @@
+@mixin respond($breakpoint) {
+  @if $breakpoint == tablet {
+    @media (min-width: 512px) {
+      @content;
+    }
+  }
+  @if $breakpoint == desktop {
+    @media (min-width: 769px) {
+      @content;
+    }
+  }
+}
+
+@mixin absolute_tl {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@mixin default-form {
+  h3 {
+    color: var(--color-grey-tertiary);
+    font-size: 1.8rem;
+    font-weight: 400;
+    letter-spacing: var(--letter-spacing-md);
+  }
+  button {
+    background-color: var(--color-primary);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    height: 4rem;
+    font-size: 1.4rem;
+    font-weight: 300;
+    letter-spacing: var(--letter-spacing-lg);
+    outline: none;
+    text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+
+    &:active {
+      transform: translateY(3px);
+    }
+    &:hover {
+      transition: background-color 0.2s ease-in;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+@keyframes input-focus {
+  0% {
+    border-bottom: 0.1rem solid var(--color-grey-light);
+    width: 0%;
+  }
+  100% {
+    border-bottom: 0.3rem solid var(--color-primary);
+    width: 100%;
+  }
+}

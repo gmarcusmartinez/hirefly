@@ -1,0 +1,29 @@
+.block-info {
+  margin: 20% auto 0 auto;
+  max-width: 34rem;
+  overflow-y: scroll;
+  padding: var(--padding-md);
+  width: 95%;
+  h3,
+  p {
+    color: #fff;
+    font-weight: 300;
+  }
+  h3 {
+    font-size: 1.5rem;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+  }
+  p {
+    font-size: 1.4rem;
+    letter-spacing: 0.1rem;
+    line-height: 1.8;
+    margin-top: var(--margin-md);
+  }
+}
+@include respond(tablet) {
+  .block-info {
+    margin: auto;
+    max-width: 44rem;
+  }
+}

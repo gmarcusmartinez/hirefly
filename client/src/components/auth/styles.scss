@@ -1,0 +1,48 @@
+.auth-form-wrapper {
+  align-items: center;
+  align-self: center;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  margin: var(--margin-md) var(--margin-sm);
+  width: 32rem;
+
+  form {
+    animation: 0.25s ease-out slide-in-from-right;
+    transition: var(--tzransition-fast);
+  }
+  &__switch {
+    color: var(--color-grey-tertiary);
+    font-size: 1.25rem;
+    letter-spacing: var(--letter-spacing-sm);
+    span {
+      color: var(--color-primary);
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.4rem;
+    }
+  }
+}
+
+.signin,
+.signup {
+  @include default-form;
+  display: grid;
+  height: 100%;
+  width: 100%;
+
+  h3 {
+    letter-spacing: var(--letter-spacing-md);
+  }
+  align-items: center;
+  @include respond(tablet) {
+    width: 30rem;
+  }
+}
+
+.signin {
+  grid-template-rows: 6rem 10rem 10rem 6rem 6rem;
+}
+.signup {
+  grid-template-rows: 6rem 10rem 10rem 6rem 4rem 4rem;
+}

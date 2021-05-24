@@ -1,0 +1,17 @@
+@mixin btn {
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  height: 3.8rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  outline: none;
+}
+
+.btn-primary {
+  @include btn;
+  background-color: var(--color-primary);
+  &:hover {
+    filter: brightness(110%);
+  }
+}

@@ -1,0 +1,51 @@
+.modal {
+  background-color: rgba(0, 0, 0, 0.9);
+  height: 100vh;
+  width: 100vw;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+
+  &__body {
+    display: flex;
+  }
+
+  &.open {
+    transition: all 0.3s;
+    transform: translateX(0);
+    animation: fadein 1s;
+    z-index: 5;
+  }
+
+  &.closed {
+    transition: all 0.3s;
+    transform: translateX(-100%);
+  }
+
+  &__close-btn {
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    right: 2.5%;
+    top: 1.5rem;
+    z-index: 2;
+    animation: fadein 1s;
+    span {
+      font-size: 4rem;
+    }
+    animation: fadein 1s;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

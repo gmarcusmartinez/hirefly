@@ -1,0 +1,51 @@
+.auth-screen {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  &__image-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    height: 40rem;
+    margin: var(--margin-sm);
+
+    div {
+      height: 90%;
+      width: 24%;
+      position: relative;
+      z-index: -1;
+      img {
+        filter: brightness(40%);
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+    div:nth-of-type(even) {
+      margin-top: 5%;
+    }
+  }
+}
+
+@include respond(tablet) {
+  .auth-screen {
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    margin: 0 auto;
+    max-width: 140rem;
+    height: 80vh;
+
+    &__image-wrapper {
+      height: 70vh;
+      width: 60%;
+      div {
+        max-height: 50rem;
+        align-self: center;
+      }
+    }
+    &__form-wrapper {
+      width: 38rem;
+    }
+  }
+}

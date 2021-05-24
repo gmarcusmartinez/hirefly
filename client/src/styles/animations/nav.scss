@@ -1,0 +1,65 @@
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.navigation__links {
+  .slide-in-0 {
+    animation: slide-in 0.4s linear 0.1s both;
+  }
+  .slide-in-1 {
+    animation: slide-in 0.4s linear 0.2s both;
+  }
+  .slide-in-2 {
+    animation: slide-in 0.4s linear 0.3s both;
+  }
+  .slide-in-3 {
+    animation: slide-in 0.4s linear 0.4s both;
+  }
+  .slide-in-4 {
+    animation: slide-in 0.4s linear 0.5s both;
+  }
+
+  .slide-out-0 {
+    animation: slide-out 0.3s linear 0.5s both;
+  }
+  .slide-out-1 {
+    animation: slide-out 0.3s linear 0.4s both;
+  }
+  .slide-out-2 {
+    animation: slide-out 0.3s linear 0.3s both;
+  }
+  .slide-out-3 {
+    animation: slide-out 0.3s linear 0.2s both;
+  }
+  .slide-out-4 {
+    animation: slide-out 0.3s linear 0.1s both;
+  }
+  @include respond(desktop) {
+    .slide-in-0,
+    .slide-in-1,
+    .slide-in-2,
+    .slide-in-3,
+    .slide-in-4,
+    .slide-out-0,
+    .slide-out-1,
+    .slide-out-2,
+    .slide-out-3,
+    .slide-out-4 {
+      animation: unset;
+    }
+  }
+}

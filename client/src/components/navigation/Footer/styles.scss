@@ -1,0 +1,47 @@
+.footer {
+  background-color: var(--color-primary);
+  box-shadow: 0.1rem 0.1rem 0.2rem #c4c4c4;
+  display: flex;
+  min-height: 16rem;
+  width: 100%;
+  div {
+    color: #fff;
+    margin: var(--margin-md) 0;
+    width: 28rem;
+    h4 {
+      font-size: 1.4rem;
+      letter-spacing: var(--letter-spacing-sm);
+      margin: var(--margin-sm) 0;
+      text-transform: uppercase;
+    }
+    span {
+      display: block;
+      font-size: 1.25rem;
+      letter-spacing: var(--letter-spacing-sm);
+      line-height: 2;
+    }
+  }
+}
+
+// Media-Queries
+.footer {
+  flex-direction: column;
+  div {
+    align-self: center;
+  }
+}
+@include respond(desktop) {
+  .footer {
+    flex-direction: row;
+    height: 14rem;
+    justify-content: space-evenly;
+    min-height: unset;
+    padding: 0 2rem;
+    width: 100%;
+    div {
+      align-self: unset;
+      margin-top: var(--margin-md);
+      text-align: start;
+    }
+  }
+}
