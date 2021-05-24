@@ -9,7 +9,7 @@ export const applicantLinks = [
 
 export const recruiterLinks = [
   { to: 'chat' },
-  { to: 'my-listings' },
+  { to: 'my-posts' },
   { to: 'post-job' },
   { to: 'signout' },
 ];

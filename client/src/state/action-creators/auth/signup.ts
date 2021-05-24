@@ -25,5 +25,8 @@ export const signup =
     } catch (e) {
       const payload = e.response.data.errors;
       dispatch({ type: AuthActionTypes.SIGNIN_FAILURE, payload });
+      setTimeout(() => {
+        dispatch({ type: AuthActionTypes.SIGNIN_FAILURE, payload: [] });
+      }, 2000);
     }
   };

@@ -9,7 +9,7 @@ interface IProps {
 }
 
 export const RecruiterSignup: FC<IProps> = ({ setFormDisplay }) => {
-  const { signup, resetErrors } = useActions();
+  const { signup } = useActions();
   const { errors } = useTypedSelector((state) => state.auth);
   const [formData, setFormData] = useState({ email: '', password: '' });
 
@@ -20,11 +20,6 @@ export const RecruiterSignup: FC<IProps> = ({ setFormDisplay }) => {
     e.preventDefault();
     signup(formData, 'recruiter');
     setFormData({ email: '', password: '' });
-  };
-
-  const handleSwitchForm = (form: string) => {
-    setFormDisplay(form);
-    resetErrors();
   };
 
   const setError = (field: string) =>
@@ -49,13 +44,13 @@ export const RecruiterSignup: FC<IProps> = ({ setFormDisplay }) => {
       <button className='btn-primary'>Signup</button>
       <div className='auth-form-wrapper__switch'>
         Are you an applicant?{' '}
-        <span onClick={() => handleSwitchForm('RENDER_SIGNUP')}>
+        <span onClick={() => setFormDisplay('RENDER_SIGNUP')}>
           Applicant Signup
         </span>
       </div>
       <div className='auth-form-wrapper__switch'>
         Already have an account?
-        <span onClick={() => handleSwitchForm('RENDER_SIGNIN')}> Signin </span>
+        <span onClick={() => setFormDisplay('RENDER_SIGNIN')}> Signin </span>
       </div>
     </form>
   );

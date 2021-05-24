@@ -10,7 +10,7 @@ interface IProps {
 
 export const Signin: FC<IProps> = ({ setFormDisplay }) => {
   const { errors } = useTypedSelector((state) => state.auth);
-  const { signin, resetErrors } = useActions();
+  const { signin } = useActions();
   const [formData, setFormData] = useState({ email: '', password: '' });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -20,11 +20,6 @@ export const Signin: FC<IProps> = ({ setFormDisplay }) => {
     e.preventDefault();
     setFormData({ email: '', password: '' });
     signin(formData);
-  };
-
-  const handleSwitchForm = (form: string) => {
-    setFormDisplay(form);
-    resetErrors();
   };
 
   const setError = (field: string) =>
@@ -49,7 +44,7 @@ export const Signin: FC<IProps> = ({ setFormDisplay }) => {
       <button className='btn-primary'>Signin</button>
       <div className='auth-form-wrapper__switch'>
         Dont have an account?
-        <span onClick={() => handleSwitchForm('RENDER_SIGNUP')}> Signup </span>
+        <span onClick={() => setFormDisplay('RENDER_SIGNUP')}> Signup </span>
       </div>
     </form>
   );

@@ -12,7 +12,6 @@ export const signout = () => async (dispatch: Dispatch) => {
     dispatch({ type: SIGNOUT_SUCCESS, payload: data });
     history.push('/signin');
   } catch (e) {
-    console.log(e);
     const errorResponse = e.response.data.errors;
     dispatch({ type: SIGNOUT_FAILURE, payload: errorResponse });
   }

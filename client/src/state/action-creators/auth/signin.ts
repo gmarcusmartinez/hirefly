@@ -25,5 +25,9 @@ export const signin = (formData: FormData) => async (dispatch: Dispatch) => {
   } catch (e) {
     const payload = e.response.data.errors;
     dispatch({ type: AuthActionTypes.SIGNIN_FAILURE, payload });
+
+    setTimeout(() => {
+      dispatch({ type: AuthActionTypes.SIGNIN_FAILURE, payload: [] });
+    }, 2000);
   }
 };
