@@ -1,7 +1,8 @@
+import { IError } from 'interfaces';
 import { FC } from 'react';
 
 interface IProps {
-  error?: { message: string };
+  error?: IError | null | undefined;
   info?: string;
   required: boolean;
   type: string;

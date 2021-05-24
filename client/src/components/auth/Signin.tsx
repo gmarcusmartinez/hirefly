@@ -2,13 +2,15 @@ import { useState, FC } from 'react';
 import { Text } from 'components/common/TextInput';
 import { signinInputs } from './inputs';
 import { useActions } from 'hooks/use-actions';
+import { useTypedSelector } from 'hooks/use-typed-selector';
 
 interface IProps {
   setFormDisplay: Function;
 }
 
 export const Signin: FC<IProps> = ({ setFormDisplay }) => {
-  const { signin } = useActions();
+  const { errors } = useTypedSelector((state) => state.auth);
+  const { signin, resetErrors } = useActions();
   const [formData, setFormData] = useState({ email: '', password: '' });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -20,8 +22,13 @@ export const Signin: FC<IProps> = ({ setFormDisplay }) => {
     signin(formData);
   };
 
-  // const setError = (field: string) =>
-  //   errors ? errors.find((err) => err.field === field) : null;
+  const handleSwitchForm = (form: string) => {
+    setFormDisplay(form);
+    resetErrors();
+  };
+
+  const setError = (field: string) =>
+    errors ? errors.find((err) => err.field === field) : null;
 
   return (
     <form className='signin' onSubmit={handleSubmit}>
@@ -36,13 +43,13 @@ export const Signin: FC<IProps> = ({ setFormDisplay }) => {
           //@ts-ignore
           value={formData[i.formData]}
           onChange={handleChange}
-          // error={setError(`${i.errorField}`)}
+          error={setError(`${i.errorField}`)}
         />
       ))}
       <button className='btn-primary'>Signin</button>
       <div className='auth-form-wrapper__switch'>
         Dont have an account?
-        <span onClick={() => setFormDisplay('RENDER_SIGNUP')}> Signup </span>
+        <span onClick={() => handleSwitchForm('RENDER_SIGNUP')}> Signup </span>
       </div>
     </form>
   );
