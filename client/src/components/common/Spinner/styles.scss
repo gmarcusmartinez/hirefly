@@ -1,0 +1,33 @@
+.spinner-overlay {
+  height: 60vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .spinner-message {
+    color: var(--color-grey-tertiary);
+    font-size: 1.4rem;
+    letter-spacing: var(--letter-spacing-md);
+    margin-bottom: var(--margin-md);
+  }
+  .spinner-container {
+    width: 12rem;
+    height: 12rem;
+    border: 8px solid rgba(195, 195, 195, 0.6);
+    border-radius: 50%;
+    border-top-color: var(--color-primary);
+    animation: spin 1s ease-in-out infinite;
+    -webkit-animation: spin 1s ease-in-out infinite;
+    @keyframes spin {
+      to {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+    @-webkit-keyframes spin {
+      to {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+  }
+}

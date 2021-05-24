@@ -29,6 +29,11 @@ function App() {
             component={screens.Chat}
             currentUser={currentUser}
           />
+          <Protected
+            path='/signout'
+            component={screens.Signout}
+            currentUser={currentUser}
+          />
         </Switch>
       </div>
       <Footer />
