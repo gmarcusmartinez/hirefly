@@ -10,7 +10,7 @@ export const signout = () => async (dispatch: Dispatch) => {
     dispatch({ type: AuthActionTypes.SIGNOUT_REQUEST });
     const { data } = await auth.post('/signout');
     dispatch({ type: SIGNOUT_SUCCESS, payload: data });
-    history.push('/');
+    history.push('/signin');
   } catch (e) {
     console.log(e);
     const errorResponse = e.response.data.errors;

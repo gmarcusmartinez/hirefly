@@ -17,7 +17,10 @@ export const signin = (formData: FormData) => async (dispatch: Dispatch) => {
     dispatch({ type: AuthActionTypes.SIGNIN_SUCCESS });
 
     const { data } = await auth.get('/currentUser');
-    dispatch({ type: AuthActionTypes.GET_CURRENT_USER, payload: data });
+    dispatch({
+      type: AuthActionTypes.GET_CURRENT_USER,
+      payload: data.currentUser,
+    });
     history.push('/chat');
   } catch (e) {
     const payload = e.response.data.errors;

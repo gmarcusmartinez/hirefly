@@ -24,7 +24,7 @@ export const auth = (
       return { ...state, loading: true };
 
     case AuthActionTypes.SIGNIN_SUCCESS:
-      return { ...state, loading: false };
+      return { ...state, loading: false, currentUser: payload };
 
     case AuthActionTypes.GET_CURRENT_USER:
     case AuthActionTypes.SIGNOUT_SUCCESS:

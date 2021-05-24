@@ -1,5 +1,5 @@
-import { useActions } from 'hooks/use-actions';
 import React from 'react';
+import { useActions } from 'hooks/use-actions';
 import { Spinner } from 'components/common/Spinner';
 
 export const Signout = () => {
