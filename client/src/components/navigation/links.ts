@@ -10,6 +10,6 @@ export const applicantLinks = [
 export const recruiterLinks = [
   { to: 'chat' },
   { to: 'my-posts' },
-  { to: 'post-job' },
+  { to: 'profile' },
   { to: 'signout' },
 ];
