@@ -10,6 +10,11 @@ export enum AuthActionTypes {
   SIGNOUT_SUCCESS = 'SIGNOUT_SUCCESS',
   SIGNOUT_FAILURE = 'SIGNOUT_FAILURE',
 }
+export enum DashboardActionTypes {
+  SET_COMPONENT = 'SET_COMPONENT',
+  SET_EXPAND = 'SET_EXPAND',
+}
+
 export enum ModalActionTypes {
   TOGGLE_MODAL = 'TOGGLE_MODAL',
 }
