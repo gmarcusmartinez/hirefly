@@ -1,0 +1,32 @@
+.sidenav {
+  box-shadow: var(--box-shadow-medium);
+  height: 100%;
+  position: absolute;
+  &.retract {
+    transition: 0.2s ease-in-out;
+    width: 7rem;
+    .sidenav__header {
+      i {
+        right: -3.2rem;
+      }
+    }
+  }
+  &.expand {
+    transition: 0.2s ease-in-out;
+    width: 26rem;
+    .sidenav__header__name {
+      opacity: 1;
+      transition-delay: 0.2s;
+      transition: opacity 0.35s ease-in-out;
+    }
+  }
+}
+
+@include respond(desktop) {
+  .sidenav {
+    position: unset;
+    &.retract {
+      width: 26rem !important;
+    }
+  }
+}

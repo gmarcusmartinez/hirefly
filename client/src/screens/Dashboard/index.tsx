@@ -6,8 +6,8 @@ export const Dashboard = () => {
 
   return (
     <div className='dashboard'>
-      <div className={`dashboard__panel ${expand ? 'expand' : 'retract'}`}>
-        <div className='sidenav'>
+      <div className='dashboard__panel'>
+        <div className={`sidenav ${expand ? 'expand' : 'retract'}`}>
           <SidenavHeader expand={expand} setExpand={setExpand} />
         </div>
         <div className='dashboard__main'></div>

@@ -7,10 +7,13 @@
   position: relative;
   width: 100%;
   i {
-    color: var(--color-grey-tertiary);
+    color: var(--color-primary);
     font-size: 3.2rem;
     margin-left: auto;
+    position: absolute;
+    right: 0;
     transition: 0.2s ease-in-out;
+
     &.rotate {
       transform: rotate(-180deg);
     }
