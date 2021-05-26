@@ -21,7 +21,7 @@ export const signin = (formData: FormData) => async (dispatch: Dispatch) => {
       type: AuthActionTypes.GET_CURRENT_USER,
       payload: data.currentUser,
     });
-    history.push('/chat');
+    history.push('/dashboard');
   } catch (e) {
     const payload = e.response.data.errors;
     dispatch({ type: AuthActionTypes.SIGNIN_FAILURE, payload });

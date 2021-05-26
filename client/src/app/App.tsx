@@ -1,6 +1,4 @@
 import React from 'react';
-import { Footer } from 'components/navigation/Footer';
-import { Navigation } from '../components/navigation';
 import { Switch, Route } from 'react-router';
 import * as screens from '../screens';
 import Modal from 'components/modal';
@@ -18,25 +16,20 @@ function App() {
   }, [getCurrentUser]);
   return (
     <>
-      <Navigation />
-      <div className='main-content'>
-        <Switch>
-          <Route exact path='/' component={screens.Landing} />
-          <Route path='/about' component={screens.AboutUs} />
-          <Route path='/signin' component={screens.Auth} />
-          <Protected
-            path='/chat'
-            component={screens.Chat}
-            currentUser={currentUser}
-          />
-          <Protected
-            path='/signout'
-            component={screens.Signout}
-            currentUser={currentUser}
-          />
-        </Switch>
-      </div>
-      <Footer />
+      <Switch>
+        <Route exact path='/' component={screens.Auth} />
+        <Route path='/about' component={screens.AboutUs} />
+        <Protected
+          path='/dashboard'
+          component={screens.Dashboard}
+          currentUser={currentUser}
+        />
+        <Protected
+          path='/signout'
+          component={screens.Signout}
+          currentUser={currentUser}
+        />
+      </Switch>
       {displayModal && <Modal />}
     </>
   );
