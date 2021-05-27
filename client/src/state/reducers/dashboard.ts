@@ -4,15 +4,15 @@ import { DashboardActionTypes } from '../types';
 interface DashboardState {
   sidenavComponent: string;
   expand: boolean;
-  darkmode: boolean;
+  mode: string;
   theme: string;
 }
 
 const initialState = {
   sidenavComponent: 'MESSAGES',
   expand: false,
-  darkmode: false,
-  theme: 'lavender',
+  mode: 'light',
+  theme: '#838dec',
 };
 
 export const dashboard = (
@@ -22,10 +22,14 @@ export const dashboard = (
   const { type, payload } = action;
 
   switch (type) {
-    case DashboardActionTypes.SET_EXPAND:
-      return { ...state, expand: payload };
     case DashboardActionTypes.SET_COMPONENT:
       return { ...state, sidenavComponent: payload };
+    case DashboardActionTypes.SET_EXPAND:
+      return { ...state, expand: payload };
+    case DashboardActionTypes.TOGGLE_MODE:
+      return { ...state, mode: payload };
+    case DashboardActionTypes.SET_THEME:
+      return { ...state, theme: payload };
     default:
       return state;
   }

@@ -3,11 +3,14 @@ import { SidenavMain } from 'components/dashboard/SidenavMain';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 
 export const Dashboard = () => {
-  const { expand } = useTypedSelector((state) => state.dashboard);
+  const { expand, theme, mode } = useTypedSelector((state) => state.dashboard);
+  const backgroundColor = theme;
+  const darkmode = mode === 'dark' ? 'darkmode' : '';
+
   return (
-    <div className='dashboard'>
-      <div className='dashboard__panel'>
-        <div className={`sidenav ${expand ? 'expand' : 'retract'}`}>
+    <div className='dashboard' style={{ backgroundColor }}>
+      <div className={`dashboard__panel ${darkmode}`}>
+        <div className={`sidenav ${expand ? 'expand' : 'retract'} ${darkmode}`}>
           <SidenavHeader />
           <SidenavMain />
         </div>

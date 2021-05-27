@@ -11,11 +11,15 @@ export const SidenavHeader = () => {
   const className = `material-icons ${expand ? 'rotate' : ''}`;
   const centerPp = sidenavComponent === 'SETTINGS' ? 'center-pp' : '';
 
+  const toggle = (e: any) => {
+    e.stopPropagation();
+    toggleSidenav(!expand);
+  };
   return (
     <div className='sidenav__header' onClick={displaySettings}>
       <div className={`sidenav__header__profile-img ${centerPp}`} />
       <span className={`sidenav__header__name ${centerPp}`}>Marcus</span>
-      <i className={className} onClick={() => toggleSidenav(!expand)}>
+      <i className={className} onClick={toggle}>
         chevron_right
       </i>
     </div>

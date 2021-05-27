@@ -1,6 +1,5 @@
 .dashboard {
   align-items: center;
-  background-color: var(--color-primary);
   display: flex;
   justify-content: center;
   height: 100vh;
@@ -10,7 +9,11 @@
     border-radius: 0.4rem;
     height: 100%;
     position: relative;
+    transition: 0.25s ease-in;
     width: 100%;
+    &.darkmode {
+      background-color: #242424 !important;
+    }
   }
 }
 

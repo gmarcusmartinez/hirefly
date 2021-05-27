@@ -20,6 +20,9 @@
       transition: opacity 0.35s ease-in-out;
     }
   }
+  &.darkmode {
+    --box-shadow-medium: 0 0.2rem 0.5rem #000;
+  }
 }
 
 @include respond(desktop) {
