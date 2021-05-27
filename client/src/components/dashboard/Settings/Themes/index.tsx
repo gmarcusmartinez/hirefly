@@ -1,23 +1,19 @@
-import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
+import { Theme } from './Theme';
 
 export const Themes = () => {
-  const { expanded } = useTypedSelector((state) => state.dashboard);
-
-  const { setTheme } = useActions();
+  const { expanded, theme } = useTypedSelector((state) => state.dashboard);
+  const display = expanded ? 'flex' : '';
   const themes = ['#838dec', '#ffb3ba', '#9ADBB3', '#a9e5ff'];
+  const list = themes.map((t) => <Theme key={t} t={t} />);
+
   return (
     <>
-      {expanded && (
-        <div className='settings__themes'>
-          {themes.map((t, i) => (
-            <div
-              key={i}
-              style={{ backgroundColor: t }}
-              onClick={() => setTheme(t)}
-            />
-          ))}
-        </div>
+      <div className='settings__themes' style={{ display }}>
+        {list}
+      </div>
+      {!expanded && (
+        <div className='selected-theme' style={{ backgroundColor: theme }} />
       )}
     </>
   );

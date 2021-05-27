@@ -1,15 +1,30 @@
 .settings__modes {
-  align-items: center;
+  align-self: center;
   cursor: pointer;
   display: flex;
+}
+
+.mode-switch {
+  align-items: center;
+  display: flex;
+  height: 6rem;
   justify-content: center;
-  margin: 1rem 0;
+  width: 4.4rem;
   span {
-    text-align: center;
     color: var(--color-grey-primary);
-    font-size: 3.4rem;
-    height: 4.4rem;
-    margin: 0.5rem;
-    width: 4.4rem;
+    font-size: 4.2rem;
+    text-align: center;
+  }
+}
+
+@include respond(desktop) {
+  .settings__modes {
+    flex-direction: row !important;
+    justify-content: space-between;
+    width: 10rem;
+  }
+  .mode-switch {
+    span {
+    }
   }
 }

@@ -1,35 +1,18 @@
-import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
+import { ModeSwitch } from './ModeSwitch';
 
 export const Modes = () => {
-  const { toggleMode } = useActions();
   const { mode, theme, expanded } = useTypedSelector(
     ({ dashboard }) => dashboard
   );
-
-  const lightmode = mode === 'light' ? theme : '';
-  const darkmode = mode === 'dark' ? theme : '';
+  const flexDirection = expanded ? 'row' : 'column';
+  const light = mode === 'light' ? theme : '#e5e5e5';
+  const dark = mode === 'dark' ? theme : '#e5e5e5';
 
   return (
-    <>
-      {expanded && (
-        <div className='settings__modes'>
-          <span
-            className='material-icons'
-            onClick={() => toggleMode('light')}
-            style={{ color: lightmode }}
-          >
-            light_mode
-          </span>
-          <span
-            className='material-icons'
-            onClick={() => toggleMode('dark')}
-            style={{ color: darkmode }}
-          >
-            dark_mode
-          </span>
-        </div>
-      )}
-    </>
+    <div className='settings__modes' style={{ flexDirection }}>
+      <ModeSwitch mode='light' color={light} />
+      <ModeSwitch mode='dark' color={dark} />
+    </div>
   );
 };

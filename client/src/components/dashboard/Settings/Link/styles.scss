@@ -3,7 +3,6 @@
   color: var(--color-grey-secondary);
   cursor: pointer;
   font-size: 1.45rem;
-  flex-direction: column;
   height: 4rem;
   letter-spacing: var(--letter-spacing-md);
   line-height: 4rem;
@@ -23,6 +22,28 @@
     opacity: 0;
     margin: -0.25rem auto 0 auto;
     height: 0.4rem;
-    width: 10rem;
   }
+  .material-icons {
+    margin-left: 0.25rem;
+    font-size: 3.4rem;
+  }
+}
+
+@include respond(desktop) {
+  .settings__link {
+    .material-icons {
+      display: none;
+    }
+    .hide-text {
+      display: block;
+    }
+  }
+}
+
+.display-text {
+  display: block;
+}
+
+.hide-text {
+  display: none;
 }

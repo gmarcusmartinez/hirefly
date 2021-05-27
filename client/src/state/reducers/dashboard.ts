@@ -11,7 +11,7 @@ interface DashboardState {
 const initialState = {
   sidenavComponent: 'MESSAGES',
   expanded: false,
-  mode: 'light',
+  mode: 'dark',
   theme: '#838dec',
 };
 

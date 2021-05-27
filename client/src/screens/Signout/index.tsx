@@ -5,9 +5,9 @@ import { Spinner } from 'components/common/Spinner';
 export const Signout = () => {
   const { signout } = useActions();
 
-  React.useEffect(() => {
-    signout();
-  }, [signout]);
+  // React.useEffect(() => {
+  //   signout();
+  // }, [signout]);
 
   return (
     <div className='signout-screen'>

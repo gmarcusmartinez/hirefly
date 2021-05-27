@@ -1,11 +1,23 @@
 .settings__themes {
   align-items: center;
-  display: flex;
+  display: none;
   justify-content: space-evenly;
   margin: 1rem 0;
   div {
     border-radius: 50%;
     height: 4.2rem;
     width: 4.2rem;
+  }
+}
+.selected-theme {
+  align-self: center;
+  border-radius: 50%;
+  height: 4.2rem;
+  margin: 1rem 0;
+  width: 4.2rem;
+}
+@include respond(desktop) {
+  .selected-theme {
+    display: none;
   }
 }
