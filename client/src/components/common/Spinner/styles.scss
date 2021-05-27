@@ -13,12 +13,13 @@
     margin-bottom: var(--margin-md);
   }
   .spinner-container {
-    width: 12rem;
-    height: 12rem;
+    animation: spin 1s ease-in-out infinite;
     border: 8px solid rgba(195, 195, 195, 0.6);
     border-radius: 50%;
-    animation: spin 1s ease-in-out infinite;
+    height: 12rem;
+    width: 12rem;
     -webkit-animation: spin 1s ease-in-out infinite;
+    z-index: 0;
     @keyframes spin {
       to {
         -webkit-transform: rotate(360deg);

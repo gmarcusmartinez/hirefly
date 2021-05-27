@@ -16,6 +16,7 @@ export const Dashboard = () => {
       <div className={`dashboard__panel ${darkmode}`}>
         <div
           className={`sidenav ${expanded ? 'expand' : 'retract'} ${darkmode}`}
+          style={{ backgroundColor: darkmode }}
         >
           <SidenavHeader />
           <SidenavMain />

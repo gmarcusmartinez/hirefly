@@ -1,1 +1,5 @@
-export const navlinks = [{ to: 'about' }, { to: 'jobs' }, { to: 'signin' }];
+export const navlinks = [
+  { text: 'about', to: 'about' },
+  { text: 'jobs', to: 'jobs' },
+  { text: 'signin', to: '' },
+];

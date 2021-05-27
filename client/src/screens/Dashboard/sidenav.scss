@@ -2,12 +2,19 @@
   box-shadow: var(--box-shadow-medium);
   height: 100%;
   position: absolute;
+  width: 7rem;
+  background-color: var(--color-white);
+  z-index: 1;
+
   &.retract {
     transition: 0.2s ease-in-out;
     width: 7rem;
     .sidenav__header {
       i {
         right: -3.2rem;
+      }
+      .dashboard__main {
+        width: calc(100% - 70px);
       }
     }
   }
@@ -21,6 +28,7 @@
     }
   }
   &.darkmode {
+    background-color: #242424;
     --box-shadow-medium: 0 0.2rem 0.5rem #000;
   }
 }

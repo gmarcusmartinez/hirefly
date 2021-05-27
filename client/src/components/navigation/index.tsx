@@ -5,11 +5,14 @@ import { navlinks } from './links';
 
 export const Navigation = () => {
   const { isOpen } = useTypedSelector((state) => state.nav);
-  const desktopLinks = navlinks.map(({ to }, i) => <NavLink key={i} to={to} />);
 
-  const mobileLinks = navlinks.map(({ to }, i) => {
+  const desktopLinks = navlinks.map((t, i) => (
+    <NavLink key={i} to={t.to} text={t.text} />
+  ));
+
+  const mobileLinks = navlinks.map(({ to, text }, i) => {
     const dir = isOpen ? `slide-in-${i}` : `slide-out-${i}`;
-    return <NavLink key={i} to={to} dir={dir} mobile={true} />;
+    return <NavLink text={text} key={i} to={to} dir={dir} mobile={true} />;
   });
 
   return (

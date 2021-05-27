@@ -24,11 +24,6 @@ function App() {
           component={screens.Dashboard}
           currentUser={currentUser}
         />
-        <Protected
-          path='/signout'
-          component={screens.Signout}
-          currentUser={currentUser}
-        />
       </Switch>
       {displayModal && <Modal />}
     </>
