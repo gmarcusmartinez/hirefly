@@ -15,6 +15,9 @@
       background-color: #242424 !important;
     }
   }
+  &__main {
+    height: 100%;
+  }
 }
 
 @include respond(tablet) {
@@ -30,7 +33,7 @@
   .dashboard {
     &__panel {
       display: grid;
-      grid-template-columns: 30rem auto;
+      grid-template-columns: 26rem auto;
       max-width: 125rem;
       margin: var(--margin-md);
     }

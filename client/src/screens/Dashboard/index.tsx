@@ -1,6 +1,8 @@
+import { Route, Switch } from 'react-router-dom';
 import { SidenavHeader } from 'components/dashboard/SidenavHeader';
 import { SidenavMain } from 'components/dashboard/SidenavMain';
 import { useTypedSelector } from 'hooks/use-typed-selector';
+import { Signout } from 'screens/Signout';
 
 export const Dashboard = () => {
   const { expanded, theme, mode } = useTypedSelector(
@@ -18,7 +20,11 @@ export const Dashboard = () => {
           <SidenavHeader />
           <SidenavMain />
         </div>
-        <div className='dashboard__main'></div>
+        <div className='dashboard__main'>
+          <Switch>
+            <Route path='/dashboard/signout' component={Signout} />
+          </Switch>
+        </div>
       </div>
     </div>
   );

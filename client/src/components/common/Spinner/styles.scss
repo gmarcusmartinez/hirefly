@@ -1,12 +1,13 @@
 .spinner-overlay {
-  height: 60vh;
-  width: 100%;
-  display: flex;
   align-items: center;
-  justify-content: center;
+  align-self: center;
+  display: flex;
   flex-direction: column;
+  height: 80%;
+  justify-content: center;
+  width: 100%;
   .spinner-message {
-    color: var(--color-grey-tertiary);
+    color: var(--color-grey-primary);
     font-size: 1.4rem;
     letter-spacing: var(--letter-spacing-md);
     margin-bottom: var(--margin-md);
@@ -16,7 +17,6 @@
     height: 12rem;
     border: 8px solid rgba(195, 195, 195, 0.6);
     border-radius: 50%;
-    border-top-color: var(--color-primary);
     animation: spin 1s ease-in-out infinite;
     -webkit-animation: spin 1s ease-in-out infinite;
     @keyframes spin {
