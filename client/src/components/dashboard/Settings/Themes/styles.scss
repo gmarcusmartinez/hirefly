@@ -1,0 +1,11 @@
+.settings__themes {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1rem 0;
+  div {
+    border-radius: 50%;
+    height: 4.2rem;
+    width: 4.2rem;
+  }
+}

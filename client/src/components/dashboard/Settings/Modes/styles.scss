@@ -1,0 +1,15 @@
+.settings__modes {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+  span {
+    text-align: center;
+    color: var(--color-grey-primary);
+    font-size: 3.4rem;
+    height: 4.4rem;
+    margin: 0.5rem;
+    width: 4.4rem;
+  }
+}

@@ -6,7 +6,6 @@
   position: relative;
   width: 100%;
   i {
-    color: var(--color-primary);
     font-size: 3.2rem;
     margin-left: auto;
     position: absolute;
@@ -25,7 +24,6 @@
     left: 7rem;
     &.center-pp {
       display: none;
-      transition: 0.2s ease-out;
     }
   }
   &__profile-img {

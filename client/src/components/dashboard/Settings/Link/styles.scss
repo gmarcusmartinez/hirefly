@@ -1,0 +1,28 @@
+.settings__link {
+  align-items: center;
+  color: var(--color-grey-secondary);
+  cursor: pointer;
+  font-size: 1.45rem;
+  flex-direction: column;
+  height: 4rem;
+  letter-spacing: var(--letter-spacing-md);
+  line-height: 4rem;
+  margin: 1rem auto;
+  text-align: center;
+  &:hover {
+    div {
+      opacity: 1;
+      transition: opacity 0.2s ease-in;
+    }
+  }
+  &.darkmode {
+    color: #e5e5e5;
+  }
+
+  div {
+    opacity: 0;
+    margin: -0.25rem auto 0 auto;
+    height: 0.4rem;
+    width: 10rem;
+  }
+}
