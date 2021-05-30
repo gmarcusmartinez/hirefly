@@ -32,12 +32,3 @@ describe('Applicant Not Found', () => {
     expect(response.status).toEqual(404);
   });
 });
-
-describe('Applicant is Found', () => {
-  // it('Returns a 404 if the applicant is not found', async () => {
-  //   const response = await request(app)
-  //     .get(`/api/applicant/${id}`)
-  //     .set('Cookie', fakeAuthCookie());
-  //   expect(response.status).toEqual(404);
-  // });
-});
