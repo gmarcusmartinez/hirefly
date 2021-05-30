@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
 
 @import './base/base.scss';
 @import './abstracts/mixins.scss';
@@ -35,4 +35,5 @@
 @import '../screens/Auth/styles.scss';
 @import '../screens/Dashboard/styles.scss';
 @import '../screens/Dashboard/sidenav.scss';
+@import '../screens/Profile/styles.scss';
 @import '../screens/Signout/styles.scss';

@@ -1,0 +1,42 @@
+$retracted-sidenav-width: 7rem;
+
+.profile-form {
+  font-family: 'Montserrat', sans-serif;
+  height: 100%;
+  &__header {
+    box-shadow: var(--box-shadow-light);
+    display: flex;
+    flex-direction: column;
+    height: 8rem;
+    justify-content: center;
+    margin-left: $retracted-sidenav-width;
+    &.darkmode {
+      box-shadow: 0 0.1rem 0.2rem #000;
+      color: var(--color-white);
+    }
+    h2 {
+      font-size: 1.8rem;
+      margin-left: 4rem;
+      letter-spacing: var(--letter-spacing-md);
+    }
+  }
+  &__main {
+    height: calc(100% - 80px);
+    margin-left: $retracted-sidenav-width;
+    padding: var(--padding-sm);
+  }
+}
+
+@include respond(desktop) {
+  .profile-form {
+    &__header {
+      margin-left: unset;
+      h2 {
+        margin-left: var(--margin-md);
+      }
+    }
+    &__main {
+      margin-left: unset;
+    }
+  }
+}

@@ -5,7 +5,7 @@ import { Themes } from './Themes';
 
 export const Settings = () => {
   const history = useHistory();
-  const redirectToEdit = () => history.push('/dashboard/edit-profile');
+  const redirectToEdit = () => history.push('/dashboard/profile-form');
   const redirectToSignout = () => history.push('/dashboard/signout');
   return (
     <div className='settings'>

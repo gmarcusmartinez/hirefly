@@ -1,0 +1,2 @@
+Create Applicant Model 
+Create Recruiter Model
