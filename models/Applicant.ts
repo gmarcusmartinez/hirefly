@@ -42,20 +42,16 @@ interface ApplicantModel extends mongoose.Model<ApplicantDoc> {
 }
 
 const applicantSchema = new mongoose.Schema<ApplicantDoc>({
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
-  },
-  avatar: { type: Date, required: true },
+  userId: { type: String, required: true },
+  avatar: { type: String, required: true },
   cv: { type: String, default: '' },
   description: { type: String, default: '' },
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   link: { type: String, default: '' },
   location: { type: String, default: '' },
-  period: { type: PeriodEnum, required: true },
-  position: { type: PositionEnum, required: true },
+  period: { type: String, required: true, enum: Object.values(PeriodEnum) },
+  position: { type: String, required: true, enum: Object.values(PositionEnum) },
 });
 
 applicantSchema.statics.build = (attrs: ApplicantAttrs) => new Applicant(attrs);

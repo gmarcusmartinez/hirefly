@@ -19,6 +19,7 @@ export const createApplicant = asyncHandler(
 
     const applicant = Applicant.build({ ...req.body, userId });
     await applicant.save();
+
     res.status(201).send({});
   }
 );
