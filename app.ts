@@ -6,6 +6,7 @@ import cookieSession from 'cookie-session';
 import cors from 'cors';
 
 import { authRouter } from './routes/auth';
+import { applicantRouter } from './routes/applicants';
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(cors());
 app.use(cookieSession({ signed: false, secure: false }));
 
 app.use('/api/auth', authRouter);
+app.use('/api/applicants', applicantRouter);
 
 app.all('*', async () => {
   throw new NotFoundError();
