@@ -5,7 +5,6 @@ import keys from '../config/keys';
 export const fakeAuthCookie = () => {
   const payload = {
     _id: new mongoose.Types.ObjectId().toHexString(),
-    email: 'test@test.com',
     accountType: 'applicant',
   };
 

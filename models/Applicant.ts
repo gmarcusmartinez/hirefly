@@ -12,7 +12,6 @@ enum PeriodEnum {
 }
 
 interface ApplicantAttrs {
-  userId: string;
   avatar: string;
   cv: string;
   description: string;

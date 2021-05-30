@@ -16,9 +16,5 @@ export const createApplicant = async (req: Request, res: Response) => {
   const applicant = Applicant.build({ ...req.body, userId });
   await applicant.save();
 
-  const user = await User.findById(userId);
-  user!.accountStatus = AccountStatus.active;
-  await user!.save();
-
   res.status(201).send({});
 };

@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import request from 'supertest';
 import { app } from '../../../app';
 import { fakeAuthCookie } from '../../../test/auth-helper';
@@ -122,7 +123,7 @@ describe('Successful Profile Creattion', () => {
   const position = 'backend developer';
 
   it('returns a 201 w/ all valid inputs', async () => {
-    const res = await request(app)
+    await request(app)
       .post('/api/applicants')
       .set('Cookie', fakeAuthCookie())
       .send({ firstName, lastName, avatar, period, position })
