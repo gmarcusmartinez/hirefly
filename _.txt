@@ -1,8 +1,11 @@
 √ Create Applicant Model 
 √ Scaffold Applicant Router
-√ Create Profile Controller 
-√ Create Profile Validation 
-√ Create Profile Test Suite
+√ Create Applicant Controller 
+√ Create Applicant Validation 
+√ Create Applicant Test Suite
 
-Create Recruiter Model
-Scaffold Recruiter Router
+√ Create Recruiter Model 
+√ Scaffold Recruiter Router
+√ Create Recruiter Controller 
+√ Create Recruiter Validation 
+√ Create Recruiter Test Suite

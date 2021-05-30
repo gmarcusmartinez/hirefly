@@ -42,7 +42,11 @@ interface ApplicantModel extends mongoose.Model<ApplicantDoc> {
 }
 
 const applicantSchema = new mongoose.Schema<ApplicantDoc>({
-  userId: { type: String, required: true },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
   avatar: { type: String, required: true },
   cv: { type: String, default: '' },
   description: { type: String, default: '' },

@@ -6,6 +6,7 @@ interface UserPayload {
   _id: string;
   email: string;
   accountType: string;
+  accountStatus: string;
 }
 
 declare global {
