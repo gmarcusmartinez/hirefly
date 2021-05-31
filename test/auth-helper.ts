@@ -14,3 +14,16 @@ export const fakeAuthCookie = () => {
   const base64 = Buffer.from(sessionJSON).toString('base64');
   return [`express:sess=${base64}`];
 };
+
+export const fakeRecruiterCookie = () => {
+  const payload = {
+    _id: new mongoose.Types.ObjectId().toHexString(),
+    accountType: 'recruiter',
+  };
+
+  const token = jwt.sign(payload, keys.jwtSecret);
+  const session = { jwt: token };
+  const sessionJSON = JSON.stringify(session);
+  const base64 = Buffer.from(sessionJSON).toString('base64');
+  return [`express:sess=${base64}`];
+};

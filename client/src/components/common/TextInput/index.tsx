@@ -29,7 +29,6 @@ export const Text: FC<IProps> = (props) => {
         name={props.name}
         value={props.value}
         onChange={props.onChange}
-        autoComplete='on'
       />
       {small}
       {error && <div className='input-error'>{error.message}</div>}

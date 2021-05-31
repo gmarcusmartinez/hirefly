@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import { BadRequestError, NotAuthorizedError } from '../../../common';
 import { Applicant } from '../../../models/Applicant';
-import { AccountStatus, User } from '../../../models/User';
 
 export const createApplicant = async (req: Request, res: Response) => {
   const userId = req.currentUser!._id;
