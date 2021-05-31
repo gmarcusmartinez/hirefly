@@ -1,8 +1,10 @@
-import { ProfileForm } from 'components/profile-form';
+import { ApplicantForm } from 'components/forms/applicant-form';
+import { RecruiterForm } from 'components/forms/recruiter-form';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 
 export const CreateProfile = () => {
   const { mode } = useTypedSelector((state) => state.dashboard);
+  const { currentUser } = useTypedSelector((state) => state.auth);
   const darkmode = mode === 'dark' ? 'darkmode' : '';
 
   return (
@@ -11,7 +13,8 @@ export const CreateProfile = () => {
         <h2>Create Profile</h2>
       </div>
       <div className='create-profile__main'>
-        <ProfileForm />
+        {currentUser?.accountType === 'applicant' && <ApplicantForm />}
+        {currentUser?.accountType === 'recruiter' && <RecruiterForm />}
       </div>
     </div>
   );

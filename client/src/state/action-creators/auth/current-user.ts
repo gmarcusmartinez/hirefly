@@ -9,7 +9,7 @@ export interface GetCurrentUserAction {
 }
 
 export const getCurrentUser = () => async (dispatch: Dispatch) => {
-  const { data } = await auth.get('/currentUser');
+  const { data } = await auth.get('/currentuser');
   dispatch({
     type: AuthActionTypes.GET_CURRENT_USER,
     payload: data.currentUser,

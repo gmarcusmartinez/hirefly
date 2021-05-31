@@ -1,9 +1,9 @@
 export const bio = { label: 'Bio' };
 export const textInputs = [
-  { label: 'First Name' },
-  { label: 'Last Name' },
-  { label: 'Location', required: true },
-  { label: 'Link', required: true },
+  { label: 'First Name', required: true },
+  { label: 'Last Name', required: true },
+  { label: 'Location' },
+  { label: 'Link' },
 ];
 export const fileInputs = [{ label: 'Image', required: true }, { label: 'CV' }];
 

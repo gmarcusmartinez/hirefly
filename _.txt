@@ -4,7 +4,7 @@
 √ Create Applicant Validation 
 √ Create Applicant Test Suite
 
- Create Recruiter Model 
+ √ Create Recruiter Model 
  Scaffold Recruiter Router
  Create Recruiter Controller 
  Create Recruiter Validation 

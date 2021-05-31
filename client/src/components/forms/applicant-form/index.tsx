@@ -2,10 +2,13 @@ import { textInputs, selectInputs, bio, fileInputs } from './inputs';
 import { DashTextInput } from 'components/common/DashInputs/Text';
 import { DashSelectInput } from 'components/common/DashInputs/Select';
 import { DashFileInput } from 'components/common/DashInputs/FileInput';
+import { useTypedSelector } from 'hooks/use-typed-selector';
 
-export const ProfileForm = () => {
+export const ApplicantForm = () => {
+  const { theme } = useTypedSelector((state) => state.dashboard);
+
   return (
-    <div className='profile-form'>
+    <form className='applicant-form'>
       {textInputs.map((t, i) => (
         <DashTextInput key={i} item={t} />
       ))}
@@ -16,6 +19,7 @@ export const ProfileForm = () => {
         <DashSelectInput key={i} item={t} />
       ))}
       <DashTextInput item={bio} />
-    </div>
+      <button style={{ backgroundColor: theme }}>Submit</button>
+    </form>
   );
 };
