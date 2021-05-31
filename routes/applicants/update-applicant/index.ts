@@ -13,11 +13,7 @@ export const updateApplicant = async (req: Request, res: Response) => {
   );
 
   if (!profile) throw new BadRequestError('Profile not found');
-  if (profile.userId.toString() !== userId.toString()) {
-    throw new NotAuthorizedError();
-  }
-
   profile = await Applicant.findOne({ userId });
 
-  res.status(201).send({ profile });
+  res.status(204).send({ profile });
 };
