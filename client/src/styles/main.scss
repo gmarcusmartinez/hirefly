@@ -9,6 +9,7 @@
 @import './animations/nav.scss';
 @import './animations/slide-in-from-right.scss';
 
+@import './components/db-text-input.scss';
 @import './components/btn.scss';
 
 @import '../components/about-us/Block/styles.scss';
@@ -30,6 +31,7 @@
 @import '../components/navigation/Footer/styles.scss';
 @import '../components/navigation/MenuBars/styles.scss';
 @import '../components/navigation/NavLink/styles.scss';
+@import '../components/profile-form/styles.scss';
 
 @import '../screens/AboutUs/styles.scss';
 @import '../screens/Auth/styles.scss';

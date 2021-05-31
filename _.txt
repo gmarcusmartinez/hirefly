@@ -4,8 +4,10 @@
 √ Create Applicant Validation 
 √ Create Applicant Test Suite
 
-√ Create Recruiter Model 
-√ Scaffold Recruiter Router
-√ Create Recruiter Controller 
-√ Create Recruiter Validation 
-√ Create Recruiter Test Suite
+ Create Recruiter Model 
+ Scaffold Recruiter Router
+ Create Recruiter Controller 
+ Create Recruiter Validation 
+ Create Recruiter Test Suite
+
+ √ Profile Form Layout

@@ -3,7 +3,7 @@ import { SidenavHeader } from 'components/dashboard/SidenavHeader';
 import { SidenavMain } from 'components/dashboard/SidenavMain';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { Signout } from 'screens/Signout';
-import { ProfileForm } from 'screens/Profile';
+import { CreateProfile } from 'screens/Profile';
 
 export const Dashboard = () => {
   const { expanded, theme, mode } = useTypedSelector(
@@ -23,7 +23,7 @@ export const Dashboard = () => {
         </div>
         <div className='dashboard__main'>
           <Switch>
-            <Route path='/dashboard/profile-form' component={ProfileForm} />
+            <Route path='/dashboard/profile-form' component={CreateProfile} />
             <Route path='/dashboard/signout' component={Signout} />
           </Switch>
         </div>
