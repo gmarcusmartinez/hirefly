@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { NotAuthorizedError, BadRequestError } from '../../../common';
+import { BadRequestError } from '../../../common';
 import { Applicant } from '../../../models/Applicant';
 
 export const updateApplicant = async (req: Request, res: Response) => {

@@ -10,8 +10,9 @@ export const ApplicantForm = () => {
   const { theme } = useTypedSelector((state) => state.dashboard);
   const [formData, setFormData] = React.useState(defaultForm);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,15 +26,24 @@ export const ApplicantForm = () => {
           item={t}
           onChange={handleChange}
           //@ts-ignore
-          value={formData[t.value]}
+          value={formData[t.name]}
         />
       ))}
+
       {fileInputs.map((t, i) => (
         <DashFileInput key={i} item={t} />
       ))}
-      {selectInputs.map((t, i) => (
-        <DashSelectInput key={i} item={t} />
+
+      {selectInputs.map((item, i) => (
+        <DashSelectInput
+          key={i}
+          item={item}
+          //@ts-ignore
+          value={formData[item.name]}
+          onChange={handleChange}
+        />
       ))}
+
       <DashTextInput
         item={bio}
         onChange={handleChange}

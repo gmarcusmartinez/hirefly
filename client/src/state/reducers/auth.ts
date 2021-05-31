@@ -20,9 +20,6 @@ export const auth = (
 ): AuthState => {
   const { type, payload } = action;
   switch (type) {
-    case AuthActionTypes.RESET_ERRORS:
-      return { ...state, errors: [] };
-
     case AuthActionTypes.SIGNIN_REQUEST:
       return { ...state, loading: true };
 

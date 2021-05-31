@@ -32,6 +32,9 @@
       transition: border-color 0.2s ease-in;
     }
   }
+  select {
+    font-size: 1.4rem;
+  }
   &.darkmode {
     input,
     select {

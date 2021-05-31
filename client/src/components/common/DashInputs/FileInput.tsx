@@ -18,7 +18,7 @@ export const DashFileInput: FC<IProps> = ({ item }) => {
     <div className='dash-file-input'>
       <label style={{ color }}>
         {item.label}
-        {item.required && <span style={{ color: theme }}>*</span>}
+        {item.required && <span style={{ color: theme }}>* </span>}
       </label>
       <div className={className} style={{ borderColor: theme }}>
         <input type='file' />

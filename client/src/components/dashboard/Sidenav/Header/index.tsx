@@ -1,7 +1,7 @@
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 
-export const SidenavHeader = () => {
+export const Header = () => {
   const { toggleSidenav, setSidenavComponent } = useActions();
   const { expanded, theme, mode } = useTypedSelector(
     ({ dashboard }) => dashboard

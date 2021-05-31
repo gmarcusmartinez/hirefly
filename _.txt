@@ -1,13 +1,32 @@
+Server: 
 √ Create Applicant Model 
 √ Scaffold Applicant Router
 √ Create Applicant Controller 
 √ Create Applicant Validation 
 √ Create Applicant Test Suite
+√ Update Applicant Controller 
+√ Update Applicant Validation 
+√ Update Applicant Test Suite
+√ Get Applicant Controller
+√ Get Applicant Test Suite
 
  √ Create Recruiter Model 
- Scaffold Recruiter Router
- Create Recruiter Controller 
- Create Recruiter Validation 
- Create Recruiter Test Suite
+ √ Scaffold Recruiter Router
+ √ Create Recruiter Controller 
+ √ Create Recruiter Validation 
+ √ Create Recruiter Test Suite
+ √ Update Recruiter Controller 
+ √ Update Recruiter Validation 
+ √ Update Recruiter Test Suite
 
- √ Profile Form Layout
+ √ Generate AWS keys
+ √ Uploads Router
+ √ Upload Image Controller
+
+Client:
+ √ Component: Dash Input: Text
+   Component: Dash Input: Select
+   Component: Dash Input: File
+ √ Applicant Form Layout
+ √ Scaffold Applicant Reducer
+ √ Create Applicant Action Creator

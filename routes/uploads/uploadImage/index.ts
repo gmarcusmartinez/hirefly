@@ -11,7 +11,7 @@ const access = new Credentials({
 
 const s3 = new S3({
   credentials: access,
-  region: 'us-east-2',
+  region: 'eu-central-1',
   signatureVersion: 'v4',
 });
 

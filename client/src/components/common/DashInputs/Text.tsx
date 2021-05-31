@@ -20,7 +20,7 @@ export const DashTextInput: FC<IProps> = ({ item, onChange, value }) => {
         {item.label}
         {item.required && <span style={{ color: theme }}>*</span>}
       </label>
-      <input type={'text'} name={item.name} onChange={onChange} />
+      <input type={'text'} name={item.name} onChange={onChange} value={value} />
     </div>
   );
 };

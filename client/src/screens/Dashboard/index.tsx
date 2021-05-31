@@ -1,26 +1,18 @@
 import { Route, Switch } from 'react-router-dom';
-import { SidenavHeader } from 'components/dashboard/SidenavHeader';
-import { SidenavMain } from 'components/dashboard/SidenavMain';
 import { useTypedSelector } from 'hooks/use-typed-selector';
-import { Signout } from 'screens/Signout';
 import { CreateProfile } from 'screens/Profile';
+import { Sidenav } from 'components/dashboard/Sidenav';
+import { Signout } from 'screens/Signout';
 
 export const Dashboard = () => {
-  const { expanded, theme, mode } = useTypedSelector(
-    (state) => state.dashboard
-  );
+  const { theme, mode } = useTypedSelector(({ dashboard }) => dashboard);
   const backgroundColor = theme;
   const darkmode = mode === 'dark' ? 'darkmode' : '';
 
   return (
     <div className='dashboard' style={{ backgroundColor }}>
       <div className={`dashboard__panel ${darkmode}`}>
-        <div
-          className={`sidenav ${expanded ? 'expand' : 'retract'} ${darkmode}`}
-        >
-          <SidenavHeader />
-          <SidenavMain />
-        </div>
+        <Sidenav />
         <div className='dashboard__main'>
           <Switch>
             <Route path='/dashboard/profile-form' component={CreateProfile} />

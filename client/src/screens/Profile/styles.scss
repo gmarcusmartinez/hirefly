@@ -9,7 +9,6 @@ $retracted-sidenav-width: 7rem;
     flex-direction: column;
     height: 8rem;
     justify-content: center;
-    margin-left: $retracted-sidenav-width;
     &.darkmode {
       box-shadow: 0 0.1rem 0.2rem #000;
       color: var(--color-white);
@@ -22,7 +21,6 @@ $retracted-sidenav-width: 7rem;
   }
   &__main {
     height: calc(100% - 80px);
-    margin-left: $retracted-sidenav-width;
     overflow-y: scroll;
     padding: var(--padding-sm);
   }
@@ -30,6 +28,7 @@ $retracted-sidenav-width: 7rem;
 
 @include respond(tablet) {
   .create-profile {
+    margin-left: $retracted-sidenav-width;
     &__main {
       display: flex;
       justify-content: center;
@@ -39,6 +38,8 @@ $retracted-sidenav-width: 7rem;
 
 @include respond(desktop) {
   .create-profile {
+    margin-left: unset;
+
     &__header {
       margin-left: unset;
       h2 {

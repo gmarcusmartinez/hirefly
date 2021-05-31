@@ -1,7 +1,7 @@
 import { useTypedSelector } from 'hooks/use-typed-selector';
-import { Settings } from '../Settings';
+import { Settings } from 'components/dashboard/Settings';
 
-export const SidenavMain = () => {
+export const Main = () => {
   const { sidenavComponent } = useTypedSelector((state) => state.dashboard);
   return (
     <div className='sidenav__main'>
