@@ -1,6 +1,6 @@
 $retracted-sidenav-width: 7rem;
 
-.profile-form {
+.create-profile {
   font-family: 'Montserrat', sans-serif;
   height: 100%;
   &__header {
@@ -23,12 +23,22 @@ $retracted-sidenav-width: 7rem;
   &__main {
     height: calc(100% - 80px);
     margin-left: $retracted-sidenav-width;
+    overflow-y: scroll;
     padding: var(--padding-sm);
   }
 }
 
+@include respond(tablet) {
+  .create-profile {
+    &__main {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
 @include respond(desktop) {
-  .profile-form {
+  .create-profile {
     &__header {
       margin-left: unset;
       h2 {
@@ -38,5 +48,77 @@ $retracted-sidenav-width: 7rem;
     &__main {
       margin-left: unset;
     }
+  }
+}
+
+.profile-form {
+  display: grid;
+  grid-template-rows: repeat(8, 6rem);
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas:
+    'first-name first-name'
+    'last-name last-name'
+    'avatar cv'
+    'link link'
+    'location location'
+    'period position'
+    'sal-min sal-max'
+    'description description';
+
+  gap: 0.5rem;
+  height: 100%;
+  max-width: 50rem;
+  width: 100%;
+  div {
+    color: red;
+    border: 0.2rem solid red;
+    height: 6rem;
+  }
+  .first-name {
+    grid-area: first-name;
+  }
+  .last-name {
+    grid-area: last-name;
+  }
+  .avatar {
+    grid-area: avatar;
+  }
+  .cv {
+    grid-area: cv;
+  }
+  .link {
+    grid-area: link;
+  }
+  .location {
+    grid-area: location;
+  }
+  .period {
+    grid-area: period;
+  }
+  .position {
+    grid-area: position;
+  }
+  .sal-min {
+    grid-area: sal-min;
+  }
+  .sal-max {
+    grid-area: sal-max;
+  }
+  .description {
+    grid-area: description;
+  }
+}
+
+@include respond(tablet) {
+  .profile-form {
+    grid-template-areas:
+      'first-name last-name'
+      'avatar cv'
+      'link link'
+      'location location'
+      'period position'
+      'sal-min sal-max'
+      'description description';
+    margin-top: 2rem;
   }
 }

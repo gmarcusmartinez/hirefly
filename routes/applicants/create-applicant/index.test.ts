@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import request from 'supertest';
 import { app } from '../../../app';
 import { fakeAuthCookie } from '../../../test/auth-helper';
@@ -116,16 +115,26 @@ describe('Unsuccessful Profile Creation', () => {
 });
 
 describe('Successful Profile Creattion', () => {
-  const avatar = 'test@test.com';
-  const firstName = 'Marcus';
-  const lastName = 'Martinez';
-  const period = 'Full-Time';
-  const position = 'backend developer';
-
   it('returns a 201 w/ all valid inputs', async () => {
+    const email = 'test@test.com';
+    const password = 'thisisatest';
+    const accountType = 'applicant';
+
+    const res = await request(app)
+      .post('/api/auth/signup')
+      .send({ email, password, accountType })
+      .expect(201);
+
+    const avatar = 'test@test.com';
+    const firstName = 'Marcus';
+    const lastName = 'Martinez';
+    const period = 'Full-Time';
+    const position = 'backend developer';
+    const cookie = res.header['set-cookie'][0];
+
     await request(app)
       .post('/api/applicants')
-      .set('Cookie', fakeAuthCookie())
+      .set('Cookie', cookie)
       .send({ firstName, lastName, avatar, period, position })
       .expect(201);
   });
