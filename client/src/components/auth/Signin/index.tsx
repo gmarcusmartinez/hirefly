@@ -1,6 +1,6 @@
 import { useState, FC } from 'react';
 import { Text } from 'components/common/TextInput';
-import { signinInputs } from './inputs';
+import { signinInputs } from '../inputs';
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 
@@ -39,9 +39,15 @@ export const Signin: FC<IProps> = ({ setFormDisplay }) => {
           value={formData[i.formData]}
           onChange={handleChange}
           error={setError(`${i.errorField}`)}
+          testId={i.testId}
         />
       ))}
-      <button className='btn-primary'>Signin</button>
+      <button
+        className='btn-primary'
+        disabled={!formData.email && !formData.password}
+      >
+        Signin
+      </button>
       <div className='auth-form-wrapper__switch'>
         Dont have an account?
         <span onClick={() => setFormDisplay('RENDER_SIGNUP')}> Signup </span>

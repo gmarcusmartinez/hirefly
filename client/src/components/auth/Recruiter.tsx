@@ -39,6 +39,7 @@ export const RecruiterSignup: FC<IProps> = ({ setFormDisplay }) => {
           value={formData[i.formData]}
           onChange={handleChange}
           error={setError(`${i.errorField}`)}
+          testId={i.testId}
         />
       ))}
       <button className='btn-primary'>Signup</button>

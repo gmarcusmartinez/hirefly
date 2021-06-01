@@ -1,5 +1,5 @@
 import { useTypedSelector } from 'hooks/use-typed-selector';
-import { ModeSwitch } from './ModeSwitch';
+import { Switch } from './Switch';
 
 export const Modes = () => {
   const { mode, theme, expanded } = useTypedSelector(
@@ -11,8 +11,8 @@ export const Modes = () => {
 
   return (
     <div className='settings__modes' style={{ flexDirection }}>
-      <ModeSwitch mode='light' color={light} />
-      <ModeSwitch mode='darkmode' color={dark} />
+      <Switch mode='light' color={light} />
+      <Switch mode='darkmode' color={dark} />
     </div>
   );
 };

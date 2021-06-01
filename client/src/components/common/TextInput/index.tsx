@@ -9,6 +9,7 @@ interface IProps {
   label: string;
   name: string;
   value: string;
+  testId: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -29,6 +30,7 @@ export const Text: FC<IProps> = (props) => {
         name={props.name}
         value={props.value}
         onChange={props.onChange}
+        data-testid={props.testId}
       />
       {small}
       {error && <div className='input-error'>{error.message}</div>}

@@ -10,22 +10,18 @@ interface IProps {
 export const FileInput: FC<IProps> = ({ item, onChange, file }) => {
   const { theme, mode } = useTypedSelector(({ dashboard }) => dashboard);
   const color = file ? theme : '';
+  const style = { borderColor: color };
 
   return (
     <div className='file-input'>
-      <div
-        className={`dash-file-input-wrapper ${mode}`}
-        style={{ borderColor: color }}
-      >
+      <div className={`file-input-wrapper ${mode}`} style={style}>
         <i className='material-icons' style={{ color }}>
           {item.icon}
         </i>
         <input type='file' accept={item.accept} onChange={onChange} />
       </div>
-      <label className={mode}>{item.label}</label>
-      {item.required && (
-        <span style={{ color: theme, fontSize: '16px' }}>* </span>
-      )}
+      {item.required && <span style={{ color: theme }}>* </span>}
+      <label className={mode}>{file ? '' : item.label}</label>
     </div>
   );
 };

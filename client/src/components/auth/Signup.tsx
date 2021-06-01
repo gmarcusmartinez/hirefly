@@ -40,6 +40,7 @@ export const Signup: FC<IProps> = ({ setFormDisplay }) => {
           value={formData[i.formData]}
           onChange={handleChange}
           error={setError(`${i.errorField}`)}
+          testId={i.testId}
         />
       ))}
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import { textInputs, fileInputs, defaultForm } from './inputs';
+import { textInputs, defaultForm } from './inputs';
 import { Text } from 'components/common/DashInputs/Text';
-import { FileInput } from 'components/common/DashInputs/FileInput';
+// import { FileInput } from 'components/common/DashInputs/FileInput';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 
 export const RecruiterForm = () => {

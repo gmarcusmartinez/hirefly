@@ -6,7 +6,7 @@ interface IProps {
   color: string;
 }
 
-export const ModeSwitch: React.FC<IProps> = ({ color, mode }) => {
+export const Switch: React.FC<IProps> = ({ color, mode }) => {
   const { toggleMode } = useActions();
   const text = mode === 'light' ? 'light_mode' : 'dark_mode';
   const onClick = () => toggleMode(mode);

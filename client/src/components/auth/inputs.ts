@@ -6,6 +6,7 @@ export const signinInputs = [
     required: true,
     value: 'email',
     errorField: 'email',
+    testId: 'email-input',
   },
   {
     type: 'password',
@@ -14,6 +15,7 @@ export const signinInputs = [
     required: true,
     value: 'password',
     errorField: 'password',
+    testId: 'password-input',
   },
 ];
 
@@ -25,6 +27,7 @@ export const signupInputs = [
     required: true,
     formData: 'email',
     errorField: 'email',
+    testId: 'email-input',
   },
   {
     type: 'password',
@@ -33,5 +36,6 @@ export const signupInputs = [
     required: true,
     formData: 'password',
     errorField: 'password',
+    testId: 'email-input',
   },
 ];

@@ -10,11 +10,11 @@ export const SettingsLink: FC<IProps> = ({ text, icon, cb }) => {
   const { mode, theme, expanded } = useTypedSelector(
     (state) => state.dashboard
   );
-  const displayIcon = !expanded;
   const displayText = !expanded ? 'hide-text' : 'display-text';
+
   return (
     <div className={`settings__link ${mode}`} onClick={cb}>
-      {displayIcon && <span className='material-icons'>{icon}</span>}
+      {!expanded && <span className='material-icons'>{icon}</span>}
       <span className={`${displayText}`}>{text}</span>
       <div style={{ backgroundColor: theme }}></div>
     </div>

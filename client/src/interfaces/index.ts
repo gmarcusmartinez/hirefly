@@ -9,9 +9,9 @@ export interface IUser {
 }
 
 enum PositionEnum {
-  backend = 'backend developer',
-  frontend = 'frontend developer',
-  fullstack = 'fullstack developer',
+  backend = 'backend',
+  frontend = 'frontend',
+  fullstack = 'fullstack',
 }
 
 enum PeriodEnum {
