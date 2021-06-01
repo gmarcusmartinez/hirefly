@@ -1,20 +1,20 @@
 import mongoose from 'mongoose';
 
 enum PositionEnum {
-  backend = 'backend developer',
-  frontend = 'frontend developer',
-  fullstack = 'fullstack developer',
+  backend = 'backend',
+  frontend = 'frontend',
+  fullstack = 'fullstack',
 }
 
 enum PeriodEnum {
-  fulltime = 'Full-Time',
-  parttime = 'Part-Time',
+  fulltime = 'full-time',
+  parttime = 'part-time',
 }
 
 interface ApplicantAttrs {
   avatar: string;
   cv: string;
-  description: string;
+  bio: string;
   firstName: string;
   lastName: string;
   link: string;
@@ -27,7 +27,7 @@ interface ApplicantDoc extends mongoose.Document {
   userId: string;
   avatar: string;
   cv: string;
-  description: string;
+  bio: string;
   firstName: string;
   lastName: string;
   link: string;
@@ -48,7 +48,7 @@ const applicantSchema = new mongoose.Schema<ApplicantDoc>({
   },
   avatar: { type: String, required: true },
   cv: { type: String, default: '' },
-  description: { type: String, default: '' },
+  bio: { type: String, default: '' },
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   link: { type: String, default: '' },

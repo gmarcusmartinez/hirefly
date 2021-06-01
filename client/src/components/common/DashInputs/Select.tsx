@@ -12,7 +12,6 @@ interface IProps {
 }
 export const DashSelectInput: FC<IProps> = ({ item, onChange }) => {
   const { theme, mode } = useTypedSelector((state) => state.dashboard);
-  const className = `dash-select-input ${mode === 'dark' ? 'darkmode' : ''}`;
 
   const opts = item.options.map((o, i) => (
     <option key={i} value={o}>
@@ -21,7 +20,7 @@ export const DashSelectInput: FC<IProps> = ({ item, onChange }) => {
   ));
 
   return (
-    <div className={className}>
+    <div className={`dash-select-input ${mode}`}>
       <label>
         {item.label}
         {item.required && <span style={{ color: theme }}>*</span>}

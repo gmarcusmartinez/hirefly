@@ -7,9 +7,9 @@
     'last-name last-name'
     'location location'
     'link link'
+    'bio bio'
     'avatar cv'
     'period position'
-    'bio bio'
     'btn btn';
   gap: 1.2rem 0.5rem;
   height: min-content;
@@ -30,19 +30,19 @@
       grid-area: link;
     }
     &:nth-of-type(5) {
-      grid-area: avatar;
+      grid-area: bio;
     }
     &:nth-of-type(6) {
-      grid-area: cv;
+      grid-area: avatar;
     }
     &:nth-of-type(7) {
-      grid-area: period;
+      grid-area: cv;
     }
     &:nth-of-type(8) {
-      grid-area: position;
+      grid-area: period;
     }
     &:nth-of-type(9) {
-      grid-area: bio;
+      grid-area: position;
     }
   }
   button {
@@ -67,9 +67,9 @@
       'first-name last-name '
       'location location'
       'link link'
+      'bio bio'
       'avatar cv'
       'period position'
-      'bio bio'
       'btn btn';
     margin-top: 4rem;
     grid-column: 2;

@@ -1,12 +1,15 @@
-export const bio = { label: 'Bio', value: 'bio', name: 'bio' };
-
 export const textInputs = [
   { label: 'First Name', name: 'firstName', required: true },
   { label: 'Last Name', name: 'lastName', required: true },
   { label: 'Location', name: 'location' },
   { label: 'Link', name: 'link' },
+  { label: 'Bio', value: 'bio', name: 'bio' },
 ];
-export const fileInputs = [{ label: 'Image', required: true }, { label: 'CV' }];
+
+export const fileInputs = [
+  { label: 'Image', accept: 'image/*', required: true },
+  { label: 'CV', accept: 'image/*' },
+];
 
 export const selectInputs = [
   {

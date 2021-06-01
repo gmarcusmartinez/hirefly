@@ -8,6 +8,7 @@ import cors from 'cors';
 import { authRouter } from './routes/auth';
 import { applicantRouter } from './routes/applicants';
 import { recruiterRouter } from './routes/recruiters';
+import { uploadRouter } from './routes/uploads';
 
 const app = express();
 app.use(express.json());
@@ -18,6 +19,7 @@ app.use(cookieSession({ signed: false, secure: false }));
 app.use('/api/auth', authRouter);
 app.use('/api/applicants', applicantRouter);
 app.use('/api/recruiters', recruiterRouter);
+app.use('/api/uploads', uploadRouter);
 
 app.all('*', async () => {
   throw new NotFoundError();

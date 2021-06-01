@@ -4,9 +4,8 @@ import { Main } from './Main';
 
 export const Sidenav = () => {
   const { expanded, mode } = useTypedSelector(({ dashboard }) => dashboard);
-  const darkmode = mode === 'dark' ? 'darkmode' : '';
   return (
-    <div className={`sidenav ${expanded ? 'expand' : 'retract'} ${darkmode}`}>
+    <div className={`sidenav ${expanded ? 'expand' : 'retract'} ${mode}`}>
       <Header />
       <Main />
     </div>

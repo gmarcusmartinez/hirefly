@@ -9,7 +9,6 @@ export const Header = () => {
 
   const displaySettings = () => setSidenavComponent('SETTINGS');
   const className = `material-icons ${expanded ? 'rotate' : ''}`;
-  const darkmode = mode === 'dark' ? 'darkmode' : '';
 
   const toggle = (e: any) => {
     e.stopPropagation();
@@ -18,7 +17,7 @@ export const Header = () => {
   return (
     <div className='sidenav__header' onClick={displaySettings}>
       <div className='sidenav__header__profile-img' />
-      <span className={`sidenav__header__name ${darkmode}`}>Marcus</span>
+      <span className={`sidenav__header__name ${mode}`}>Marcus</span>
       <i className={className} onClick={toggle} style={{ color: theme }}>
         chevron_right
       </i>

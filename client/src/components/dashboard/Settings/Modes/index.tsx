@@ -7,12 +7,12 @@ export const Modes = () => {
   );
   const flexDirection = expanded ? 'row' : 'column';
   const light = mode === 'light' ? theme : '#e5e5e5';
-  const dark = mode === 'dark' ? theme : '#e5e5e5';
+  const dark = mode === 'darkmode' ? theme : '#e5e5e5';
 
   return (
     <div className='settings__modes' style={{ flexDirection }}>
       <ModeSwitch mode='light' color={light} />
-      <ModeSwitch mode='dark' color={dark} />
+      <ModeSwitch mode='darkmode' color={dark} />
     </div>
   );
 };

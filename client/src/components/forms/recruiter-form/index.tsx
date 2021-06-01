@@ -22,9 +22,9 @@ export const RecruiterForm = () => {
           value={formData[t.value]}
         />
       ))}
-      {fileInputs.map((t, i) => (
+      {/* {fileInputs.map((t, i) => (
         <DashFileInput key={i} item={t} />
-      ))}
+      ))} */}
       <button style={{ backgroundColor: theme }}>Submit</button>
     </form>
   );

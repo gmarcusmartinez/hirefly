@@ -19,7 +19,7 @@ export const uploadImage = async (req: Request, res: Response) => {
   const key = `${req.currentUser!._id}/${v4()}.jpeg`;
   const signedUrlExpireSeconds = 60 * 15;
 
-  const url = await s3.getSignedUrlPromise('putObject', {
+  const url = await s3.getSignedUrl('putObject', {
     Bucket: 'hirefly-bucket',
     ContentType: 'image/jpeg',
     Key: key,

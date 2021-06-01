@@ -7,11 +7,10 @@ import { Signout } from 'screens/Signout';
 export const Dashboard = () => {
   const { theme, mode } = useTypedSelector(({ dashboard }) => dashboard);
   const backgroundColor = theme;
-  const darkmode = mode === 'dark' ? 'darkmode' : '';
 
   return (
     <div className='dashboard' style={{ backgroundColor }}>
-      <div className={`dashboard__panel ${darkmode}`}>
+      <div className={`dashboard__panel ${mode}`}>
         <Sidenav />
         <div className='dashboard__main'>
           <Switch>

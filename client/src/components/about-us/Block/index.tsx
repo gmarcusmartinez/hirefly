@@ -15,11 +15,9 @@ export const Block: React.FC<IProps> = ({ b }) => {
 
   const data = b;
   const handleClick = () => toggleModal(true, 'BLOCK_INFO', data);
+  const className = `about-us__block ${isOpen ? 'z' : ''}`;
   return (
-    <div
-      className={`about-us__block ${isOpen ? 'z' : ''}`}
-      onClick={handleClick}
-    >
+    <div className={className} onClick={handleClick}>
       <h3>{b.title}</h3>
       <img src={b.img} alt='blank' />
     </div>

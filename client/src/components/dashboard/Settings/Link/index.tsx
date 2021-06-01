@@ -10,11 +10,10 @@ export const SettingsLink: React.FC<IProps> = ({ text, icon, cb }) => {
   const { mode, theme, expanded } = useTypedSelector(
     (state) => state.dashboard
   );
-  const darkmode = mode === 'dark' ? 'darkmode' : '';
   const displayIcon = !expanded;
   const displayText = !expanded ? 'hide-text' : 'display-text';
   return (
-    <div className={`settings__link ${darkmode}`} onClick={cb}>
+    <div className={`settings__link ${mode}`} onClick={cb}>
       {displayIcon && <span className='material-icons'>{icon}</span>}
       <span className={`${displayText}`}>{text}</span>
       <div style={{ backgroundColor: theme }}></div>
