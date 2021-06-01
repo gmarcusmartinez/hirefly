@@ -1,7 +1,7 @@
 import React from 'react';
 import { textInputs, fileInputs, defaultForm } from './inputs';
-import { DashTextInput } from 'components/common/DashInputs/Text';
-import { DashFileInput } from 'components/common/DashInputs/FileInput';
+import { Text } from 'components/common/DashInputs/Text';
+import { FileInput } from 'components/common/DashInputs/FileInput';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 
 export const RecruiterForm = () => {
@@ -14,7 +14,7 @@ export const RecruiterForm = () => {
   return (
     <form className='recruiter-form'>
       {textInputs.map((t, i) => (
-        <DashTextInput
+        <Text
           key={i}
           item={t}
           onChange={handleChange}

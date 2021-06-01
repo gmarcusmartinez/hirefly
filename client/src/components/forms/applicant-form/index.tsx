@@ -1,24 +1,21 @@
 import React from 'react';
-import { textInputs, selectInputs, fileInputs } from './inputs';
 import { defaultForm } from './inputs';
-import { DashTextInput } from 'components/common/DashInputs/Text';
-import { DashSelectInput } from 'components/common/DashInputs/Select';
-import { DashFileInput } from 'components/common/DashInputs/FileInput';
-import { useTypedSelector } from 'hooks/use-typed-selector';
 import { useActions } from 'hooks/use-actions';
+import { useTypedSelector } from 'hooks/use-typed-selector';
+import { texts, selects, files } from './inputs';
+import { Text, Select, FileInput } from 'components/common/DashInputs';
 
 export const ApplicantForm = () => {
-  const { theme } = useTypedSelector((state) => state.dashboard);
+  const { createApplicant } = useActions();
+  const { theme } = useTypedSelector(({ dashboard }) => dashboard);
   const [formData, setFormData] = React.useState(defaultForm);
   const [imageData, setImageData] = React.useState<File | null>(null);
 
-  const { createApplicant } = useActions();
-
-  const handleChange = (
+  const onChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onImgChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
     setImageData(e.target.files![0]);
   };
@@ -27,29 +24,18 @@ export const ApplicantForm = () => {
     e.preventDefault();
     createApplicant(formData, imageData);
   };
+
   return (
     <form className='applicant-form' onSubmit={handleSubmit}>
-      {textInputs.map((t, i) => (
-        <DashTextInput
-          key={i}
-          item={t}
-          onChange={handleChange}
-          //@ts-ignore
-          value={formData[t.name]}
-        />
-      ))}
-      {fileInputs.map((item, i) => (
-        <DashFileInput key={i} item={item} onChange={handleFileChange} />
-      ))}
-      {selectInputs.map((item, i) => (
-        <DashSelectInput
-          key={i}
-          item={item}
-          //@ts-ignore
-          value={formData[item.name]}
-          onChange={handleChange}
-        />
-      ))}
+      <Text onChange={onChange} item={texts[0]} value={formData.firstName} />
+      <Text onChange={onChange} item={texts[1]} value={formData.lastName} />
+      <Text onChange={onChange} item={texts[2]} value={formData.location} />
+      <Text onChange={onChange} item={texts[3]} value={formData.link} />
+      <Text onChange={onChange} item={texts[4]} value={formData.bio} />
+      <FileInput item={files[0]} onChange={onImgChange} file={imageData} />
+      <FileInput item={files[1]} onChange={() => {}} file={null} />
+      <Select item={selects[0]} onChange={onChange} />
+      <Select item={selects[1]} onChange={onChange} />
       <button style={{ backgroundColor: theme }}>Submit</button>
     </form>
   );

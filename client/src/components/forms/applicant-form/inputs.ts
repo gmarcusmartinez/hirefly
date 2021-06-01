@@ -1,4 +1,4 @@
-export const textInputs = [
+export const texts = [
   { label: 'First Name', name: 'firstName', required: true },
   { label: 'Last Name', name: 'lastName', required: true },
   { label: 'Location', name: 'location' },
@@ -6,12 +6,21 @@ export const textInputs = [
   { label: 'Bio', value: 'bio', name: 'bio' },
 ];
 
-export const fileInputs = [
-  { label: 'Image', accept: 'image/*', required: true },
-  { label: 'CV', accept: 'image/*' },
+export const files = [
+  {
+    label: 'Choose Image',
+    accept: 'image/*',
+    required: true,
+    icon: 'photo_camera',
+  },
+  {
+    label: 'Upload CV',
+    accept: 'image/*',
+    icon: 'description',
+  },
 ];
 
-export const selectInputs = [
+export const selects = [
   {
     label: 'Period',
     required: true,
@@ -27,13 +36,13 @@ export const selectInputs = [
 ];
 
 export const defaultForm = {
-  firstName: 'Marcus',
-  lastName: 'Maritinez',
-  location: 'Berlin Germany',
+  firstName: '',
+  lastName: '',
+  location: '',
   link: '',
-  avatar: 'fake-img.com',
+  avatar: '',
   cv: '',
   period: 'full-time',
   position: 'backend',
-  bio: 'Just a big dog.',
+  bio: '',
 };

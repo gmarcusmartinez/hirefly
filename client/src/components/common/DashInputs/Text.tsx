@@ -1,16 +1,14 @@
 import { FC } from 'react';
 import { useTypedSelector } from 'hooks/use-typed-selector';
+import { IDashTextInput } from 'interfaces/inputs';
 
 interface IProps {
-  item: {
-    label: string;
-    required?: boolean;
-    name: string;
-  };
+  item: IDashTextInput;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
-export const DashTextInput: FC<IProps> = ({ item, onChange, value }) => {
+
+export const Text: FC<IProps> = ({ item, onChange, value }) => {
   const { theme, mode } = useTypedSelector((state) => state.dashboard);
 
   return (
