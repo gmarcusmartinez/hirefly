@@ -1,4 +1,5 @@
 import { useHistory } from 'react-router';
+import { ChatsBtn } from './ChatsBtn';
 import { SettingsLink } from './Link';
 import { Modes } from './Modes';
 import { Themes } from './Themes';
@@ -11,6 +12,7 @@ export const Settings = () => {
     <div className='settings'>
       <Themes />
       <Modes />
+      <ChatsBtn />
       <SettingsLink
         text='Edit Profile'
         icon='edit'

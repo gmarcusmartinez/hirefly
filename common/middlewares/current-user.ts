@@ -4,8 +4,6 @@ import keys from '../../config/keys';
 
 interface UserPayload {
   _id: string;
-  email: string;
-  accountType: string;
   accountStatus: string;
 }
 

@@ -11,7 +11,7 @@ enum PeriodEnum {
   parttime = 'part-time',
 }
 
-interface ApplicantAttrs {
+interface ProfileAttrs {
   avatar: string;
   cv: string;
   bio: string;
@@ -23,7 +23,7 @@ interface ApplicantAttrs {
   position: PositionEnum;
 }
 
-interface ApplicantDoc extends mongoose.Document {
+interface ProfileDoc extends mongoose.Document {
   userId: string;
   avatar: string;
   cv: string;
@@ -36,11 +36,11 @@ interface ApplicantDoc extends mongoose.Document {
   position: PositionEnum;
 }
 
-interface ApplicantModel extends mongoose.Model<ApplicantDoc> {
-  build(attrs: ApplicantAttrs): ApplicantDoc;
+interface ProfileModel extends mongoose.Model<ProfileDoc> {
+  build(attrs: ProfileAttrs): ProfileDoc;
 }
 
-const applicantSchema = new mongoose.Schema<ApplicantDoc>({
+const profileSchema = new mongoose.Schema<ProfileDoc>({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
@@ -57,10 +57,11 @@ const applicantSchema = new mongoose.Schema<ApplicantDoc>({
   position: { type: String, required: true, enum: Object.values(PositionEnum) },
 });
 
-applicantSchema.statics.build = (attrs: ApplicantAttrs) => new Applicant(attrs);
+profileSchema.statics.build = (attrs: ProfileAttrs) => new Profile(attrs);
 
-const Applicant = mongoose.model<ApplicantDoc, ApplicantModel>(
-  'Applicant',
-  applicantSchema
+const Profile = mongoose.model<ProfileDoc, ProfileModel>(
+  'Profile',
+  profileSchema
 );
-export { Applicant };
+export { Profile };
+``;

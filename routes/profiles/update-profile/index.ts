@@ -1,19 +1,19 @@
 import { Request, Response } from 'express';
 import { BadRequestError } from '../../../common';
-import { Applicant } from '../../../models/Applicant';
+import { Profile } from '../../../models/Profile';
 
-export const updateApplicant = async (req: Request, res: Response) => {
+export const updateProfile = async (req: Request, res: Response) => {
   const userId = req.currentUser!._id;
   let profile;
 
-  profile = await Applicant.findOneAndUpdate(
+  profile = await Profile.findOneAndUpdate(
     { userId },
     { ...req.body },
     { runValidators: true }
   );
 
   if (!profile) throw new BadRequestError('Profile not found');
-  profile = await Applicant.findOne({ userId });
+  profile = await Profile.findOne({ userId });
 
   res.status(204).send({ profile });
 };

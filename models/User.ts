@@ -3,10 +3,6 @@ import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
 import { PasswordManager } from '../services/PasswordManager';
 
-export enum AccountType {
-  applicant = 'applicant',
-  recruiter = 'recruiter',
-}
 export enum AccountStatus {
   uninitialized = 'uninitialized',
   active = 'active',
@@ -15,12 +11,10 @@ export enum AccountStatus {
 interface UserAttrs {
   email: string;
   password: string;
-  accountType: AccountType;
 }
 
 interface UserDoc extends mongoose.Document {
   password: string;
-  accountType: AccountType;
   accountStatus: AccountStatus;
   getSignedJwtToken(): string;
 }
@@ -33,11 +27,6 @@ const userSchema = new mongoose.Schema<UserDoc>(
   {
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    accountType: {
-      type: String,
-      required: true,
-      enum: Object.values(AccountType),
-    },
     accountStatus: {
       type: String,
       required: true,
@@ -57,14 +46,8 @@ const userSchema = new mongoose.Schema<UserDoc>(
 userSchema.statics.build = (attrs: UserAttrs) => new User(attrs);
 
 userSchema.methods.getSignedJwtToken = function () {
-  return jwt.sign(
-    {
-      _id: this._id,
-      accountType: this.accountType,
-      accounStatus: this.accountStatus,
-    },
-    keys.jwtSecret
-  );
+  const { accountStatus } = this;
+  return jwt.sign({ _id: this._id, accountStatus }, keys.jwtSecret);
 };
 
 userSchema.pre('save', async function (done) {
