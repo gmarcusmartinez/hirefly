@@ -4,7 +4,6 @@ export interface IError {
 }
 export interface IUser {
   id: string;
-  accountType: string;
   accountStatus: string;
 }
 
@@ -19,7 +18,7 @@ enum PeriodEnum {
   parttime = 'Part-Time',
 }
 
-export interface IApplicant {
+export interface IProfile {
   userId: string;
   avatar: string;
   cv: string;

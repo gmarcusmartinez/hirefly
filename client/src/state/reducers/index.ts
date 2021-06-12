@@ -1,15 +1,15 @@
 import { combineReducers } from 'redux';
 import { auth } from './auth';
-import { applicants } from './applicants';
+import { profiles } from './profiles';
 import { dashboard } from './dashboard';
 import { modal } from './modal';
 import { nav } from './nav';
 
 export const rootReducer = combineReducers({
   auth,
-  applicants,
   dashboard,
   modal,
+  profiles,
   nav,
 });
 

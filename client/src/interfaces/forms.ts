@@ -1,4 +1,4 @@
-export interface IApplicantForm {
+export interface IProfileForm {
   avatar: string;
   firstName: string;
   lastName: string;

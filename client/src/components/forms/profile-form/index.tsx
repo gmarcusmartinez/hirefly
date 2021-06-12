@@ -5,8 +5,8 @@ import { useTypedSelector } from 'hooks/use-typed-selector';
 import { texts, selects, files } from './inputs';
 import { Text, Select, FileInput } from 'components/common/DashInputs';
 
-export const ApplicantForm = () => {
-  const { createApplicant } = useActions();
+export const ProfileForm = () => {
+  const { createProfile } = useActions();
   const { theme } = useTypedSelector(({ dashboard }) => dashboard);
   const [formData, setFormData] = React.useState(defaultForm);
   const [imageData, setImageData] = React.useState<File | null>(null);
@@ -22,11 +22,11 @@ export const ApplicantForm = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    createApplicant(formData, imageData);
+    createProfile(formData, imageData);
   };
 
   return (
-    <form className='applicant-form' onSubmit={handleSubmit}>
+    <form className='profile-form' onSubmit={handleSubmit}>
       <Text onChange={onChange} item={texts[0]} value={formData.firstName} />
       <Text onChange={onChange} item={texts[1]} value={formData.lastName} />
       <Text onChange={onChange} item={texts[2]} value={formData.location} />

@@ -1,4 +1,4 @@
-export * from './applicants';
+export * from './profiles';
 export * from './auth';
 export * from './dashboard';
 export * from './modal';

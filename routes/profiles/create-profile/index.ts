@@ -12,5 +12,5 @@ export const createProfile = async (req: Request, res: Response) => {
   const profile = Profile.build({ ...req.body, userId });
   await profile.save();
 
-  res.status(201).send({});
+  res.status(201).send(profile);
 };

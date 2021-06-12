@@ -18,7 +18,7 @@ export const Signup: FC<IProps> = ({ setFormDisplay }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    signup(formData, 'applicant');
+    signup(formData);
     setFormData({ email: '', password: '' });
   };
 
@@ -45,12 +45,6 @@ export const Signup: FC<IProps> = ({ setFormDisplay }) => {
       ))}
 
       <button className='btn-primary'>Signup</button>
-      <div className='auth-form-wrapper__switch'>
-        Are you a Recruiter?{' '}
-        <span onClick={() => setFormDisplay('RENDER_SIGNUP_RECRUITER')}>
-          Recruiter Signup
-        </span>
-      </div>
       <div className='auth-form-wrapper__switch'>
         Already have an account?
         <span onClick={() => setFormDisplay('RENDER_SIGNIN')}> Signin </span>

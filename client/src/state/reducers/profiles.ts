@@ -1,11 +1,11 @@
 import { AnyAction } from 'redux';
-import { IError, IApplicant } from 'interfaces';
-import { ApplicantActionTypes } from '../types';
+import { IError, IProfile } from 'interfaces';
+import { ProfileActionTypes } from '../types';
 
-interface ApplicantState {
+interface ProfileState {
   loading: boolean;
   errors: IError[] | null;
-  selected: IApplicant | null;
+  selected: IProfile | null;
 }
 
 const initialState = {
@@ -14,17 +14,17 @@ const initialState = {
   selected: null,
 };
 
-export const applicants = (
-  state: ApplicantState = initialState,
+export const profiles = (
+  state: ProfileState = initialState,
   action: AnyAction
-): ApplicantState => {
+): ProfileState => {
   const { type, payload } = action;
   switch (type) {
-    case ApplicantActionTypes.CREATE_APPLICANT_REQUEST:
+    case ProfileActionTypes.CREATE_PROFILE_REQUEST:
       return { ...state, loading: true };
-    case ApplicantActionTypes.CREATE_APPLICANT_SUCCESS:
+    case ProfileActionTypes.CREATE_PROFILE_SUCCESS:
       return { ...state, loading: false, selected: payload };
-    case ApplicantActionTypes.CREATE_APPLICANT_FAILURE:
+    case ProfileActionTypes.CREATE_PROFILE_FAILURE:
       return { ...state, loading: false, errors: payload };
 
     default:

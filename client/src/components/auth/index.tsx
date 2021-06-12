@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { RecruiterSignup } from './Recruiter';
 import { Signin } from './Signin';
 import { Signup } from './Signup';
 
@@ -12,8 +11,6 @@ export const AuthForm = () => {
         return <Signin setFormDisplay={setFormDisplay} />;
       case 'RENDER_SIGNUP':
         return <Signup setFormDisplay={setFormDisplay} />;
-      case 'RENDER_SIGNUP_RECRUITER':
-        return <RecruiterSignup setFormDisplay={setFormDisplay} />;
     }
   };
 
