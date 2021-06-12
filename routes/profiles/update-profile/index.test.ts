@@ -3,14 +3,14 @@ import { app } from '../../../app';
 import { fakeAuthCookie } from '../../../test/auth-helper';
 
 describe('Route Access', () => {
-  it('has a route handler listening to /api/applicants for post requests', async () => {
-    const response = await request(app).put('/api/applicants').send({});
+  it('has a route handler listening to /api/profiles for post requests', async () => {
+    const response = await request(app).put('/api/profiles').send({});
     expect(response.status).not.toEqual(404);
   });
 
   it('can only be accessed if a user is authenticated', async () => {
     const response = await request(app)
-      .put('/api/applicants')
+      .put('/api/profiles')
       .send({})
       .expect(401);
 
@@ -20,7 +20,7 @@ describe('Route Access', () => {
 
   it('returns a status other than 401 if the user is authenticated', async () => {
     const response = await request(app)
-      .put('/api/applicants')
+      .put('/api/profiles')
       .set('Cookie', fakeAuthCookie())
       .send({});
     expect(response.status).not.toEqual(401);
@@ -33,11 +33,11 @@ describe('Unsuccessful Profile Update: Profile does not exist', () => {
     const avatar = 'test@test.com';
     const firstName = 'Marcus';
     const lastName = 'Martinez';
-    const period = 'Full-Time';
-    const position = 'backend developer';
+    const period = 'full-time';
+    const position = 'backend';
 
     const response = await request(app)
-      .put('/api/applicants')
+      .put('/api/profiles')
       .set('Cookie', fakeAuthCookie())
       .send({ firstName, lastName, avatar, period, position })
       .expect(400);
@@ -63,18 +63,18 @@ describe('Successful Profile Update', () => {
     const avatar = 'test@test.com';
     const firstName = 'Marcus';
     const lastName = 'Martinez';
-    const period = 'Full-Time';
-    const position = 'backend developer';
+    const period = 'full-time';
+    const position = 'backend';
 
     const cookie = res.header['set-cookie'][0];
     await request(app)
-      .post('/api/applicants')
+      .post('/api/profiles')
       .set('Cookie', cookie)
       .send({ firstName, lastName, avatar, period, position })
       .expect(201);
 
     await request(app)
-      .put('/api/applicants')
+      .put('/api/profiles')
       .set('Cookie', cookie)
       .send({
         firstName: 'Updated First name',

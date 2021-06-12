@@ -6,7 +6,6 @@ export const fakeAuthCookie = () => {
   const payload = {
     _id: new mongoose.Types.ObjectId().toHexString(),
   };
-
   const token = jwt.sign(payload, keys.jwtSecret);
   const session = { jwt: token };
   const sessionJSON = JSON.stringify(session);

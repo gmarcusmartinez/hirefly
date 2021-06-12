@@ -11,12 +11,11 @@ describe('Route Access', () => {
 describe('Unsuccessful Signup', () => {
   const email = 'test@test.com';
   const password = 'thisisatest';
-  const accountType = 'applicant';
 
   it('returns a 400 w/ blank email', async () => {
     const res = await request(app)
       .post('/api/auth/signup')
-      .send({ email: '', password, accountType })
+      .send({ email: '', password })
       .expect(400);
 
     expect(res.body.errors[0].message).toBe('Email required.');
@@ -25,7 +24,7 @@ describe('Unsuccessful Signup', () => {
   it('returns a 400 w/ an invalid email', async () => {
     const res = await request(app)
       .post('/api/auth/signup')
-      .send({ email: 'thisisnotanemail', password, accountType })
+      .send({ email: 'thisisnotanemail', password })
       .expect(400);
 
     expect(res.body.errors[0].message).toBe('Email must be valid.');
@@ -34,31 +33,21 @@ describe('Unsuccessful Signup', () => {
   it('returns a 400 w/ blank password', async () => {
     const res = await request(app)
       .post('/api/auth/signup')
-      .send({ email, password: '', accountType })
+      .send({ email, password: '' })
       .expect(400);
 
     expect(res.body.errors[0].message).toBe('Password required.');
-  });
-
-  it('returns a 400 w/ blank accountType', async () => {
-    const res = await request(app)
-      .post('/api/auth/signup')
-      .send({ email, password, accountType: '' })
-      .expect(400);
-
-    expect(res.body.errors[0].message).toBe('Account Type required.');
   });
 });
 
 describe('Successful Signup', () => {
   const email = 'test@test.com';
   const password = 'thisisatest';
-  const accountType = 'applicant';
 
   it('returns  wa 201 w all/ valid inputs', async () => {
     await request(app)
       .post('/api/auth/signup')
-      .send({ email, password, accountType })
+      .send({ email, password })
       .expect(201);
   });
 });

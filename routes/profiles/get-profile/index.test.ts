@@ -4,20 +4,20 @@ import mongoose from 'mongoose';
 import { fakeAuthCookie } from '../../../test/auth-helper';
 
 describe('Route Access', () => {
-  it('has a route handler listening to /api/applicants/:id for get requests', async () => {
-    const response = await request(app).get('/api/applicants/:id');
+  it('has a route handler listening to /api/profiles/:id for get requests', async () => {
+    const response = await request(app).get('/api/profiles/:id');
     expect(response.status).not.toEqual(404);
   });
 
   it('can only be accessed if a user is signed in', async () => {
-    const response = await request(app).get('/api/applicants/:id').expect(401);
+    const response = await request(app).get('/api/profiles/:id').expect(401);
     const errMsg = 'Not Authorized';
     expect(response.body.errors[0].message).toBe(errMsg);
   });
 
   it('returns a status other than 401 if the user is signed in', async () => {
     const response = await request(app)
-      .post('/api/applicants/:id')
+      .post('/api/profiles/:id')
       .set('Cookie', fakeAuthCookie())
       .send({});
     expect(response.status).not.toEqual(401);
@@ -26,9 +26,10 @@ describe('Route Access', () => {
 
 describe('Applicant Not Found', () => {
   it('Returns a 404 if the applicant is not found', async () => {
-    const response = await request(app)
-      .get(`/api/applicant/${new mongoose.Types.ObjectId().toHexString()}`)
-      .set('Cookie', fakeAuthCookie());
-    expect(response.status).toEqual(404);
+    const res = await request(app)
+      .get(`/api/profiles/${new mongoose.Types.ObjectId().toHexString()}`)
+      .set('Cookie', fakeAuthCookie())
+      .expect(400);
+    expect(res.body.errors[0].message).toBe('Profile not found');
   });
 });

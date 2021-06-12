@@ -11,12 +11,9 @@ describe('Route Access', () => {
 describe('Unsuccessful Signin : invalid credentials', () => {
   const email = 'test@test.com';
   const password = 'password';
-  const accountType = 'applicant';
 
   beforeEach(async () => {
-    await request(app)
-      .post('/api/auth/signup')
-      .send({ email, password, accountType });
+    await request(app).post('/api/auth/signup').send({ email, password });
   });
 
   it('returns a 400 w/ an incorrect password', async () => {
@@ -50,12 +47,11 @@ describe('Unsuccessful Signin : invalid credentials', () => {
 describe('Successful Signin', () => {
   const email = 'test@test.com';
   const password = 'thisisatest';
-  const accountType = 'applicant';
 
   it('returns  wa 200 w all/ valid inputs', async () => {
     await request(app)
       .post('/api/auth/signup')
-      .send({ email, password, accountType })
+      .send({ email, password })
       .expect(201);
 
     await request(app)

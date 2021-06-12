@@ -15,22 +15,21 @@ describe('Successful Account Activation', () => {
   it('returns a 200', async () => {
     const email = 'test@test.com';
     const password = 'thisisatest';
-    const accountType = 'applicant';
 
     const res = await request(app)
       .post('/api/auth/signup')
-      .send({ email, password, accountType })
+      .send({ email, password })
       .expect(201);
     const cookie = res.header['set-cookie'][0];
 
     const avatar = 'test@test.com';
     const firstName = 'Marcus';
     const lastName = 'Martinez';
-    const period = 'Full-Time';
-    const position = 'backend developer';
+    const period = 'full-time';
+    const position = 'backend';
 
     await request(app)
-      .post('/api/applicants')
+      .post('/api/profiles')
       .set('Cookie', cookie)
       .send({ firstName, lastName, avatar, period, position })
       .expect(201);
