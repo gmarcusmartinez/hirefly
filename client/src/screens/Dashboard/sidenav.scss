@@ -44,7 +44,6 @@
 
 @include respond(desktop) {
   .sidenav {
-    position: unset;
     &.retract {
       width: 26rem !important;
     }

@@ -1,0 +1,56 @@
+.chat-item {
+  border-radius: 0.4rem;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 6rem auto;
+  height: 7.2rem;
+  overflow: hidden;
+  width: 100%;
+  &__img {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    img {
+      border-radius: 50%;
+      height: 5.4rem;
+      object-fit: cover;
+      width: 5rem;
+    }
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Monserat', sans-serif;
+    justify-content: space-evenly;
+    letter-spacing: var(--letter-spacing-sm);
+    opacity: 0.9;
+    padding: 0.75rem;
+    text-overflow: ellipsis;
+    h3 {
+      font-size: 1.45rem;
+      &.darkmode {
+        color: var(--color-white);
+      }
+    }
+    span {
+      color: var(--color-grey-secondary);
+      font-size: 1.2rem;
+      width: 10rem;
+      white-space: nowrap;
+    }
+  }
+}
+
+@include respond(tablet) {
+  .chat-item {
+    transition: 0.2s ease-in-out;
+    &:hover {
+      background-color: #eee;
+    }
+    &.darkmode {
+      &:hover {
+        background-color: #424242;
+      }
+    }
+  }
+}
