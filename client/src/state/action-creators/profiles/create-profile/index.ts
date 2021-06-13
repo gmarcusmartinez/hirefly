@@ -3,6 +3,7 @@ import { Dispatch } from 'redux';
 import applicants from 'api/profiles';
 import { ProfileActionTypes } from 'state';
 import { IProfileForm } from 'interfaces/forms';
+import history from 'core/history';
 
 const { CREATE_PROFILE_FAILURE } = ProfileActionTypes;
 
@@ -27,6 +28,7 @@ export const createProfile =
       await applicants.post('/', requestBody, config);
 
       dispatch({ type: ProfileActionTypes.CREATE_PROFILE_SUCCESS });
+      history.push('/dashboard/jobs');
     } catch (e) {
       const payload = e.response.data.errors;
       dispatch({ type: CREATE_PROFILE_FAILURE, payload });

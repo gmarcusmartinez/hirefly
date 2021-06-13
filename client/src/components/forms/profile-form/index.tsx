@@ -4,10 +4,12 @@ import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { texts, selects, files } from './inputs';
 import { Text, Select, FileInput } from 'components/common/DashInputs';
+import { Spinner } from 'components/common/Spinner';
 
 export const ProfileForm = () => {
   const { createProfile } = useActions();
   const { theme } = useTypedSelector(({ dashboard }) => dashboard);
+  const { loading } = useTypedSelector(({ profiles }) => profiles);
   const [formData, setFormData] = React.useState(defaultForm);
   const [imageData, setImageData] = React.useState<File | null>(null);
 
@@ -25,6 +27,7 @@ export const ProfileForm = () => {
     createProfile(formData, imageData);
   };
 
+  if (loading) return <Spinner />;
   return (
     <form className='profile-form' onSubmit={handleSubmit}>
       <Text onChange={onChange} item={texts[0]} value={formData.firstName} />
