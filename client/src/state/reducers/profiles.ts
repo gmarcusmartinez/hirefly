@@ -33,6 +33,7 @@ export const profiles = (
       return { ...state, loading: false, errors: payload };
 
     case ProfileActionTypes.GET_ME_SUCCESS:
+    case ProfileActionTypes.GET_ME_FAILURE:
       return { ...state, loading: false, me: payload };
 
     default:

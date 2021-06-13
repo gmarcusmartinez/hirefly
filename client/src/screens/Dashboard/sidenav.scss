@@ -8,13 +8,15 @@
 
   &.retract {
     transition: 0.2s ease-in-out;
-    width: 0rem;
     .sidenav__header {
       i {
         right: -3.2rem;
       }
       .dashboard__main {
         width: calc(100% - 70px);
+      }
+      &__name {
+        visibility: hidden;
       }
     }
   }
@@ -38,6 +40,9 @@
   .sidenav {
     &.retract {
       width: 7rem !important;
+      .sidenav__header__name {
+        opacity: 0;
+      }
     }
   }
 }
@@ -49,6 +54,9 @@
     }
     .settings__themes {
       display: flex;
+    }
+    &__header__name {
+      opacity: 1 !important;
     }
   }
 }

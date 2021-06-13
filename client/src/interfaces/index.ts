@@ -22,6 +22,7 @@ export interface IProfile {
   userId: string;
   avatar: string;
   cv: string;
+  bio: string;
   description: string;
   firstName: string;
   lastName: string;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { defaultForm } from './inputs';
+import { blankForm } from './inputs';
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { texts, selects, files } from './inputs';
@@ -9,7 +9,8 @@ import { Spinner } from 'components/common/Spinner';
 export const ProfileForm = () => {
   const { createProfile } = useActions();
   const { theme } = useTypedSelector(({ dashboard }) => dashboard);
-  const { loading } = useTypedSelector(({ profiles }) => profiles);
+  const { loading, me } = useTypedSelector(({ profiles }) => profiles);
+  const defaultForm = me ? me : blankForm;
   const [formData, setFormData] = React.useState(defaultForm);
   const [imageData, setImageData] = React.useState<File | null>(null);
 

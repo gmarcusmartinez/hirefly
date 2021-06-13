@@ -13,7 +13,6 @@ export const Settings = () => {
   const { me } = useTypedSelector((state) => state.profiles);
   return (
     <div className='settings'>
-      <Themes />
       <Modes />
       <ChatsBtn />
       <SettingsLink
@@ -26,6 +25,7 @@ export const Settings = () => {
         icon='logout'
         cb={() => redirectToSignout()}
       />
+      <Themes />
     </div>
   );
 };

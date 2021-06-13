@@ -1,8 +1,12 @@
+import { s3Url } from 'api/s3url';
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 
 export const Header = () => {
   const { toggleSidenav, setSidenavComponent } = useActions();
+  const { me } = useTypedSelector(({ profiles }) => profiles);
+  const src = `${s3Url}/${me?.avatar}`;
+
   const { expanded, theme, mode } = useTypedSelector(
     ({ dashboard }) => dashboard
   );
@@ -16,8 +20,8 @@ export const Header = () => {
   };
   return (
     <div className='sidenav__header' onClick={displaySettings}>
-      <div className='sidenav__header__profile-img' />
-      <span className={`sidenav__header__name ${mode}`}>Marcus</span>
+      {me && <img className='sidenav__header__profile-img' src={src} />}
+      <span className={`sidenav__header__name ${mode}`}>{me?.firstName}</span>
       <i className={className} onClick={toggle} style={{ color: theme }}>
         chevron_right
       </i>

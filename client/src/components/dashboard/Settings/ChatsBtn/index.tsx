@@ -13,8 +13,8 @@ export const ChatsBtn = () => {
 
   return (
     <div className={className} onClick={handleClick}>
-      {!expanded && <i className={iclassName}>chat_bubble</i>}
-      <span className={`${displayText} ${mode}`}>Back To Chats</span>
+      {!expanded && <i className={iclassName}>search</i>}
+      <span className={`${displayText} ${mode}`}>Jobs</span>
     </div>
   );
 };

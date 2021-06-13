@@ -23,6 +23,8 @@ Server:
  √ Uploads Router
  √ Upload Image Controller
 
+ √ Create Chat Model
+
 Client:
  √ Component: Dash Input: Text
  √ Component: Dash Input: Select

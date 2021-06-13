@@ -12,6 +12,7 @@ export const getMe = () => async (dispatch: Dispatch) => {
     history.push('/dashboard/jobs');
   } catch (e) {
     history.push('/dashboard/profile-form');
+    dispatch({ type: ProfileActionTypes.GET_ME_FAILURE, payload: null });
     dispatch({ type: DashboardActionTypes.SET_COMPONENT, payload: 'SETTINGS' });
   }
 };

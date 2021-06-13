@@ -35,7 +35,7 @@ export const selects = [
   },
 ];
 
-export const defaultForm = {
+export const blankForm = {
   firstName: '',
   lastName: '',
   location: '',
