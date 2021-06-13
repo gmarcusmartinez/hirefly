@@ -1,12 +1,13 @@
 import mongoose from 'mongoose';
+import { ProfileSubDoc } from './Profile';
 
 interface ChatAttrs {
-  users: any[];
+  users: ProfileSubDoc[];
 }
 
 interface ChatDoc extends mongoose.Document {
   latestMessage: string;
-  users: any[];
+  users: ProfileSubDoc[];
 }
 
 interface ChatModel extends mongoose.Model<ChatDoc> {
@@ -15,8 +16,8 @@ interface ChatModel extends mongoose.Model<ChatDoc> {
 
 const chatSchema = new mongoose.Schema<ChatDoc>(
   {
-    users: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-    latestMessage: { type: String },
+    users: [{ userId: String, firstName: String, avatar: String }],
+    latestMessage: { type: String, default: '' },
   },
   { timestamps: true }
 );

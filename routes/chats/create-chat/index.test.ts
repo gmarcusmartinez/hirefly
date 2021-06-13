@@ -1,7 +1,5 @@
 import request from 'supertest';
 import { app } from '../../../app';
-import mongoose from 'mongoose';
-import { User } from '../../../models/User';
 import { fakeAuthCookie } from '../../../test/auth-helper';
 
 describe('Route Access', () => {
@@ -49,23 +47,41 @@ describe('Successful Chat Creation', () => {
       .expect(201);
 
     // Create Chat Partner
-    const _id = new mongoose.Types.ObjectId().toHexString();
-    const partner = new User({
-      _id,
-      email: 'partner@test.com',
-      password: 'somefakepassword',
-    });
+    const partner = await request(app)
+      .post('/api/auth/signup')
+      .send({ email: 'partner@test.com', password })
+      .expect(201);
+
+    // Create User Profile
+    const avatar = 'fakeimg.com';
+    const firstName = 'Marcus';
+    const lastName = 'Martinez';
+    const period = 'full-time';
+    const position = 'backend';
+
+    await request(app)
+      .post('/api/profiles')
+      .set('Cookie', user.header['set-cookie'][0])
+      .send({ firstName, lastName, avatar, period, position })
+      .expect(201);
+
+    // Create Partner Profile
+    const { body } = await request(app)
+      .post('/api/profiles')
+      .set('Cookie', partner.header['set-cookie'][0])
+      .send({ firstName, lastName, avatar, period, position })
+      .expect(201);
 
     await request(app)
       .post('/api/chats')
       .set('Cookie', user.header['set-cookie'][0])
-      .send({ partnerId: partner._id })
+      .send({ partnerId: body.userId })
       .expect(201);
 
     const res = await request(app)
       .post('/api/chats')
       .set('Cookie', user.header['set-cookie'][0])
-      .send({ partnerId: partner._id })
+      .send({ partnerId: body.userId })
       .expect(400);
 
     const msg = 'You already have a chat with this user';

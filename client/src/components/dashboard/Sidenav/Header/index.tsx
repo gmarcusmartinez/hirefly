@@ -20,7 +20,7 @@ export const Header = () => {
   };
   return (
     <div className='sidenav__header' onClick={displaySettings}>
-      {me && <img className='sidenav__header__profile-img' src={src} />}
+      {me && <img className='sidenav__header__profile-img' src={src} alt='' />}
       <span className={`sidenav__header__name ${mode}`}>{me?.firstName}</span>
       <i className={className} onClick={toggle} style={{ color: theme }}>
         chevron_right

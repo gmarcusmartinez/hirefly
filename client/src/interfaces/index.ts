@@ -3,7 +3,7 @@ export interface IError {
   field?: string;
 }
 export interface IUser {
-  id: string;
+  _id: string;
   accountStatus: string;
 }
 
@@ -30,4 +30,13 @@ export interface IProfile {
   location: string;
   period: PeriodEnum;
   position: PositionEnum;
+}
+
+export interface ProfileSubDoc {
+  _id: string;
+  firstName: string;
+  avatar: string;
+}
+export interface IChatItem {
+  users: ProfileSubDoc[];
 }

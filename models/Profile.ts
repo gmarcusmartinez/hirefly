@@ -11,6 +11,12 @@ enum PeriodEnum {
   parttime = 'part-time',
 }
 
+export interface ProfileSubDoc {
+  userId: string;
+  firstName: string;
+  avatar: string;
+}
+
 interface ProfileAttrs {
   avatar: string;
   cv: string;
@@ -34,6 +40,7 @@ interface ProfileDoc extends mongoose.Document {
   location: string;
   period: PeriodEnum;
   position: PositionEnum;
+  createSubDoc(): ProfileSubDoc;
 }
 
 interface ProfileModel extends mongoose.Model<ProfileDoc> {
@@ -58,6 +65,11 @@ const profileSchema = new mongoose.Schema<ProfileDoc>({
 });
 
 profileSchema.statics.build = (attrs: ProfileAttrs) => new Profile(attrs);
+
+profileSchema.methods.createSubDoc = function () {
+  const { userId, firstName, avatar } = this;
+  return { _id: userId, firstName, avatar };
+};
 
 const Profile = mongoose.model<ProfileDoc, ProfileModel>(
   'Profile',

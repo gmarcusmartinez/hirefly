@@ -1,8 +1,16 @@
+import { useActions } from 'hooks/use-actions';
+import { useTypedSelector } from 'hooks/use-typed-selector';
 import React from 'react';
 import { ChatItem } from '../Item';
-import { chats } from './data';
 
 export const ChatList = () => {
-  const list = chats.map((c, i) => <ChatItem chat={c} key={i} />);
+  const { fetchChats } = useActions();
+  const { items } = useTypedSelector((state) => state.chats);
+
+  React.useEffect(() => {
+    fetchChats();
+  }, [fetchChats]);
+
+  const list = items?.map((c) => <ChatItem chat={c} />);
   return <div className='chat-list'>{list}</div>;
 };
