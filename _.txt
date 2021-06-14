@@ -23,7 +23,11 @@ Server:
  √ Uploads Router
  √ Upload Image Controller
 
- √ Create Chat Model
+ √ Chat Model
+ √ Scaffold Chat Router
+ √ Create Chat Controller 
+ √ Create Chat Validation 
+ √ Create Chat Test Suite
 
 Client:
  √ Component: Dash Input: Text

@@ -38,5 +38,6 @@ export interface ProfileSubDoc {
   avatar: string;
 }
 export interface IChatItem {
+  _id: string;
   users: ProfileSubDoc[];
 }

@@ -5,6 +5,7 @@ import { CreateProfile } from 'screens/Profile';
 import { Sidenav } from 'components/dashboard/Sidenav';
 import { Signout } from 'screens/Signout';
 import { useActions } from 'hooks/use-actions';
+import { Chat } from 'screens/Chat';
 
 export const Dashboard = () => {
   const { theme, mode } = useTypedSelector(({ dashboard }) => dashboard);
@@ -19,6 +20,7 @@ export const Dashboard = () => {
         <Sidenav />
         <div className='dashboard__main'>
           <Switch>
+            <Route path='/dashboard/connections' component={Chat} />
             <Route path='/dashboard/profile-form' component={CreateProfile} />
             <Route path='/dashboard/signout' component={Signout} />
           </Switch>

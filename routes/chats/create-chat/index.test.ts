@@ -23,7 +23,56 @@ describe('Route Access', () => {
   });
 });
 
-describe('Unsuccessful Chat Creation', () => {
+describe('Succesfull Chat Creation', () => {
+  let user: { header: any };
+  let partner: { header: any };
+  let partnerId: string;
+  beforeEach(async () => {
+    // Create User
+    user = await request(app)
+      .post('/api/auth/signup')
+      .send({ email: 'user@test.com', password: 'password' })
+      .expect(201);
+
+    // Create Chat Partner
+    partner = await request(app)
+      .post('/api/auth/signup')
+      .send({ email: 'partner@test.com', password: 'password' })
+      .expect(201);
+
+    // Create User Profile
+    const avatar = 'fakeimg.com';
+    const firstName = 'Marcus';
+    const lastName = 'Martinez';
+    const period = 'full-time';
+    const position = 'backend';
+
+    await request(app)
+      .post('/api/profiles')
+      .set('Cookie', user.header['set-cookie'][0])
+      .send({ firstName, lastName, avatar, period, position })
+      .expect(201);
+
+    // Create Partner Profile
+    const { body } = await request(app)
+      .post('/api/profiles')
+      .set('Cookie', partner.header['set-cookie'][0])
+      .send({ firstName, lastName, avatar, period, position })
+      .expect(201);
+
+    partnerId = body.userId;
+  });
+
+  it('Should Create a chat document', async () => {
+    await request(app)
+      .post('/api/chats')
+      .set('Cookie', user.header['set-cookie'][0])
+      .send({ partnerId })
+      .expect(201);
+  });
+});
+
+describe('Unsuccesfull Chat Creation', () => {
   it('returns a 400 w/ no partner id provided', async () => {
     const response = await request(app)
       .post('/api/chats')
@@ -34,22 +83,18 @@ describe('Unsuccessful Chat Creation', () => {
     const errMsg = 'Partner field can not be empty.';
     expect(response.body.errors[0].message).toBe(errMsg);
   });
-});
 
-describe('Successful Chat Creation', () => {
-  it('Should Create a chat document', async () => {
-    const password = 'password';
-
+  it('should not allow duplicate chats', async () => {
     // Create User
     const user = await request(app)
       .post('/api/auth/signup')
-      .send({ email: 'user@test.com', password })
+      .send({ email: 'user@test.com', password: 'password' })
       .expect(201);
 
     // Create Chat Partner
     const partner = await request(app)
       .post('/api/auth/signup')
-      .send({ email: 'partner@test.com', password })
+      .send({ email: 'partner@test.com', password: 'password' })
       .expect(201);
 
     // Create User Profile
@@ -78,13 +123,10 @@ describe('Successful Chat Creation', () => {
       .send({ partnerId: body.userId })
       .expect(201);
 
-    const res = await request(app)
+    await request(app)
       .post('/api/chats')
       .set('Cookie', user.header['set-cookie'][0])
       .send({ partnerId: body.userId })
       .expect(400);
-
-    const msg = 'You already have a chat with this user';
-    expect(res.body.errors[0].message).toBe(msg);
   });
 });

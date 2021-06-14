@@ -1,0 +1,21 @@
+.chat__header {
+  align-items: center;
+  box-shadow: var(--box-shadow-light);
+  display: flex;
+  height: 7.2rem;
+  position: relative;
+
+  i {
+    color: var(--color-grey-secondary);
+    font-size: 3.2rem;
+    position: absolute;
+    right: 1rem;
+  }
+}
+
+.chat__header.darkmode {
+  box-shadow: 0 0.2rem 0.2rem #000;
+  i {
+    color: #fff;
+  }
+}

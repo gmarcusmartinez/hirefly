@@ -2,6 +2,7 @@ import { useTypedSelector } from 'hooks/use-typed-selector';
 import { FC } from 'react';
 import { ProfileSubDoc } from 'interfaces';
 import { s3Url } from 'api/s3url';
+import { useHistory } from 'react-router-dom';
 
 interface IProps {
   chat: {
@@ -16,8 +17,11 @@ export const ChatItem: FC<IProps> = ({ chat }) => {
   const partner = chat.users.find((user) => user._id !== currentUser?._id);
   const src = partner ? `${s3Url}/${partner.avatar}` : '';
 
+  const history = useHistory();
+  const handleClick = () => history.push('/dashboard/connections');
+
   return (
-    <div className={`chat-item ${mode}`}>
+    <div className={`chat-item ${mode}`} onClick={handleClick}>
       <div className='chat-item__img'>
         <img src={src} alt='chat-item' />
       </div>
