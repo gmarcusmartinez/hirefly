@@ -12,7 +12,7 @@ enum PeriodEnum {
 }
 
 export interface ProfileSubDoc {
-  userId: string;
+  _id: string;
   firstName: string;
   avatar: string;
 }

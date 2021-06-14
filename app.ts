@@ -7,6 +7,7 @@ import cors from 'cors';
 
 import { authRouter } from './routes/auth';
 import { chatsRouter } from './routes/chats';
+import { messagesRouter } from './routes/messages';
 import { profileRouter } from './routes/profiles';
 import { uploadRouter } from './routes/uploads';
 
@@ -18,6 +19,7 @@ app.use(cookieSession({ signed: false, secure: false }));
 
 app.use('/api/auth', authRouter);
 app.use('/api/chats', chatsRouter);
+app.use('/api/messages', messagesRouter);
 app.use('/api/profiles', profileRouter);
 app.use('/api/uploads', uploadRouter);
 

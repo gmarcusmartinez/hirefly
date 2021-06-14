@@ -20,5 +20,5 @@ export const createChat = async (req: Request, res: Response) => {
   const chat = Chat.build({ users: [userOne, userTwo] });
 
   await chat.save();
-  res.status(201).send({ chat });
+  res.status(201).send(chat);
 };
