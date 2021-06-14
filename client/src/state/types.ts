@@ -12,7 +12,7 @@ export enum AuthActionTypes {
 export enum ChatActionTypes {
   FETCH_CHATS_REQUEST = 'FETCH_CHATS_REQUEST',
   FETCH_CHATS_SUCCESS = 'FETCH_CHATS_SUCCESS',
-  FETCH_CHATS_FAILURE = 'FETCH_CHAT_FAILURE',
+  FETCH_CHATS_FAILURE = 'FETCH_CHATS_FAILURE',
 }
 
 export enum ProfileActionTypes {
@@ -34,6 +34,12 @@ export enum DashboardActionTypes {
 
 export enum ModalActionTypes {
   TOGGLE_MODAL = 'TOGGLE_MODAL',
+}
+
+export enum MessageActionTypes {
+  FETCH_MESSAGES_REQUEST = 'FETCH_MESSAGES_REQUEST',
+  FETCH_MESSAGES_SUCCESS = 'FETCH_MESSAGES_SUCCESS',
+  FETCH_MESSAGES_FAILURE = 'FETCH_MESSAGES_FAILURE',
 }
 
 export enum NavActionTypes {

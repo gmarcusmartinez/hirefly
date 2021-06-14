@@ -37,7 +37,16 @@ export interface ProfileSubDoc {
   firstName: string;
   avatar: string;
 }
+
 export interface IChatItem {
   _id: string;
   users: ProfileSubDoc[];
+  latestMessage: string;
+}
+
+export interface IMessage {
+  _id: string;
+  chat: string;
+  sender: string;
+  content: string;
 }

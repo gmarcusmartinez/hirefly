@@ -1,16 +1,16 @@
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { FC } from 'react';
-import { ProfileSubDoc } from 'interfaces';
+import { IChatItem } from 'interfaces';
 import { s3Url } from 'api/s3url';
 import { useHistory } from 'react-router-dom';
+import { useActions } from 'hooks/use-actions';
 
 interface IProps {
-  chat: {
-    users: ProfileSubDoc[];
-  };
+  chat: IChatItem;
 }
 
 export const ChatItem: FC<IProps> = ({ chat }) => {
+  const { fetchMessages } = useActions();
   const { currentUser } = useTypedSelector((state) => state.auth);
   const { mode } = useTypedSelector((state) => state.dashboard);
 
@@ -18,7 +18,10 @@ export const ChatItem: FC<IProps> = ({ chat }) => {
   const src = partner ? `${s3Url}/${partner.avatar}` : '';
 
   const history = useHistory();
-  const handleClick = () => history.push('/dashboard/connections');
+  const handleClick = () => {
+    history.push('/dashboard/connections');
+    fetchMessages(chat._id);
+  };
 
   return (
     <div className={`chat-item ${mode}`} onClick={handleClick}>
@@ -27,7 +30,7 @@ export const ChatItem: FC<IProps> = ({ chat }) => {
       </div>
       <div className='chat-item__info'>
         <h3 className={mode}>{partner?.firstName}</h3>
-        {/* <span>{chat.lastMessage}</span> */}
+        <span>{chat.latestMessage || ''}</span>
       </div>
     </div>
   );
