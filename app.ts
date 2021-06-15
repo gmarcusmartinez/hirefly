@@ -1,9 +1,9 @@
+import cors from 'cors';
 import 'colors';
 import { NotFoundError, errorHandler } from './common';
 import express from 'express';
 import 'express-async-errors';
 import cookieSession from 'cookie-session';
-import cors from 'cors';
 
 import { authRouter } from './routes/auth';
 import { chatsRouter } from './routes/chats';
@@ -13,8 +13,8 @@ import { uploadRouter } from './routes/uploads';
 
 const app = express();
 app.use(express.json());
-
 app.use(cors());
+
 app.use(cookieSession({ signed: false, secure: false }));
 
 app.use('/api/auth', authRouter);

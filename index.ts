@@ -1,6 +1,6 @@
-import { app } from './app';
 import { connectDB } from './config/connectDB';
-
+import { server } from './routes/socket';
 connectDB();
+
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`.yellow));
+server.listen(PORT, () => console.log(`Running on port ${PORT}`.yellow));

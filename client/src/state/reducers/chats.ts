@@ -7,12 +7,16 @@ interface ChatsState {
   items: IChatItem[] | null;
   errors: IError[] | null;
   header: ProfileSubDoc | null;
+  selectedChatId: string;
+  socketConnected: boolean;
 }
 const initialState = {
   loading: false,
   items: [],
   errors: [],
   header: null,
+  selectedChatId: '',
+  socketConnected: false,
 };
 
 export const chats = (
@@ -29,6 +33,10 @@ export const chats = (
       return { ...state, items: [], errors: payload, loading: false };
     case ChatActionTypes.SET_HEADER:
       return { ...state, header: payload };
+    case ChatActionTypes.SET_CHAT_ID:
+      return { ...state, selectedChatId: payload };
+    case ChatActionTypes.CONNECT_TO_SOCKET:
+      return { ...state, socketConnected: true };
     default:
       return state;
   }

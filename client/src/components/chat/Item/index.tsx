@@ -10,7 +10,7 @@ interface IProps {
 }
 
 export const ChatItem: FC<IProps> = ({ chat }) => {
-  const { fetchMessages, setHeader } = useActions();
+  const { fetchMessages, setHeader, setChatId } = useActions();
   const { currentUser } = useTypedSelector((state) => state.auth);
   const { mode } = useTypedSelector((state) => state.dashboard);
 
@@ -24,6 +24,7 @@ export const ChatItem: FC<IProps> = ({ chat }) => {
     fetchMessages(chat._id);
     // @ts-ignore
     setHeader(partner);
+    setChatId(chat._id);
   };
 
   return (
