@@ -7,7 +7,10 @@ import { Socket } from 'socket.io';
 // import { Socket } from 'socket.io';
 
 interface IInitResponse {
-  _id: string;
+  user: { _id: string };
+}
+interface IJoinRoomResponse {
+  chat: string;
 }
 
 // // const sockets: any = {};
@@ -18,8 +21,16 @@ const io = require('socket.io')(server, {
 });
 
 io.on('connection', (socket: Socket) => {
-  socket.on('init', (data: IInitResponse) => {
-    // socket.join(data._id);
+  socket.on('init', ({ user }: IInitResponse) => {
+    socket.join(user._id);
     socket.emit('connected');
+  });
+
+  socket.on('join room', ({ chat }: IJoinRoomResponse) => {
+    socket.join(chat);
+  });
+
+  socket.on('typing', ({ chat }: IJoinRoomResponse) => {
+    socket.in(chat).emit('typing');
   });
 });

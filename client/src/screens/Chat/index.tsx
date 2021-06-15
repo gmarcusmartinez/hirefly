@@ -8,19 +8,25 @@ import { useActions } from 'hooks/use-actions';
 
 export const Chat = () => {
   const socket = socketIOClient('http://localhost:5000/');
+
   const { currentUser } = useTypedSelector(({ auth }) => auth);
+  const { selectedChatId } = useTypedSelector(({ chats }) => chats);
   const { connectSocket } = useActions();
 
   React.useEffect(() => {
-    socket.emit('init', { _id: currentUser!._id });
+    socket.emit('init', { user: currentUser! });
     socket.on('connected', () => connectSocket());
-  }, [connectSocket, currentUser, socket]);
+  }, [connectSocket, currentUser]);
+
+  React.useEffect(() => {
+    socket.emit('join room', { chat: selectedChatId });
+  }, [selectedChatId]);
 
   return (
     <div className='chat'>
       <ChatHeader />
       <ChatMain />
-      <ChatInput />
+      <ChatInput socket={socket} />
     </div>
   );
 };

@@ -1,16 +1,22 @@
-import React from 'react';
+import { FC, useState } from 'react';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { useActions } from 'hooks/use-actions';
 
-export const ChatInput = () => {
+interface IProps {
+  socket: any;
+}
+
+export const ChatInput: FC<IProps> = ({ socket }) => {
   const { createMessage } = useActions();
   const { mode, theme } = useTypedSelector((state) => state.dashboard);
   const { selectedChatId } = useTypedSelector((state) => state.chats);
-  const [content, setContent] = React.useState('');
-  const [borderColor, setBorderColor] = React.useState('');
+  const [content, setContent] = useState('');
+  const [borderColor, setBorderColor] = useState('');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (content.length) socket.emit('typing', { chat: selectedChatId });
     setContent(e.target.value);
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

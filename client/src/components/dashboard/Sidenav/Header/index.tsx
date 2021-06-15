@@ -1,6 +1,7 @@
 import { s3Url } from 'api/s3url';
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
+import { useHistory } from 'react-router-dom';
 
 export const Header = () => {
   const { toggleSidenav, setSidenavComponent } = useActions();
@@ -11,8 +12,13 @@ export const Header = () => {
     ({ dashboard }) => dashboard
   );
 
-  const displaySettings = () => setSidenavComponent('SETTINGS');
   const className = `material-icons ${expanded ? 'rotate' : ''}`;
+
+  const history = useHistory();
+  const displaySettings = () => {
+    setSidenavComponent('SETTINGS');
+    history.push('/dashboard/profile-form');
+  };
 
   const toggle = (e: any) => {
     e.stopPropagation();
