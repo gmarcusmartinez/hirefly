@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const { ObjectId } = mongoose.Schema.Types;
 
-interface MessageAttrs {
+export interface MessageAttrs {
   chat: string;
   sender: string;
   content: string;

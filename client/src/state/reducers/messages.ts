@@ -6,13 +6,11 @@ interface MessagesState {
   loading: boolean;
   items: IMessage[] | [];
   errors: IError[] | null;
-  newMessage: IMessage | null;
 }
 const initialState = {
   loading: false,
   items: [],
   errors: [],
-  newMessage: null,
 };
 
 export const messages = (

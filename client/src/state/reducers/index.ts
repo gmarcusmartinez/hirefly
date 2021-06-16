@@ -6,6 +6,7 @@ import { profiles } from './profiles';
 import { dashboard } from './dashboard';
 import { modal } from './modal';
 import { nav } from './nav';
+import { socket } from './socket';
 
 export const rootReducer = combineReducers({
   auth,
@@ -15,6 +16,7 @@ export const rootReducer = combineReducers({
   modal,
   profiles,
   nav,
+  socket,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

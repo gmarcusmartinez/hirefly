@@ -17,6 +17,7 @@ export enum ChatActionTypes {
 
   SET_HEADER = 'SET_HEADER',
   SET_CHAT_ID = 'SET_CHAT_ID',
+  SCROLL_TO_BOTTOM = 'SCROLL_TO_BOTTOM',
 }
 
 export enum ProfileActionTypes {
@@ -55,4 +56,8 @@ export enum MessageActionTypes {
 
 export enum NavActionTypes {
   TOGGLE_NAV = 'TOGGLE_NAV',
+}
+
+export enum SocketActionTypes {
+  SET_SOCKET = 'SET_SOCKET',
 }

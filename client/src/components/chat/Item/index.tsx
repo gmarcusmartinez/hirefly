@@ -22,8 +22,7 @@ export const ChatItem: FC<IProps> = ({ chat }) => {
   const handleClick = () => {
     history.push('/dashboard/connections');
     fetchMessages(chat._id);
-    // @ts-ignore
-    setHeader(partner);
+    setHeader(partner!);
     setChatId(chat._id);
   };
 
