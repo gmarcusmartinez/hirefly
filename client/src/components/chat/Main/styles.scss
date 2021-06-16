@@ -2,8 +2,10 @@
   display: flex;
   flex-direction: column;
   padding: var(--padding-md);
+  overflow-y: scroll;
   width: 100%;
 }
+
 .typing-indicator {
   align-items: center;
   border-radius: 4rem;

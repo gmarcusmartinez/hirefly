@@ -1,29 +1,34 @@
-import { FC, useState } from 'react';
+import messages from 'api/messages';
+import { useState } from 'react';
+import { useSocket } from 'hooks/use-socket';
+import { useDispatch } from 'react-redux';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { useActions } from 'hooks/use-actions';
 
-interface IProps {
-  socket: any;
-}
-
-export const ChatInput: FC<IProps> = ({ socket }) => {
-  const { createMessage } = useActions();
+export const ChatInput = () => {
+  const dispatch = useDispatch();
+  const { messageSent } = useActions();
+  const { currentUser } = useTypedSelector((state) => state.auth);
   const { mode, theme } = useTypedSelector((state) => state.dashboard);
   const { selectedChatId } = useTypedSelector((state) => state.chats);
+
+  const socket = useSocket(currentUser!, dispatch);
   const [content, setContent] = useState('');
   const [borderColor, setBorderColor] = useState('');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (content.length) socket.emit('typing', { chat: selectedChatId });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setContent(e.target.value);
-  };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleFocus = () => setBorderColor(theme);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    createMessage(selectedChatId, content);
+    const message = { content, chatId: selectedChatId };
+    const { data } = await messages.post('/', message);
+    socket.current.emit('new message', data);
+    messageSent(data);
     setContent('');
   };
-  const handleFocus = () => setBorderColor(theme);
 
   return (
     <form onSubmit={handleSubmit} className={`chat__input ${mode}`}>

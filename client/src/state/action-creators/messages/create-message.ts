@@ -8,11 +8,12 @@ export const createMessage =
     try {
       dispatch({ type: MessageActionTypes.CREATE_MESSAGE_REQUEST });
       const body = { chatId, content };
-      await messages.post(`/`, body, config);
-      // dispatch({
-      //   type: MessageActionTypes.CREATE_MESSAGE_SUCCESS,
-      //   payload: data,
-      // });
+      const { data } = await messages.post(`/`, body, config);
+
+      dispatch({
+        type: MessageActionTypes.CREATE_MESSAGE_SUCCESS,
+        payload: data,
+      });
     } catch (e) {
       dispatch({
         type: MessageActionTypes.CREATE_MESSAGE_FAILURE,
