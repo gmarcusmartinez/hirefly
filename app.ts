@@ -10,6 +10,7 @@ import { chatsRouter } from './routes/chats';
 import { messagesRouter } from './routes/messages';
 import { profileRouter } from './routes/profiles';
 import { uploadRouter } from './routes/uploads';
+import { jobsRouter } from './routes/jobs';
 
 const app = express();
 app.use(express.json());
@@ -19,6 +20,7 @@ app.use(cookieSession({ signed: false, secure: false }));
 
 app.use('/api/auth', authRouter);
 app.use('/api/chats', chatsRouter);
+app.use('/api/jobs', jobsRouter);
 app.use('/api/messages', messagesRouter);
 app.use('/api/profiles', profileRouter);
 app.use('/api/uploads', uploadRouter);
