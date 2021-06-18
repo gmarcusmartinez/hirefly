@@ -22,3 +22,80 @@ describe('Route Access', () => {
     expect(response.status).not.toEqual(401);
   });
 });
+
+describe('Unsuccesfull Job Creation', () => {
+  const title = 'Node Js Backend Developer';
+  const description = 'lorem ipsum';
+  const location = 'Berlin, Germany';
+  const salary = 50000;
+
+  it('returns a 400 w/ no title is provided', async () => {
+    const response = await request(app)
+      .post('/api/jobs')
+      .set('Cookie', fakeAuthCookie())
+      .send({ title: '', description, location, salary })
+      .expect(400);
+
+    const errMsg = 'Title field can not be empty.';
+    expect(response.body.errors[0].message).toBe(errMsg);
+  });
+
+  it('returns a 400 w/ no description is provided', async () => {
+    const response = await request(app)
+      .post('/api/jobs')
+      .set('Cookie', fakeAuthCookie())
+      .send({ title, description: '', location, salary })
+      .expect(400);
+
+    const errMsg = 'Description field can not be empty.';
+    expect(response.body.errors[0].message).toBe(errMsg);
+  });
+
+  it('returns a 400 w/ no location is provided', async () => {
+    const response = await request(app)
+      .post('/api/jobs')
+      .set('Cookie', fakeAuthCookie())
+      .send({ title, description, location: '', salary })
+      .expect(400);
+
+    const errMsg = 'Location field can not be empty.';
+    expect(response.body.errors[0].message).toBe(errMsg);
+  });
+
+  it('returns a 400 w/ no salary is provided', async () => {
+    const response = await request(app)
+      .post('/api/jobs')
+      .set('Cookie', fakeAuthCookie())
+      .send({ title, description, location, salary: '' })
+      .expect(400);
+
+    const errMsg = 'Salary field can not be empty.';
+    expect(response.body.errors[0].message).toBe(errMsg);
+  });
+
+  it('returns a 400 w/ salary is not of type number', async () => {
+    const response = await request(app)
+      .post('/api/jobs')
+      .set('Cookie', fakeAuthCookie())
+      .send({ title, description, location, salary: '50,000' })
+      .expect(400);
+
+    const errMsg = 'Salary must be of type number.';
+    expect(response.body.errors[0].message).toBe(errMsg);
+  });
+});
+
+describe('Succesfull Job Creation', () => {
+  const title = 'Node Js Backend Developer';
+  const description = 'lorem ipsum';
+  const location = 'Berlin, Germany';
+  const salary = 50000;
+
+  it('returns a 200', async () => {
+    await request(app)
+      .post('/api/jobs')
+      .set('Cookie', fakeAuthCookie())
+      .send({ title, description, location, salary })
+      .expect(200);
+  });
+});
