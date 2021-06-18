@@ -13,6 +13,7 @@ export const ChatItem: FC<IProps> = ({ chat }) => {
   const { fetchMessages, setHeader, setChatId } = useActions();
   const { currentUser } = useTypedSelector((state) => state.auth);
   const { mode } = useTypedSelector((state) => state.dashboard);
+  const { selectedChatId } = useTypedSelector((state) => state.chats);
 
   const partner = chat.users.find((user) => user._id !== currentUser?._id);
   const src = partner ? `${s3Url}/${partner.avatar}` : '';
@@ -25,9 +26,9 @@ export const ChatItem: FC<IProps> = ({ chat }) => {
     setHeader(partner!);
     setChatId(chat._id);
   };
-
+  const itemClass = `${selectedChatId === chat._id ? 'selected-chat' : ''}`;
   return (
-    <div className={`chat-item ${mode}`} onClick={handleClick}>
+    <div className={`chat-item ${mode} ${itemClass}`} onClick={handleClick}>
       <div className='chat-item__img'>
         <img src={src} alt='chat-item' />
       </div>

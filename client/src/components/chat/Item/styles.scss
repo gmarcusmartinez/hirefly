@@ -45,7 +45,7 @@
   .chat-item {
     transition: 0.2s ease-in-out;
     &:hover {
-      background-color: #eee;
+      background-color: #efefef;
     }
     &.darkmode {
       &:hover {
@@ -53,4 +53,11 @@
       }
     }
   }
+}
+
+.chat-item.selected-chat {
+  background-color: #efefef;
+}
+.chat-item.darkmode.selected-chat {
+  background-color: #424242;
 }

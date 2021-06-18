@@ -6,7 +6,7 @@ import { ChatItem } from '../Item';
 
 export const ChatList = () => {
   const { fetchChats } = useActions();
-  const { items } = useTypedSelector((state) => state.chats);
+  const { chatItems: items } = useTypedSelector((state) => state.chats);
 
   React.useEffect(() => {
     fetchChats();
