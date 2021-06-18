@@ -1,37 +1,15 @@
 .chat__main {
   display: flex;
   flex-direction: column;
+  margin-left: 7rem;
   padding: var(--padding-md);
   overflow-y: scroll;
-  width: 100%;
+  width: calc(100%-7rem);
 }
 
-.typing-indicator {
-  align-items: center;
-  border-radius: 4rem;
-  display: flex;
-  filter: brightness(120%);
-  height: 4rem;
-  justify-content: space-evenly;
-  margin: 1rem 0;
-  padding: 0.5rem;
-  width: 8rem;
-  span {
-    height: 1.2rem;
-    width: 1.2rem;
-    background-color: #f6f6f6;
-    border-radius: 50%;
-    opacity: 0.4;
-    @for $i from 1 through 3 {
-      &:nth-of-type(#{$i}) {
-        animation: 1s blink infinite ($i * 0.3333s);
-      }
-    }
-  }
-}
-
-@keyframes blink {
-  50% {
-    opacity: 1;
+@include respond(desktop) {
+  .chat__main {
+    margin-left: unset;
+    width: 100%;
   }
 }

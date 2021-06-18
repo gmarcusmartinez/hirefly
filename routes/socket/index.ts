@@ -17,12 +17,15 @@ io.on('connection', (socket: Socket) => {
     socket.emit('connected');
   });
 
+  // Join a room specific to the chat id
   socket.on('join room', async (chat_id: string) => {
-    // Join a room specific to the chat id
     socket.join(chat_id);
+    console.log(socket.rooms);
+  });
 
-    // Emit typing event to chat partner
-    socket.on('typing', (chat_id) => socket.in(chat_id).emit('typing'));
+  // Emit typing event to chat partner
+  socket.on('typing', (chat_id) => {
+    socket.in(chat_id).emit('user typing');
   });
 
   // Send message back to Receiver
@@ -31,12 +34,14 @@ io.on('connection', (socket: Socket) => {
     if (!chat) return;
 
     const chatUsers = chat.users.map((user) => user._id.toString());
+    socket.broadcast.emit('message received', message);
     const partner = chatUsers.filter((id) => id !== message.sender);
     io.in(partner[0]).emit('message received', message);
   });
 
   // Disconnect Socket
   socket.on('disconnect', (user_id) => {
+    console.log('socket disconnected');
     socket.leave(user_id);
   });
 });

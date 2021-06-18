@@ -7,19 +7,30 @@ import { Signout } from 'screens/Signout';
 import { useActions } from 'hooks/use-actions';
 import { Chat } from 'screens/Chat';
 import { useDispatch } from 'react-redux';
-import { useSocket } from 'hooks/use-socket';
+import { SocketActionTypes } from 'state';
+import { SocketContext } from 'context/socket';
 
 export const Dashboard = () => {
+  const socket = React.useContext(SocketContext);
+
   const { getMe } = useActions();
   const { theme, mode } = useTypedSelector(({ dashboard }) => dashboard);
   const { currentUser } = useTypedSelector(({ auth }) => auth);
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
     getMe();
   }, [getMe]);
 
-  const dispatch = useDispatch();
-  useSocket(currentUser!, dispatch);
+  React.useEffect(() => {
+    socket.emit('init', currentUser!._id);
+  }, [socket, currentUser]);
+
+  React.useEffect(() => {
+    socket.on('connected', () => {
+      dispatch({ type: SocketActionTypes.SET_SOCKET, payload: true });
+    });
+  }, [dispatch, socket]);
 
   return (
     <div className='dashboard' style={{ backgroundColor: theme }}>
@@ -27,7 +38,7 @@ export const Dashboard = () => {
         <Sidenav />
         <div className='dashboard__main'>
           <Switch>
-            <Route path='/dashboard/connections' component={Chat} />
+            <Route path='/dashboard/connections' component={() => <Chat />} />
             <Route path='/dashboard/profile-form' component={CreateProfile} />
             <Route path='/dashboard/signout' component={Signout} />
           </Switch>

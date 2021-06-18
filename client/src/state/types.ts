@@ -52,6 +52,8 @@ export enum MessageActionTypes {
 
   MESSAGE_RECIEVED = 'MESSAGE_RECIEVED',
   MESSAGE_SENT = 'MESSAGE_SENT',
+
+  USER_TYPING = 'USER_TYPING',
 }
 
 export enum NavActionTypes {

@@ -2,8 +2,10 @@
   align-items: center;
   display: flex;
   height: 6.4rem;
+  margin-left: 7rem;
   padding: 0 2rem;
   position: relative;
+  width: calc(100% - 7rem);
   form {
     width: 100%;
   }
@@ -44,5 +46,12 @@
     border: 2px solid var(--color-grey-tertiary);
     background-color: #242424;
     color: #fff;
+  }
+}
+
+@include respond(desktop) {
+  .chat__input {
+    margin-left: unset;
+    width: 100%;
   }
 }

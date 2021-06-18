@@ -3,12 +3,14 @@
   box-shadow: var(--box-shadow-light);
   display: flex;
   height: 7.2rem;
+  margin-left: 7rem;
   position: relative;
+
   &__avatar {
     align-items: center;
     display: flex;
     justify-content: center;
-    margin-left: var(--margin-md);
+    margin-left: 4rem;
     img {
       border-radius: 50%;
       height: 5rem;
@@ -36,5 +38,12 @@
   }
   span {
     color: #fff;
+  }
+}
+
+@include respond(desktop) {
+  .chat__header {
+    margin-left: unset;
+    width: 100%;
   }
 }

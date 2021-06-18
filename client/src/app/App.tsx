@@ -5,6 +5,7 @@ import Modal from 'components/modal';
 import { Protected } from 'components/common/ProtectedRoute';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { useActions } from 'hooks/use-actions';
+import { SocketContext, socket } from 'context/socket';
 
 function App() {
   const { getCurrentUser } = useActions();
@@ -17,13 +18,15 @@ function App() {
   return (
     <>
       <Switch>
-        <Route exact path='/' component={screens.Auth} />
-        <Route path='/about' component={screens.AboutUs} />
-        <Protected
-          path='/dashboard'
-          component={screens.Dashboard}
-          currentUser={currentUser}
-        />
+        <SocketContext.Provider value={socket}>
+          <Route exact path='/' component={screens.Auth} />
+          <Route path='/about' component={screens.AboutUs} />
+          <Protected
+            path='/dashboard'
+            component={screens.Dashboard}
+            currentUser={currentUser}
+          />
+        </SocketContext.Provider>
       </Switch>
       {displayModal && <Modal />}
     </>

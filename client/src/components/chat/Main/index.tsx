@@ -1,11 +1,12 @@
-import React from 'react';
+import { useRef, useEffect } from 'react';
 import { MessageBubble } from 'components/chat/MessageBubble';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { Spinner } from 'components/common/Spinner';
 import { IMessage } from 'interfaces';
+import { TypingIndicator } from '../TypingIndicator';
 
 export const ChatMain = () => {
-  const chatRef = React.useRef<any>(null);
+  const chatRef = useRef<any>(null);
   const { items, loading } = useTypedSelector((state) => state.messages);
 
   const list = items.map((msg: IMessage) => (
@@ -13,7 +14,7 @@ export const ChatMain = () => {
   ));
   const renderList = () => (loading ? <Spinner /> : <>{list}</>);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (chatRef.current) {
       chatRef.current.scrollTo({ top: chatRef.current.scrollHeight });
     }
@@ -22,6 +23,7 @@ export const ChatMain = () => {
   return (
     <div className='chat__main' ref={chatRef}>
       {renderList()}
+      {false && <TypingIndicator />}
     </div>
   );
 };
