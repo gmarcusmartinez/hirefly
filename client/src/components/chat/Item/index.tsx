@@ -26,6 +26,7 @@ export const ChatItem: FC<IProps> = ({ chat }) => {
     setHeader(partner!);
     setChatId(chat._id);
   };
+
   const itemClass = `${selectedChatId === chat._id ? 'selected-chat' : ''}`;
   return (
     <div className={`chat-item ${mode} ${itemClass}`} onClick={handleClick}>

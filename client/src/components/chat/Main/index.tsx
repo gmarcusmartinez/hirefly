@@ -7,9 +7,9 @@ import { TypingIndicator } from '../TypingIndicator';
 
 export const ChatMain = () => {
   const chatRef = useRef<any>(null);
-  const { items, loading } = useTypedSelector((state) => state.messages);
+  const { messageItems, loading } = useTypedSelector((state) => state.chats);
 
-  const list = items.map((msg: IMessage) => (
+  const list = messageItems.map((msg: IMessage) => (
     <MessageBubble msg={msg} key={msg._id} />
   ));
   const renderList = () => (loading ? <Spinner /> : <>{list}</>);

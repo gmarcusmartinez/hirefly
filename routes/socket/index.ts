@@ -20,7 +20,11 @@ io.on('connection', (socket: Socket) => {
   // Join a room specific to the chat id
   socket.on('join room', async (chat_id: string) => {
     socket.join(chat_id);
-    console.log(socket.rooms);
+  });
+
+  // Leave a room specific to the chat id
+  socket.on('leave room', async (chat_id: string) => {
+    socket.leave(chat_id);
   });
 
   // Emit typing event to chat partner
@@ -31,17 +35,14 @@ io.on('connection', (socket: Socket) => {
   // Send message back to Receiver
   socket.on('new message', async (message: MessageAttrs) => {
     const chat = await Chat.findById(message.chat);
-    if (!chat) return;
 
-    const chatUsers = chat.users.map((user) => user._id.toString());
-    socket.broadcast.emit('message received', message);
-    const partner = chatUsers.filter((id) => id !== message.sender);
-    io.in(partner[0]).emit('message received', message);
+    const chatUsers = chat!.users.map((user) => user._id.toString());
+    const partner = chatUsers.filter((id) => id !== message.sender)[0];
+    io.to(partner).emit('message received', message);
   });
 
   // Disconnect Socket
   socket.on('disconnect', (user_id) => {
-    console.log('socket disconnected');
     socket.leave(user_id);
   });
 });

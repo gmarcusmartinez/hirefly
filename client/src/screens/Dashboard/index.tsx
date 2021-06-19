@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { IMessage } from 'interfaces';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { CreateProfile } from 'screens/Profile';
 import { Sidenav } from 'components/dashboard/Sidenav';
@@ -12,8 +13,8 @@ import { SocketContext } from 'context/socket';
 
 export const Dashboard = () => {
   const socket = React.useContext(SocketContext);
-
-  const { getMe } = useActions();
+  const { messageReceived, messageSent, getMe } = useActions();
+  const { selectedChatId } = useTypedSelector((state) => state.chats);
   const { theme, mode } = useTypedSelector(({ dashboard }) => dashboard);
   const { currentUser } = useTypedSelector(({ auth }) => auth);
   const dispatch = useDispatch();
@@ -24,13 +25,36 @@ export const Dashboard = () => {
 
   React.useEffect(() => {
     socket.emit('init', currentUser!._id);
-  }, [socket, currentUser]);
+  }, [currentUser]);
 
   React.useEffect(() => {
     socket.on('connected', () => {
       dispatch({ type: SocketActionTypes.SET_SOCKET, payload: true });
     });
-  }, [dispatch, socket]);
+  }, [dispatch]);
+
+  React.useEffect(() => {
+    socket.on('message received', (msg: IMessage) => messageReceived(msg));
+    return () => {
+      socket.off('message received', (msg: IMessage) => messageReceived(msg));
+    };
+    // eslint-disable-next-line
+  }, [messageReceived]);
+
+  React.useEffect(() => {
+    socket.on('message sent', (msg: IMessage) => messageSent(msg));
+    return () => {
+      socket.off('message sent', (msg: IMessage) => messageSent(msg));
+    };
+    // eslint-disable-next-line
+  }, [messageSent]);
+
+  React.useEffect(() => {
+    socket.emit('join room', selectedChatId);
+    return () => {
+      socket.emit('leave room', selectedChatId);
+    };
+  }, [selectedChatId]);
 
   return (
     <div className='dashboard' style={{ backgroundColor: theme }}>
