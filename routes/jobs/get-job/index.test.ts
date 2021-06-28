@@ -39,12 +39,13 @@ describe('Successful Job Fetch', () => {
   const description = 'lorem ipsum';
   const location = 'Berlin, Germany';
   const salary = 50000;
+  const imgUrl = 'fakeimage.com';
 
   it('returns a 200', async () => {
     const { body } = await request(app)
       .post('/api/jobs')
       .set('Cookie', fakeAuthCookie())
-      .send({ title, description, location, salary })
+      .send({ title, description, location, salary, imgUrl })
       .expect(201);
 
     const res = await request(app)

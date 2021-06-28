@@ -1,9 +1,23 @@
 import mongoose from 'mongoose';
+import { PositionEnum } from './Profile';
 
 const { ObjectId } = mongoose.Schema.Types;
 
+enum JobCategory {
+  webdev = 'web development',
+  design = 'design',
+  data = 'data analysis',
+  ai = 'AI',
+}
+
+enum PeriodEnum {
+  fulltime = 'full-time',
+  parttime = 'part-time',
+}
+
 export interface JobAttrs {
   creator: string;
+  imgUrl: string;
   title: string;
   description: string;
   location: string;
@@ -13,11 +27,15 @@ export interface JobAttrs {
 
 interface JobDoc extends mongoose.Document {
   creator: string;
+  imgUrl: string;
   title: string;
   description: string;
   location: string;
   salary: number;
-  skils: string[];
+  skills: string[];
+  category: JobCategory;
+  period: PeriodEnum;
+  position: PositionEnum;
 }
 
 interface JobModel extends mongoose.Model<JobDoc> {
@@ -26,11 +44,27 @@ interface JobModel extends mongoose.Model<JobDoc> {
 
 const jobSchema = new mongoose.Schema<JobDoc>({
   creator: { type: ObjectId, ref: 'User', required: true },
+  imgUrl: { type: String, required: true, trim: true },
   title: { type: String, required: true, trim: true },
   description: { type: String, trim: true },
   location: { type: String, required: true, trim: true },
   salary: { type: Number, required: true },
   skills: { type: [String], default: [] },
+  category: {
+    type: String,
+    enum: Object.values(JobCategory),
+    default: JobCategory.webdev,
+  },
+  period: {
+    type: String,
+    enum: Object.values(PeriodEnum),
+    default: PeriodEnum.fulltime,
+  },
+  position: {
+    type: String,
+    enum: Object.values(PositionEnum),
+    default: PositionEnum.backend,
+  },
 });
 
 jobSchema.statics.build = (attrs: JobAttrs) => new Job(attrs);

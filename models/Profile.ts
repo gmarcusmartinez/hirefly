@@ -1,14 +1,9 @@
 import mongoose from 'mongoose';
 
-enum PositionEnum {
+export enum PositionEnum {
   backend = 'backend',
   frontend = 'frontend',
   fullstack = 'fullstack',
-}
-
-enum PeriodEnum {
-  fulltime = 'full-time',
-  parttime = 'part-time',
 }
 
 export interface ProfileSubDoc {
@@ -25,7 +20,6 @@ interface ProfileAttrs {
   lastName: string;
   link: string;
   location: string;
-  period: PeriodEnum;
   position: PositionEnum;
 }
 
@@ -38,7 +32,6 @@ interface ProfileDoc extends mongoose.Document {
   lastName: string;
   link: string;
   location: string;
-  period: PeriodEnum;
   position: PositionEnum;
   createSubDoc(): ProfileSubDoc;
 }
@@ -60,7 +53,6 @@ const profileSchema = new mongoose.Schema<ProfileDoc>({
   lastName: { type: String, required: true },
   link: { type: String, default: '' },
   location: { type: String, default: '' },
-  period: { type: String, required: true, enum: Object.values(PeriodEnum) },
   position: { type: String, required: true, enum: Object.values(PositionEnum) },
 });
 

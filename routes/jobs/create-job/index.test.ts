@@ -28,12 +28,13 @@ describe('Unsuccesfull Job Creation', () => {
   const description = 'lorem ipsum';
   const location = 'Berlin, Germany';
   const salary = 50000;
+  const imgUrl = 'fakeimage.com';
 
   it('returns a 400 w/ no title is provided', async () => {
     const response = await request(app)
       .post('/api/jobs')
       .set('Cookie', fakeAuthCookie())
-      .send({ title: '', description, location, salary })
+      .send({ title: '', description, location, salary, imgUrl })
       .expect(400);
 
     const errMsg = 'Title field can not be empty.';
@@ -44,7 +45,7 @@ describe('Unsuccesfull Job Creation', () => {
     const response = await request(app)
       .post('/api/jobs')
       .set('Cookie', fakeAuthCookie())
-      .send({ title, description: '', location, salary })
+      .send({ title, description: '', location, salary, imgUrl })
       .expect(400);
 
     const errMsg = 'Description field can not be empty.';
@@ -55,7 +56,7 @@ describe('Unsuccesfull Job Creation', () => {
     const response = await request(app)
       .post('/api/jobs')
       .set('Cookie', fakeAuthCookie())
-      .send({ title, description, location: '', salary })
+      .send({ title, description, location: '', salary, imgUrl })
       .expect(400);
 
     const errMsg = 'Location field can not be empty.';
@@ -66,7 +67,7 @@ describe('Unsuccesfull Job Creation', () => {
     const response = await request(app)
       .post('/api/jobs')
       .set('Cookie', fakeAuthCookie())
-      .send({ title, description, location, salary: '' })
+      .send({ title, description, location, salary: '', imgUrl })
       .expect(400);
 
     const errMsg = 'Salary field can not be empty.';
@@ -77,7 +78,7 @@ describe('Unsuccesfull Job Creation', () => {
     const response = await request(app)
       .post('/api/jobs')
       .set('Cookie', fakeAuthCookie())
-      .send({ title, description, location, salary: '50,000' })
+      .send({ title, description, location, salary: '50,000', imgUrl })
       .expect(400);
 
     const errMsg = 'Salary must be of type number.';
@@ -90,12 +91,13 @@ describe('Succesfull Job Creation', () => {
   const description = 'lorem ipsum';
   const location = 'Berlin, Germany';
   const salary = 50000;
+  const imgUrl = 'fakeimage.com';
 
   it('returns a 201', async () => {
     await request(app)
       .post('/api/jobs')
       .set('Cookie', fakeAuthCookie())
-      .send({ title, description, location, salary })
+      .send({ title, description, location, salary, imgUrl })
       .expect(201);
   });
 });

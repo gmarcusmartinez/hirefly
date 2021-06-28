@@ -32,16 +32,31 @@ describe('Successfull My Jobs Fetch', () => {
     const location = 'Berlin, Germany';
     const salary = 50000;
     const creator = mongoose.Types.ObjectId().toHexString();
+    const imgUrl = 'fakeimage.com';
 
-    const job1 = new Job({ title, description, location, salary, creator });
-    const job2 = new Job({ title, description, location, salary, creator });
+    const job1 = new Job({
+      title,
+      description,
+      location,
+      salary,
+      creator,
+      imgUrl,
+    });
+    const job2 = new Job({
+      title,
+      description,
+      location,
+      salary,
+      creator,
+      imgUrl,
+    });
     await job1.save();
     await job2.save();
 
     await request(app)
       .post('/api/jobs')
       .set('Cookie', recruiter)
-      .send({ title, description, location, salary })
+      .send({ title, description, location, salary, imgUrl })
       .expect(201);
   });
 
