@@ -42,7 +42,7 @@ describe('Successfull My Jobs Fetch', () => {
       .post('/api/jobs')
       .set('Cookie', recruiter)
       .send({ title, description, location, salary })
-      .expect(200);
+      .expect(201);
   });
 
   it('will return 1 job, which the current user has created', async () => {
@@ -53,11 +53,11 @@ describe('Successfull My Jobs Fetch', () => {
     expect(response.body.length).toEqual(1);
   });
 
-  it('will return 2 jobs, which the current user has not created', async () => {
+  it('will return 3 jobs total, 2 of which the current user has not created', async () => {
     const response = await request(app)
       .get('/api/jobs')
       .set('Cookie', recruiter)
       .expect(200);
-    expect(response.body.length).toEqual(2);
+    expect(response.body.length).toEqual(3);
   });
 });
