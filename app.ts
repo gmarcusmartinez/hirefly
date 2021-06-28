@@ -11,6 +11,7 @@ import { messagesRouter } from './routes/messages';
 import { profileRouter } from './routes/profiles';
 import { uploadRouter } from './routes/uploads';
 import { jobsRouter } from './routes/jobs';
+import { applicationsRouter } from './routes/applications';
 
 const app = express();
 app.use(express.json());
@@ -18,6 +19,7 @@ app.use(cors());
 
 app.use(cookieSession({ signed: false, secure: false }));
 
+app.use('/api/applications', applicationsRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/chats', chatsRouter);
 app.use('/api/jobs', jobsRouter);

@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const { ObjectId } = mongoose.Schema.Types;
 
-enum StatusEnum {
+export enum StatusEnum {
   pending = 'pending',
   declined = 'declined',
   accepted = 'accepted',
@@ -10,13 +10,13 @@ enum StatusEnum {
 
 interface ApplicationAttrs {
   applicant: string;
-  job: string;
+  jobId: string;
 }
 
 interface ApplicationDoc extends mongoose.Document {
   applicant: string;
-  job: string;
-  status: StatusEnum;
+  jobId: string;
+  status: string;
 }
 
 interface ApplicationModel extends mongoose.Model<ApplicationDoc> {
@@ -25,7 +25,7 @@ interface ApplicationModel extends mongoose.Model<ApplicationDoc> {
 
 const applicationSchema = new mongoose.Schema<ApplicationDoc>({
   applicant: { type: ObjectId, ref: 'User', required: true },
-  job: { type: ObjectId, ref: 'Job', required: true },
+  jobId: { type: ObjectId, ref: 'Job', required: true },
   status: {
     type: String,
     defualt: StatusEnum.pending,
