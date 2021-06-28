@@ -9,5 +9,5 @@ export const createJob = async (req: Request, res: Response) => {
 
   const job = Job.build({ ...jobValues, creator });
   await job.save();
-  res.send({ job });
+  res.status(201).send(job);
 };

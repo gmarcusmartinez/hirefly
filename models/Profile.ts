@@ -76,4 +76,3 @@ const Profile = mongoose.model<ProfileDoc, ProfileModel>(
   profileSchema
 );
 export { Profile };
-``;

@@ -91,11 +91,11 @@ describe('Succesfull Job Creation', () => {
   const location = 'Berlin, Germany';
   const salary = 50000;
 
-  it('returns a 200', async () => {
+  it('returns a 201', async () => {
     await request(app)
       .post('/api/jobs')
       .set('Cookie', fakeAuthCookie())
       .send({ title, description, location, salary })
-      .expect(200);
+      .expect(201);
   });
 });
