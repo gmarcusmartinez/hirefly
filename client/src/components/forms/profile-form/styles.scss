@@ -8,8 +8,8 @@
     'location location'
     'link link'
     'bio bio'
+    'bio bio'
     'avatar cv'
-    'period position'
     'btn btn';
   gap: 1.2rem 0.5rem;
   height: min-content;
@@ -31,18 +31,13 @@
     }
     &:nth-of-type(5) {
       grid-area: bio;
+      height: calc(100% - 10px);
     }
     &:nth-of-type(6) {
       grid-area: avatar;
     }
     &:nth-of-type(7) {
       grid-area: cv;
-    }
-    &:nth-of-type(8) {
-      grid-area: period;
-    }
-    &:nth-of-type(9) {
-      grid-area: position;
     }
   }
   button {
@@ -69,8 +64,8 @@
       'location location'
       'link link'
       'bio bio'
+      'bio bio'
       'avatar cv'
-      'period position'
       'btn btn';
     margin: 2rem;
     grid-column: 2;

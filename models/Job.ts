@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import { PositionEnum } from './Profile';
 
 const { ObjectId } = mongoose.Schema.Types;
 
@@ -7,7 +6,13 @@ enum JobCategory {
   webdev = 'web development',
   design = 'design',
   data = 'data analysis',
-  ai = 'AI',
+  ai = 'A.I',
+}
+
+enum PositionEnum {
+  backend = 'backend',
+  frontend = 'frontend',
+  fullstack = 'fullstack',
 }
 
 enum PeriodEnum {

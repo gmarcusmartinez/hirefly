@@ -31,13 +31,12 @@ describe('Unsuccessful Profile Creation', () => {
   const avatar = 'test@test.com';
   const firstName = 'Marcus';
   const lastName = 'Martinez';
-  const position = 'backend';
 
   it('returns a 400 w/ invalid firstName', async () => {
     const response = await request(app)
       .post('/api/profiles')
       .set('Cookie', fakeAuthCookie())
-      .send({ firstName: '', lastName, avatar, position })
+      .send({ firstName: '', lastName, avatar })
       .expect(400);
 
     const errMsg = 'Please provide a first name.';
@@ -48,7 +47,7 @@ describe('Unsuccessful Profile Creation', () => {
     const response = await request(app)
       .post('/api/profiles')
       .set('Cookie', fakeAuthCookie())
-      .send({ firstName, lastName: '', avatar, position })
+      .send({ firstName, lastName: '', avatar })
       .expect(400);
 
     const errMsg = 'Please provide a last name.';
@@ -59,21 +58,10 @@ describe('Unsuccessful Profile Creation', () => {
     const response = await request(app)
       .post('/api/profiles')
       .set('Cookie', fakeAuthCookie())
-      .send({ firstName, lastName, avatar: '', position })
+      .send({ firstName, lastName, avatar: '' })
       .expect(400);
 
     const errMsg = 'Please provide a profile Picture.';
-    expect(response.body.errors[0].message).toBe(errMsg);
-  });
-
-  it('returns a 400 w/ invalid position value', async () => {
-    const response = await request(app)
-      .post('/api/profiles')
-      .set('Cookie', fakeAuthCookie())
-      .send({ firstName, lastName, avatar, position: '' })
-      .expect(400);
-
-    const errMsg = 'Please select a position.';
     expect(response.body.errors[0].message).toBe(errMsg);
   });
 
@@ -83,13 +71,13 @@ describe('Unsuccessful Profile Creation', () => {
     await request(app)
       .post('/api/profiles')
       .set('Cookie', cookie)
-      .send({ firstName, lastName, avatar, position })
+      .send({ firstName, lastName, avatar })
       .expect(201);
 
     const response = await request(app)
       .post('/api/profiles')
       .set('Cookie', cookie)
-      .send({ firstName, lastName, avatar, position })
+      .send({ firstName, lastName, avatar })
       .expect(400);
 
     const errMsg = 'If you would like to modify your profile please update it.';
@@ -110,13 +98,12 @@ describe('Successful Profile Creattion', () => {
     const avatar = 'test@test.com';
     const firstName = 'Marcus';
     const lastName = 'Martinez';
-    const position = 'backend';
     const cookie = res.header['set-cookie'][0];
 
     await request(app)
       .post('/api/profiles')
       .set('Cookie', cookie)
-      .send({ firstName, lastName, avatar, position })
+      .send({ firstName, lastName, avatar })
       .expect(201);
   });
 });

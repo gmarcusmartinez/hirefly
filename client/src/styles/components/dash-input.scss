@@ -17,7 +17,8 @@
   }
 
   input,
-  select {
+  select,
+  textarea {
     background-color: transparent;
     border: 0.1rem solid #424242;
     border-radius: 4rem;
@@ -36,9 +37,18 @@
   select {
     font-size: 1.4rem;
   }
+  textarea {
+    height: 100%;
+    border-radius: 2.4rem;
+    font-family: 'Monserat', sans-serif;
+    margin-top: var(--margin-sm);
+    padding-top: var(--padding-sm);
+    resize: none;
+  }
   &.darkmode {
     input,
-    select {
+    select,
+    textarea {
       background-color: #121212;
       color: var(--color-white);
     }

@@ -1,11 +1,5 @@
 import mongoose from 'mongoose';
 
-export enum PositionEnum {
-  backend = 'backend',
-  frontend = 'frontend',
-  fullstack = 'fullstack',
-}
-
 export interface ProfileSubDoc {
   _id: string;
   firstName: string;
@@ -20,7 +14,7 @@ interface ProfileAttrs {
   lastName: string;
   link: string;
   location: string;
-  position: PositionEnum;
+  skills: string[];
 }
 
 interface ProfileDoc extends mongoose.Document {
@@ -32,7 +26,7 @@ interface ProfileDoc extends mongoose.Document {
   lastName: string;
   link: string;
   location: string;
-  position: PositionEnum;
+  skills: string[];
   createSubDoc(): ProfileSubDoc;
 }
 
@@ -53,7 +47,7 @@ const profileSchema = new mongoose.Schema<ProfileDoc>({
   lastName: { type: String, required: true },
   link: { type: String, default: '' },
   location: { type: String, default: '' },
-  position: { type: String, required: true, enum: Object.values(PositionEnum) },
+  skills: { type: [String], default: [] },
 });
 
 profileSchema.statics.build = (attrs: ProfileAttrs) => new Profile(attrs);

@@ -2,9 +2,10 @@ import React from 'react';
 import { blankForm } from './inputs';
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
-import { texts, selects, files } from './inputs';
-import { Text, Select, FileInput } from 'components/common/DashInputs';
+import { texts, files } from './inputs';
+import { Text, FileInput } from 'components/common/DashInputs';
 import { Spinner } from 'components/common/Spinner';
+import { TextArea } from 'components/common/DashInputs/TextArea';
 
 export const ProfileForm = () => {
   const { createProfile } = useActions();
@@ -15,7 +16,7 @@ export const ProfileForm = () => {
   const [imageData, setImageData] = React.useState<File | null>(null);
 
   const onChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onImgChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,10 +36,9 @@ export const ProfileForm = () => {
       <Text onChange={onChange} item={texts[1]} value={formData.lastName} />
       <Text onChange={onChange} item={texts[2]} value={formData.location} />
       <Text onChange={onChange} item={texts[3]} value={formData.link} />
-      <Text onChange={onChange} item={texts[4]} value={formData.bio} />
+      <TextArea onChange={onChange} item={texts[4]} value={formData.bio} />
       <FileInput item={files[0]} onChange={onImgChange} file={imageData} />
       <FileInput item={files[1]} onChange={() => {}} file={null} />
-      <Select item={selects[1]} onChange={onChange} />
       <button style={{ backgroundColor: theme }}>Submit</button>
     </form>
   );
