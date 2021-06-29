@@ -19,7 +19,8 @@ export const createApplication = async (req: Request, res: Response) => {
 
   const application = Application.build({ applicant, jobId });
   application.status = StatusEnum.pending;
-  await application.save();
+  application.jobCreator = job.creator;
 
+  await application.save();
   res.status(201).send(application);
 };

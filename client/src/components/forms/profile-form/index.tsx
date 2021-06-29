@@ -38,7 +38,6 @@ export const ProfileForm = () => {
       <Text onChange={onChange} item={texts[4]} value={formData.bio} />
       <FileInput item={files[0]} onChange={onImgChange} file={imageData} />
       <FileInput item={files[1]} onChange={() => {}} file={null} />
-      <Select item={selects[0]} onChange={onChange} />
       <Select item={selects[1]} onChange={onChange} />
       <button style={{ backgroundColor: theme }}>Submit</button>
     </form>

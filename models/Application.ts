@@ -15,6 +15,7 @@ interface ApplicationAttrs {
 
 interface ApplicationDoc extends mongoose.Document {
   applicant: string;
+  jobCreator: string;
   jobId: string;
   status: string;
 }
@@ -25,6 +26,7 @@ interface ApplicationModel extends mongoose.Model<ApplicationDoc> {
 
 const applicationSchema = new mongoose.Schema<ApplicationDoc>({
   applicant: { type: ObjectId, ref: 'User', required: true },
+  jobCreator: { type: ObjectId, ref: 'User', required: true },
   jobId: { type: ObjectId, ref: 'Job', required: true },
   status: {
     type: String,
