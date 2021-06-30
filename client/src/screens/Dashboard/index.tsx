@@ -1,13 +1,14 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import { IMessage } from 'interfaces';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { CreateProfile } from 'screens/Profile';
 import { Sidenav } from 'components/dashboard/Sidenav';
-import { Signout } from 'screens/Signout';
 import { useActions } from 'hooks/use-actions';
+import { Signout } from 'screens/Signout';
 import { Chat } from 'screens/Chat';
-import { useDispatch } from 'react-redux';
+import { PostJob } from 'screens/PostJob';
 import { SocketActionTypes } from 'state';
 import { SocketContext } from 'context/socket';
 
@@ -62,9 +63,10 @@ export const Dashboard = () => {
         <Sidenav />
         <div className='dashboard__main'>
           <Switch>
-            <Route path='/dashboard/connections' component={() => <Chat />} />
+            <Route path='/dashboard/connections' component={Chat} />
             <Route path='/dashboard/profile-form' component={CreateProfile} />
             <Route path='/dashboard/signout' component={Signout} />
+            <Route path='/dashboard/job-form' component={PostJob} />
           </Switch>
         </div>
       </div>

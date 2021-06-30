@@ -20,21 +20,6 @@ export const files = [
   },
 ];
 
-export const selects = [
-  {
-    label: 'Period',
-    required: true,
-    options: ['full-time', 'part-time'],
-    name: 'period',
-  },
-  {
-    label: 'Position',
-    required: true,
-    options: ['backend', 'frontend', 'fullstack'],
-    name: 'position',
-  },
-];
-
 export const blankForm = {
   firstName: '',
   lastName: '',

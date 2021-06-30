@@ -1,21 +1,23 @@
 import React from 'react';
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
-import { texts, files, blankForm } from './inputs';
+import { texts, files, blankForm, selects } from './inputs';
 import { Text, FileInput } from 'components/common/DashInputs';
 import { Spinner } from 'components/common/Spinner';
 import { TextArea } from 'components/common/DashInputs/TextArea';
+import { Select } from 'components/common/DashInputs';
 
-export const ProfileForm = () => {
+export const JobForm = () => {
   const { createProfile } = useActions();
   const { theme } = useTypedSelector(({ dashboard }) => dashboard);
-  const { loading, me } = useTypedSelector(({ profiles }) => profiles);
-  const defaultForm = me ? me : blankForm;
-  const [formData, setFormData] = React.useState(defaultForm);
+  const { loading } = useTypedSelector(({ profiles }) => profiles);
+  const [formData, setFormData] = React.useState(blankForm);
   const [imageData, setImageData] = React.useState<File | null>(null);
 
   const onChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onImgChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,19 +27,25 @@ export const ProfileForm = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    createProfile(formData, imageData);
+    console.log(formData);
   };
 
   if (loading) return <Spinner />;
   return (
-    <form className='profile-form' onSubmit={handleSubmit}>
-      <Text onChange={onChange} item={texts[0]} value={formData.firstName} />
-      <Text onChange={onChange} item={texts[1]} value={formData.lastName} />
+    <form className='job-form' onSubmit={handleSubmit}>
+      <Text onChange={onChange} item={texts[0]} value={formData.title} />
+      <Text onChange={onChange} item={texts[1]} value={formData.company} />
       <Text onChange={onChange} item={texts[2]} value={formData.location} />
       <Text onChange={onChange} item={texts[3]} value={formData.link} />
-      <TextArea onChange={onChange} item={texts[4]} value={formData.bio} />
+      <TextArea
+        onChange={onChange}
+        item={texts[4]}
+        value={formData.description}
+      />
       <FileInput item={files[0]} onChange={onImgChange} file={imageData} />
-      <FileInput item={files[1]} onChange={() => {}} file={null} />
+      <Select item={selects[0]} onChange={onChange} />
+      <Select item={selects[1]} onChange={onChange} />
+      <Select item={selects[2]} onChange={onChange} />
       <button style={{ backgroundColor: theme }}>Submit</button>
     </form>
   );

@@ -31,12 +31,12 @@
 @import '../components/dashboard/Sidenav/Main/styles.scss';
 
 @import '../components/dashboard/Settings/styles.scss';
-@import '../components/dashboard/Settings/ChatsBtn/styles.scss';
 @import '../components/dashboard/Settings/Link/styles.scss';
 @import '../components/dashboard/Settings/Modes/styles.scss';
 @import '../components/dashboard/Settings/Themes/styles.scss';
 
 @import '../components/forms/profile-form/styles.scss';
+@import '../components/forms/job-form/styles.scss';
 @import '../components/modal/styles.scss';
 
 @import '../components/navigation/styles.scss';
@@ -50,4 +50,5 @@
 @import '../screens/Dashboard/styles.scss';
 @import '../screens/Dashboard/sidenav.scss';
 @import '../screens/Profile/styles.scss';
+@import '../screens/PostJob/styles.scss';
 @import '../screens/Signout/styles.scss';
