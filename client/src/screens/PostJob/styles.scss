@@ -3,6 +3,8 @@ $retracted-sidenav-width: 7rem;
 .post-job {
   font-family: 'Montserrat', sans-serif;
   height: 100%;
+  margin-left: $retracted-sidenav-width;
+
   &__header {
     box-shadow: var(--box-shadow-light);
     display: flex;
@@ -28,7 +30,6 @@ $retracted-sidenav-width: 7rem;
 
 @include respond(tablet) {
   .post-job {
-    margin-left: $retracted-sidenav-width;
     &__main {
       display: flex;
       justify-content: center;
@@ -38,8 +39,6 @@ $retracted-sidenav-width: 7rem;
 
 @include respond(desktop) {
   .post-job {
-    margin-left: unset;
-
     &__header {
       margin-left: unset;
       h2 {

@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+const { ObjectId } = mongoose.Schema.Types;
 
 export interface ProfileSubDoc {
   _id: string;
@@ -19,11 +20,11 @@ interface ProfileAttrs {
 
 interface ProfileDoc extends mongoose.Document {
   userId: string;
+  firstName: string;
+  lastName: string;
   avatar: string;
   cv: string;
   bio: string;
-  firstName: string;
-  lastName: string;
   link: string;
   location: string;
   skills: string[];
@@ -35,16 +36,12 @@ interface ProfileModel extends mongoose.Model<ProfileDoc> {
 }
 
 const profileSchema = new mongoose.Schema<ProfileDoc>({
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
-  },
+  userId: { type: ObjectId, ref: 'User', required: true },
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true },
   avatar: { type: String, required: true },
   cv: { type: String, default: '' },
   bio: { type: String, default: '' },
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
   link: { type: String, default: '' },
   location: { type: String, default: '' },
   skills: { type: [String], default: [] },

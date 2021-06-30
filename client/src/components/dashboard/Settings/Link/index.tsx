@@ -14,7 +14,7 @@ export const SettingsLink: FC<IProps> = ({ text, icon, cb }) => {
 
   return (
     <div className={`settings__link ${mode}`} onClick={cb}>
-      {!expanded && <span className='material-icons'>{icon}</span>}
+      <span className='material-icons'>{icon}</span>
       <span className={`${displayText}`}>{text}</span>
       <div style={{ backgroundColor: theme }}></div>
     </div>

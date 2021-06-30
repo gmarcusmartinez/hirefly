@@ -89,11 +89,10 @@ describe('Successfull Application Update', () => {
       .expect(201);
 
     // Recruiter updates applcation documnet to accepted
-    const response = await request(app)
+    await request(app)
       .put(`/api/applications/${res.body._id}`)
       .set('Cookie', recruiter)
-      .send({ status: StatusEnum.accepted });
-    console.log(response.body);
-    // .expect(204);
+      .send({ status: StatusEnum.accepted })
+      .expect(204);
   });
 });

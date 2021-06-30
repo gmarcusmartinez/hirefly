@@ -34,6 +34,7 @@ interface JobDoc extends mongoose.Document {
   creator: string;
   imgUrl: string;
   title: string;
+  company: string;
   description: string;
   location: string;
   salary: number;

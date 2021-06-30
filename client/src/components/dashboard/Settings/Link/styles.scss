@@ -1,13 +1,12 @@
 .settings__link {
-  align-items: center;
   color: var(--color-grey-secondary);
   cursor: pointer;
-  font-size: 1.45rem;
+  display: flex;
+  font-size: 1.4rem;
   height: 4rem;
   letter-spacing: var(--letter-spacing-md);
   line-height: 4rem;
-  margin: 1rem auto;
-  text-align: center;
+  margin: 1rem;
   &:hover {
     div {
       opacity: 1;
@@ -25,15 +24,13 @@
   }
   .material-icons {
     margin-left: 0.25rem;
+    margin-right: 1rem;
     font-size: 3.4rem;
   }
 }
 
 @include respond(desktop) {
   .settings__link {
-    .material-icons {
-      display: none;
-    }
     .hide-text {
       display: block;
     }

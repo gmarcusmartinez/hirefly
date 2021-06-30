@@ -1,6 +1,5 @@
 import request from 'supertest';
 import { app } from '../../../app';
-import mongoose from 'mongoose';
 import { fakeAuthCookie } from '../../../test/auth-helper';
 
 describe('Route Access', () => {

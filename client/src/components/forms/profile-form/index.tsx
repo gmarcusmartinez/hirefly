@@ -27,7 +27,6 @@ export const ProfileForm = () => {
     e.preventDefault();
     createProfile(formData, imageData);
   };
-
   if (loading) return <Spinner />;
   return (
     <form className='profile-form' onSubmit={handleSubmit}>

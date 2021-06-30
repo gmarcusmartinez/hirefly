@@ -12,6 +12,7 @@ export const Settings = () => {
   const redirectToEdit = () => history.push('/dashboard/profile-form');
   const redirectToSignout = () => history.push('/dashboard/signout');
   const redirectToJobForm = () => history.push('/dashboard/job-form');
+  const redirectToMyJobs = () => history.push('/dashboard/my-jobs');
 
   const redirectToJobs = () => {
     setSidenavComponent('MESSAGES');
@@ -21,12 +22,20 @@ export const Settings = () => {
   const { me } = useTypedSelector((state) => state.profiles);
   return (
     <div className='settings'>
-      <Modes />
-      <SettingsLink text='Jobs' icon='search' cb={() => redirectToJobs()} />
+      <SettingsLink
+        text='Search Jobs'
+        icon='search'
+        cb={() => redirectToJobs()}
+      />
       <SettingsLink
         text='Post Job'
         icon='post_add'
         cb={() => redirectToJobForm()}
+      />
+      <SettingsLink
+        text='My Jobs'
+        icon='dynamic_feed'
+        cb={() => redirectToMyJobs()}
       />
       <SettingsLink
         text={`${me ? 'Edit' : 'Create'} Profile`}
@@ -38,6 +47,7 @@ export const Settings = () => {
         icon='logout'
         cb={() => redirectToSignout()}
       />
+      <Modes />
       <Themes />
     </div>
   );

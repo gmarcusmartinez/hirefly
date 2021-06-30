@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
 import applicants from 'api/profiles';
-import { ProfileActionTypes } from 'state';
 import { IProfileForm } from 'interfaces/forms';
 import history from 'core/history';
+import { DashboardActionTypes, ProfileActionTypes } from 'state/types';
 
-const { CREATE_PROFILE_FAILURE } = ProfileActionTypes;
+const { CREATE_PROFILE_FAILURE, CREATE_PROFILE_SUCCESS } = ProfileActionTypes;
+const { SET_COMPONENT } = DashboardActionTypes;
 
 export const createProfile =
   (formData: IProfileForm, imageData: { type: string } | null) =>
@@ -25,10 +26,12 @@ export const createProfile =
 
       const config = { headers: { 'Content-Type': 'application/json' } };
       const requestBody = { ...formData, avatar: uploadConfig.data.key };
-      await applicants.post('/', requestBody, config);
+      const { data } = await applicants.post('/', requestBody, config);
 
-      dispatch({ type: ProfileActionTypes.CREATE_PROFILE_SUCCESS });
+      dispatch({ type: CREATE_PROFILE_SUCCESS, payload: data });
       history.push('/dashboard/jobs');
+
+      dispatch({ type: SET_COMPONENT, payload: 'MESSAGES' });
     } catch (e) {
       const payload = e.response.data.errors;
       dispatch({ type: CREATE_PROFILE_FAILURE, payload });

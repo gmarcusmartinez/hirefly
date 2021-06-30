@@ -27,7 +27,7 @@ export const profiles = (
       return { ...state, loading: true };
 
     case ProfileActionTypes.CREATE_PROFILE_SUCCESS:
-      return { ...state, loading: false, selected: payload };
+      return { ...state, loading: false, me: payload };
 
     case ProfileActionTypes.CREATE_PROFILE_FAILURE:
       return { ...state, loading: false, errors: payload };

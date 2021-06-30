@@ -6,12 +6,10 @@ import { signin } from './signin';
 import { signup } from './signup';
 import { getCurrentUser } from './current-user';
 import { signout } from './signout';
-import { activateAccount } from './activate-account';
 
 const router = Router();
 
-router.put('/activate-account', currentUser, requireAuth, activateAccount);
-router.get('/currentuser', currentUser, getCurrentUser);
+router.get('/currentuser', currentUser, requireAuth, getCurrentUser);
 router.post('/signin', signinValidation, validateRequest, signin);
 router.post('/signout', signout);
 router.post('/signup', signupValidation, validateRequest, signup);
