@@ -67,4 +67,19 @@
     right: 1rem;
     font-size: 2.4rem;
   }
+
+  small {
+    margin-left: 0.5rem;
+    font-style: italic;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
 }

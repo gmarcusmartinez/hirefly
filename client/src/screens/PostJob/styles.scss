@@ -39,14 +39,13 @@ $retracted-sidenav-width: 7rem;
 
 @include respond(desktop) {
   .post-job {
+    margin-left: unset;
     &__header {
-      margin-left: unset;
       h2 {
         margin-left: var(--margin-md);
       }
     }
     &__main {
-      margin-left: unset;
     }
   }
 }

@@ -11,6 +11,7 @@ export const JobForm = () => {
   const { createProfile } = useActions();
   const { theme } = useTypedSelector(({ dashboard }) => dashboard);
   const { loading } = useTypedSelector(({ profiles }) => profiles);
+
   const [formData, setFormData] = React.useState(blankForm);
   const [imageData, setImageData] = React.useState<File | null>(null);
 
@@ -43,7 +44,12 @@ export const JobForm = () => {
         value={formData.description}
       />
       <FileInput item={files[0]} onChange={onImgChange} file={imageData} />
-      <Select item={selects[0]} onChange={onChange} />
+      <Text
+        onChange={onChange}
+        item={texts[5]}
+        value={formData.duration}
+        inputType='number'
+      />
       <Select item={selects[1]} onChange={onChange} />
       <Select item={selects[2]} onChange={onChange} />
       <button style={{ backgroundColor: theme }}>Submit</button>

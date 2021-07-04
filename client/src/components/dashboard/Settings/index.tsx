@@ -1,22 +1,25 @@
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { useHistory } from 'react-router';
+import { toggleSidenav } from 'state/action-creators';
 import { SettingsLink } from './Link';
 import { Modes } from './Modes';
 import { Themes } from './Themes';
 
 export const Settings = () => {
-  const { setSidenavComponent } = useActions();
+  const { setSidenavComponent, toggleSidenav } = useActions();
 
   const history = useHistory();
-  const redirectToEdit = () => history.push('/dashboard/profile-form');
-  const redirectToSignout = () => history.push('/dashboard/signout');
-  const redirectToJobForm = () => history.push('/dashboard/job-form');
-  const redirectToMyJobs = () => history.push('/dashboard/my-jobs');
+
+  const redirect = (route: string) => {
+    history.push(route);
+    toggleSidenav(false);
+  };
 
   const redirectToJobs = () => {
-    setSidenavComponent('MESSAGES');
     history.push('/dashboard/jobs');
+    setSidenavComponent('MESSAGES');
+    toggleSidenav(false);
   };
 
   const { me } = useTypedSelector((state) => state.profiles);
@@ -30,22 +33,22 @@ export const Settings = () => {
       <SettingsLink
         text='Post Job'
         icon='post_add'
-        cb={() => redirectToJobForm()}
+        cb={() => redirect('/dashboard/job-form')}
       />
       <SettingsLink
         text='My Jobs'
         icon='dynamic_feed'
-        cb={() => redirectToMyJobs()}
+        cb={() => redirect('/dashboard/my-jobs')}
       />
       <SettingsLink
         text={`${me ? 'Edit' : 'Create'} Profile`}
         icon='edit'
-        cb={() => redirectToEdit()}
+        cb={() => redirect('/dashboard/profile-form')}
       />
       <SettingsLink
         text='Signout'
         icon='logout'
-        cb={() => redirectToSignout()}
+        cb={() => redirect('/dashboard/signout')}
       />
       <Modes />
       <Themes />

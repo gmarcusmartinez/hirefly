@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-
 const { ObjectId } = mongoose.Schema.Types;
 
 enum JobCategory {
@@ -13,11 +12,6 @@ enum PositionEnum {
   backend = 'backend',
   frontend = 'frontend',
   fullstack = 'fullstack',
-}
-
-enum PeriodEnum {
-  fulltime = 'full-time',
-  parttime = 'part-time',
 }
 
 export interface JobAttrs {
@@ -40,7 +34,7 @@ interface JobDoc extends mongoose.Document {
   salary: number;
   skills: string[];
   category: JobCategory;
-  period: PeriodEnum;
+  duration: number;
   position: PositionEnum;
 }
 
@@ -61,11 +55,7 @@ const jobSchema = new mongoose.Schema<JobDoc>({
     enum: Object.values(JobCategory),
     default: JobCategory.webdev,
   },
-  period: {
-    type: String,
-    enum: Object.values(PeriodEnum),
-    default: PeriodEnum.fulltime,
-  },
+  duration: { type: Number, default: 0 },
   position: {
     type: String,
     enum: Object.values(PositionEnum),

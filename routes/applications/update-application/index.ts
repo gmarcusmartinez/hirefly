@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import { BadRequestError, NotAuthorizedError } from '../../../common';
-import { Application, StatusEnum } from '../../../models/Application';
-import { Chat } from '../../../models/Chat';
+import { Application } from '../../../models/Application';
 
 export const upadteApplication = async (req: Request, res: Response) => {
   let doc;

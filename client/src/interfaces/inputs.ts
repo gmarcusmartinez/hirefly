@@ -16,4 +16,5 @@ export interface IDashTextInput {
   label: string;
   required?: boolean;
   name: string;
+  info?: string;
 }

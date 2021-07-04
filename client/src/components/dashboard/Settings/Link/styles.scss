@@ -7,20 +7,9 @@
   letter-spacing: var(--letter-spacing-md);
   line-height: 4rem;
   margin: 1rem;
-  &:hover {
-    div {
-      opacity: 1;
-      transition: opacity 0.2s ease-in;
-    }
-  }
+  position: relative;
   &.darkmode {
     color: #e5e5e5;
-  }
-
-  div {
-    opacity: 0;
-    margin: -0.25rem auto 0 auto;
-    height: 0.4rem;
   }
   .material-icons {
     margin-left: 0.25rem;

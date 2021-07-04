@@ -4,6 +4,7 @@ export const texts = [
   { label: 'Location', name: 'location' },
   { label: 'Link', name: 'link' },
   { label: 'Description', name: 'desc' },
+  { label: 'Job Duration', name: 'duration', info: '# of months' },
 ];
 
 export const files = [
@@ -48,7 +49,7 @@ export const blankForm = {
   link: '',
   description: '',
   img: '',
-  period: 'full-time',
+  duration: 0,
   position: 'backend',
   category: 'web development',
 };
