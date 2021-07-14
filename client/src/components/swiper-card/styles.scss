@@ -1,0 +1,55 @@
+.swiper-card {
+  height: calc(85% - 80px);
+  margin-left: 7rem;
+  margin-top: 8rem;
+  position: relative;
+
+  width: calc(95% - 70px);
+
+  border: 0.1rem solid white;
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    height: 6.5rem;
+    width: 60%;
+
+    position: absolute;
+    bottom: -7.5%;
+    right: 20%;
+    div {
+      align-items: center;
+      border-radius: 6rem;
+      display: flex;
+      justify-content: center;
+      height: 100%;
+      width: 6.5rem;
+      .material-icons {
+        font-size: 7rem;
+      }
+    }
+  }
+  &__deny {
+    color: #ee6969;
+  }
+  &__approve {
+    color: #a0e7a0;
+  }
+}
+
+@include respond(tablet) {
+  .swiper-card {
+    height: 42rem;
+    max-width: 80rem;
+    &__actions {
+      align-self: center;
+      width: 25%;
+      right: 37.5%;
+    }
+  }
+}
+@include respond(desktop) {
+  .swiper-card {
+    margin-left: unset;
+  }
+}

@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { BadRequestError } from '../../../common';
 import { Application, StatusEnum } from '../../../models/Application';
 import { Job } from '../../../models/Job';
+import { Profile } from '../../../models/Profile';
 
 export const createApplication = async (req: Request, res: Response) => {
   const applicant = req.currentUser!._id;
@@ -17,7 +18,16 @@ export const createApplication = async (req: Request, res: Response) => {
   const duplicate = 'You have already sent an application for this job.';
   if (existingApplication) throw new BadRequestError(duplicate);
 
-  const application = Application.build({ applicant, jobId });
+  const profile = await Profile.findOne({ userId: req.currentUser!._id });
+  if (!profile)
+    throw new BadRequestError('You must have a profile to apply for a job.');
+
+  const application = Application.build({
+    applicant,
+    jobId,
+    applicantProfile: profile._id,
+  });
+
   application.status = StatusEnum.pending;
   application.jobCreator = job.creator;
 

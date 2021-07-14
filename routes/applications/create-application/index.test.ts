@@ -84,6 +84,7 @@ describe('Successfull Application Creation', () => {
       .send({ title, description, location, salary, imgUrl })
       .expect(201);
 
+    // Applicant Applies for Job
     await request(app)
       .post('/api/applications')
       .set('Cookie', applicant)

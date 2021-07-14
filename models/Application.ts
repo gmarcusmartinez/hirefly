@@ -10,11 +10,13 @@ export enum StatusEnum {
 
 interface ApplicationAttrs {
   applicant: string;
+  applicantProfile: string;
   jobId: string;
 }
 
 interface ApplicationDoc extends mongoose.Document {
   applicant: string;
+  applicantProfile: string;
   jobCreator: string;
   jobId: string;
   status: string;
@@ -26,6 +28,7 @@ interface ApplicationModel extends mongoose.Model<ApplicationDoc> {
 
 const applicationSchema = new mongoose.Schema<ApplicationDoc>({
   applicant: { type: ObjectId, ref: 'User', required: true },
+  applicantProfile: { type: ObjectId, ref: 'Profile', required: true },
   jobCreator: { type: ObjectId, ref: 'User', required: true },
   jobId: { type: ObjectId, ref: 'Job', required: true },
   status: {

@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { BadRequestError, NotAuthorizedError } from '../../../common';
 import { Application } from '../../../models/Application';
+import { Chat } from '../../../models/Chat';
 
 export const upadteApplication = async (req: Request, res: Response) => {
   let doc;
@@ -15,5 +16,5 @@ export const upadteApplication = async (req: Request, res: Response) => {
   doc = await Application.findByIdAndUpdate(doc._id, { status }, opts);
 
   await doc!.save();
-  res.status(204).send(doc);
+  res.send(doc);
 };

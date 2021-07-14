@@ -7,7 +7,7 @@ import { upadteApplication } from './update-application';
 
 const router = Router();
 
-router.get('/', currentUser, requireAuth, getApplications);
+router.get('/:jobId', currentUser, requireAuth, getApplications);
 
 router.post(
   '/',

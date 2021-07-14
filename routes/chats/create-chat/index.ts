@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
-import { BadRequestError } from '../../../common';
 import { Chat } from '../../../models/Chat';
 import { Profile } from '../../../models/Profile';
+import { Notification } from '../../../models/Notification';
 
 export const createChat = async (req: Request, res: Response) => {
-  const me = await Profile.findOne({ userId: req.currentUser?._id });
+  const me = await Profile.findOne({ userId: req.currentUser!._id });
   const partner = await Profile.findOne({ userId: req.body.partnerId });
 
   const userOne = me!.createSubDoc();
@@ -14,11 +14,21 @@ export const createChat = async (req: Request, res: Response) => {
     $or: [{ users: [userOne, userTwo] }, { users: [userTwo, userOne] }],
   });
 
-  const msg = 'You already have a chat with this user';
-  if (existingChat) throw new BadRequestError(msg);
+  let chat;
 
-  const chat = Chat.build({ users: [userOne, userTwo] });
+  if (existingChat) chat = existingChat;
+  else {
+    chat = Chat.build({ users: [userOne, userTwo] });
+    await chat.save();
+  }
 
-  await chat.save();
+  const notification = Notification.build({
+    userFrom: me!._id,
+    userTo: req.body.partnerId,
+    notificationType: 'application:accepted',
+    entityId: chat._id,
+  });
+
+  await notification.save();
   res.status(201).send(chat);
 };

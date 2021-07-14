@@ -18,24 +18,27 @@ export interface JobAttrs {
   creator: string;
   imgUrl: string;
   title: string;
+  link?: string;
   description: string;
   location: string;
   salary: number;
+  duration: number;
   skills: string[];
 }
 
 interface JobDoc extends mongoose.Document {
-  creator: string;
-  imgUrl: string;
-  title: string;
+  category: JobCategory;
   company: string;
   description: string;
-  location: string;
-  salary: number;
-  skills: string[];
-  category: JobCategory;
   duration: number;
+  imgUrl: string;
+  link: string;
+  location: string;
   position: PositionEnum;
+  salary: number;
+  title: string;
+  creator: string;
+  skills: string[];
 }
 
 interface JobModel extends mongoose.Model<JobDoc> {
@@ -48,6 +51,7 @@ const jobSchema = new mongoose.Schema<JobDoc>({
   title: { type: String, required: true, trim: true },
   description: { type: String, trim: true },
   location: { type: String, required: true, trim: true },
+  link: { type: String, default: '' },
   salary: { type: Number, required: true },
   skills: { type: [String], default: [] },
   category: {

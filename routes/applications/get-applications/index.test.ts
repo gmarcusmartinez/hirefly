@@ -16,12 +16,4 @@ describe('Route Access', () => {
     const errMsg = 'Not Authorized';
     expect(response.body.errors[0].message).toBe(errMsg);
   });
-
-  it('returns a status other than 401 if the user is signed in', async () => {
-    const response = await request(app)
-      .get('/api/applications')
-      .set('Cookie', fakeAuthCookie())
-      .send({});
-    expect(response.status).toEqual(400);
-  });
 });

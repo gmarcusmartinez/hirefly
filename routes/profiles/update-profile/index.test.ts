@@ -52,11 +52,10 @@ describe('Successful Profile Update', () => {
     // Create User
     const email = 'test@test.com';
     const password = 'thisisatest';
-    const accountType = 'applicant';
 
     const res = await request(app)
       .post('/api/auth/signup')
-      .send({ email, password, accountType })
+      .send({ email, password })
       .expect(201);
 
     // Create Profile

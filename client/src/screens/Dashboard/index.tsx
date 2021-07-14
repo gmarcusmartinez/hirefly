@@ -14,6 +14,7 @@ import { SocketContext } from 'context/socket';
 import { MyJobs } from 'screens/MyJobs';
 import { EditJob } from 'screens/EditJob';
 import { Noitifications } from 'screens/Notifications';
+import { Jobs } from 'screens/Jobs';
 
 export const Dashboard = () => {
   const socket = React.useContext(SocketContext);
@@ -72,6 +73,7 @@ export const Dashboard = () => {
             <Route path='/dashboard/connections' component={Chat} />
             <Route path='/dashboard/profile-form' component={CreateProfile} />
             <Route path='/dashboard/edit-job' component={EditJob} />
+            <Route path='/dashboard/jobs' component={Jobs} />
             <Route path='/dashboard/my-jobs' component={MyJobs} />
             <Route path='/dashboard/notifications' component={Noitifications} />
             <Route path='/dashboard/job-form' component={PostJob} />
