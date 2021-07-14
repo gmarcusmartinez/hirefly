@@ -4,14 +4,14 @@ import { ProfileActionTypes } from '../types';
 
 interface ProfileState {
   loading: boolean;
-  errors: IError[] | null;
+  errors: IError[] | [];
   selected: IProfile | null;
   me: IProfile | null;
 }
 
 const initialState = {
   loading: false,
-  errors: null,
+  errors: [],
   selected: null,
   me: null,
 };
@@ -24,12 +24,15 @@ export const profiles = (
   switch (type) {
     case ProfileActionTypes.GET_ME_REQUEST:
     case ProfileActionTypes.CREATE_PROFILE_REQUEST:
+    case ProfileActionTypes.UPDATE_PROFILE_REQUEST:
       return { ...state, loading: true };
 
     case ProfileActionTypes.CREATE_PROFILE_SUCCESS:
+    case ProfileActionTypes.UPDATE_PROFILE_SUCCESS:
       return { ...state, loading: false, me: payload };
 
     case ProfileActionTypes.CREATE_PROFILE_FAILURE:
+    case ProfileActionTypes.UPDATE_PROFILE_FAILURE:
       return { ...state, loading: false, errors: payload };
 
     case ProfileActionTypes.GET_ME_SUCCESS:

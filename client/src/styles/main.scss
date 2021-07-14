@@ -17,8 +17,10 @@
 @import '../components/about-us/BlockInfo/styles.scss';
 @import '../components/auth/styles.scss';
 
+@import '../components/common/DashHeader/styles.scss';
 @import '../components/common/TextInput/styles.scss';
 @import '../components/common/Spinner/styles.scss';
+@import '../components/common/ErrorsContainer/styles.scss';
 
 @import '../components/chat/Header/styles.scss';
 @import '../components/chat/Input/styles.scss';
@@ -44,11 +46,16 @@
 @import '../components/navigation/MenuBars/styles.scss';
 @import '../components/navigation/NavLink/styles.scss';
 
+@import '../components/jobCards/SingleCard/styles.scss';
+@import '../components/jobCards/AllCards/styles.scss';
+
 @import '../screens/AboutUs/styles.scss';
 @import '../screens/Auth/styles.scss';
 @import '../screens/Chat/styles.scss';
 @import '../screens/Dashboard/styles.scss';
 @import '../screens/Dashboard/sidenav.scss';
+@import '../screens/MyJobs/styles.scss';
+@import '../screens/Notifications/styles.scss';
 @import '../screens/Profile/styles.scss';
 @import '../screens/PostJob/styles.scss';
 @import '../screens/Signout/styles.scss';

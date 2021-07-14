@@ -14,6 +14,9 @@ export const createProfile =
     if (!imageData) {
       const errors = [{ message: 'Please select an image', field: 'image' }];
       dispatch({ type: CREATE_PROFILE_FAILURE, payload: errors });
+      setTimeout(() => {
+        dispatch({ type: CREATE_PROFILE_FAILURE, payload: [] });
+      }, 2000);
       return;
     }
 
@@ -35,8 +38,8 @@ export const createProfile =
     } catch (e) {
       const payload = e.response.data.errors;
       dispatch({ type: CREATE_PROFILE_FAILURE, payload });
-      // setTimeout(() => {
-      //   dispatch({ type: CREATE_APPLICANT_FAILURE, payload: [] });
-      // }, 2000);
+      setTimeout(() => {
+        dispatch({ type: CREATE_PROFILE_FAILURE, payload: [] });
+      }, 2000);
     }
   };

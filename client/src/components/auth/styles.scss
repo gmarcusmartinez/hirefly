@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   margin: var(--margin-md) var(--margin-sm);
+  position: relative;
   width: 32rem;
 
   form {

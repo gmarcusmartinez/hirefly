@@ -11,6 +11,9 @@ import { Chat } from 'screens/Chat';
 import { PostJob } from 'screens/PostJob';
 import { SocketActionTypes } from 'state';
 import { SocketContext } from 'context/socket';
+import { MyJobs } from 'screens/MyJobs';
+import { EditJob } from 'screens/EditJob';
+import { Noitifications } from 'screens/Notifications';
 
 export const Dashboard = () => {
   const socket = React.useContext(SocketContext);
@@ -26,12 +29,14 @@ export const Dashboard = () => {
 
   React.useEffect(() => {
     socket.emit('init', currentUser!._id);
+    // eslint-disable-next-line
   }, [currentUser]);
 
   React.useEffect(() => {
     socket.on('connected', () => {
       dispatch({ type: SocketActionTypes.SET_SOCKET, payload: true });
     });
+    // eslint-disable-next-line
   }, [dispatch]);
 
   React.useEffect(() => {
@@ -55,6 +60,7 @@ export const Dashboard = () => {
     return () => {
       socket.emit('leave room', selectedChatId);
     };
+    // eslint-disable-next-line
   }, [selectedChatId]);
 
   return (
@@ -65,8 +71,11 @@ export const Dashboard = () => {
           <Switch>
             <Route path='/dashboard/connections' component={Chat} />
             <Route path='/dashboard/profile-form' component={CreateProfile} />
-            <Route path='/dashboard/signout' component={Signout} />
+            <Route path='/dashboard/edit-job' component={EditJob} />
+            <Route path='/dashboard/my-jobs' component={MyJobs} />
+            <Route path='/dashboard/notifications' component={Noitifications} />
             <Route path='/dashboard/job-form' component={PostJob} />
+            <Route path='/dashboard/signout' component={Signout} />
           </Switch>
         </div>
       </div>

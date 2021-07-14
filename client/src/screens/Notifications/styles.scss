@@ -1,0 +1,17 @@
+$retracted-sidenav-width: 7rem;
+
+.notifications-screen {
+  height: 100%;
+  margin-left: $retracted-sidenav-width;
+  &__main {
+    height: calc(100% - 80px);
+    overflow-y: scroll;
+    padding: var(--padding-sm);
+  }
+}
+
+@include respond(desktop) {
+  .notifications-screen {
+    margin-left: unset;
+  }
+}

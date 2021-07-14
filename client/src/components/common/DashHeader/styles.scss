@@ -1,0 +1,24 @@
+.dash-header {
+  box-shadow: var(--box-shadow-light);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  height: 8rem;
+  justify-content: center;
+  &.darkmode {
+    box-shadow: 0 0.1rem 0.2rem #000;
+    color: var(--color-white);
+  }
+  h2 {
+    font-size: 1.8rem;
+    margin-left: 4rem;
+    letter-spacing: var(--letter-spacing-md);
+  }
+}
+@include respond(desktop) {
+  .dash-header {
+    h2 {
+      margin-left: var(--margin-md);
+    }
+  }
+}

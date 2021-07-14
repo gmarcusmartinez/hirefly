@@ -4,13 +4,13 @@ import { AuthActionTypes } from '../types';
 
 interface AuthState {
   loading: boolean;
-  errors: IError[] | null;
+  errors: IError[] | [];
   currentUser: IUser | null;
 }
 
 const initialState = {
   loading: false,
-  errors: null,
+  errors: [],
   currentUser: null,
 };
 

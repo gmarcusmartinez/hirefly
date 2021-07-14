@@ -1,0 +1,27 @@
+.errors-container {
+  margin-left: 7rem;
+  position: absolute;
+  left: 1rem;
+}
+.error-item {
+  align-items: center;
+  background-color: #e54c38;
+  border-radius: 0.2rem;
+  color: #fff;
+  display: flex;
+  height: 4rem;
+  padding: 1rem;
+  justify-content: center;
+  margin: 0.5rem 0;
+  opacity: 0.8;
+  span {
+    font-size: 1.25rem;
+    letter-spacing: var(--letter-spacing-sm);
+  }
+}
+
+@include respond(desktop) {
+  .errors-container {
+    margin-left: unset;
+  }
+}

@@ -1,11 +1,10 @@
-import React from 'react';
 import { ProfileForm } from 'components/forms/profile-form';
 import { useTypedSelector } from 'hooks/use-typed-selector';
+import { ErrorsContainer } from 'components/common/ErrorsContainer';
 
 export const CreateProfile = () => {
   const { mode } = useTypedSelector(({ dashboard }) => dashboard);
-  const { me } = useTypedSelector(({ profiles }) => profiles);
-  React.useEffect(() => {}, []);
+  const { me, errors } = useTypedSelector(({ profiles }) => profiles);
 
   return (
     <div className='create-profile'>
@@ -14,6 +13,7 @@ export const CreateProfile = () => {
       </div>
       <div className='create-profile__main'>
         <ProfileForm />
+        <ErrorsContainer errors={errors} />
       </div>
     </div>
   );

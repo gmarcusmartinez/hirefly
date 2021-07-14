@@ -6,6 +6,7 @@ import { dashboard } from './dashboard';
 import { modal } from './modal';
 import { nav } from './nav';
 import { socket } from './socket';
+import { jobs } from './jobs';
 
 export const rootReducer = combineReducers({
   auth,
@@ -13,6 +14,7 @@ export const rootReducer = combineReducers({
   dashboard,
   modal,
   profiles,
+  jobs,
   nav,
   socket,
 });

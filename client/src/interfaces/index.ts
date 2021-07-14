@@ -1,21 +1,43 @@
+export interface IChatItem {
+  _id: string;
+  users: ProfileSubDoc[];
+  latestMessage: string;
+}
+
 export interface IError {
   message: string;
   field?: string;
 }
-export interface IUser {
+
+export interface IJob {
   _id: string;
-  accountStatus: string;
+  category: string;
+  company: string;
+  description: string;
+  duration: number;
+  imgUrl: string;
+  link: string;
+  location: string;
+  position: string;
+  salary: number;
+  skills: string;
+  title: string;
 }
 
-enum PositionEnum {
-  backend = 'backend',
-  frontend = 'frontend',
-  fullstack = 'fullstack',
+export interface IMessage {
+  _id: string;
+  chat: string;
+  sender: string;
+  content: string;
 }
 
-enum PeriodEnum {
-  fulltime = 'Full-Time',
-  parttime = 'Part-Time',
+export interface INotification {
+  _id: string;
+  userFrom: string;
+  userTo: string;
+  notificationType: string;
+  entityId: string;
+  createdAt: string;
 }
 
 export interface IProfile {
@@ -28,8 +50,6 @@ export interface IProfile {
   lastName: string;
   link: string;
   location: string;
-  period: PeriodEnum;
-  position: PositionEnum;
 }
 
 export interface ProfileSubDoc {
@@ -38,15 +58,7 @@ export interface ProfileSubDoc {
   avatar: string;
 }
 
-export interface IChatItem {
+export interface IUser {
   _id: string;
-  users: ProfileSubDoc[];
-  latestMessage: string;
-}
-
-export interface IMessage {
-  _id: string;
-  chat: string;
-  sender: string;
-  content: string;
+  accountStatus: string;
 }

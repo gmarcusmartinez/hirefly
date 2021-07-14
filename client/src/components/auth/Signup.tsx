@@ -2,7 +2,6 @@ import { useState, FC } from 'react';
 import { Text } from 'components/common/TextInput';
 import { signupInputs } from './inputs';
 import { useActions } from 'hooks/use-actions';
-import { useTypedSelector } from 'hooks/use-typed-selector';
 
 interface IProps {
   setFormDisplay: Function;
@@ -10,7 +9,6 @@ interface IProps {
 
 export const Signup: FC<IProps> = ({ setFormDisplay }) => {
   const { signup } = useActions();
-  const { errors } = useTypedSelector((state) => state.auth);
   const [formData, setFormData] = useState({ email: '', password: '' });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -19,11 +17,7 @@ export const Signup: FC<IProps> = ({ setFormDisplay }) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     signup(formData);
-    setFormData({ email: '', password: '' });
   };
-
-  const setError = (field: string) =>
-    errors ? errors.find((err) => err.field === field) : null;
 
   return (
     <form className='signup' onSubmit={handleSubmit}>
@@ -39,7 +33,6 @@ export const Signup: FC<IProps> = ({ setFormDisplay }) => {
           //@ts-ignore
           value={formData[i.formData]}
           onChange={handleChange}
-          error={setError(`${i.errorField}`)}
           testId={i.testId}
         />
       ))}

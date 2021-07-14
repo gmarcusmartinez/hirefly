@@ -21,6 +21,9 @@ $retracted-sidenav-width: 7rem;
     }
   }
   &__main {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
     height: calc(100% - 80px);
     overflow-y: scroll;
     padding: var(--padding-sm);
@@ -31,7 +34,6 @@ $retracted-sidenav-width: 7rem;
   .create-profile {
     &__main {
       display: flex;
-      justify-content: center;
     }
   }
 }

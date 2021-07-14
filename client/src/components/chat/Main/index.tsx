@@ -17,7 +17,6 @@ export const ChatMain = () => {
   useEffect(() => {
     if (chatRef.current) {
       chatRef.current.scrollTo({ top: chatRef.current.scrollHeight });
-      console.log(chatRef.current.scrollHeight);
     }
   }, []);
 
