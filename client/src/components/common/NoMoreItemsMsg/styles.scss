@@ -1,0 +1,15 @@
+.no-items {
+  align-items: center;
+  color: var(--color-grey-tertiary);
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+  span {
+    font-size: 1.45rem;
+    letter-spacing: var(--letter-spacing-sm);
+  }
+}
+.no-items.darkmode {
+  color: var(--color-white);
+}

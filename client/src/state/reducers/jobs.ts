@@ -42,6 +42,7 @@ export const jobs = (
       const filteredJobs = state.items.filter(({ _id }) => _id !== payload);
       return { ...state, loading: false, items: filteredJobs };
 
+    case JobActionTypes.CLEAR_JOBS:
     case JobActionTypes.GET_POSTED_JOBS_SUCCESS:
     case JobActionTypes.GET_ALL_JOBS_SUCCESS:
       return { ...state, loading: false, items: payload };

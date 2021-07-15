@@ -20,13 +20,18 @@ export const applications = (
   const { type, payload } = action;
   switch (type) {
     case ApplicationActionTypes.CREATE_APPLICATION_REQUEST:
+    case ApplicationActionTypes.FETCH_APPLICATIONS_REQUEST:
       return { ...state, loading: true };
 
     case ApplicationActionTypes.CREATE_APPLICATION_SUCCESS:
       return { ...state, loading: false };
 
+    case ApplicationActionTypes.FETCH_APPLICATIONS_SUCCESS:
+      return { ...state, items: payload, loading: false };
+
+    case ApplicationActionTypes.FETCH_APPLICATIONS_FAILURE:
     case ApplicationActionTypes.CREATE_APPLICATION_FAILURE:
-      return { ...state, errors: payload };
+      return { ...state, loading: false, errors: payload };
 
     default:
       return state;

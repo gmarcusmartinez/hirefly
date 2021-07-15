@@ -2,6 +2,7 @@ import { JobDetails } from './JobDetails';
 import { FC } from 'react';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { useActions } from 'hooks/use-actions';
+import { s3Url } from 'api/s3url';
 
 interface IProps {
   docType: string;
@@ -11,20 +12,29 @@ interface IProps {
 export const SwiperCard: FC<IProps> = ({ docType, doc, next }) => {
   const { createApplication, updateApplication } = useActions();
   const { mode } = useTypedSelector(({ dashboard }) => dashboard);
+  let background;
 
-  const background =
-    docType === 'job' ? `url(${doc.imgUrl})` : `url(${doc.avatar})`;
+  if (docType === 'job') {
+    if (doc.imgUrl.startsWith('http')) background = `url(${doc.imgUrl})`;
+    else background = `url(${s3Url}/${doc.imgUrl})`;
+  }
+
+  if (docType === 'applicant') {
+    if (doc.applicantProfile.avatar.startsWith('http'))
+      background = `url(${doc.applicantProfile.avatar})`;
+    else background = `url(${s3Url}/${doc.applicantProfile.avatar})`;
+  }
 
   const handleApprove = () => {
     next();
     return docType === 'job'
       ? createApplication(doc._id)
-      : updateApplication(doc._id, 'approved');
+      : updateApplication(doc._id, 'accepted');
   };
 
   const handleDeny = () => {
     next();
-    return docType === 'job' ? null : updateApplication(doc._id, 'denied');
+    return docType === 'job' ? null : updateApplication(doc._id, 'declined');
   };
 
   return (

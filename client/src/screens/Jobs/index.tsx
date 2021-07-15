@@ -8,7 +8,7 @@ import { DashHeader } from 'components/common/DashHeader';
 
 export const Jobs = () => {
   const [current, setCurrent] = React.useState(0);
-  const { getAllJobs } = useActions();
+  const { clearJobs, getAllJobs } = useActions();
   const { items, loading } = useTypedSelector(({ jobs }) => jobs);
 
   const next = () => {
@@ -20,6 +20,9 @@ export const Jobs = () => {
 
   React.useEffect(() => {
     getAllJobs();
+    return () => {
+      clearJobs();
+    };
     // eslint-disable-next-line
   }, []);
 

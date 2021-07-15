@@ -3,24 +3,6 @@ $retracted-sidenav-width: 7rem;
 .jobs-screen {
   height: 100%;
   margin-left: $retracted-sidenav-width;
-
-  &__header {
-    box-shadow: var(--box-shadow-light);
-    display: flex;
-    flex-direction: column;
-    height: 8rem;
-    justify-content: center;
-    &.darkmode {
-      box-shadow: 0 0.1rem 0.2rem #000;
-      color: var(--color-white);
-    }
-    h2 {
-      font-size: 1.8rem;
-      font-weight: 400;
-      margin-left: 4rem;
-      letter-spacing: var(--letter-spacing-md);
-    }
-  }
   &__main {
     height: calc(100% - 100px);
     overflow-y: scroll;
