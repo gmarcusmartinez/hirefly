@@ -26,6 +26,7 @@ export const applications = (
     case ApplicationActionTypes.CREATE_APPLICATION_SUCCESS:
       return { ...state, loading: false };
 
+    case ApplicationActionTypes.CLEAR_APPLICATIONS:
     case ApplicationActionTypes.FETCH_APPLICATIONS_SUCCESS:
       return { ...state, items: payload, loading: false };
 

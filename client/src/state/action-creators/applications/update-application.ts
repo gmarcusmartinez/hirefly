@@ -10,9 +10,8 @@ export const updateApplication =
     try {
       dispatch({ type: ApplicationActionTypes.UPDATE_APPLICATION_REQUEST });
       const { data } = await applications.put(`/${id}`, { status }, config);
-      await chats.post('/', { partnerId: data.applicant }, config);
-
       dispatch({ type: ApplicationActionTypes.UPDATE_APPLICATION_SUCCESS });
+      await chats.post('/', { partnerId: data.applicant }, config);
     } catch (e) {
       dispatch({
         type: ApplicationActionTypes.UPDATE_APPLICATION_FAILURE,

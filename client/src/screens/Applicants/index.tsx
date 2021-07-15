@@ -10,13 +10,12 @@ export const Applicants = () => {
   const [current, setCurrent] = React.useState(0);
   const { fetchApplications } = useActions();
   const { selected } = useTypedSelector(({ jobs }) => jobs);
-  const { items, loading } = useTypedSelector(
-    ({ applications }) => applications
-  );
+  const { items, loading } = useTypedSelector((state) => state.applications);
 
   React.useEffect(() => {
     fetchApplications(selected!._id);
-  }, [fetchApplications, selected]);
+    // eslint-disable-next-line
+  }, []);
 
   const next = () => {
     if (current === items.length - 1) {
@@ -30,7 +29,7 @@ export const Applicants = () => {
   ));
 
   if (loading) return <Spinner />;
-  if (items.length === 0) return <NoItems type='applicant' />;
+  if (!items.length) return <NoItems type='applicant' />;
 
   return (
     <div className='applicants'>
