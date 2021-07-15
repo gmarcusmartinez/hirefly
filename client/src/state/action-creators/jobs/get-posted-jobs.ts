@@ -10,7 +10,6 @@ export const getPostedJobs = () => async (dispatch: Dispatch) => {
   } catch (e) {
     const errors = e.response.data.errors || e.message;
     dispatch({ type: JobActionTypes.GET_POSTED_JOBS_FAILURE, payload: errors });
-    console.log(errors);
     return;
   }
 };

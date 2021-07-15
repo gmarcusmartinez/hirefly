@@ -29,13 +29,11 @@ export const updateJob =
       } else {
         dispatch({ type: JobActionTypes.UPDATE_JOB_REQUEST });
         const { data } = await jobs.put(`/${id}`, formData, config);
-        console.log(data);
 
         history.push('/dashboard/my-jobs');
         dispatch({ type: UPDATE_JOB_SUCCESS, payload: data });
       }
     } catch (e) {
-      console.log(e);
       const errors = e.response.data.errors || e.message;
       dispatch({ type: UPDATE_JOB_FAILURE, payload: errors });
     }

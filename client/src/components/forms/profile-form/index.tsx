@@ -27,7 +27,6 @@ export const ProfileForm = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(me);
     me
       ? updateProfile(formData, imageData)
       : createProfile(formData, imageData);

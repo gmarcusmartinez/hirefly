@@ -4,6 +4,7 @@ $retracted-sidenav-width: 7rem;
   font-family: 'Montserrat', sans-serif;
   height: 100%;
   margin-left: $retracted-sidenav-width;
+
   &__header {
     box-shadow: var(--box-shadow-light);
     display: flex;
@@ -28,25 +29,26 @@ $retracted-sidenav-width: 7rem;
 }
 
 @include respond(tablet) {
-    .my-jobs {
-      &__main {
-        display: flex;
-        justify-content: center;
-      }
+  .my-jobs {
+    &__main {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0 0.5rem;
     }
   }
-  
-  @include respond(desktop) {
-    .my-jobs {
+}
+
+@include respond(desktop) {
+  .my-jobs {
+    margin-left: unset;
+    &__header {
+      h2 {
+        margin-left: var(--margin-md);
+      }
+    }
+    &__main {
       margin-left: unset;
-      &__header {
-        h2 {
-          margin-left: var(--margin-md);
-        }
-      }
-      &__main {
-        margin-left: unset;
-      }
+      grid-template-columns: repeat(3, 1fr);
     }
   }
-  
+}

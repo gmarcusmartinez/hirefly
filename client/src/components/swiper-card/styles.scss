@@ -1,13 +1,21 @@
 .swiper-card {
-  height: calc(85% - 80px);
-  margin-left: 7rem;
-  margin-top: 8rem;
-  position: relative;
-
-  width: calc(95% - 70px);
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
 
   border: 0.1rem solid white;
+  height: calc(85% - 80px);
+  margin-top: 8rem;
+  margin-left: 2.5%;
+  position: relative;
+  width: 95%;
 
+  &__img {
+    border-radius: 0.8rem;
+
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    background-size: cover !important;
+  }
   &__actions {
     display: flex;
     justify-content: space-between;
@@ -39,6 +47,9 @@
 
 @include respond(tablet) {
   .swiper-card {
+    grid-template-rows: unset;
+    grid-template-columns: repeat(2, 1fr);
+
     height: 42rem;
     max-width: 80rem;
     &__actions {
@@ -46,10 +57,5 @@
       width: 25%;
       right: 37.5%;
     }
-  }
-}
-@include respond(desktop) {
-  .swiper-card {
-    margin-left: unset;
   }
 }

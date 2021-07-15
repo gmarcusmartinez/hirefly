@@ -6,7 +6,10 @@ import { useHistory } from 'react-router-dom';
 export const Header = () => {
   const { toggleSidenav, setSidenavComponent } = useActions();
   const { me } = useTypedSelector(({ profiles }) => profiles);
-  const src = `${s3Url}/${me?.avatar}`;
+
+  const src = me?.avatar.startsWith('http')
+    ? `${me.avatar}`
+    : `${s3Url}/${me?.avatar}`;
 
   const { expanded, theme, mode } = useTypedSelector(
     ({ dashboard }) => dashboard

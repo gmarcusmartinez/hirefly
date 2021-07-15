@@ -1,14 +1,14 @@
-import React from "react";
-import { useTypedSelector } from "hooks/use-typed-selector";
-import { texts, files, blankForm, selects } from "./inputs";
-import { Text, FileInput } from "components/common/DashInputs";
-import { Spinner } from "components/common/Spinner";
-import { TextArea } from "components/common/DashInputs/TextArea";
-import { Select } from "components/common/DashInputs";
-import { useActions } from "hooks/use-actions";
+import React from 'react';
+import { useTypedSelector } from 'hooks/use-typed-selector';
+import { texts, files, blankForm, selects } from './inputs';
+import { Text, FileInput } from 'components/common/DashInputs';
+import { Spinner } from 'components/common/Spinner';
+import { TextArea } from 'components/common/DashInputs/TextArea';
+import { Select } from 'components/common/DashInputs';
+import { useActions } from 'hooks/use-actions';
 
 export const JobForm = () => {
-  const { createJob, updateJob } = useActions();
+  const { createJob, updateJob, setSelectedJob } = useActions();
   const { theme } = useTypedSelector(({ dashboard }) => dashboard);
   const { loading, selected } = useTypedSelector(({ jobs }) => jobs);
 
@@ -36,11 +36,15 @@ export const JobForm = () => {
 
   React.useEffect(() => {
     setFormData(defaultForm);
+    return () => {
+      setSelectedJob(null);
+    };
+    //eslint-disable-next-line
   }, [selected, defaultForm]);
 
   if (loading) return <Spinner />;
   return (
-    <form className="job-form" onSubmit={handleSubmit}>
+    <form className='job-form' onSubmit={handleSubmit}>
       <Text onChange={onChange} item={texts[0]} value={formData.title} />
       <Text onChange={onChange} item={texts[1]} value={formData.company} />
       <Text onChange={onChange} item={texts[2]} value={formData.location} />
@@ -48,7 +52,7 @@ export const JobForm = () => {
         onChange={onChange}
         item={texts[3]}
         value={formData.salary}
-        inputType="number"
+        inputType='number'
       />
       <Text onChange={onChange} item={texts[4]} value={formData.link} />
       <TextArea
@@ -61,7 +65,7 @@ export const JobForm = () => {
         onChange={onChange}
         item={texts[6]}
         value={formData.duration}
-        inputType="number"
+        inputType='number'
       />
       <Select item={selects[0]} onChange={onChange} value={formData.position} />
       <Select item={selects[1]} onChange={onChange} value={formData.category} />
