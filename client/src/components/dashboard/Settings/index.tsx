@@ -7,7 +7,7 @@ export const Settings = () => {
   const { me } = useTypedSelector((state) => state.profiles);
   return (
     <div className='settings'>
-      <SettingsLink text='Search Jobs' icon='search' path='/dashboard/jobs' />
+      <SettingsLink text='Find Jobs' icon='search' path='/dashboard/jobs' />
 
       <SettingsLink
         text='Notifications'

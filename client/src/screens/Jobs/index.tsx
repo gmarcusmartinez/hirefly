@@ -6,19 +6,36 @@ import { IJob } from 'interfaces';
 import { Spinner } from 'components/common/Spinner';
 
 export const Jobs = () => {
+  const [current, setCurrent] = React.useState(0);
   const { getAllJobs } = useActions();
   const { items, loading } = useTypedSelector(({ jobs }) => jobs);
   const { mode } = useTypedSelector(({ dashboard }) => dashboard);
 
+  const next = () => {
+    if (current === items.length - 1) {
+      getAllJobs();
+      setCurrent(0);
+    } else setCurrent(current + 1);
+  };
+
+  const approve = () => {
+    next();
+  };
+  const deny = () => next();
+
   React.useEffect(() => {
     getAllJobs();
-    console.log(items);
   }, []);
 
-  const list = items.map((item: IJob) => {
-    console.log(item);
-    return <SwiperCard key={item._id} doc={item} docType='job' />;
-  });
+  const list = items.map((item: IJob) => (
+    <SwiperCard
+      key={item._id}
+      doc={item}
+      docType='job'
+      handleApprove={approve}
+      handleDeny={deny}
+    />
+  ));
 
   if (loading) return <Spinner />;
   return (
@@ -26,7 +43,11 @@ export const Jobs = () => {
       <div className={`jobs-screen__header ${mode}`}>
         <h2>Find Jobs</h2>
       </div>
-      <div className='jobs-screen__main'>{list}</div>;
+      <div className='jobs-screen__main'>
+        <div className='jobs-screen__list'>{list}</div>
+        <div className='jobs-screen__selected'>{list[current]}</div>
+      </div>
+      ;
     </div>
   );
 };
