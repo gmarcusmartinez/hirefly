@@ -2,10 +2,10 @@ import React from 'react';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { JobForm } from 'components/forms/job-form';
 import { useHistory } from 'react-router-dom';
+import { DashHeader } from 'components/common/DashHeader';
 import { ErrorsContainer } from 'components/common/ErrorsContainer';
 
 export const EditJob = () => {
-  const { mode } = useTypedSelector(({ dashboard }) => dashboard);
   const history = useHistory();
   const { me } = useTypedSelector(({ profiles }) => profiles);
   const { errors } = useTypedSelector(({ jobs }) => jobs);
@@ -16,9 +16,7 @@ export const EditJob = () => {
 
   return (
     <div className='post-job'>
-      <div className={`post-job__header ${mode}`}>
-        <h2> Edit Job </h2>
-      </div>
+      <DashHeader title='Edit Job' />
       <div className='post-job__main'>
         <JobForm />
         <ErrorsContainer errors={errors ? errors : null} />

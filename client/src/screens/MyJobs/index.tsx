@@ -1,12 +1,12 @@
 import React from 'react';
+import { IJob } from 'interfaces';
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { SingleCard } from 'components/job-card';
-import { IJob } from 'interfaces';
+import { DashHeader } from 'components/common/DashHeader';
 
 export const MyJobs = () => {
   const { getPostedJobs } = useActions();
-  const { mode } = useTypedSelector(({ dashboard }) => dashboard);
   const { items } = useTypedSelector(({ jobs }) => jobs);
 
   React.useEffect(() => {
@@ -20,9 +20,7 @@ export const MyJobs = () => {
 
   return (
     <div className='my-jobs'>
-      <div className={`my-jobs__header ${mode}`}>
-        <h2>My Posted Jobs</h2>
-      </div>
+      <DashHeader title='My Posted Jobs' />
       <div className='my-jobs__main'>{list}</div>
     </div>
   );

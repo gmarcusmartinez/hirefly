@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { applications } from './applications';
 import { auth } from './auth';
 import { chats } from './chats';
 import { profiles } from './profiles';
@@ -9,6 +10,7 @@ import { socket } from './socket';
 import { jobs } from './jobs';
 
 export const rootReducer = combineReducers({
+  applications,
   auth,
   chats,
   dashboard,

@@ -13,13 +13,18 @@ export const SingleCard: FC<IProps> = ({ job }) => {
   const history = useHistory();
   const { deleteJob, setSelectedJob } = useActions();
   const { theme } = useTypedSelector((state) => state.dashboard);
-
   const { duration, salary, location, title } = job;
   const months = duration > 1 ? `${duration} Months` : '1 Month';
 
-  const redirectToEditJob = () => {
+  const redirectToEditJob = (e: any) => {
+    e.stopPropagation();
     setSelectedJob(job);
     history.push(`/dashboard/edit-job`);
+  };
+
+  const redirectToApplicants = () => {
+    setSelectedJob(job);
+    history.push(`/dashboard/applicants`);
   };
 
   const background = job.imgUrl.startsWith('http')
@@ -27,7 +32,11 @@ export const SingleCard: FC<IProps> = ({ job }) => {
     : `url(${s3Url}/${job?.imgUrl})`;
 
   return (
-    <div className='job-card' style={{ background }}>
+    <div
+      className='job-card'
+      style={{ background }}
+      onClick={redirectToApplicants}
+    >
       <div className='job-card__header'>
         <span>{title}</span>
       </div>
@@ -47,7 +56,10 @@ export const SingleCard: FC<IProps> = ({ job }) => {
         <i
           className='material-icons'
           style={{ color: theme }}
-          onClick={() => deleteJob(job._id)}
+          onClick={(e) => {
+            e.stopPropagation();
+            deleteJob(job._id);
+          }}
         >
           delete
         </i>

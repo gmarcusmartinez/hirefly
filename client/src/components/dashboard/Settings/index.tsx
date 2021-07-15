@@ -21,7 +21,7 @@ export const Settings = () => {
         path='/dashboard/job-form'
       />
       <SettingsLink
-        text='Edit Jobs'
+        text='My Jobs'
         icon='dynamic_feed'
         path='/dashboard/my-jobs'
       />
