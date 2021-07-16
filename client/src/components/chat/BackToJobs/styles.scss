@@ -1,0 +1,41 @@
+.back-to-jobs {
+  animation: expand ease-in 0.2s;
+  align-items: center;
+  border-radius: 0.4rem;
+  color: #fff;
+  display: flex;
+  height: 4.8rem;
+  font-size: 1.25rem;
+  letter-spacing: var(--letter-spacing-sm);
+  margin-bottom: 0.25rem;
+  opacity: 0.9;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  .retract {
+    display: none;
+    opacity: 0;
+  }
+  .expand {
+    animation: fade-text ease-in 0.2s;
+  }
+}
+
+@keyframes expand {
+  0% {
+    height: 1rem;
+  }
+  100% {
+    height: 4.8rem;
+  }
+}
+@keyframes fade-text {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

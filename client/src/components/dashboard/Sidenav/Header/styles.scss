@@ -5,6 +5,7 @@
   height: 8rem;
   position: relative;
   width: 100%;
+
   i {
     font-size: 3.2rem;
     position: absolute;
@@ -15,21 +16,24 @@
       transform: rotate(-180deg);
     }
   }
-  &__name {
-    font-size: 1.5rem;
-    letter-spacing: var(--letter-spacing-md);
-    position: absolute;
-    left: 7rem;
-    &.darkmode {
-      color: #fff;
-    }
-  }
   &__profile-img {
     border-radius: 50%;
     height: 5rem;
     margin: var(--margin-sm);
     width: 5rem;
     object-fit: cover;
+  }
+  .menu {
+    position: absolute;
+    left: 1rem;
+
+    color: #fff;
+    font-size: 5rem;
+    opacity: 0;
+    transition: ease-in 0.2s;
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }
 

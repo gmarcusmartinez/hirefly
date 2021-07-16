@@ -1,6 +1,7 @@
 import { AnyAction } from 'redux';
 import { ChatActionTypes, MessageActionTypes } from '../types';
 import { IChatItem, IError, ProfileSubDoc, IMessage } from 'interfaces';
+import { updateMessages } from 'utils/update-messages';
 
 interface ChatsState {
   loading: boolean;
@@ -50,7 +51,10 @@ export const chats = (
     case MessageActionTypes.MESSAGE_RECIEVED:
     case MessageActionTypes.MESSAGE_SENT:
       if (state.selectedChatId === payload.chat) {
-        return { ...state, messageItems: [...state.messageItems, payload] };
+        return {
+          ...state,
+          messageItems: updateMessages(state.messageItems, payload),
+        };
       } else return state;
 
     default:

@@ -1,3 +1,10 @@
+export interface IAlert {
+  id: string;
+  msg: string;
+  type: string;
+  timeout: number;
+}
+
 export interface IChatItem {
   _id: string;
   users: ProfileSubDoc[];

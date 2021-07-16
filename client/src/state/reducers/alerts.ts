@@ -1,8 +1,9 @@
 import { AnyAction } from 'redux';
 import { AlertActionTypes } from 'state/types';
+import { IAlert } from 'interfaces';
 
 interface AlertsState {
-  items: any[];
+  items: IAlert[];
 }
 
 const initialState = {

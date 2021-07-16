@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
 @import './base/base.scss';
 @import './abstracts/mixins.scss';
@@ -26,6 +25,7 @@
 @import '../components/common/Spinner/styles.scss';
 @import '../components/common/ErrorsContainer/styles.scss';
 
+@import '../components/chat/BackToJobs/styles.scss';
 @import '../components/chat/Header/styles.scss';
 @import '../components/chat/Input/styles.scss';
 @import '../components/chat/Item/styles.scss';

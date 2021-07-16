@@ -3,6 +3,7 @@ import jobs from 'api/jobs';
 import { Dispatch } from 'redux';
 import { ApplicationActionTypes } from 'state';
 import { JobActionTypes } from 'state';
+import { AlertActionTypes } from 'state';
 
 const { CREATE_APPLICATION_FAILURE } = ApplicationActionTypes;
 const { SET_CURRENT_JOB } = JobActionTypes;
@@ -18,9 +19,9 @@ export const createApplication =
   async (dispatch: Dispatch) => {
     const config = { headers: { 'Content-Type': 'application/json' } };
     try {
-      dispatch({ type: ApplicationActionTypes.CREATE_APPLICATION_REQUEST });
-      await applications.post('/', { jobId }, config);
-      dispatch({ type: ApplicationActionTypes.CREATE_APPLICATION_SUCCESS });
+      // dispatch({ type: ApplicationActionTypes.CREATE_APPLICATION_REQUEST });
+      // await applications.post('/', { jobId }, config);
+      // dispatch({ type: ApplicationActionTypes.CREATE_APPLICATION_SUCCESS });
 
       if (current === last) {
         dispatch({ type: JobActionTypes.GET_ALL_JOBS_REQUEST });
@@ -31,6 +32,8 @@ export const createApplication =
       } else {
         dispatch({ type: SET_CURRENT_JOB, payload: current + 1 });
       }
+      const message = 'Applicantion Successfully Sent!';
+      dispatch({ type: AlertActionTypes.SET_ALERT, payload: { message } });
     } catch (e) {
       const payload = e.response.data.errors;
       dispatch({ type: CREATE_APPLICATION_FAILURE, payload });

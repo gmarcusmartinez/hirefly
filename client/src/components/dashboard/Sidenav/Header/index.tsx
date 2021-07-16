@@ -11,10 +11,7 @@ export const Header = () => {
     ? `${me.imgUrl}`
     : `${s3Url}/${me?.imgUrl}`;
 
-  const { expanded, theme, mode } = useTypedSelector(
-    ({ dashboard }) => dashboard
-  );
-
+  const { expanded, theme } = useTypedSelector(({ dashboard }) => dashboard);
   const className = `material-icons ${expanded ? 'rotate' : ''}`;
 
   const history = useHistory();
@@ -29,8 +26,8 @@ export const Header = () => {
   };
   return (
     <div className='sidenav__header' onClick={displaySettings}>
+      {me && <span className='menu material-icons'>menu</span>}
       {me && <img className='sidenav__header__profile-img' src={src} alt='' />}
-      <span className={`sidenav__header__name ${mode}`}>{me?.firstName}</span>
       <i className={className} onClick={toggle} style={{ color: theme }}>
         chevron_right
       </i>

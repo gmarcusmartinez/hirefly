@@ -16,7 +16,7 @@ export const Settings = () => {
       />
 
       <SettingsLink
-        text='Create Job'
+        text='Post Job'
         icon='post_add'
         path='/dashboard/job-form'
       />
