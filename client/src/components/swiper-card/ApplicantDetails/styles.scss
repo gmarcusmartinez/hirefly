@@ -1,0 +1,40 @@
+$action-button-radius: 3.5rem;
+
+.applicant-details {
+  border-bottom-left-radius: 0.8rem;
+  border-bottom-right-radius: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: scroll;
+  padding: 1rem 1rem $action-button-radius 1rem;
+
+  &__title {
+    align-items: center;
+    display: flex;
+    letter-spacing: var(--letter-spacing-sm);
+    height: 12%;
+    width: 100%;
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 300;
+    }
+  }
+  span {
+    font-size: 1.2rem;
+    letter-spacing: var(--letter-spacing-sm);
+    margin: var(--margin-xs) 0;
+  }
+}
+
+.applicant-details.darkmode {
+  background-color: #121212;
+  color: #fff;
+}
+
+@include respond(tablet) {
+  .applicant-details {
+    border-top-right-radius: 0.8rem;
+    border-bottom-left-radius: 0rem;
+  }
+}

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import applicants from 'api/profiles';
+import profiles from 'api/profiles';
 import { IProfileForm } from 'interfaces/forms';
 import { ProfileActionTypes } from 'state/types';
 
@@ -19,12 +19,12 @@ export const updateProfile =
         await axios.put(uploadConfig.data.url, imageData, headers);
 
         const requestBody = { ...formData, imgUrl: uploadConfig.data.key };
-        const { data } = await applicants.put('/', requestBody, config);
+        const { data } = await profiles.put('/', requestBody, config);
 
         dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: data });
       } else {
         dispatch({ type: ProfileActionTypes.UPDATE_PROFILE_REQUEST });
-        const { data } = await applicants.put('/', formData, config);
+        const { data } = await profiles.put('/', formData, config);
         dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: data });
       }
     } catch (e) {
