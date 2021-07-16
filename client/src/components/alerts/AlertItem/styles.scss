@@ -1,0 +1,21 @@
+.alert-item {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 0.4rem;
+  display: flex;
+  height: 4rem;
+  justify-content: center;
+  margin: 0.25rem;
+  max-width: 36rem;
+  width: 90%;
+  span {
+    font-size: 1.25rem;
+    letter-spacing: var(--letter-spacing-sm);
+  }
+  &.success {
+    color: var(--color-success);
+  }
+  &.error {
+    color: var(--color-error);
+  }
+}
