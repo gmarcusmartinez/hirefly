@@ -2,17 +2,17 @@ import { FC } from 'react';
 
 interface IProps {
   alert: {
-    type: string;
-    message: string;
+    alertType: string;
+    msg: string;
     redirect?: string;
   };
 }
 
 export const AlertItem: FC<IProps> = ({ alert }) => {
-  const className = `alert-item ${alert.type}`;
+  const className = `alert-item ${alert.alertType}`;
   return (
     <div className={className}>
-      <span>{alert.message}</span>
+      <span>{alert.msg}</span>
     </div>
   );
 };

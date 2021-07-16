@@ -1,8 +1,8 @@
 export interface IAlert {
   id: string;
   msg: string;
-  type: string;
-  timeout: number;
+  alertType: string;
+  redirect?: string;
 }
 
 export interface IChatItem {

@@ -7,7 +7,7 @@ import { Spinner } from 'components/common/Spinner';
 import { NoItems } from 'components/common/NoMoreItemsMsg';
 
 export const Applicants = () => {
-  const { fetchApplications, nextApplication } = useActions();
+  const { fetchApplications, nextApplication, setSelectedJob } = useActions();
   const { selected } = useTypedSelector(({ jobs }) => jobs);
   const { items, loading, current } = useTypedSelector(
     ({ applications }) => applications
@@ -15,6 +15,9 @@ export const Applicants = () => {
 
   React.useEffect(() => {
     fetchApplications(selected!._id);
+    return () => {
+      setSelectedJob(null);
+    };
   }, [fetchApplications, selected]);
 
   const last = items.length - 1;

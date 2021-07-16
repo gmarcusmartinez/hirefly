@@ -1,3 +1,4 @@
+import { v4 } from 'uuid';
 import applications from 'api/applications';
 import jobs from 'api/jobs';
 import { Dispatch } from 'redux';
@@ -32,8 +33,19 @@ export const createApplication =
       } else {
         dispatch({ type: SET_CURRENT_JOB, payload: current + 1 });
       }
-      const message = 'Applicantion Successfully Sent!';
-      dispatch({ type: AlertActionTypes.SET_ALERT, payload: { message } });
+
+      const msg = 'Applicantion Successfully Sent!';
+      const id = v4();
+      dispatch({
+        type: AlertActionTypes.SET_ALERT,
+        payload: { msg, id, alertType: 'success' },
+      });
+      setTimeout(() => {
+        dispatch({
+          type: AlertActionTypes.REMOVE_ALERT,
+          payload: id,
+        });
+      }, 500);
     } catch (e) {
       const payload = e.response.data.errors;
       dispatch({ type: CREATE_APPLICATION_FAILURE, payload });
