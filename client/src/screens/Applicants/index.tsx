@@ -7,30 +7,39 @@ import { Spinner } from 'components/common/Spinner';
 import { NoItems } from 'components/common/NoMoreItemsMsg';
 
 export const Applicants = () => {
-  const [current, setCurrent] = React.useState(0);
-  const { fetchApplications } = useActions();
+  const { fetchApplications, nextApplication } = useActions();
   const { selected } = useTypedSelector(({ jobs }) => jobs);
-  const { items, loading } = useTypedSelector((state) => state.applications);
+  const { items, loading, current } = useTypedSelector(
+    ({ applications }) => applications
+  );
 
   React.useEffect(() => {
     fetchApplications(selected!._id);
-    // eslint-disable-next-line
-  }, []);
+  }, [fetchApplications, selected]);
 
-  const next = () => {
-    if (current === items.length - 1) {
-      fetchApplications(selected!._id);
-      setCurrent(0);
-    } else setCurrent(current + 1);
+  const last = items.length - 1;
+  const jobId = selected!._id;
+
+  const approve = (id: string) =>
+    nextApplication({ current, last, id, status: 'accepted', jobId });
+
+  const decline = (id: string) => {
+    const args = { current, last, id, status: 'declined', jobId };
+    nextApplication(args);
   };
 
   const list = items.map((item: any) => (
-    <SwiperCard key={item._id} doc={item} docType='applicant' next={next} />
+    <SwiperCard
+      key={item._id}
+      doc={item}
+      docType='applicant'
+      approve={approve}
+      decline={decline}
+    />
   ));
 
   if (loading) return <Spinner />;
   if (!items.length) return <NoItems type='applicant' />;
-
   return (
     <div className='applicants'>
       <DashHeader title={`Applicants for ${selected!.title}`} />

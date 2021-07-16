@@ -27,9 +27,9 @@ export const Jobs = () => {
     // eslint-disable-next-line
   }, []);
 
-  const list = items.map((item: IJob) => (
-    <SwiperCard key={item._id} doc={item} docType='job' next={next} />
-  ));
+  // const list = items.map((item: IJob) => (
+  //   <SwiperCard key={item._id} doc={item} docType='job' next={next} />
+  // ));
 
   if (loading) return <Spinner />;
   return (
@@ -37,8 +37,8 @@ export const Jobs = () => {
       <DashHeader title='Find Jobs' />
       <div className='jobs-screen__main'>
         <AlertContainer />
-        <div className='jobs-screen__list'>{list}</div>
-        <div className='jobs-screen__selected'>{list[current]}</div>
+        {/* <div className='jobs-screen__list'>{list}</div>
+        <div className='jobs-screen__selected'>{list[current]}</div> */}
       </div>
     </div>
   );

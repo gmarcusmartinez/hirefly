@@ -3,11 +3,13 @@ import { IError } from 'interfaces';
 import { ApplicationActionTypes } from 'state/types';
 
 interface ApplicationsState {
+  current: number;
   loading: boolean;
   items: any[] | [];
   errors: IError[] | [];
 }
 const initialState = {
+  current: 0,
   loading: false,
   items: [],
   errors: [],
@@ -33,6 +35,9 @@ export const applications = (
     case ApplicationActionTypes.FETCH_APPLICATIONS_FAILURE:
     case ApplicationActionTypes.CREATE_APPLICATION_FAILURE:
       return { ...state, loading: false, errors: payload };
+
+    case ApplicationActionTypes.SET_CURRENT:
+      return { ...state, current: payload };
 
     default:
       return state;
