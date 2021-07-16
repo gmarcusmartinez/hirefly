@@ -23,10 +23,8 @@ export const Applicants = () => {
   const approve = (id: string) =>
     nextApplication({ current, last, id, status: 'accepted', jobId });
 
-  const decline = (id: string) => {
-    const args = { current, last, id, status: 'declined', jobId };
-    nextApplication(args);
-  };
+  const decline = (id: string) =>
+    nextApplication({ current, last, id, status: 'declined', jobId });
 
   const list = items.map((item: any) => (
     <SwiperCard

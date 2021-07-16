@@ -77,6 +77,7 @@ export enum JobActionTypes {
 
   CLEAR_JOBS = 'CLEAR_JOBS',
   SET_SELECTED_JOB = 'SET_SELECTED_JOB',
+  SET_CURRENT_JOB = 'SET_CURRENT_JOB',
 }
 
 export enum MessageActionTypes {

@@ -5,40 +5,45 @@ import { useTypedSelector } from 'hooks/use-typed-selector';
 import { IJob } from 'interfaces';
 import { Spinner } from 'components/common/Spinner';
 import { DashHeader } from 'components/common/DashHeader';
+import { NoItems } from 'components/common/NoMoreItemsMsg';
 import { AlertContainer } from 'components/alerts/AlertContainer';
 
 export const Jobs = () => {
-  const [current, setCurrent] = React.useState(0);
-  const { clearJobs, getAllJobs } = useActions();
-  const { items, loading } = useTypedSelector(({ jobs }) => jobs);
-
-  const next = () => {
-    if (current === items.length - 1) {
-      getAllJobs();
-      setCurrent(0);
-    } else setCurrent(current + 1);
-  };
+  const { items, loading, current } = useTypedSelector(({ jobs }) => jobs);
+  const { clearJobs, getAllJobs, createApplication, declineJob } = useActions();
 
   React.useEffect(() => {
     getAllJobs();
     return () => {
       clearJobs();
     };
-    // eslint-disable-next-line
   }, []);
 
-  // const list = items.map((item: IJob) => (
-  //   <SwiperCard key={item._id} doc={item} docType='job' next={next} />
-  // ));
+  const last = items.length - 1;
+
+  const approve = (jobId: string) =>
+    createApplication({ current, last, jobId });
+  const decline = (jobId: string) => declineJob({ current, last, jobId });
+
+  const list = items.map((item: IJob) => (
+    <SwiperCard
+      key={item._id}
+      doc={item}
+      docType='job'
+      approve={approve}
+      decline={decline}
+    />
+  ));
 
   if (loading) return <Spinner />;
+  if (!items.length) return <NoItems type='applicant' />;
   return (
     <div className='jobs-screen'>
       <DashHeader title='Find Jobs' />
       <div className='jobs-screen__main'>
         <AlertContainer />
-        {/* <div className='jobs-screen__list'>{list}</div>
-        <div className='jobs-screen__selected'>{list[current]}</div> */}
+        <div className='jobs-screen__list'>{list}</div>
+        <div className='jobs-screen__selected'>{list[current]}</div>
       </div>
     </div>
   );

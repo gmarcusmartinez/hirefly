@@ -3,6 +3,7 @@ import { IError, IJob } from 'interfaces';
 import { JobActionTypes } from '../types';
 
 interface JobsState {
+  current: number;
   loading: boolean;
   errors: IError[] | null;
   selected: IJob | null;
@@ -10,6 +11,7 @@ interface JobsState {
 }
 
 const initialState = {
+  current: 0,
   loading: false,
   errors: null,
   selected: null,
@@ -53,6 +55,9 @@ export const jobs = (
 
     case JobActionTypes.SET_SELECTED_JOB:
       return { ...state, selected: payload };
+
+    case JobActionTypes.SET_CURRENT_JOB:
+      return { ...state, current: payload };
     default:
       return state;
   }
