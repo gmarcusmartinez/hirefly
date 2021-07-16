@@ -42,7 +42,7 @@ export interface INotification {
 
 export interface IProfile {
   userId: string;
-  avatar: string;
+  imgUrl: string;
   cv: string;
   bio: string;
   description: string;
@@ -55,7 +55,7 @@ export interface IProfile {
 export interface ProfileSubDoc {
   _id: string;
   firstName: string;
-  avatar: string;
+  imgUrl: string;
 }
 
 export interface IUser {

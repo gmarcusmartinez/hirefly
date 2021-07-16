@@ -28,7 +28,7 @@ export const createProfile =
       await axios.put(uploadConfig.data.url, imageData, headers);
 
       const config = { headers: { 'Content-Type': 'application/json' } };
-      const requestBody = { ...formData, avatar: uploadConfig.data.key };
+      const requestBody = { ...formData, imgUrl: uploadConfig.data.key };
       const { data } = await applicants.post('/', requestBody, config);
 
       dispatch({ type: CREATE_PROFILE_SUCCESS, payload: data });

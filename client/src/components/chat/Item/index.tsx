@@ -16,9 +16,9 @@ export const ChatItem: FC<IProps> = ({ chat }) => {
   const { selectedChatId } = useTypedSelector((state) => state.chats);
 
   const partner = chat.users.find((user) => user._id !== currentUser?._id);
-  const src = partner?.avatar.startsWith('http')
-    ? `${partner.avatar}`
-    : `${s3Url}/${partner!.avatar}`;
+  const src = partner?.imgUrl.startsWith('http')
+    ? `${partner.imgUrl}`
+    : `${s3Url}/${partner!.imgUrl}`;
 
   const history = useHistory();
 

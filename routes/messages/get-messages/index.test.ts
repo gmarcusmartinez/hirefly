@@ -38,7 +38,7 @@ describe('Unsuccessful Message Fetch: User does not belong to chat', () => {
       .expect(201);
 
     // Create User Profile
-    const avatar = 'fakeimg.com';
+    const imgUrl = 'fakeimg.com';
     const firstName = 'Marcus';
     const lastName = 'Martinez';
     const period = 'full-time';
@@ -47,14 +47,14 @@ describe('Unsuccessful Message Fetch: User does not belong to chat', () => {
     await request(app)
       .post('/api/profiles')
       .set('Cookie', user.header['set-cookie'][0])
-      .send({ firstName, lastName, avatar, period, position })
+      .send({ firstName, lastName, imgUrl, period, position })
       .expect(201);
 
     // Create Partner Profile
     const { body } = await request(app)
       .post('/api/profiles')
       .set('Cookie', partner.header['set-cookie'][0])
-      .send({ firstName, lastName, avatar, period, position })
+      .send({ firstName, lastName, imgUrl, period, position })
       .expect(201);
 
     partnerId = body.userId;
@@ -96,7 +96,7 @@ describe('Unsuccessful Message Fetch: User does not belong to chat', () => {
       .expect(201);
 
     // Create User Profile
-    const avatar = 'fakeimg.com';
+    const imgUrl = 'fakeimg.com';
     const firstName = 'Marcus';
     const lastName = 'Martinez';
     const period = 'full-time';
@@ -105,14 +105,14 @@ describe('Unsuccessful Message Fetch: User does not belong to chat', () => {
     await request(app)
       .post('/api/profiles')
       .set('Cookie', user.header['set-cookie'][0])
-      .send({ firstName, lastName, avatar, period, position })
+      .send({ firstName, lastName, imgUrl, period, position })
       .expect(201);
 
     // Create Partner Profile
     const { body } = await request(app)
       .post('/api/profiles')
       .set('Cookie', partner.header['set-cookie'][0])
-      .send({ firstName, lastName, avatar, period, position })
+      .send({ firstName, lastName, imgUrl, period, position })
       .expect(201);
 
     partnerId = body.userId;

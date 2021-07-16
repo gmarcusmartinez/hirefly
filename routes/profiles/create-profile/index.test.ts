@@ -28,7 +28,7 @@ describe('Route Access', () => {
 });
 
 describe('Unsuccessful Profile Creation', () => {
-  const avatar = 'test@test.com';
+  const imgUrl = 'test@test.com';
   const firstName = 'Marcus';
   const lastName = 'Martinez';
 
@@ -36,7 +36,7 @@ describe('Unsuccessful Profile Creation', () => {
     const response = await request(app)
       .post('/api/profiles')
       .set('Cookie', fakeAuthCookie())
-      .send({ firstName: '', lastName, avatar })
+      .send({ firstName: '', lastName, imgUrl })
       .expect(400);
 
     const errMsg = 'Please provide a first name.';
@@ -47,18 +47,18 @@ describe('Unsuccessful Profile Creation', () => {
     const response = await request(app)
       .post('/api/profiles')
       .set('Cookie', fakeAuthCookie())
-      .send({ firstName, lastName: '', avatar })
+      .send({ firstName, lastName: '', imgUrl })
       .expect(400);
 
     const errMsg = 'Please provide a last name.';
     expect(response.body.errors[0].message).toBe(errMsg);
   });
 
-  it('returns a 400 w/ invalid avatar', async () => {
+  it('returns a 400 w/ invalid imgUrl', async () => {
     const response = await request(app)
       .post('/api/profiles')
       .set('Cookie', fakeAuthCookie())
-      .send({ firstName, lastName, avatar: '' })
+      .send({ firstName, lastName, imgUrl: '' })
       .expect(400);
 
     const errMsg = 'Please provide a profile Picture.';
@@ -71,13 +71,13 @@ describe('Unsuccessful Profile Creation', () => {
     await request(app)
       .post('/api/profiles')
       .set('Cookie', cookie)
-      .send({ firstName, lastName, avatar })
+      .send({ firstName, lastName, imgUrl })
       .expect(201);
 
     const response = await request(app)
       .post('/api/profiles')
       .set('Cookie', cookie)
-      .send({ firstName, lastName, avatar })
+      .send({ firstName, lastName, imgUrl })
       .expect(400);
 
     const errMsg = 'If you would like to modify your profile please update it.';
@@ -95,7 +95,7 @@ describe('Successful Profile Creattion', () => {
       .send({ email, password })
       .expect(201);
 
-    const avatar = 'test@test.com';
+    const imgUrl = 'test@test.com';
     const firstName = 'Marcus';
     const lastName = 'Martinez';
     const cookie = res.header['set-cookie'][0];
@@ -103,7 +103,7 @@ describe('Successful Profile Creattion', () => {
     await request(app)
       .post('/api/profiles')
       .set('Cookie', cookie)
-      .send({ firstName, lastName, avatar })
+      .send({ firstName, lastName, imgUrl })
       .expect(201);
   });
 });

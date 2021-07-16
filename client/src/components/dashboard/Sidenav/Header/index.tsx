@@ -7,9 +7,9 @@ export const Header = () => {
   const { toggleSidenav, setSidenavComponent } = useActions();
   const { me } = useTypedSelector(({ profiles }) => profiles);
 
-  const src = me?.avatar.startsWith('http')
-    ? `${me.avatar}`
-    : `${s3Url}/${me?.avatar}`;
+  const src = me?.imgUrl.startsWith('http')
+    ? `${me.imgUrl}`
+    : `${s3Url}/${me?.imgUrl}`;
 
   const { expanded, theme, mode } = useTypedSelector(
     ({ dashboard }) => dashboard

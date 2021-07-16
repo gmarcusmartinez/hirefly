@@ -16,7 +16,7 @@ interface ChatModel extends mongoose.Model<ChatDoc> {
 
 const chatSchema = new mongoose.Schema<ChatDoc>(
   {
-    users: [{ userId: String, firstName: String, avatar: String }],
+    users: [{ userId: String, firstName: String, imgUrl: String }],
     latestMessage: { type: String, default: '' },
   },
   { timestamps: true }

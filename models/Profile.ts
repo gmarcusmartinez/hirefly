@@ -4,11 +4,11 @@ const { ObjectId } = mongoose.Schema.Types;
 export interface ProfileSubDoc {
   _id: string;
   firstName: string;
-  avatar: string;
+  imgUrl: string;
 }
 
 interface ProfileAttrs {
-  avatar: string;
+  imgUrl: string;
   cv: string;
   bio: string;
   firstName: string;
@@ -22,7 +22,7 @@ interface ProfileDoc extends mongoose.Document {
   userId: string;
   firstName: string;
   lastName: string;
-  avatar: string;
+  imgUrl: string;
   cv: string;
   bio: string;
   link: string;
@@ -39,7 +39,7 @@ const profileSchema = new mongoose.Schema<ProfileDoc>({
   userId: { type: ObjectId, ref: 'User', required: true },
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
-  avatar: { type: String, required: true },
+  imgUrl: { type: String, required: true },
   cv: { type: String, default: '' },
   bio: { type: String, default: '' },
   link: { type: String, default: '' },
@@ -50,8 +50,8 @@ const profileSchema = new mongoose.Schema<ProfileDoc>({
 profileSchema.statics.build = (attrs: ProfileAttrs) => new Profile(attrs);
 
 profileSchema.methods.createSubDoc = function () {
-  const { userId, firstName, avatar } = this;
-  return { _id: userId, firstName, avatar };
+  const { userId, firstName, imgUrl } = this;
+  return { _id: userId, firstName, imgUrl };
 };
 
 const Profile = mongoose.model<ProfileDoc, ProfileModel>(

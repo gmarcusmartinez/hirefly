@@ -6,7 +6,7 @@ export const getNotifications = asyncHandler(
   async (req: Request, res: Response) => {
     const notifications = await Notification.find({
       userTo: req.currentUser!._id,
-    }).populate({ path: 'userFrom', select: 'firstName lastName avatar' });
+    }).populate({ path: 'userFrom', select: 'firstName lastName imgUrl' });
     res.status(200).send(notifications);
   }
 );

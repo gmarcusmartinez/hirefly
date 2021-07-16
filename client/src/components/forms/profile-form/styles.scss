@@ -9,7 +9,7 @@
     'link link'
     'bio bio'
     'bio bio'
-    'avatar cv'
+    'img cv'
     'btn btn';
   gap: 1.2rem 0.5rem;
   height: min-content;
@@ -34,7 +34,7 @@
       height: calc(100% - 10px);
     }
     &:nth-of-type(6) {
-      grid-area: avatar;
+      grid-area: img;
     }
     &:nth-of-type(7) {
       grid-area: cv;
@@ -65,7 +65,7 @@
       'link link'
       'bio bio'
       'bio bio'
-      'avatar cv'
+      'img cv'
       'btn btn';
     margin: 2rem;
     grid-column: 2;

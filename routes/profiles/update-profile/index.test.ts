@@ -30,7 +30,7 @@ describe('Route Access', () => {
 
 describe('Unsuccessful Profile Update: Profile does not exist', () => {
   it('returns a 400 w/ when no profile exists for the user', async () => {
-    const avatar = 'test@test.com';
+    const imgUrl = 'test@test.com';
     const firstName = 'Marcus';
     const lastName = 'Martinez';
     const period = 'full-time';
@@ -39,7 +39,7 @@ describe('Unsuccessful Profile Update: Profile does not exist', () => {
     const response = await request(app)
       .put('/api/profiles')
       .set('Cookie', fakeAuthCookie())
-      .send({ firstName, lastName, avatar, period, position })
+      .send({ firstName, lastName, imgUrl, period, position })
       .expect(400);
 
     const errMsg = 'Profile not found';
@@ -59,7 +59,7 @@ describe('Successful Profile Update', () => {
       .expect(201);
 
     // Create Profile
-    const avatar = 'test@test.com';
+    const imgUrl = 'test@test.com';
     const firstName = 'Marcus';
     const lastName = 'Martinez';
     const period = 'full-time';
@@ -69,7 +69,7 @@ describe('Successful Profile Update', () => {
     await request(app)
       .post('/api/profiles')
       .set('Cookie', cookie)
-      .send({ firstName, lastName, avatar, period, position })
+      .send({ firstName, lastName, imgUrl, period, position })
       .expect(201);
 
     await request(app)
@@ -78,7 +78,7 @@ describe('Successful Profile Update', () => {
       .send({
         firstName: 'Updated First name',
         lastName,
-        avatar,
+        imgUrl,
         period,
         position,
       })

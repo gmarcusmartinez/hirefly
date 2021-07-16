@@ -33,7 +33,7 @@ describe('My Profile Found', () => {
       .send({ email, password })
       .expect(201);
 
-    const avatar = 'test@test.com';
+    const imgUrl = 'test@test.com';
     const firstName = 'Marcus';
     const lastName = 'Martinez';
     const period = 'full-time';
@@ -44,7 +44,7 @@ describe('My Profile Found', () => {
     const response = await request(app)
       .post('/api/profiles')
       .set('Cookie', cookie)
-      .send({ firstName, lastName, avatar, period, position })
+      .send({ firstName, lastName, imgUrl, period, position })
       .expect(201);
 
     //Fetch Profile

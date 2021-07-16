@@ -18,7 +18,7 @@ export const updateProfile =
         const headers = { headers: { ContentType } };
         await axios.put(uploadConfig.data.url, imageData, headers);
 
-        const requestBody = { ...formData, avatar: uploadConfig.data.key };
+        const requestBody = { ...formData, imgUrl: uploadConfig.data.key };
         const { data } = await applicants.put('/', requestBody, config);
 
         dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: data });

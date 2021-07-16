@@ -25,7 +25,7 @@ export const blankForm = {
   lastName: '',
   location: '',
   link: '',
-  avatar: '',
+  imgUrl: '',
   cv: '',
   period: 'full-time',
   position: 'backend',
