@@ -3,6 +3,7 @@ import { FC } from 'react';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { useHistory } from 'react-router-dom';
 import { useActions } from 'hooks/use-actions';
+import { NotificationsBadge } from 'components/notifications/Badge';
 
 interface IProps {
   text: string;
@@ -37,6 +38,7 @@ export const SettingsLink: FC<IProps> = ({ text, icon, path }) => {
     >
       <span className='material-icons'>{icon}</span>
       <span className={`${displayText}`}>{text}</span>
+      {text === 'Notifications' && <NotificationsBadge />}
     </div>
   );
 };

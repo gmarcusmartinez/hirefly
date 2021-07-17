@@ -19,12 +19,20 @@ export const notifications = (
 ): NotificationsState => {
   const { type, payload } = action;
   switch (type) {
+    case NotificationActionTypes.DELETE_NOTIFICATION_REQUEST:
     case NotificationActionTypes.FETCH_NOTIFICATIONS_REQUEST:
       return { ...state, loading: true };
 
     case NotificationActionTypes.FETCH_NOTIFICATIONS_SUCCESS:
       return { ...state, items: payload };
 
+    case NotificationActionTypes.DELETE_NOTIFICATION_SUCCESS:
+      return {
+        ...state,
+        items: state.items.filter((item) => item._id !== payload),
+      };
+
+    case NotificationActionTypes.DELETE_NOTIFICATION_FAILURE:
     case NotificationActionTypes.FETCH_NOTIFICATIONS_FAILURE:
       return { ...state, errors: payload };
 

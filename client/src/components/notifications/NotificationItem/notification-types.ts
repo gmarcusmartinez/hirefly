@@ -1,3 +1,6 @@
 export const notificationTypes = {
-  'application:accepted': 'has approved your application. You may now chat.',
+  'application:accepted': {
+    title: 'has approved your application. You may now chat.',
+    redirect: '/dashboard/connections',
+  },
 };

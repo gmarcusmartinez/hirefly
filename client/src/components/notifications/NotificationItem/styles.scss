@@ -1,6 +1,7 @@
 .notification-item {
   border-radius: 0.2rem;
   box-shadow: var(--box-shadow-light);
+  cursor: pointer;
   display: grid;
   grid-template-columns: 6rem auto 4rem;
   height: 6rem;
@@ -22,6 +23,15 @@
       font-size: 1.1rem;
     }
   }
+  &__trash {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    span {
+      font-size: 3rem;
+      cursor: pointer;
+    }
+  }
   &.darkmode {
     background-color: #121212;
     box-shadow: 0 0.1rem 0.2rem #000;
@@ -30,6 +40,9 @@
         color: var(--color-white);
       }
     }
+  }
+  &:active {
+    transform: translate(2px, 2px);
   }
 }
 @include respond(tablet) {

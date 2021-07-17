@@ -5,6 +5,7 @@ import { Chat } from '../../../models/Chat';
 export const getChats = asyncHandler(async (req: Request, res: Response) => {
   const chats = await Chat.find({
     users: { $elemMatch: { _id: { $eq: req.currentUser!._id } } },
-  });
+  }).sort({ createdAt: -1 });
+
   res.status(200).send(chats);
 });

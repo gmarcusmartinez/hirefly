@@ -49,6 +49,7 @@ export interface INotification {
   notificationType: 'application:accepted';
   entityId: string;
   createdAt: string;
+  opened: boolean;
 }
 
 export interface IProfile {
