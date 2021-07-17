@@ -20,9 +20,9 @@ export const createApplication =
   async (dispatch: Dispatch) => {
     const config = { headers: { 'Content-Type': 'application/json' } };
     try {
-      // dispatch({ type: ApplicationActionTypes.CREATE_APPLICATION_REQUEST });
-      // await applications.post('/', { jobId }, config);
-      // dispatch({ type: ApplicationActionTypes.CREATE_APPLICATION_SUCCESS });
+      dispatch({ type: ApplicationActionTypes.CREATE_APPLICATION_REQUEST });
+      await applications.post('/', { jobId }, config);
+      dispatch({ type: ApplicationActionTypes.CREATE_APPLICATION_SUCCESS });
 
       if (current === last) {
         dispatch({ type: JobActionTypes.GET_ALL_JOBS_REQUEST });

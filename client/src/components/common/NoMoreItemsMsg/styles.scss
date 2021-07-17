@@ -1,10 +1,13 @@
+$retracted-sidenav-width: 7rem;
+
 .no-items {
   align-items: center;
   color: var(--color-grey-tertiary);
   display: flex;
   height: 100%;
   justify-content: center;
-  width: 100%;
+  margin-left: $retracted-sidenav-width;
+  width: calc(100% - $retracted-sidenav-width);
   span {
     font-size: 1.45rem;
     letter-spacing: var(--letter-spacing-sm);
@@ -12,4 +15,11 @@
 }
 .no-items.darkmode {
   color: var(--color-white);
+}
+
+@include respond(desktop) {
+  .no-items {
+    margin-left: unset;
+    width: 100%;
+  }
 }

@@ -45,7 +45,7 @@ describe('Unsuccessfull Application Creation: Applicant is Job Creator', () => {
     // Recruiter Creates Job
     const title = 'Node Js Backend Developer';
     const description = 'lorem ipsum';
-    const location = 'Berlin, Germany';
+    const location = 'Berlin';
     const salary = 50000;
     const imgUrl = 'fakeimage.com';
 
@@ -74,7 +74,7 @@ describe('Successfull Application Creation', () => {
     // Recruiter Creates Job
     const title = 'Node Js Backend Developer';
     const description = 'lorem ipsum';
-    const location = 'Berlin, Germany';
+    const location = 'Berlin';
     const salary = 50000;
     const imgUrl = 'fakeimage.com';
 

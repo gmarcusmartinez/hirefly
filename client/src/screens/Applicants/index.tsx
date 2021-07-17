@@ -18,7 +18,7 @@ export const Applicants = () => {
     return () => {
       setSelectedJob(null);
     };
-  }, [fetchApplications, selected]);
+  }, [fetchApplications, setSelectedJob, selected]);
 
   const last = items.length - 1;
   const jobId = selected!._id;

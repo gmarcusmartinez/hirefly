@@ -21,7 +21,7 @@ describe('Route Access', () => {
 describe('Unsuccessful Job Deletion: User is not Job Creator', () => {
   const title = 'Node Js Backend Developer';
   const description = 'lorem ipsum';
-  const location = 'Berlin, Germany';
+  const location = 'Berlin';
   const salary = 50000;
   const imgUrl = 'fakeimage.com';
 
@@ -42,7 +42,7 @@ describe('Unsuccessful Job Deletion: User is not Job Creator', () => {
 describe('Successful Job Deletion', () => {
   const title = 'Node Js Backend Developer';
   const description = 'lorem ipsum';
-  const location = 'Berlin, Germany';
+  const location = 'Berlin';
   const salary = 50000;
   const imgUrl = 'fakeimage.com';
 

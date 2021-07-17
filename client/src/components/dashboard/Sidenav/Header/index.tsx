@@ -24,6 +24,7 @@ export const Header = () => {
     e.stopPropagation();
     toggleSidenav(!expanded);
   };
+
   return (
     <div className='sidenav__header' onClick={displaySettings}>
       {me && <span className='menu material-icons'>menu</span>}
