@@ -40,9 +40,13 @@ export interface IMessage {
 
 export interface INotification {
   _id: string;
-  userFrom: string;
+  userFrom: {
+    firstName: string;
+    imgUrl: string;
+    lastName: string;
+  };
   userTo: string;
-  notificationType: string;
+  notificationType: 'application:accepted';
   entityId: string;
   createdAt: string;
 }

@@ -1,2 +1,43 @@
 .notification-item {
+  border-radius: 0.2rem;
+  box-shadow: var(--box-shadow-light);
+  display: grid;
+  grid-template-columns: 6rem auto 4rem;
+  height: 6rem;
+  margin-bottom: 0.25rem;
+  opacity: 0.9;
+  padding: 0.75rem;
+  img {
+    border-radius: 50%;
+    height: 4.5rem;
+    width: 4.5rem;
+
+    object-fit: cover;
+  }
+  &__content {
+    align-self: center;
+    overflow-y: hidden;
+    span {
+      color: var(--color-grey-tertiary);
+      font-size: 1.1rem;
+    }
+  }
+  &.darkmode {
+    background-color: #121212;
+    box-shadow: 0 0.1rem 0.2rem #000;
+    .notification-item__content {
+      span {
+        color: var(--color-white);
+      }
+    }
+  }
+}
+@include respond(tablet) {
+  .notification-item {
+    &__content {
+      span {
+        font-size: 1.25rem;
+      }
+    }
+  }
 }
