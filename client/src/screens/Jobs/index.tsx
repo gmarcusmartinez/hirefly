@@ -17,7 +17,7 @@ export const Jobs = () => {
     return () => {
       clearJobs();
     };
-  }, []);
+  }, [getAllJobs, clearJobs]);
 
   const last = items.length - 1;
 

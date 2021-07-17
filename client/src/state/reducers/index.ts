@@ -6,6 +6,7 @@ import { chats } from './chats';
 import { profiles } from './profiles';
 import { dashboard } from './dashboard';
 import { modal } from './modal';
+import { notifications } from './notifications';
 import { nav } from './nav';
 import { socket } from './socket';
 import { jobs } from './jobs';
@@ -17,6 +18,7 @@ export const rootReducer = combineReducers({
   chats,
   dashboard,
   modal,
+  notifications,
   profiles,
   jobs,
   nav,
