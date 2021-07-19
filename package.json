@@ -10,7 +10,8 @@
   "scripts": {
     "dev": "ts-node-dev --poll index.ts",
     "start": "node dist/index.js",
-    "test": "jest --watchAll --no-cache"
+    "test": "jest --watchAll --no-cache",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "jest": {
     "preset": "ts-jest",
