@@ -43,6 +43,7 @@ var Chat_1 = require("../../models/Chat");
 exports.server = http_1.createServer(app_1.app);
 var io = require('socket.io')(exports.server, {
     cors: { origin: 'http://localhost:3000' },
+    methods: ['GET', 'POST'],
 });
 io.on('connection', function (socket) {
     // Join User to thier own room on the socket connection
