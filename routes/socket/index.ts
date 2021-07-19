@@ -7,10 +7,8 @@ import { Chat } from '../../models/Chat';
 export const server = createServer(app);
 
 const io = require('socket.io')(server, {
-  // Dev
-  // cors: { origin: 'http://localhost:3000' },
-  // Prod
-  cors: { origin: 'https://hirefly-mvp.herokuapp.com/' },
+  cors: { origin: 'http://localhost:3000' },
+  methods: ['GET', 'POST'],
 });
 
 io.on('connection', (socket: Socket) => {
