@@ -1,3 +1,4 @@
+export * from './alerts';
 export * from './applications';
 export * from './auth';
 export * from './chats';

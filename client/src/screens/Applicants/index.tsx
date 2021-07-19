@@ -1,12 +1,14 @@
 import React from 'react';
 import { DashHeader } from 'components/common/DashHeader';
 import { useTypedSelector } from 'hooks/use-typed-selector';
+import { SocketContext } from 'context/socket';
 import { useActions } from 'hooks/use-actions';
 import { SwiperCard } from 'components/swiper-card';
 import { Spinner } from 'components/common/Spinner';
 import { NoItems } from 'components/common/NoMoreItemsMsg';
 
 export const Applicants = () => {
+  const socket = React.useContext(SocketContext);
   const { fetchApplications, nextApplication, setSelectedJob } = useActions();
   const { selected } = useTypedSelector(({ jobs }) => jobs);
   const { items, loading, current } = useTypedSelector(
@@ -23,8 +25,10 @@ export const Applicants = () => {
   const last = items.length - 1;
   const jobId = selected!._id;
 
-  const approve = (id: string) =>
+  const approve = (id: string) => {
     nextApplication({ current, last, id, status: 'accepted', jobId });
+    socket.emit('application accepted', items[current].applicant);
+  };
 
   const decline = (id: string) =>
     nextApplication({ current, last, id, status: 'declined', jobId });

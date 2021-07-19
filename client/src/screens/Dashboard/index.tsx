@@ -3,24 +3,16 @@ import { useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import { IMessage } from 'interfaces';
 import { useTypedSelector } from 'hooks/use-typed-selector';
-import { CreateProfile } from 'screens/Profile';
 import { Sidenav } from 'components/dashboard/Sidenav';
 import { useActions } from 'hooks/use-actions';
-import { Signout } from 'screens/Signout';
-import { Chat } from 'screens/Chat';
-import { PostJob } from 'screens/PostJob';
 import { SocketActionTypes } from 'state';
 import { SocketContext } from 'context/socket';
-import { MyJobs } from 'screens/MyJobs';
-import { EditJob } from 'screens/EditJob';
-import { Noitifications } from 'screens/Notifications';
-import { Jobs } from 'screens/Jobs';
-import { Applicants } from 'screens/Applicants';
+import { AlertContainer } from 'components/alerts/AlertContainer';
+import * as s from 'screens';
 
 export const Dashboard = () => {
   const socket = React.useContext(SocketContext);
-  const { messageReceived, messageSent, getMe } = useActions();
-  const { selectedChatId } = useTypedSelector((state) => state.chats);
+  const { messageReceived, messageSent, getMe, setAlert } = useActions();
   const { theme, mode } = useTypedSelector(({ dashboard }) => dashboard);
   const { currentUser } = useTypedSelector(({ auth }) => auth);
   const dispatch = useDispatch();
@@ -42,44 +34,39 @@ export const Dashboard = () => {
   }, [dispatch]);
 
   React.useEffect(() => {
+    socket.on('notification received', (msg) => setAlert(msg, 'success'));
+    // eslint-disable-next-line
+  }, []);
+
+  React.useEffect(() => {
     socket.on('message received', (msg: IMessage) => messageReceived(msg));
-    return () => {
-      socket.off('message received', (msg: IMessage) => messageReceived(msg));
-    };
     // eslint-disable-next-line
   }, [messageReceived]);
 
   React.useEffect(() => {
     socket.on('message sent', (msg: IMessage) => messageSent(msg));
-    return () => {
-      socket.off('message sent', (msg: IMessage) => messageSent(msg));
-    };
     // eslint-disable-next-line
   }, [messageSent]);
-
-  React.useEffect(() => {
-    socket.emit('join room', selectedChatId);
-    return () => {
-      socket.emit('leave room', selectedChatId);
-    };
-    // eslint-disable-next-line
-  }, [selectedChatId]);
 
   return (
     <div className='dashboard' style={{ backgroundColor: theme }}>
       <div className={`dashboard__panel ${mode}`}>
         <Sidenav />
         <div className='dashboard__main'>
+          <AlertContainer />
           <Switch>
-            <Route path='/dashboard/applicants' component={Applicants} />
-            <Route path='/dashboard/connections' component={Chat} />
-            <Route path='/dashboard/edit-job' component={EditJob} />
-            <Route path='/dashboard/jobs' component={Jobs} />
-            <Route path='/dashboard/job-form' component={PostJob} />
-            <Route path='/dashboard/my-jobs' component={MyJobs} />
-            <Route path='/dashboard/notifications' component={Noitifications} />
-            <Route path='/dashboard/profile-form' component={CreateProfile} />
-            <Route path='/dashboard/signout' component={Signout} />
+            <Route path='/dashboard/applicants' component={s.Applicants} />
+            <Route path='/dashboard/connections' component={s.Chat} />
+            <Route path='/dashboard/edit-job' component={s.EditJob} />
+            <Route path='/dashboard/jobs' component={s.Jobs} />
+            <Route path='/dashboard/job-form' component={s.PostJob} />
+            <Route path='/dashboard/my-jobs' component={s.MyJobs} />
+            <Route
+              path='/dashboard/notifications'
+              component={s.Notifications}
+            />
+            <Route path='/dashboard/profile-form' component={s.CreateProfile} />
+            <Route path='/dashboard/signout' component={s.Signout} />
           </Switch>
         </div>
       </div>

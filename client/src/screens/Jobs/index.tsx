@@ -6,7 +6,6 @@ import { IJob } from 'interfaces';
 import { Spinner } from 'components/common/Spinner';
 import { DashHeader } from 'components/common/DashHeader';
 import { NoItems } from 'components/common/NoMoreItemsMsg';
-import { AlertContainer } from 'components/alerts/AlertContainer';
 
 export const Jobs = () => {
   const { items, loading, current } = useTypedSelector(({ jobs }) => jobs);
@@ -41,7 +40,6 @@ export const Jobs = () => {
     <div className='jobs-screen'>
       <DashHeader title='Find Jobs' />
       <div className='jobs-screen__main'>
-        <AlertContainer />
         <div className='jobs-screen__list'>{list}</div>
         <div className='jobs-screen__selected'>{list[current]}</div>
       </div>

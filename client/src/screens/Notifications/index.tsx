@@ -5,7 +5,7 @@ import { useTypedSelector } from 'hooks/use-typed-selector';
 import { INotification } from 'interfaces';
 import React from 'react';
 
-export const Noitifications = () => {
+export const Notifications = () => {
   const { fetchNotifications, markAsRead } = useActions();
   const { items } = useTypedSelector((state) => state.notifications);
 
