@@ -11,7 +11,8 @@ interface IProps {
   path: string;
 }
 export const SettingsLink: FC<IProps> = ({ text, icon, path }) => {
-  const { toggleSidenav, setSidenavComponent } = useActions();
+  const { toggleSidenav, setSidenavComponent, fetchNotifications } =
+    useActions();
   const [color, setColor] = React.useState('');
 
   const { mode, theme, expanded } = useTypedSelector(
@@ -27,7 +28,11 @@ export const SettingsLink: FC<IProps> = ({ text, icon, path }) => {
     toggleSidenav(false);
     if (path === '/dashboard/jobs') setSidenavComponent('MESSAGES');
   };
-
+  React.useEffect(() => {
+    if (text === 'Notifications') {
+      fetchNotifications();
+    }
+  }, []);
   return (
     <div
       className={`settings__link ${mode} ${active}`}
