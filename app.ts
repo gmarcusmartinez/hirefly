@@ -1,4 +1,5 @@
 import cors from 'cors';
+import path from 'path';
 import 'colors';
 import { NotFoundError, errorHandler } from './common';
 import express from 'express';
@@ -28,6 +29,15 @@ app.use('/api/messages', messagesRouter);
 app.use('/api/notifications', notificationsRouter);
 app.use('/api/profiles', profileRouter);
 app.use('/api/uploads', uploadRouter);
+
+const __dirname = path.resolve();
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client/build')));
+
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  );
+}
 
 app.all('*', async () => {
   throw new NotFoundError();
