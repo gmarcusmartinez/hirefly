@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.applicationsRouter = void 0;
+var express_1 = require("express");
+var common_1 = require("../../common");
+var create_application_1 = require("./create-application");
+var validation_1 = require("./create-application/validation");
+var get_applications_1 = require("./get-applications");
+var update_application_1 = require("./update-application");
+var router = express_1.Router();
+exports.applicationsRouter = router;
+router.get('/:jobId', common_1.currentUser, common_1.requireAuth, get_applications_1.getApplications);
+router.post('/', common_1.currentUser, common_1.requireAuth, validation_1.applicationValidation, common_1.validateRequest, create_application_1.createApplication);
+router.put('/:id', common_1.currentUser, common_1.requireAuth, update_application_1.upadteApplication);
