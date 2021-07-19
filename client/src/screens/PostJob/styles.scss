@@ -1,9 +1,7 @@
-$retracted-sidenav-width: 7rem;
-
 .post-job {
   font-family: 'Varela Round', sans-serif;
   height: 100%;
-  margin-left: $retracted-sidenav-width;
+  margin-left: 7rem;
 
   &__header {
     box-shadow: var(--box-shadow-light);

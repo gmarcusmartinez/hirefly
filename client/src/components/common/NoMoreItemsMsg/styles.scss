@@ -1,13 +1,11 @@
-$retracted-sidenav-width: 7rem;
-
 .no-items {
   align-items: center;
   color: var(--color-grey-tertiary);
   display: flex;
   height: 100%;
   justify-content: center;
-  margin-left: $retracted-sidenav-width;
-  width: calc(100% - $retracted-sidenav-width);
+  margin-left: 7rem;
+  width: calc(100% - 7rem);
   span {
     font-size: 1.45rem;
     letter-spacing: var(--letter-spacing-sm);

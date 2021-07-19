@@ -1,8 +1,6 @@
-$retracted-sidenav-width: 7rem;
-
 .applicants {
   height: 100%;
-  margin-left: $retracted-sidenav-width;
+  margin-left: 7rem;
   &__main {
     height: calc(100% - 100px);
     overflow-y: scroll;
