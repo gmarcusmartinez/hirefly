@@ -1,5 +1,5 @@
-import { Request, Response } from 'express';
 import { v4 } from 'uuid';
+import { Request, Response } from 'express';
 import S3 from 'aws-sdk/clients/s3';
 import { Credentials } from 'aws-sdk';
 import keys from '../../../config/keys';

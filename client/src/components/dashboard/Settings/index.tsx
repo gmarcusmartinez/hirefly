@@ -1,7 +1,6 @@
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { SettingsLink } from './Link';
 import { Modes } from './Modes';
-import { Themes } from './Themes';
 
 export const Settings = () => {
   const { me } = useTypedSelector((state) => state.profiles);

@@ -1,6 +1,4 @@
 .job-card {
-  background-position: center;
-  background-size: cover;
   cursor: pointer;
   height: 34rem;
   margin-bottom: 0.5rem;
@@ -48,6 +46,7 @@
     right: 0;
     width: 8rem;
     i {
+      color: var(--color-primary);
       cursor: pointer;
       font-size: 3.2rem;
     }

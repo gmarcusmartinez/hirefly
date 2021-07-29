@@ -13,7 +13,7 @@ import * as s from 'screens';
 export const Dashboard = () => {
   const socket = React.useContext(SocketContext);
   const { messageReceived, messageSent, getMe, setAlert } = useActions();
-  const { theme, mode } = useTypedSelector(({ dashboard }) => dashboard);
+  const { mode } = useTypedSelector(({ dashboard }) => dashboard);
   const { currentUser } = useTypedSelector(({ auth }) => auth);
   const dispatch = useDispatch();
 
@@ -49,7 +49,7 @@ export const Dashboard = () => {
   }, [messageSent]);
 
   return (
-    <div className='dashboard' style={{ backgroundColor: theme }}>
+    <div className='dashboard'>
       <div className={`dashboard__panel ${mode}`}>
         <Sidenav />
         <div className='dashboard__main'>

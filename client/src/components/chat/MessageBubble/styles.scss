@@ -13,6 +13,7 @@
     border-bottom-right-radius: unset;
   }
   &.thiers {
+    background-color: var(--color-primary);
     justify-self: flex-start;
     filter: brightness(120%);
     margin-right: auto;

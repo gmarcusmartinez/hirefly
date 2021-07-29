@@ -1,9 +1,7 @@
 import { useActions } from 'hooks/use-actions';
-import { useTypedSelector } from 'hooks/use-typed-selector';
 
 export const DeleteNotification = ({ id }: { id: string }) => {
   const { deleteNotification } = useActions();
-  const { theme } = useTypedSelector((state) => state.dashboard);
 
   const handleDelete = (e: any) => {
     e.stopPropagation();
@@ -14,7 +12,7 @@ export const DeleteNotification = ({ id }: { id: string }) => {
     <div className='notification-item__trash'>
       <span
         className='material-icons'
-        style={{ color: theme }}
+        style={{ color: '#838dec' }}
         onClick={handleDelete}
       >
         delete
