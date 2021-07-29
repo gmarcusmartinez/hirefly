@@ -14,9 +14,6 @@ export const ChatInput = () => {
   const [content, setContent] = useState('');
   const [borderColor, setBorderColor] = useState('');
 
-  // const [typing, setTyping] = useState(false);
-  // const [lastTypingtime, setLastTypingtime] = useState(0);
-
   const handleFocus = () => setBorderColor(theme);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setContent(e.target.value);

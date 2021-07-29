@@ -22,7 +22,10 @@ export const createProfile =
 
     try {
       dispatch({ type: ProfileActionTypes.CREATE_PROFILE_REQUEST });
-      const uploadConfig = await axios.get('/api/uploads/image');
+      const uploadConfig = await axios.get('/api/uploads/image', {
+        params: { type: `${imageData.type}` },
+      });
+
       const ContentType = imageData.type;
       const headers = { headers: { ContentType } };
       await axios.put(uploadConfig.data.url, imageData, headers);

@@ -8,8 +8,8 @@ interface IProps {
   file: File | null;
 }
 export const FileInput: FC<IProps> = ({ item, onChange, file }) => {
-  const { theme, mode } = useTypedSelector(({ dashboard }) => dashboard);
-  const color = file ? theme : '';
+  const { mode } = useTypedSelector(({ dashboard }) => dashboard);
+  const color = file ? '#838dec' : '';
   const style = { borderColor: color };
 
   return (
@@ -20,7 +20,7 @@ export const FileInput: FC<IProps> = ({ item, onChange, file }) => {
         </i>
         <input type='file' accept={item.accept} onChange={onChange} />
       </div>
-      {item.required && <span style={{ color: theme }}>* </span>}
+      {item.required && <span>* </span>}
       <label className={mode}>{file ? '' : item.label}</label>
     </div>
   );

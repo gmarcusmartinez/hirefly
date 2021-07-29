@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { uploadImage } from './uploadImage';
+import { uploadImage } from './upload-image';
 import { requireAuth } from '../../common/middlewares/require-auth';
 import { currentUser } from '../../common';
 import { uploadJobImage } from './upload-job-image';

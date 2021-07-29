@@ -32,7 +32,6 @@ export const Settings = () => {
       />
       <SettingsLink text='Signout' icon='logout' path='signout' />
       <Modes />
-      <Themes />
     </div>
   );
 };

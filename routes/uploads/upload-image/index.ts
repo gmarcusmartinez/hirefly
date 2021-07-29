@@ -16,12 +16,14 @@ const s3 = new S3({
 });
 
 export const uploadImage = async (req: Request, res: Response) => {
-  const key = `${req.currentUser!._id}/${v4()}.jpeg`;
+  // @ts-ignore
+  const type = req.query.type!.split('/')[1];
+  const key = `${req.currentUser!._id}/${v4()}.${type}`;
   const signedUrlExpireSeconds = 60 * 15;
 
   const url = await s3.getSignedUrl('putObject', {
-    Bucket: 'hirefly-bucket',
-    ContentType: 'image/jpeg',
+    Bucket: 'hirefly-mvp-bucket',
+    ContentType: `${req.query.type}`,
     Key: key,
     Expires: signedUrlExpireSeconds,
   });
