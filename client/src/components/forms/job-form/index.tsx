@@ -9,7 +9,6 @@ import { useActions } from 'hooks/use-actions';
 
 export const JobForm = () => {
   const { createJob, updateJob, setSelectedJob } = useActions();
-  const { theme } = useTypedSelector(({ dashboard }) => dashboard);
   const { loading, selected } = useTypedSelector(({ jobs }) => jobs);
 
   const defaultForm = selected ? selected : blankForm;
@@ -70,7 +69,7 @@ export const JobForm = () => {
       <Select item={selects[0]} onChange={onChange} value={formData.position} />
       <Select item={selects[1]} onChange={onChange} value={formData.category} />
       <Text onChange={onChange} item={texts[7]} value={formData.skills} />
-      <button style={{ backgroundColor: theme }}>Submit</button>
+      <button>Submit</button>
     </form>
   );
 };

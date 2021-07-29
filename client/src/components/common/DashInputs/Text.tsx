@@ -13,7 +13,7 @@ interface IProps {
 
 export const Text: FC<IProps> = (props) => {
   const { item, onChange, value, inputType, error } = props;
-  const { theme, mode } = useTypedSelector((state) => state.dashboard);
+  const { mode } = useTypedSelector((state) => state.dashboard);
   const type = inputType ? inputType : 'text';
 
   return (
@@ -22,7 +22,7 @@ export const Text: FC<IProps> = (props) => {
       <div className={`dash-text-input ${mode}`}>
         <label>
           {item.label}
-          {item.required && <span style={{ color: theme }}>*</span>}
+          {item.required && <span>*</span>}
           {item.info && <small>{item.info}</small>}
         </label>
         <input type={type} name={item.name} onChange={onChange} value={value} />

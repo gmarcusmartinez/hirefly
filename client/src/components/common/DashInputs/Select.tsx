@@ -9,12 +9,12 @@ interface IProps {
 }
 
 export const Select: FC<IProps> = ({ item, onChange, value }) => {
-  const { theme, mode } = useTypedSelector((state) => state.dashboard);
+  const { mode } = useTypedSelector((state) => state.dashboard);
   return (
     <div className={`dash-select-input ${mode}`}>
       <label>
         {item.label}
-        {item.required && <span style={{ color: theme }}>*</span>}
+        {item.required && <span style={{ color: '#838dec' }}>*</span>}
       </label>
 
       <select onChange={onChange} name={item.name} value={value}>
@@ -25,7 +25,7 @@ export const Select: FC<IProps> = ({ item, onChange, value }) => {
         ))}
       </select>
 
-      <i className='material-icons' style={{ color: theme }}>
+      <i className='material-icons' style={{ color: '#838dec' }}>
         keyboard_arrow_down
       </i>
     </div>

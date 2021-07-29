@@ -13,11 +13,8 @@ interface IProps {
 export const SettingsLink: FC<IProps> = ({ text, icon, path }) => {
   const { toggleSidenav, setSidenavComponent, fetchNotifications } =
     useActions();
-  const [color, setColor] = React.useState('');
 
-  const { mode, theme, expanded } = useTypedSelector(
-    (state) => state.dashboard
-  );
+  const { mode, expanded } = useTypedSelector((state) => state.dashboard);
 
   const history = useHistory();
   const active = history.location.pathname === path;
@@ -28,18 +25,17 @@ export const SettingsLink: FC<IProps> = ({ text, icon, path }) => {
     toggleSidenav(false);
     if (path === '/dashboard/jobs') setSidenavComponent('MESSAGES');
   };
+
   React.useEffect(() => {
     if (text === 'Notifications') {
       fetchNotifications();
     }
-  }, []);
+  }, [fetchNotifications, text]);
   return (
     <div
       className={`settings__link ${mode} ${active}`}
       onClick={() => redirect(path)}
-      onMouseOver={() => setColor(theme)}
-      onMouseLeave={() => setColor('')}
-      style={active ? { color: theme } : { color }}
+      style={active ? { color: '#838dec' } : { color: '' }}
     >
       <span className='material-icons'>{icon}</span>
       <span className={`${displayText}`}>{text}</span>

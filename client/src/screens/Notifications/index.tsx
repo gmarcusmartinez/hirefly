@@ -17,7 +17,7 @@ export const Notifications = () => {
   React.useEffect(() => {
     fetchNotifications();
     if (unreadNotifications.length) markAsRead();
-  }, [fetchNotifications]);
+  }, [fetchNotifications, markAsRead, unreadNotifications.length]);
 
   return (
     <div className='notifications-screen'>

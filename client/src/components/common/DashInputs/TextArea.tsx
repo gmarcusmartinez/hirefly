@@ -11,13 +11,13 @@ interface IProps {
 }
 
 export const TextArea: FC<IProps> = ({ item, onChange, value }) => {
-  const { theme, mode } = useTypedSelector((state) => state.dashboard);
+  const { mode } = useTypedSelector((state) => state.dashboard);
 
   return (
     <div className={`dash-text-input ${mode}`}>
       <label>
         {item.label}
-        {item.required && <span style={{ color: theme }}>*</span>}
+        {item.required && <span>*</span>}
       </label>
       <textarea name={item.name} onChange={onChange} value={value} />
     </div>

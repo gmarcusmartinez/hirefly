@@ -5,14 +5,12 @@ interface DashboardState {
   sidenavComponent: string;
   expanded: boolean;
   mode: string;
-  theme: string;
 }
 
 const initialState = {
   sidenavComponent: 'MESSAGES',
   expanded: false,
   mode: 'darkmode',
-  theme: '#838dec',
 };
 
 export const dashboard = (
@@ -28,8 +26,6 @@ export const dashboard = (
       return { ...state, expanded: payload };
     case DashboardActionTypes.TOGGLE_MODE:
       return { ...state, mode: payload };
-    case DashboardActionTypes.SET_THEME:
-      return { ...state, theme: payload };
     default:
       return state;
   }

@@ -8,7 +8,6 @@ import { TextArea } from 'components/common/DashInputs/TextArea';
 
 export const ProfileForm = () => {
   const { createProfile, updateProfile } = useActions();
-  const { theme } = useTypedSelector(({ dashboard }) => dashboard);
 
   const { loading, me } = useTypedSelector(({ profiles }) => profiles);
   const defaultForm = me ? me : blankForm;
@@ -42,7 +41,7 @@ export const ProfileForm = () => {
       <TextArea onChange={onChange} item={texts[4]} value={formData.bio} />
       <FileInput item={files[0]} onChange={onImgChange} file={imageData} />
       <FileInput item={files[1]} onChange={() => {}} file={null} />
-      <button style={{ backgroundColor: theme }}>Submit</button>
+      <button>Submit</button>
     </form>
   );
 };
