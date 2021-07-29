@@ -1,9 +1,9 @@
+import React from 'react';
+import { INotification } from 'interfaces';
+import { useActions } from 'hooks/use-actions';
 import { DashHeader } from 'components/common/DashHeader';
 import { NotificationItem } from 'components/notifications/NotificationItem';
-import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
-import { INotification } from 'interfaces';
-import React from 'react';
 
 export const Notifications = () => {
   const { fetchNotifications, markAsRead } = useActions();
