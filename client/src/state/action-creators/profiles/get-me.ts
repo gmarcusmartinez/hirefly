@@ -11,7 +11,7 @@ export const getMe = () => async (dispatch: Dispatch) => {
     dispatch({ type: ProfileActionTypes.GET_ME_SUCCESS, payload: data });
     history.push('/dashboard/jobs');
   } catch (e) {
-    history.push('/dashboard/profile-form');
+    history.push('/dashboard/create-profile');
     dispatch({ type: ProfileActionTypes.GET_ME_FAILURE, payload: null });
     dispatch({ type: DashboardActionTypes.SET_COMPONENT, payload: 'SETTINGS' });
   }

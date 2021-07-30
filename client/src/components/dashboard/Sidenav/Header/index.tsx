@@ -17,7 +17,7 @@ export const Header = () => {
   const history = useHistory();
   const displaySettings = () => {
     setSidenavComponent('SETTINGS');
-    history.push('/dashboard/profile-form');
+    history.push('/dashboard/edit-profile');
   };
 
   const toggle = (e: any) => {

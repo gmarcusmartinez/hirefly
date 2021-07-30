@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
 import { IMessage } from 'interfaces';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { Sidenav } from 'components/dashboard/Sidenav';
@@ -8,14 +7,14 @@ import { useActions } from 'hooks/use-actions';
 import { SocketActionTypes } from 'state';
 import { SocketContext } from 'context/socket';
 import { AlertContainer } from 'components/alerts/AlertContainer';
-import * as s from 'screens';
+import { DashboardRoutes } from './routes';
 
 export const Dashboard = () => {
   const socket = React.useContext(SocketContext);
   const { messageReceived, messageSent, getMe, setAlert } = useActions();
-  const { mode } = useTypedSelector(({ dashboard }) => dashboard);
-  const { currentUser } = useTypedSelector(({ auth }) => auth);
   const dispatch = useDispatch();
+  const { currentUser } = useTypedSelector(({ auth }) => auth);
+  const { mode } = useTypedSelector(({ dashboard }) => dashboard);
 
   React.useEffect(() => {
     getMe();
@@ -54,20 +53,7 @@ export const Dashboard = () => {
         <Sidenav />
         <div className='dashboard__main'>
           <AlertContainer />
-          <Switch>
-            <Route path='/dashboard/applicants' component={s.Applicants} />
-            <Route path='/dashboard/connections' component={s.Chat} />
-            <Route path='/dashboard/edit-job' component={s.EditJob} />
-            <Route path='/dashboard/jobs' component={s.Jobs} />
-            <Route path='/dashboard/job-form' component={s.PostJob} />
-            <Route path='/dashboard/my-jobs' component={s.MyJobs} />
-            <Route
-              path='/dashboard/notifications'
-              component={s.Notifications}
-            />
-            <Route path='/dashboard/profile-form' component={s.CreateProfile} />
-            <Route path='/dashboard/signout' component={s.Signout} />
-          </Switch>
+          <DashboardRoutes />
         </div>
       </div>
     </div>

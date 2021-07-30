@@ -6,9 +6,10 @@ export { Signout } from './Signout';
 // Dashboard Screens
 export { Applicants } from './Applicants';
 export { Chat } from './Chat';
+export { CreateProfile } from './CreateProfile';
 export { EditJob } from './EditJob';
 export { Jobs } from './Jobs';
 export { MyJobs } from './MyJobs';
 export { Notifications } from './Notifications';
 export { PostJob } from './PostJob';
-export { CreateProfile } from './Profile';
+export { EditProfile } from './Profile';

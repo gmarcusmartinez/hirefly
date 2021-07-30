@@ -1,9 +1,7 @@
-import { useTypedSelector } from 'hooks/use-typed-selector';
 import { SettingsLink } from './Link';
 import { Modes } from './Modes';
 
 export const Settings = () => {
-  const { me } = useTypedSelector((state) => state.profiles);
   return (
     <div className='settings'>
       <SettingsLink text='Find Jobs' icon='search' path='/dashboard/jobs' />
@@ -25,9 +23,9 @@ export const Settings = () => {
         path='/dashboard/my-jobs'
       />
       <SettingsLink
-        text={`${me ? 'Edit' : 'Create'} Profile`}
+        text='Edit Profile'
         icon='edit'
-        path='/dashboard/profile-form'
+        path='/dashboard/edit-profile'
       />
       <SettingsLink text='Signout' icon='logout' path='signout' />
       <Modes />

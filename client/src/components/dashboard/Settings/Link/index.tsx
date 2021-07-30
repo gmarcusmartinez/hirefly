@@ -9,6 +9,7 @@ interface IProps {
   text: string;
   icon: string;
   path: string;
+  disabled?: boolean;
 }
 export const SettingsLink: FC<IProps> = ({ text, icon, path }) => {
   const { toggleSidenav, setSidenavComponent, fetchNotifications } =
