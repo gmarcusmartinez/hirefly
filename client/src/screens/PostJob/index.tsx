@@ -6,10 +6,20 @@ import { DashHeader } from 'components/common/DashHeader';
 import { PostJobSteps } from 'components/post-job/Steps';
 import { PostJobDetails } from 'components/post-job/Details';
 import { PostJobPayment } from 'components/post-job/Payment';
+import { blankForm } from 'screens/CreateProfile/form';
 
 export const PostJob = () => {
   const [step, setStep] = React.useState(0);
   const { errors } = useTypedSelector(({ jobs }) => jobs);
+
+  const [formData, setFormData] = React.useState(blankForm);
+  const [imageData, setImageData] = React.useState<File | null>(null);
+
+  const onChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   return (
     <div className='post-job'>
@@ -23,8 +33,16 @@ export const PostJob = () => {
               transform: `translateX(-${step * 100}%)`,
             }}
           >
-            <PostJobDetails setStep={setStep} />
-            <PostJobPayment setStep={setStep} />
+            <PostJobDetails
+              setStep={setStep}
+              onChange={onChange}
+              formData={formData}
+            />
+            <PostJobPayment
+              setStep={setStep}
+              onChange={onChange}
+              formData={formData}
+            />
           </div>
         </div>
         <ErrorsContainer errors={errors ? errors : null} />

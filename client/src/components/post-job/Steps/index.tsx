@@ -12,11 +12,11 @@ export const PostJobSteps: FC<IProps> = ({ step }) => {
         <span style={{ backgroundColor }}></span>
       </div>
       <div>
-        <h3>Salary</h3>
+        <h3>Salary / Loc.</h3>
         <span style={step >= 1 ? { backgroundColor } : {}}></span>
       </div>
       <div>
-        <h3>Image</h3>
+        <h3>Image / Desc.</h3>
         <span></span>
       </div>
       <div>

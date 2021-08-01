@@ -2,7 +2,24 @@
   height: 100%;
   width: 100%;
   position: absolute;
+  top: 4rem;
 }
 #payment {
   transform: translateX(100%);
+}
+.step-btn {
+  border: none;
+  border-radius: 0.4rem;
+  background-color: var(--color-primary);
+  color: #fff;
+  height: 4rem;
+  letter-spacing: var(--letter-spacing-sm);
+  margin-right: 0.5rem;
+  width: 12rem;
+  &.disabled {
+    background-color: var(--color-grey-primary);
+  }
+  &:active {
+    transform: translate(2px, 2px);
+  }
 }
