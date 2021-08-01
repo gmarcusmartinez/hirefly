@@ -19,8 +19,8 @@ export const FileInput: FC<IProps> = ({ item, onChange, file }) => {
           {item.icon}
         </i>
         <input type='file' accept={item.accept} onChange={onChange} />
+        {item.required && <span>* Required</span>}
       </div>
-      {item.required && <span>* </span>}
       <label className={mode}>{file ? '' : item.label}</label>
     </div>
   );

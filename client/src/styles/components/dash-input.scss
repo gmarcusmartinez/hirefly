@@ -8,7 +8,7 @@
   position: relative;
 
   label {
-    letter-spacing: var(--letter-spacing-sm);
+    letter-spacing: var(--letter-spacing-md);
     font-size: 1.25rem;
     span {
       margin-left: var(--margin-sm);
@@ -17,8 +17,7 @@
   }
 
   input,
-  select,
-  textarea {
+  select {
     background-color: transparent;
     border: none;
     border-radius: 0.4rem;
@@ -36,18 +35,9 @@
   select {
     font-size: 1.4rem;
   }
-  textarea {
-    height: 100%;
-    border-radius: 2.4rem;
-    font-family: 'Varela Round', sans-serif;
-    margin-top: var(--margin-sm);
-    padding-top: var(--padding-sm);
-    resize: none;
-  }
   &.darkmode {
     input,
-    select,
-    textarea {
+    select {
       background-color: #121212;
       color: var(--color-white);
     }
@@ -79,5 +69,48 @@
   /* Firefox */
   input[type='number'] {
     -moz-appearance: textfield;
+  }
+}
+
+.dash-text-area-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  margin: 1rem 0;
+
+  textarea {
+    background-color: transparent;
+    border: none;
+    border-radius: 0.4rem;
+    font-size: 1.6rem;
+    height: 20rem;
+    letter-spacing: var(--letter-spacing-md);
+    outline: none;
+    opacity: 0.8;
+    padding: 1rem;
+    resize: none;
+    width: 100%;
+  }
+
+  label {
+    font-size: 1.25rem;
+    letter-spacing: var(--letter-spacing-md);
+    margin-bottom: var(--margin-sm);
+
+    span {
+      margin-left: var(--margin-xs);
+      font-size: 1.4rem;
+    }
+  }
+
+  &.darkmode {
+    textarea {
+      background-color: #121212;
+      color: var(--color-white);
+    }
+    label {
+      color: var(--color-white);
+    }
   }
 }

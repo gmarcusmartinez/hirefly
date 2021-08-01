@@ -3,7 +3,7 @@ import { Text } from 'components/common/DashInputs';
 
 interface IProps {
   setStep: Function;
-  onChange: (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   formData: any;
 }
 

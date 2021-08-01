@@ -1,7 +1,7 @@
 .file-input {
   align-items: center;
   display: flex;
-  position: relative;
+  width: 100%;
   i {
     align-self: center;
     color: #999;
@@ -26,9 +26,9 @@
   label {
     color: #000;
     font-size: 1.2rem;
-    letter-spacing: var(--letter-spacing-sm);
+    letter-spacing: var(--letter-spacing-md);
     margin-left: var(--margin-sm);
-    width: 6rem;
+    margin-top: var(--margin-sm);
     &.darkmode {
       color: #fff;
     }
@@ -37,9 +37,11 @@
     color: var(--color-primary);
     position: absolute;
     margin-left: var(--margin-sm);
-    font-size: 1.6rem;
+    font-size: 1.2rem;
+    font-style: italic;
     left: 5rem;
-    top: 0;
+    top: -1rem;
+    width: max-content;
   }
   input[type='file'] {
     opacity: 0;

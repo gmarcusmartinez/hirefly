@@ -14,7 +14,7 @@ export const TextArea: FC<IProps> = ({ item, onChange, value }) => {
   const { mode } = useTypedSelector((state) => state.dashboard);
 
   return (
-    <div className={`dash-text-input ${mode}`}>
+    <div className={`dash-text-area-input ${mode}`}>
       <label>
         {item.label}
         {item.required && <span>*</span>}

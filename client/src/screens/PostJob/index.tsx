@@ -7,6 +7,7 @@ import { PostJobSteps } from 'components/post-job/Steps';
 import { PostJobDetails } from 'components/post-job/Details';
 import { PostJobPayment } from 'components/post-job/Payment';
 import { blankForm } from 'screens/CreateProfile/form';
+import { PostJobDesc } from 'components/post-job/Desc';
 
 export const PostJob = () => {
   const [step, setStep] = React.useState(0);
@@ -20,6 +21,11 @@ export const PostJob = () => {
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >
   ) => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const onImgChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) return;
+    setImageData(e.target.files![0]);
+  };
 
   return (
     <div className='post-job'>
@@ -42,6 +48,13 @@ export const PostJob = () => {
               setStep={setStep}
               onChange={onChange}
               formData={formData}
+            />
+            <PostJobDesc
+              setStep={setStep}
+              onChange={onChange}
+              formData={formData}
+              imageData={imageData}
+              onImgChange={onImgChange}
             />
           </div>
         </div>

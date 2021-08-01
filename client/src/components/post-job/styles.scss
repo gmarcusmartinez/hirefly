@@ -1,11 +1,14 @@
 .post-job__step {
-  height: 100%;
+  height: calc(100% - 40px);
   width: 100%;
   position: absolute;
   top: 4rem;
 }
 #payment {
   transform: translateX(100%);
+}
+#desc {
+  transform: translateX(200%);
 }
 .step-btn {
   border: none;
