@@ -1,0 +1,27 @@
+.post-job__steps {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  height: 6rem;
+  width: 100%;
+  div {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    font-size: 1.25rem;
+    height: 100%;
+    letter-spacing: var(--letter-spacing-sm);
+    text-align: center;
+    h3 {
+      align-self: center;
+      flex-grow: 1;
+      line-height: 5rem;
+    }
+    span {
+      animation: slide-right 0.2s ease-in-out;
+      height: 1rem;
+      margin-top: auto;
+    }
+  }
+}
