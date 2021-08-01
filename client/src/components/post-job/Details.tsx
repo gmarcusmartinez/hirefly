@@ -16,8 +16,6 @@ export const PostJobDetails: FC<IProps> = ({ setStep, onChange, formData }) => {
     { label: 'Job Title', name: 'title', required: true },
     { label: 'Company Name', name: 'company' },
     { label: 'Company Link', name: 'link' },
-    { label: 'City', name: 'city' },
-    { label: 'Country', name: 'country' },
   ];
 
   const selects = [
@@ -39,8 +37,6 @@ export const PostJobDetails: FC<IProps> = ({ setStep, onChange, formData }) => {
       <Text item={texts[0]} onChange={onChange} value={formData.title} />
       <Text item={texts[1]} onChange={onChange} value={formData.company} />
       <Text item={texts[2]} onChange={onChange} value={formData.link} />
-      <Text item={texts[3]} onChange={onChange} value={formData.city} />
-      <Text item={texts[4]} onChange={onChange} value={formData.country} />
       <Select item={selects[0]} onChange={onChange} value={formData.position} />
       <Select item={selects[1]} onChange={onChange} value={formData.category} />
       <button

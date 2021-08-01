@@ -21,7 +21,7 @@ export const PostJobSteps: FC<IProps> = ({ step }) => {
       </div>
       <div>
         <h3>Skills</h3>
-        <span></span>
+        <span style={step >= 3 ? { backgroundColor } : {}}></span>
       </div>
     </div>
   );

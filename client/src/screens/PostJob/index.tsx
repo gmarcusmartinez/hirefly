@@ -1,13 +1,13 @@
 import React from 'react';
 import { useTypedSelector } from 'hooks/use-typed-selector';
-// import { JobForm } from 'components/forms/job-form';
 import { ErrorsContainer } from 'components/common/ErrorsContainer';
 import { DashHeader } from 'components/common/DashHeader';
+import { blankForm } from 'screens/PostJob/form';
 import { PostJobSteps } from 'components/post-job/Steps';
 import { PostJobDetails } from 'components/post-job/Details';
 import { PostJobPayment } from 'components/post-job/Payment';
-import { blankForm } from 'screens/CreateProfile/form';
 import { PostJobDesc } from 'components/post-job/Desc';
+import { PostJobSkills } from 'components/post-job/Skills';
 
 export const PostJob = () => {
   const [step, setStep] = React.useState(0);
@@ -55,6 +55,11 @@ export const PostJob = () => {
               formData={formData}
               imageData={imageData}
               onImgChange={onImgChange}
+            />
+            <PostJobSkills
+              setStep={setStep}
+              onChange={onChange}
+              formData={formData}
             />
           </div>
         </div>
