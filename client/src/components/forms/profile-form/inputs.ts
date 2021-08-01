@@ -27,7 +27,5 @@ export const blankForm = {
   link: '',
   imgUrl: '',
   cv: '',
-  period: 'full-time',
-  position: 'backend',
   bio: '',
 };

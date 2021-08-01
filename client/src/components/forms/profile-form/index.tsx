@@ -7,11 +7,10 @@ import { Spinner } from 'components/common/Spinner';
 import { TextArea } from 'components/common/DashInputs/TextArea';
 
 export const ProfileForm = () => {
-  const { createProfile, updateProfile } = useActions();
+  const { updateProfile } = useActions();
 
   const { loading, me } = useTypedSelector(({ profiles }) => profiles);
   const defaultForm = me ? me : blankForm;
-
   const [formData, setFormData] = React.useState(defaultForm);
   const [imageData, setImageData] = React.useState<File | null>(null);
 
@@ -26,9 +25,7 @@ export const ProfileForm = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    me
-      ? updateProfile(formData, imageData)
-      : createProfile(formData, imageData);
+    updateProfile(formData, imageData);
   };
 
   if (loading) return <Spinner />;

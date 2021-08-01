@@ -27,8 +27,8 @@ export const SingleCard: FC<IProps> = ({ job }) => {
   };
 
   const background = job.imgUrl.startsWith('http')
-    ? `url(${job.imgUrl}) no-repeat center center fixed`
-    : `url(${s3Url}/${job?.imgUrl})  no-repeat center center fixed`;
+    ? `url(${job.imgUrl}) no-repeat center center`
+    : `url(${s3Url}/${job?.imgUrl})  no-repeat center center`;
 
   return (
     <div
