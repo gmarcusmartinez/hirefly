@@ -12,8 +12,8 @@ export const PostJobPayment: FC<IProps> = ({ setStep, onChange, formData }) => {
   const next = () => setStep(2);
 
   const texts = [
-    { label: 'Min Salary €', name: 'min' },
-    { label: 'Max Salary €', name: 'max' },
+    { label: 'Min Salary €', name: 'minSalary' },
+    { label: 'Max Salary €', name: 'maxSalary' },
     { label: 'City', name: 'city' },
     { label: 'Country', name: 'country' },
   ];
@@ -23,13 +23,13 @@ export const PostJobPayment: FC<IProps> = ({ setStep, onChange, formData }) => {
       <Text
         item={texts[0]}
         onChange={onChange}
-        value={formData.min}
+        value={formData.minSalary}
         inputType='number'
       />
       <Text
         item={texts[1]}
         onChange={onChange}
-        value={formData.max}
+        value={formData.maxSalary}
         inputType='number'
       />
       <Text item={texts[2]} onChange={onChange} value={formData.city} />

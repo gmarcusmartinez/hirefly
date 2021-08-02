@@ -44,14 +44,6 @@
   }
 }
 
-// @include respond(tablet) {
-//   .post-job {
-//     &__main {
-//       display: flex;
-//     }
-//   }
-// }
-
 @include respond(desktop) {
   .post-job {
     margin-left: unset;

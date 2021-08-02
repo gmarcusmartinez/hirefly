@@ -1,4 +1,56 @@
 .create-profile {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Varela Round', sans-serif;
   height: 100%;
   margin-left: 7rem;
+
+  &__header {
+    box-shadow: var(--box-shadow-light);
+    display: flex;
+    flex-direction: column;
+    height: 8rem;
+    justify-content: center;
+    &.darkmode {
+      box-shadow: 0 0.1rem 0.2rem #000;
+      color: var(--color-white);
+    }
+    h2 {
+      font-size: 1.8rem;
+      margin-left: 4rem;
+      letter-spacing: var(--letter-spacing-md);
+    }
+  }
+  &__main {
+    height: calc(100% - 80px);
+    overflow-y: scroll;
+    padding: var(--padding-sm);
+  }
+  &__active {
+    display: flex;
+    height: calc(100% - 60px);
+    max-width: 55rem;
+    margin: auto;
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
+  }
+  &__wrapper {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transition: transform 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  }
+}
+
+@include respond(desktop) {
+  .create-profile {
+    margin-left: unset;
+    &__header {
+      h2 {
+        margin-left: var(--margin-md);
+      }
+    }
+  }
 }

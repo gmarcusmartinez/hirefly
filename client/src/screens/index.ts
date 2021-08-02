@@ -12,4 +12,4 @@ export { Jobs } from './Jobs';
 export { MyJobs } from './MyJobs';
 export { Notifications } from './Notifications';
 export { PostJob } from './PostJob';
-export { EditProfile } from './Profile';
+export { EditProfile } from './EditProfile';

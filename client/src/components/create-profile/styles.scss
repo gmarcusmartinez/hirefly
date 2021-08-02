@@ -9,6 +9,13 @@
     max-width: 36rem;
   }
 }
+#bio {
+  transform: translateX(100%);
+}
+#cp-skills {
+  transform: translateX(200%);
+}
+
 .create-profile__title {
   margin-top: 10rem;
   margin-bottom: 2rem;

@@ -1,12 +1,13 @@
 export const blankForm = {
   firstName: '',
   lastName: '',
-  location: {
-    city: '',
-    country: '',
-  },
+  city: '',
+  country: '',
   link: '',
+  gender: 'male',
+
   imgUrl: '',
-  cv: '',
   bio: '',
+
+  skills: '',
 };

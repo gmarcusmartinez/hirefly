@@ -27,6 +27,8 @@ export const PostJob = () => {
     setImageData(e.target.files![0]);
   };
 
+  const props = { formData, onChange, setStep };
+
   return (
     <div className='post-job'>
       <DashHeader title='Post Job' />
@@ -39,28 +41,14 @@ export const PostJob = () => {
               transform: `translateX(-${step * 100}%)`,
             }}
           >
-            <PostJobDetails
-              setStep={setStep}
-              onChange={onChange}
-              formData={formData}
-            />
-            <PostJobPayment
-              setStep={setStep}
-              onChange={onChange}
-              formData={formData}
-            />
+            <PostJobDetails {...props} />
+            <PostJobPayment {...props} />
             <PostJobDesc
-              setStep={setStep}
-              onChange={onChange}
-              formData={formData}
+              {...props}
               imageData={imageData}
               onImgChange={onImgChange}
             />
-            <PostJobSkills
-              setStep={setStep}
-              onChange={onChange}
-              formData={formData}
-            />
+            <PostJobSkills {...props} />
           </div>
         </div>
         <ErrorsContainer errors={errors ? errors : null} />
