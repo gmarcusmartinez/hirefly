@@ -41,7 +41,7 @@ export const Jobs = () => {
       <DashHeader title='Find Jobs' />
       <div className='jobs-screen__main'>
         <div className='jobs-screen__list'>{list}</div>
-        <div className='jobs-screen__selected'>{list[current]}</div>
+        {list[current]}
       </div>
     </div>
   );

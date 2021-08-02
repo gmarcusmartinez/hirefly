@@ -1,4 +1,4 @@
-import { FC, ChangeEvent } from 'react';
+import React, { FC, ChangeEvent } from 'react';
 import { TextArea } from 'components/common/DashInputs/TextArea';
 import { FileInput } from 'components/common/DashInputs/FileInput';
 
@@ -19,7 +19,8 @@ export const ImgBio: FC<IProps> = ({
 }) => {
   const prev = () => setStep(0);
   const next = () => setStep(2);
-  const disabled = !imageData;
+
+  const disabled = !formData.imgUrl;
   const btnClassName = disabled ? 'disabled' : '';
 
   const texts = [{ label: 'Bio', name: 'bio' }];
@@ -31,9 +32,15 @@ export const ImgBio: FC<IProps> = ({
       icon: 'photo_camera',
     },
   ];
+
   return (
     <div className='profile-form__step' id='bio'>
-      <FileInput item={files[0]} onChange={onImgChange} file={imageData} />
+      <FileInput
+        item={files[0]}
+        onChange={onImgChange}
+        file={imageData}
+        url={formData.imgUrl}
+      />
       <TextArea
         onChange={onChange}
         item={texts[0]}

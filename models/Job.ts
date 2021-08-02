@@ -16,28 +16,33 @@ enum PositionEnum {
 
 export interface JobAttrs {
   creator: string;
-  imgUrl: string;
   title: string;
+  company: string;
   link?: string;
+  position: string;
+  category: string;
+  minSalary: number;
+  maxSalary: number;
+  city: string;
+  country: string;
+  imgUrl: string;
   description: string;
-  location: string;
-  salary: number;
-  duration: number;
   skills: string[];
 }
 
 interface JobDoc extends mongoose.Document {
-  category: JobCategory;
-  company: string;
-  description: string;
-  duration: number;
-  imgUrl: string;
-  link: string;
-  location: string;
-  position: PositionEnum;
-  salary: number;
-  title: string;
   creator: string;
+  title: string;
+  company: string;
+  link?: string;
+  position: string;
+  category: string;
+  minSalary: number;
+  maxSalary: number;
+  city: string;
+  country: string;
+  imgUrl: string;
+  description: string;
   skills: string[];
 }
 
@@ -47,24 +52,26 @@ interface JobModel extends mongoose.Model<JobDoc> {
 
 const jobSchema = new mongoose.Schema<JobDoc>({
   creator: { type: ObjectId, ref: 'User', required: true },
-  imgUrl: { type: String, required: true, trim: true },
   title: { type: String, required: true, trim: true },
-  description: { type: String, trim: true },
-  location: { type: String, required: true, trim: true },
-  link: { type: String, default: '' },
-  salary: { type: Number, required: true },
-  skills: { type: [String], default: [] },
-  category: {
-    type: String,
-    enum: Object.values(JobCategory),
-    default: JobCategory.webdev,
-  },
-  duration: { type: Number, default: 0 },
+  company: { type: String, trim: true },
+  link: { type: String, trim: true },
   position: {
     type: String,
     enum: Object.values(PositionEnum),
     default: PositionEnum.backend,
   },
+  category: {
+    type: String,
+    enum: Object.values(JobCategory),
+    default: JobCategory.webdev,
+  },
+  minSalary: { type: Number, default: 0 },
+  maxSalary: { type: Number, default: 0 },
+  city: { type: String, trim: true },
+  country: { type: String, trim: true },
+  imgUrl: { type: String, required: true, trim: true },
+  description: { type: String, trim: true },
+  skills: { type: [String], default: [] },
 });
 
 jobSchema.statics.build = (attrs: JobAttrs) => new Job(attrs);

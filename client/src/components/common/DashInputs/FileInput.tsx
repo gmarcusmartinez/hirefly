@@ -6,10 +6,11 @@ interface IProps {
   item: IDashFileInput;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   file: File | null;
+  url?: string;
 }
-export const FileInput: FC<IProps> = ({ item, onChange, file }) => {
+export const FileInput: FC<IProps> = ({ item, onChange, file, url }) => {
   const { mode } = useTypedSelector(({ dashboard }) => dashboard);
-  const color = file ? '#838dec' : '';
+  const color = url ? '#838dec' : '';
   const style = { borderColor: color };
 
   return (
@@ -21,7 +22,7 @@ export const FileInput: FC<IProps> = ({ item, onChange, file }) => {
         <input type='file' accept={item.accept} onChange={onChange} />
         {item.required && <span>* Required</span>}
       </div>
-      <label className={mode}>{file ? '' : item.label}</label>
+      <label className={mode}>{url ? 'File Selected' : item.label}</label>
     </div>
   );
 };

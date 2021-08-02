@@ -18,17 +18,19 @@ export interface IError {
 
 export interface IJob {
   _id: string;
-  category: string;
-  company: string;
-  description: string;
-  duration: number;
-  imgUrl: string;
-  link: string;
-  location: string;
-  position: string;
-  salary: number;
-  skills: string;
+  creator: string;
   title: string;
+  company: string;
+  link?: string;
+  position: string;
+  category: string;
+  minSalary: number;
+  maxSalary: number;
+  city: string;
+  country: string;
+  imgUrl: string;
+  description: string;
+  skills: string[];
 }
 
 export interface IMessage {

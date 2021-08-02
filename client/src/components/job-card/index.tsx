@@ -12,8 +12,7 @@ export const SingleCard: FC<IProps> = ({ job }) => {
   const history = useHistory();
   const { deleteJob, setSelectedJob } = useActions();
 
-  const { duration, salary, location, title } = job;
-  const months = duration > 1 ? `${duration} Months` : '1 Month';
+  const { title } = job;
 
   const redirectToEditJob = (e: any) => {
     e.stopPropagation();
@@ -41,9 +40,12 @@ export const SingleCard: FC<IProps> = ({ job }) => {
       </div>
 
       <div className='job-card__details'>
-        <span>{location}</span>
-        <span>{months}</span>
-        <span>{salary} €</span>
+        <span>
+          {job.city} {job.country}
+        </span>
+        <span>
+          {job.minSalary} - {job.maxSalary} €
+        </span>
       </div>
       <div className='job-card__actions'>
         <i className='material-icons' onClick={redirectToEditJob}>
