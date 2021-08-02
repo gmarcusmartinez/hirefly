@@ -1,9 +1,10 @@
-.post-job__step {
+.job-form__step {
   height: calc(100% - 40px);
   width: 100%;
   position: absolute;
   top: 4rem;
 }
+
 #payment {
   transform: translateX(100%);
 }

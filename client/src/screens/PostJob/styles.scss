@@ -1,26 +1,10 @@
-.post-job {
+.job-form {
   display: flex;
   flex-direction: column;
   font-family: 'Varela Round', sans-serif;
   height: 100%;
   margin-left: 7rem;
 
-  &__header {
-    box-shadow: var(--box-shadow-light);
-    display: flex;
-    flex-direction: column;
-    height: 8rem;
-    justify-content: center;
-    &.darkmode {
-      box-shadow: 0 0.1rem 0.2rem #000;
-      color: var(--color-white);
-    }
-    h2 {
-      font-size: 1.8rem;
-      margin-left: 4rem;
-      letter-spacing: var(--letter-spacing-md);
-    }
-  }
   &__main {
     height: calc(100% - 80px);
     overflow-y: scroll;
@@ -45,12 +29,7 @@
 }
 
 @include respond(desktop) {
-  .post-job {
+  .job-form {
     margin-left: unset;
-    &__header {
-      h2 {
-        margin-left: var(--margin-md);
-      }
-    }
   }
 }

@@ -33,16 +33,13 @@
 @import '../components/chat/Main/styles.scss';
 @import '../components/chat/MessageBubble/styles.scss';
 
-@import '../components/create-profile/styles.scss';
+@import '../components/profile-form/styles.scss';
 @import '../components/dashboard/Sidenav/Header/styles.scss';
 @import '../components/dashboard/Sidenav/Main/styles.scss';
 
 @import '../components/dashboard/Settings/styles.scss';
 @import '../components/dashboard/Settings/Link/styles.scss';
 @import '../components/dashboard/Settings/Modes/styles.scss';
-
-@import '../components/forms/profile-form/styles.scss';
-@import '../components/forms/job-form/styles.scss';
 
 @import '../components/job-card/styles.scss';
 @import '../components/modal/styles.scss';
@@ -55,8 +52,11 @@
 @import '../components/notifications/NotificationItem/styles.scss';
 @import '../components/notifications/Badge/styles.scss';
 
-@import '../components/post-job/Steps/styles.scss';
-@import '../components/post-job/styles.scss';
+@import '../components/job-form/styles.scss';
+@import '../components/job-form/Steps/styles.scss';
+
+@import '../components/profile-form/styles.scss';
+@import '../components/profile-form/Steps/styles.scss';
 
 @import '../components/swiper-card/styles.scss';
 @import '../components/swiper-card/JobDetails/styles.scss';
@@ -72,6 +72,5 @@
 @import '../screens/Jobs/styles.scss';
 @import '../screens/MyJobs/styles.scss';
 @import '../screens/Notifications/styles.scss';
-@import '../screens/Profile/styles.scss';
 @import '../screens/PostJob/styles.scss';
 @import '../screens/Signout/styles.scss';

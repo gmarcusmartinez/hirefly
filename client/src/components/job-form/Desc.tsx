@@ -32,7 +32,7 @@ export const PostJobDesc: FC<IProps> = ({
     },
   ];
   return (
-    <div className='post-job__step' id='desc'>
+    <div className='job-form__step' id='desc'>
       <FileInput item={files[0]} onChange={onImgChange} file={imageData} />
       <TextArea
         onChange={onChange}

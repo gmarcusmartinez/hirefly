@@ -1,14 +1,10 @@
-.create-profile__step {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
+.profile-form__step {
+  height: calc(100% - 40px);
   width: 100%;
-  max-width: 30rem;
-  height: 100%;
-  @include respond(tablet) {
-    max-width: 36rem;
-  }
+  position: absolute;
+  top: 4rem;
 }
+
 #bio {
   transform: translateX(100%);
 }
@@ -16,7 +12,36 @@
   transform: translateX(200%);
 }
 
-.create-profile__title {
+.step-btn {
+  border: none;
+  border-radius: 0.4rem;
+  background-color: var(--color-primary);
+  color: #fff;
+  height: 4rem;
+  letter-spacing: var(--letter-spacing-sm);
+  margin-right: 0.5rem;
+  width: 12rem;
+  &.disabled {
+    background-color: var(--color-grey-primary);
+  }
+  &:active {
+    transform: translate(2px, 2px);
+  }
+}
+
+// .profile-form__step {
+//   align-items: center;
+//   display: flex;
+//   flex-direction: column;
+//   width: 100%;
+//   max-width: 30rem;
+//   height: 100%;
+//   @include respond(tablet) {
+//     max-width: 36rem;
+//   }
+// }
+
+.profile-form__title {
   margin-top: 10rem;
   margin-bottom: 2rem;
   color: var(--color-white);
@@ -27,7 +52,7 @@
   }
 }
 
-.create-profile__inputs {
+.profile-form__inputs {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -36,12 +61,12 @@
     justify-content: space-between;
   }
 }
-.create-profile__btns {
+.profile-form__btns {
   justify-content: flex-start;
   display: flex;
   width: 100%;
 }
-.create-profile__btn {
+.profile-form__btn {
   align-self: flex-end;
   background-color: var(--color-primary);
   border: none;

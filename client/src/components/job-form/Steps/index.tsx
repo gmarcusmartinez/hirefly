@@ -5,7 +5,7 @@ interface IProps {
 }
 export const PostJobSteps: FC<IProps> = ({ step }) => {
   return (
-    <div className='post-job__steps'>
+    <div className='job-form__steps'>
       <div>
         <h3>Details</h3>
         <span style={{ width: '100%' }}></span>

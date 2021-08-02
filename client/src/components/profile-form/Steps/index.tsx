@@ -3,9 +3,9 @@ import { FC } from 'react';
 interface IProps {
   step: number;
 }
-export const CreateProfileSteps: FC<IProps> = ({ step }) => {
+export const ProfileSteps: FC<IProps> = ({ step }) => {
   return (
-    <div className='post-job__steps'>
+    <div className='profile-form__steps'>
       <div>
         <h3>Basic Info</h3>
         <span style={{ width: '100%' }}></span>

@@ -3,11 +3,11 @@ import { useTypedSelector } from 'hooks/use-typed-selector';
 import { ErrorsContainer } from 'components/common/ErrorsContainer';
 import { DashHeader } from 'components/common/DashHeader';
 import { blankForm } from 'screens/PostJob/form';
-import { PostJobSteps } from 'components/post-job/Steps';
-import { PostJobDetails } from 'components/post-job/Details';
-import { PostJobPayment } from 'components/post-job/Payment';
-import { PostJobDesc } from 'components/post-job/Desc';
-import { PostJobSkills } from 'components/post-job/Skills';
+import { PostJobSteps } from 'components/job-form/Steps';
+import { PostJobDetails } from 'components/job-form/Details';
+import { PostJobPayment } from 'components/job-form/Payment';
+import { PostJobDesc } from 'components/job-form/Desc';
+import { PostJobSkills } from 'components/job-form/Skills';
 
 export const PostJob = () => {
   const [step, setStep] = React.useState(0);
@@ -30,13 +30,13 @@ export const PostJob = () => {
   const props = { formData, onChange, setStep };
 
   return (
-    <div className='post-job'>
+    <div className='job-form'>
       <DashHeader title='Post Job' />
-      <div className='post-job__main'>
+      <div className='job-form__main'>
         <PostJobSteps step={step} />
-        <div className='post-job__steps-active'>
+        <div className='job-form__steps-active'>
           <div
-            className='post-job__steps-wrapper'
+            className='job-form__steps-wrapper'
             style={{
               transform: `translateX(-${step * 100}%)`,
             }}

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { BasicInfo } from 'components/create-profile/BasicInfo';
-import { ImgBio } from 'components/create-profile/ImgBio';
-import { CreateProfileSkills } from 'components/create-profile/Skills';
+import { BasicInfo } from 'components/profile-form/BasicInfo';
+import { ImgBio } from 'components/profile-form/ImgBio';
+import { CreateProfileSkills } from 'components/profile-form/Skills';
 import { blankForm } from './form';
 
 interface IProps {
@@ -28,9 +28,9 @@ export const ProfileForm: FC<IProps> = ({ step, setStep, me }) => {
   const props = { formData, onChange, setStep };
 
   return (
-    <div className='create-profile__active'>
+    <div className='profile-form__steps-active'>
       <div
-        className='create-profile__wrapper'
+        className='profile-form__steps-wrapper'
         style={{
           transform: `translateX(-${step * 100}%)`,
         }}

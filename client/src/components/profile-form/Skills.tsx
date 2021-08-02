@@ -7,8 +7,12 @@ interface IProps {
   formData: any;
 }
 
-export const PostJobSkills: FC<IProps> = ({ setStep, onChange, formData }) => {
-  const prev = () => setStep(2);
+export const CreateProfileSkills: FC<IProps> = ({
+  setStep,
+  onChange,
+  formData,
+}) => {
+  const prev = () => setStep(1);
   const submit = () => console.log(formData);
 
   const disabled = !formData.skills;
@@ -24,7 +28,7 @@ export const PostJobSkills: FC<IProps> = ({ setStep, onChange, formData }) => {
   ];
 
   return (
-    <div className='post-job__step' id='skills'>
+    <div className='profile-form__step' id='cp-skills'>
       <Text item={texts[0]} onChange={onChange} value={formData.skills} />
       <button onClick={prev} className='step-btn'>
         Back

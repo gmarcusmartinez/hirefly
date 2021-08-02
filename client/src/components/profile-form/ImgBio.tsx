@@ -32,7 +32,7 @@ export const ImgBio: FC<IProps> = ({
     },
   ];
   return (
-    <div className='post-job__step' id='bio'>
+    <div className='profile-form__step' id='bio'>
       <FileInput item={files[0]} onChange={onImgChange} file={imageData} />
       <TextArea
         onChange={onChange}

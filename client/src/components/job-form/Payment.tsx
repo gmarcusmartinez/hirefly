@@ -19,7 +19,7 @@ export const PostJobPayment: FC<IProps> = ({ setStep, onChange, formData }) => {
   ];
 
   return (
-    <div className='post-job__step' id='payment'>
+    <div className='job-form__step' id='payment'>
       <Text
         item={texts[0]}
         onChange={onChange}

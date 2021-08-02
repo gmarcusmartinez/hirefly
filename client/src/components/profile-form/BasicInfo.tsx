@@ -29,7 +29,7 @@ export const BasicInfo: FC<IProps> = ({ setStep, onChange, formData }) => {
     },
   ];
   return (
-    <div className='post-job__step' id='basic'>
+    <div className='profile-form__step' id='basic'>
       <Text item={texts[0]} onChange={onChange} value={formData.firstName} />
       <Text item={texts[1]} onChange={onChange} value={formData.lastName} />
       <Text item={texts[2]} onChange={onChange} value={formData.city} />
