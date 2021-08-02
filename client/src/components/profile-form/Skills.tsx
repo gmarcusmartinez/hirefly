@@ -5,15 +5,16 @@ interface IProps {
   setStep: Function;
   onChange: (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
   formData: any;
+  handleSubmit: Function;
 }
 
 export const CreateProfileSkills: FC<IProps> = ({
   setStep,
   onChange,
   formData,
+  handleSubmit,
 }) => {
   const prev = () => setStep(1);
-  const submit = () => console.log(formData);
 
   const disabled = !formData.skills;
   const btnClassName = disabled ? 'disabled' : '';
@@ -34,7 +35,7 @@ export const CreateProfileSkills: FC<IProps> = ({
         Back
       </button>
       <button
-        onClick={submit}
+        onClick={() => handleSubmit()}
         className={`step-btn ${btnClassName}`}
         disabled={disabled}
       >

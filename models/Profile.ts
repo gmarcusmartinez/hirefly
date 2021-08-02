@@ -7,14 +7,21 @@ export interface ProfileSubDoc {
   imgUrl: string;
 }
 
+enum Gender {
+  male = 'male',
+  female = 'female',
+  nonbinary = 'nonbinary',
+}
+
 interface ProfileAttrs {
   imgUrl: string;
-  cv: string;
   bio: string;
   firstName: string;
   lastName: string;
+  city: string;
+  country: string;
+  gender: string;
   link: string;
-  location: string;
   skills: string[];
 }
 
@@ -22,11 +29,12 @@ interface ProfileDoc extends mongoose.Document {
   userId: string;
   firstName: string;
   lastName: string;
-  imgUrl: string;
-  cv: string;
-  bio: string;
+  city: string;
+  country: string;
   link: string;
-  location: string;
+  gender: string;
+  imgUrl: string;
+  bio: string;
   skills: string[];
   createSubDoc(): ProfileSubDoc;
 }
@@ -39,11 +47,16 @@ const profileSchema = new mongoose.Schema<ProfileDoc>({
   userId: { type: ObjectId, ref: 'User', required: true },
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
-  imgUrl: { type: String, required: true },
-  cv: { type: String, default: '' },
-  bio: { type: String, default: '' },
+  city: { type: String, default: '' },
+  country: { type: String, default: '' },
   link: { type: String, default: '' },
-  location: { type: String, default: '' },
+  gender: {
+    type: String,
+    enum: Object.values(Gender),
+    default: Gender.male,
+  },
+  imgUrl: { type: String, required: true },
+  bio: { type: String, default: '' },
   skills: { type: [String], default: [] },
 });
 
