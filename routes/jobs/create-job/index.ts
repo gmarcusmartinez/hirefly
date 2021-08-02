@@ -4,22 +4,25 @@ import { Job } from '../../../models/Job';
 export const createJob = async (req: Request, res: Response) => {
   const creator = req.currentUser!._id;
 
-  const { title, description, salary, location, imgUrl, duration } = req.body;
-
   const skills = req.body.skills
     ? req.body.skills.toLowerCase().split(',')
     : [];
 
-  const jobValues = {
-    title,
-    description,
-    salary,
-    location,
+  const job = Job.build({
+    creator,
+    title: req.body.title,
+    company: req.body.company,
+    link: req.body.link,
+    position: req.body.position,
+    category: req.body.category,
+    minSalary: req.body.minSalary,
+    maxSalary: req.body.maxSalary,
+    city: req.body.city,
+    country: req.body.country,
+    imgUrl: req.body.imgUrl,
+    description: req.body.description,
     skills,
-    imgUrl,
-    duration,
-  };
-  const job = Job.build({ ...jobValues, creator });
+  });
 
   await job.save();
   res.status(201).send(job);

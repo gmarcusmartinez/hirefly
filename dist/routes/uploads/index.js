@@ -2,11 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.uploadRouter = void 0;
 var express_1 = require("express");
-var uploadImage_1 = require("./uploadImage");
+var upload_image_1 = require("./upload-image");
 var require_auth_1 = require("../../common/middlewares/require-auth");
 var common_1 = require("../../common");
 var upload_job_image_1 = require("./upload-job-image");
 var router = express_1.Router();
 exports.uploadRouter = router;
-router.get('/image', common_1.currentUser, require_auth_1.requireAuth, uploadImage_1.uploadImage);
+router.get('/image', common_1.currentUser, require_auth_1.requireAuth, upload_image_1.uploadImage);
 router.get('/job-image', common_1.currentUser, require_auth_1.requireAuth, upload_job_image_1.uploadJobImage);

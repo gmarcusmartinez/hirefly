@@ -35,14 +35,18 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.server = void 0;
 var app_1 = require("../../app");
 var http_1 = require("http");
 var Chat_1 = require("../../models/Chat");
+var keys_1 = __importDefault(require("../../config/keys"));
 exports.server = http_1.createServer(app_1.app);
 var io = require('socket.io')(exports.server, {
-    cors: { origin: 'http://localhost:3000' },
+    cors: { origin: keys_1.default.origin },
     methods: ['GET', 'POST'],
 });
 io.on('connection', function (socket) {

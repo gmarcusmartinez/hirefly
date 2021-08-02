@@ -54,15 +54,16 @@ var s3 = new s3_1.default({
     signatureVersion: 'v4',
 });
 exports.uploadImage = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var key, signedUrlExpireSeconds, url;
+    var type, key, signedUrlExpireSeconds, url;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                key = req.currentUser._id + "/" + uuid_1.v4() + ".jpeg";
+                type = req.query.type.split('/')[1];
+                key = req.currentUser._id + "/" + uuid_1.v4() + "." + type;
                 signedUrlExpireSeconds = 60 * 15;
                 return [4 /*yield*/, s3.getSignedUrl('putObject', {
-                        Bucket: 'hirefly-bucket',
-                        ContentType: 'image/jpeg',
+                        Bucket: 'hirefly-mvp-bucket',
+                        ContentType: "" + req.query.type,
                         Key: key,
                         Expires: signedUrlExpireSeconds,
                     })];

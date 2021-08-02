@@ -56,7 +56,7 @@ exports.getApplications = function (req, res) { return __awaiter(void 0, void 0,
                         status: 'pending',
                     }).populate({
                         path: 'applicantProfile',
-                        select: 'firstName lastName imgUrl location skills bio',
+                        select: 'firstName lastName imgUrl city country skills bio',
                     })];
             case 2:
                 applications = _a.sent();

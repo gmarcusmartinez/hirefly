@@ -1,15 +1,4 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -50,28 +39,32 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.createJob = void 0;
 var Job_1 = require("../../../models/Job");
 exports.createJob = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var creator, _a, title, description, salary, location, imgUrl, duration, skills, jobValues, job;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
+    var creator, skills, job;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
             case 0:
                 creator = req.currentUser._id;
-                _a = req.body, title = _a.title, description = _a.description, salary = _a.salary, location = _a.location, imgUrl = _a.imgUrl, duration = _a.duration;
                 skills = req.body.skills
                     ? req.body.skills.toLowerCase().split(',')
                     : [];
-                jobValues = {
-                    title: title,
-                    description: description,
-                    salary: salary,
-                    location: location,
+                job = Job_1.Job.build({
+                    creator: creator,
+                    title: req.body.title,
+                    company: req.body.company,
+                    link: req.body.link,
+                    position: req.body.position,
+                    category: req.body.category,
+                    minSalary: req.body.minSalary,
+                    maxSalary: req.body.maxSalary,
+                    city: req.body.city,
+                    country: req.body.country,
+                    imgUrl: req.body.imgUrl,
+                    description: req.body.description,
                     skills: skills,
-                    imgUrl: imgUrl,
-                    duration: duration,
-                };
-                job = Job_1.Job.build(__assign(__assign({}, jobValues), { creator: creator }));
+                });
                 return [4 /*yield*/, job.save()];
             case 1:
-                _b.sent();
+                _a.sent();
                 res.status(201).send(job);
                 return [2 /*return*/];
         }

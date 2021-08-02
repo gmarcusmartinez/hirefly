@@ -21,24 +21,26 @@ var PositionEnum;
 })(PositionEnum || (PositionEnum = {}));
 var jobSchema = new mongoose_1.default.Schema({
     creator: { type: ObjectId, ref: 'User', required: true },
-    imgUrl: { type: String, required: true, trim: true },
     title: { type: String, required: true, trim: true },
-    description: { type: String, trim: true },
-    location: { type: String, required: true, trim: true },
-    link: { type: String, default: '' },
-    salary: { type: Number, required: true },
-    skills: { type: [String], default: [] },
-    category: {
-        type: String,
-        enum: Object.values(JobCategory),
-        default: JobCategory.webdev,
-    },
-    duration: { type: Number, default: 0 },
+    company: { type: String, trim: true },
+    link: { type: String, trim: true },
     position: {
         type: String,
         enum: Object.values(PositionEnum),
         default: PositionEnum.backend,
     },
+    category: {
+        type: String,
+        enum: Object.values(JobCategory),
+        default: JobCategory.webdev,
+    },
+    minSalary: { type: Number, default: 0 },
+    maxSalary: { type: Number, default: 0 },
+    city: { type: String, trim: true },
+    country: { type: String, trim: true },
+    imgUrl: { type: String, required: true, trim: true },
+    description: { type: String, trim: true },
+    skills: { type: [String], default: [] },
 });
 jobSchema.statics.build = function (attrs) { return new Job(attrs); };
 var Job = mongoose_1.default.model('Job', jobSchema);
