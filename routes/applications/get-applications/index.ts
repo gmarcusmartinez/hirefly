@@ -15,7 +15,7 @@ export const getApplications = async (req: Request, res: Response) => {
     status: 'pending',
   }).populate({
     path: 'applicantProfile',
-    select: 'firstName lastName imgUrl location skills bio',
+    select: 'firstName lastName imgUrl city country skills bio',
   });
 
   res.status(200).send(applications);

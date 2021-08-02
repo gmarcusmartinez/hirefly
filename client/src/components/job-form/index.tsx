@@ -4,6 +4,7 @@ import { PostJobPayment } from 'components/job-form/Payment';
 import { PostJobDesc } from 'components/job-form/Desc';
 import { PostJobSkills } from 'components/job-form/Skills';
 import { blankForm } from './form';
+import { useActions } from 'hooks/use-actions';
 
 interface IProps {
   selected?: any;
@@ -13,6 +14,7 @@ interface IProps {
 
 export const JobForm: FC<IProps> = ({ step, setStep, selected }) => {
   const defaultForm = selected ? selected : blankForm;
+  const { createJob, updateJob } = useActions();
   const [formData, setFormData] = React.useState(defaultForm);
   const [imageData, setImageData] = React.useState<File | null>(null);
 
@@ -27,6 +29,11 @@ export const JobForm: FC<IProps> = ({ step, setStep, selected }) => {
     setImageData(e.target.files![0]);
   };
 
+  const handleSubmit = () => {
+    selected
+      ? updateJob(formData, imageData, selected._id)
+      : createJob(formData, imageData);
+  };
   const props = { formData, onChange, setStep };
 
   return (
@@ -44,7 +51,7 @@ export const JobForm: FC<IProps> = ({ step, setStep, selected }) => {
           imageData={imageData}
           onImgChange={onImgChange}
         />
-        <PostJobSkills {...props} />
+        <PostJobSkills {...props} handleSubmit={handleSubmit} />
       </div>
     </div>
   );

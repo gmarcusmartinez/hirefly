@@ -57,13 +57,14 @@ export interface INotification {
 export interface IProfile {
   userId: string;
   imgUrl: string;
-  cv: string;
   bio: string;
-  description: string;
   firstName: string;
   lastName: string;
+  city: string;
+  country: string;
+  gender: string;
   link: string;
-  location: string;
+  skills: string[];
 }
 
 export interface ProfileSubDoc {

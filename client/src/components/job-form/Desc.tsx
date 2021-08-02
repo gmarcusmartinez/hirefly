@@ -19,7 +19,7 @@ export const PostJobDesc: FC<IProps> = ({
 }) => {
   const prev = () => setStep(1);
   const next = () => setStep(3);
-  const disabled = !imageData;
+  const disabled = !formData.imgUrl;
   const btnClassName = disabled ? 'disabled' : '';
 
   const texts = [{ label: 'Description', name: 'description' }];
@@ -33,7 +33,12 @@ export const PostJobDesc: FC<IProps> = ({
   ];
   return (
     <div className='job-form__step' id='desc'>
-      <FileInput item={files[0]} onChange={onImgChange} file={imageData} />
+      <FileInput
+        item={files[0]}
+        onChange={onImgChange}
+        file={imageData}
+        url={formData.imgUrl}
+      />
       <TextArea
         onChange={onChange}
         item={texts[0]}

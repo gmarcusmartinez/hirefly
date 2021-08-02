@@ -17,7 +17,9 @@ export const ApplicantDetails: FC<IProps> = ({ applicant }) => {
         <h2>{name}</h2>
       </div>
       {applicant.bio && <span>{applicant.bio}</span>}
-      {applicant.location && <span>Location: {applicant.location}</span>}
+      <span>
+        Location: {applicant.city} {applicant.country}
+      </span>
     </div>
   );
 };
