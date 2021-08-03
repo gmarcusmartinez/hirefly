@@ -1,4 +1,4 @@
-import React, { FC, ChangeEvent } from 'react';
+import { FC, ChangeEvent } from 'react';
 import { TextArea } from 'components/common/DashInputs/TextArea';
 import { FileInput } from 'components/common/DashInputs/FileInput';
 
@@ -20,7 +20,7 @@ export const ImgBio: FC<IProps> = ({
   const prev = () => setStep(0);
   const next = () => setStep(2);
 
-  const disabled = !formData.imgUrl;
+  const disabled = !imageData;
   const btnClassName = disabled ? 'disabled' : '';
 
   const texts = [{ label: 'Bio', name: 'bio' }];

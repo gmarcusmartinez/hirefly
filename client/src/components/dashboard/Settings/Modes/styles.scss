@@ -3,12 +3,14 @@
   display: flex;
   flex-direction: column;
   margin-left: 0.25rem;
+  justify-content: center;
 }
 
 .mode-switch {
   align-items: center;
   display: flex;
   height: 6rem;
+  justify-content: center;
   span {
     margin-left: 0.25rem;
     margin-right: 1rem;
@@ -16,6 +18,13 @@
     font-size: 4.2rem;
   }
 }
+
+@include respond(tablet) {
+  .settings__modes {
+    justify-content: unset;
+  }
+}
+
 @include respond(desktop) {
   .settings__modes {
     flex-direction: row !important;

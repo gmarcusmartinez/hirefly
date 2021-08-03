@@ -1,8 +1,9 @@
 .profile-form__step {
-  height: calc(100% - 40px);
+  height: calc(100% - 20px);
+  padding: 0 1rem;
   width: 100%;
   position: absolute;
-  top: 4rem;
+  top: 2rem;
 }
 
 #bio {
@@ -28,18 +29,6 @@
     transform: translate(2px, 2px);
   }
 }
-
-// .profile-form__step {
-//   align-items: center;
-//   display: flex;
-//   flex-direction: column;
-//   width: 100%;
-//   max-width: 30rem;
-//   height: 100%;
-//   @include respond(tablet) {
-//     max-width: 36rem;
-//   }
-// }
 
 .profile-form__title {
   margin-top: 10rem;

@@ -1,11 +1,12 @@
 .settings__link {
-  color: var(--color-grey-secondary);
+  align-items: center;
+  color: var(--color-grey-tertiary);
   cursor: pointer;
   display: flex;
   font-size: 1.4rem;
-  height: 4rem;
+  height: 15%;
+  justify-content: center;
   letter-spacing: var(--letter-spacing-md);
-  line-height: 4rem;
   margin: 1rem;
   position: relative;
   &.darkmode {
@@ -15,9 +16,21 @@
     margin-left: 0.25rem;
     margin-right: 1rem;
     font-size: 3.4rem;
+    display: none;
   }
   &:hover {
     color: var(--color-primary);
+  }
+}
+
+@include respond(tablet) {
+  .settings__link {
+    height: 4rem;
+    justify-content: unset;
+    line-height: 4rem;
+    .material-icons {
+      display: block;
+    }
   }
 }
 
@@ -31,6 +44,7 @@
 
 .display-text {
   display: block;
+  text-align: center;
 }
 
 .hide-text {

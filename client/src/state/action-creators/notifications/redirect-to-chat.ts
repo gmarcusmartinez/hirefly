@@ -1,7 +1,8 @@
 import messages from 'api/messages';
 import history from 'core/history';
-import { IChatItem, IUser } from 'interfaces';
+import { IUser } from 'interfaces';
 import { Dispatch } from 'redux';
+import chats from 'api/chats';
 import {
   ChatActionTypes,
   DashboardActionTypes,
@@ -12,16 +13,19 @@ const { SET_COMPONENT } = DashboardActionTypes;
 const { FETCH_MESSAGES_SUCCESS, FETCH_MESSAGES_FAILURE } = MessageActionTypes;
 
 export const redirectToChat =
-  (chatId: string, chat: IChatItem, currentUser: IUser) =>
-  async (dispatch: Dispatch) => {
+  (entityId: string, currentUserId: string) => async (dispatch: Dispatch) => {
     try {
-      const partner = chat.users.find((user) => user._id !== currentUser?._id);
+      dispatch({ type: ChatActionTypes.SET_CHAT_ID, payload: entityId });
+
+      const res = await chats.get(`/${entityId}`);
+      const partner = res.data.users.find(
+        (user: IUser) => user._id !== currentUserId
+      );
+
       dispatch({ type: ChatActionTypes.SET_HEADER, payload: partner });
 
-      dispatch({ type: ChatActionTypes.SET_CHAT_ID, payload: chatId });
       dispatch({ type: MessageActionTypes.FETCH_MESSAGES_REQUEST });
-
-      const { data } = await messages.get(`/${chatId}`);
+      const { data } = await messages.get(`/${entityId}`);
       dispatch({ type: FETCH_MESSAGES_SUCCESS, payload: data });
 
       dispatch({ type: SET_COMPONENT, payload: 'MESSAGES' });

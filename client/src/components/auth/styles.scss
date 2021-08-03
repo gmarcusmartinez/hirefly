@@ -10,7 +10,7 @@
 
   form {
     animation: 0.25s ease-out slide-in-from-right;
-    transition: var(--tzransition-fast);
+    transition: var(--transition-fast);
   }
   &__switch {
     color: var(--color-grey-tertiary);

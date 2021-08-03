@@ -1,8 +1,9 @@
 .job-form__step {
-  height: calc(100% - 40px);
-  width: 100%;
+  height: calc(100% - 20px);
+  padding: 0 1rem;
   position: absolute;
-  top: 4rem;
+  top: 2rem;
+  width: 100%;
 }
 
 #payment {

@@ -5,7 +5,7 @@
   height: 6rem;
   width: 100%;
   div {
-    color: #fff;
+    color: var(--color-grey-tertiary);
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -15,6 +15,7 @@
     text-align: center;
     h3 {
       align-self: center;
+      font-size: 90%;
       flex-grow: 1;
       line-height: 5.5rem;
     }
@@ -24,6 +25,21 @@
       height: 0.5rem;
       margin-top: auto;
       transition: 0.2s ease-in-out;
+    }
+  }
+  &.darkmode {
+    div {
+      color: #fff;
+    }
+  }
+}
+
+@include respond(tablet) {
+  .profile-form__steps {
+    div {
+      h3 {
+        font-size: 1.45rem;
+      }
     }
   }
 }

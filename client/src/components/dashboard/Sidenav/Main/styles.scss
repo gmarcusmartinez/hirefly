@@ -2,13 +2,14 @@
   margin-top: 81px;
 }
 .sidenav__main {
+  height: 90%;
   padding: 0.5rem;
   width: 100%;
 }
 .sidenav__profile-img {
   border-radius: 50%;
   height: 5rem;
-  margin: var(--margin-sm);
+  margin: 1rem 0 1rem 0.5rem;
   width: 5rem;
   object-fit: cover;
   display: none;

@@ -2,7 +2,7 @@
   box-shadow: var(--box-shadow-medium);
   height: calc(100% - 80px);
   position: absolute;
-  background-color: var(--color-white);
+  background-color: #f9f9f9;
   width: 0rem;
   z-index: 1;
 
@@ -20,12 +20,7 @@
 
   &.expand {
     transition: 0.2s ease-in-out;
-    width: 26rem;
-    .sidenav__header__name {
-      opacity: 1;
-      transition-delay: 0.2s;
-      transition: opacity 0.35s ease-in-out;
-    }
+    width: 100%;
   }
   &.darkmode {
     background-color: #242424;
@@ -38,9 +33,13 @@
     height: 100%;
     &.retract {
       width: 7rem !important;
+      transition: width 0.2s ease-in-out;
       .sidenav__header__name {
         opacity: 0;
       }
+    }
+    &.expand {
+      width: 26rem;
     }
   }
 }

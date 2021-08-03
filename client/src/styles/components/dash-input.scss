@@ -8,8 +8,9 @@
   position: relative;
 
   label {
+    color: var(--color-grey-tertiary);
     letter-spacing: var(--letter-spacing-md);
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     span {
       margin-left: var(--margin-sm);
       font-size: 1.4rem;
@@ -19,7 +20,7 @@
   input,
   select {
     background-color: transparent;
-    border: none;
+    border: 1px solid var(--color-grey-primary);
     border-radius: 0.4rem;
     height: 4.4rem;
     font-size: 1.6rem;
@@ -32,12 +33,11 @@
       border: 0.2rem solid var(--color-primary);
     }
   }
-  select {
-    font-size: 1.4rem;
-  }
+
   &.darkmode {
     input,
     select {
+      border: none;
       background-color: #121212;
       color: var(--color-white);
     }
@@ -45,11 +45,14 @@
       color: var(--color-white);
     }
   }
+
   select {
+    font-size: 1.4rem;
     -moz-appearance: none;
     -webkit-appearance: none;
     text-transform: capitalize;
   }
+
   i {
     position: absolute;
     bottom: 1rem;
@@ -60,6 +63,7 @@
   small {
     margin-left: 0.5rem;
   }
+
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -81,7 +85,7 @@
 
   textarea {
     background-color: transparent;
-    border: none;
+    border: 1px solid var(--color-grey-primary);
     border-radius: 0.4rem;
     font-size: 1.6rem;
     height: 20rem;
@@ -94,19 +98,19 @@
   }
 
   label {
+    color: var(--color-grey-tertiary);
     font-size: 1.25rem;
     letter-spacing: var(--letter-spacing-md);
-    margin-bottom: var(--margin-sm);
-
     span {
       margin-left: var(--margin-xs);
-      font-size: 1.4rem;
+      font-size: 1.25rem;
     }
   }
 
   &.darkmode {
     textarea {
       background-color: #121212;
+      border: none;
       color: var(--color-white);
     }
     label {

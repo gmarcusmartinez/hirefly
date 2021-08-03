@@ -10,7 +10,7 @@ interface IProps {
 }
 export const FileInput: FC<IProps> = ({ item, onChange, file, url }) => {
   const { mode } = useTypedSelector(({ dashboard }) => dashboard);
-  const color = url ? '#838dec' : '';
+  const color = url || file ? '#838dec' : '';
   const style = { borderColor: color };
 
   return (
@@ -22,7 +22,9 @@ export const FileInput: FC<IProps> = ({ item, onChange, file, url }) => {
         <input type='file' accept={item.accept} onChange={onChange} />
         {item.required && <span>* Required</span>}
       </div>
-      <label className={mode}>{url ? 'File Selected' : item.label}</label>
+      <label className={mode}>
+        {url || file ? 'File Selected' : item.label}
+      </label>
     </div>
   );
 };

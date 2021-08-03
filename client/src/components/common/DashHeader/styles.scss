@@ -1,17 +1,19 @@
 .dash-header {
   box-shadow: var(--box-shadow-light);
+  color: var(--color-grey-tertiary);
   display: flex;
   font-family: 'Varela Round', sans-serif;
   height: 8rem;
   align-items: center;
-  &.darkmode {
-    box-shadow: 0 0.1rem 0.2rem #000;
-    color: var(--color-white);
-  }
+
   h2 {
     font-size: 1.8rem;
     margin-left: var(--margin-md);
     letter-spacing: var(--letter-spacing-md);
+  }
+  &.darkmode {
+    box-shadow: 0 0.1rem 0.2rem #000;
+    color: var(--color-white);
   }
 }
 @include respond(desktop) {
@@ -26,10 +28,6 @@
   cursor: pointer;
   height: max-content;
   margin-left: auto;
-
-  @include respond(desktop) {
-    display: none;
-  }
   &.darkmode {
     .bar {
       background-color: #fff;
@@ -40,12 +38,14 @@
       background-color: var(--color-primary);
     }
   }
+  @include respond(desktop) {
+    display: none;
+  }
 }
 
 .bar {
   width: 3.2rem;
   height: 0.2rem;
-  background-color: var(--color-dark-grey);
   margin: 0.8rem 0;
   transition: 0.25s;
 }

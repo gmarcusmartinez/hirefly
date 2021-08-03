@@ -1,11 +1,13 @@
+import { useTypedSelector } from 'hooks/use-typed-selector';
 import { FC } from 'react';
 
 interface IProps {
   step: number;
 }
 export const PostJobSteps: FC<IProps> = ({ step }) => {
+  const { mode } = useTypedSelector((state) => state.dashboard);
   return (
-    <div className='job-form__steps'>
+    <div className={`job-form__steps ${mode}`}>
       <div>
         <h3>Details</h3>
         <span style={{ width: '100%' }}></span>

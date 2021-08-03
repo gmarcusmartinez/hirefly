@@ -1,10 +1,15 @@
 .chat__main {
   display: flex;
   flex-direction: column;
-  margin-left: 7rem;
-  padding: var(--padding-md);
+  padding: var(--padding-sm);
   overflow-y: scroll;
-  width: calc(100%-7rem);
+}
+
+@include respond(tablet) {
+  .chat__main {
+    margin-left: 7rem;
+    width: calc(100%-7rem);
+  }
 }
 
 @include respond(desktop) {

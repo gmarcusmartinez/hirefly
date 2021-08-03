@@ -2,10 +2,9 @@
   align-items: center;
   display: flex;
   height: 6.4rem;
-  margin-left: 7rem;
-  padding: 0 2rem;
+  padding: 0 1rem;
   position: relative;
-  width: calc(100% - 7rem);
+  width: 100%;
   form {
     width: 100%;
   }
@@ -25,7 +24,7 @@
   }
   &__btn {
     position: absolute;
-    right: 2.6rem;
+    right: 1.6rem;
 
     align-items: center;
     background-color: var(--color-primary);
@@ -50,6 +49,13 @@
     border: 2px solid var(--color-grey-tertiary);
     background-color: #242424;
     color: #fff;
+  }
+}
+
+@include respond(tablet) {
+  .chat__input {
+    margin-left: 7rem;
+    width: calc(100% - 70px);
   }
 }
 

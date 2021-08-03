@@ -14,14 +14,12 @@ export const NotificationItem: FC<IProps> = ({ notification }) => {
   const { _id, userFrom, notificationType, entityId } = notification;
   const { redirectToChat } = useActions();
 
-  const { currentUser } = useTypedSelector((state) => state.auth);
   const { mode } = useTypedSelector((state) => state.dashboard);
-  const { chatItems } = useTypedSelector((state) => state.chats);
+  const { currentUser } = useTypedSelector((state) => state.auth);
 
   const redirect = () => {
     if (notificationType === 'application:accepted') {
-      const chat = chatItems.find(({ _id }) => _id === entityId);
-      redirectToChat(entityId, chat!, currentUser!);
+      redirectToChat(entityId, currentUser!._id);
     }
   };
 
