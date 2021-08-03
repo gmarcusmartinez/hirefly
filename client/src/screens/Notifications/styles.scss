@@ -1,10 +1,15 @@
 .notifications-screen {
   height: 100%;
-  margin-left: 7rem;
   &__main {
     height: calc(100% - 80px);
     overflow-y: scroll;
     padding: var(--padding-sm);
+  }
+}
+
+@include respond(tablet) {
+  .notifications-screen {
+    margin-left: 7rem;
   }
 }
 

@@ -8,7 +8,7 @@ interface DashboardState {
 }
 
 const initialState = {
-  sidenavComponent: 'MESSAGES',
+  sidenavComponent: 'SETTINGS',
   expanded: false,
   mode: 'darkmode',
 };

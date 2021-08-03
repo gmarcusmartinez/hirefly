@@ -1,6 +1,5 @@
 .jobs-screen {
   height: 100%;
-  margin-left: 7rem;
   &__main {
     display: flex;
     justify-content: center;
@@ -12,6 +11,12 @@
   }
   &__list {
     display: none;
+  }
+}
+
+@include respond(tablet) {
+  .jobs-screen {
+    margin-left: 7rem;
   }
 }
 

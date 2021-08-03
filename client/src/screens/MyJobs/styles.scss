@@ -1,7 +1,5 @@
 .my-jobs {
   height: 100%;
-  margin-left: 7rem;
-
   &__main {
     height: calc(100% - 80px);
     overflow-y: scroll;
@@ -11,6 +9,7 @@
 
 @include respond(tablet) {
   .my-jobs {
+    margin-left: 7rem;
     &__main {
       display: grid;
       grid-template-columns: repeat(2, 1fr);

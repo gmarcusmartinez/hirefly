@@ -1,17 +1,16 @@
 .dash-header {
   box-shadow: var(--box-shadow-light);
   display: flex;
-  flex-direction: column;
   font-family: 'Varela Round', sans-serif;
   height: 8rem;
-  justify-content: center;
+  align-items: center;
   &.darkmode {
     box-shadow: 0 0.1rem 0.2rem #000;
     color: var(--color-white);
   }
   h2 {
     font-size: 1.8rem;
-    margin-left: 4rem;
+    margin-left: var(--margin-md);
     letter-spacing: var(--letter-spacing-md);
   }
 }
@@ -21,4 +20,42 @@
       margin-left: var(--margin-md);
     }
   }
+}
+
+.menu-bars {
+  cursor: pointer;
+  height: max-content;
+  margin-left: auto;
+
+  @include respond(desktop) {
+    display: none;
+  }
+  &.darkmode {
+    .bar {
+      background-color: #fff;
+    }
+  }
+  &:hover {
+    .bar {
+      background-color: var(--color-primary);
+    }
+  }
+}
+
+.bar {
+  width: 3.2rem;
+  height: 0.2rem;
+  background-color: var(--color-dark-grey);
+  margin: 0.8rem 0;
+  transition: 0.25s;
+}
+
+.bar:nth-of-type(1).change {
+  transform: rotate(-45deg) translate(-8px, 6px);
+}
+.bar:nth-of-type(2).change {
+  opacity: 0;
+}
+.bar:nth-of-type(3).change {
+  transform: rotate(45deg) translate(-8px, -6px);
 }

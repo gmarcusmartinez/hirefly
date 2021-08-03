@@ -19,16 +19,6 @@
   }
 }
 
-@include respond(tablet) {
-  .dashboard {
-    &__panel {
-      border-radius: 0.4rem;
-      height: 100%;
-      width: 100%;
-    }
-  }
-}
-
 @include respond(desktop) {
   .dashboard {
     &__panel {

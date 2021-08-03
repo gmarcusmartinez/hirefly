@@ -1,5 +1,23 @@
+.sidenav {
+  margin-top: 81px;
+}
 .sidenav__main {
   padding: 0.5rem;
-  height: calc(100% - 80px);
   width: 100%;
+}
+.sidenav__profile-img {
+  border-radius: 50%;
+  height: 5rem;
+  margin: var(--margin-sm);
+  width: 5rem;
+  object-fit: cover;
+  display: none;
+}
+@include respond(tablet) {
+  .sidenav {
+    margin-top: unset;
+  }
+  .sidenav__profile-img {
+    display: block;
+  }
 }

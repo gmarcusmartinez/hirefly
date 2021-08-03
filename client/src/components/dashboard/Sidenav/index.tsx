@@ -6,7 +6,6 @@ export const Sidenav = () => {
   const { expanded, mode } = useTypedSelector(({ dashboard }) => dashboard);
   return (
     <div className={`sidenav ${expanded ? 'expand' : 'retract'} ${mode}`}>
-      <Header />
       <Main />
     </div>
   );
