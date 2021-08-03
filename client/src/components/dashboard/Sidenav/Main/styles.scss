@@ -1,24 +1,60 @@
 .sidenav {
+  box-shadow: var(--box-shadow-medium);
+  height: calc(100% - 80px);
   margin-top: 81px;
+  position: absolute;
+  left: 0;
+  background-color: #f9f9f9;
+  width: 0rem;
+  z-index: 1;
+  &.retract {
+    transition: 0.2s ease-in-out;
+  }
+  &.expand {
+    transition: 0.2s ease-in-out;
+    width: 99%;
+  }
+  &.darkmode {
+    background-color: #242424;
+    box-shadow: 0 0.2rem 0.5rem #000;
+  }
+  &__profile-img {
+    border-radius: 50%;
+    height: 5rem;
+    margin: 1rem 0 1rem 0.5rem;
+    width: 5rem;
+    object-fit: cover;
+    display: none;
+  }
+
+  &__main {
+    height: 90%;
+    padding: 0.5rem;
+    width: 100%;
+  }
 }
-.sidenav__main {
-  height: 90%;
-  padding: 0.5rem;
-  width: 100%;
-}
-.sidenav__profile-img {
-  border-radius: 50%;
-  height: 5rem;
-  margin: 1rem 0 1rem 0.5rem;
-  width: 5rem;
-  object-fit: cover;
-  display: none;
-}
+
 @include respond(tablet) {
   .sidenav {
+    height: 100%;
     margin-top: unset;
+    &.retract {
+      width: 7rem !important;
+      transition: width 0.2s ease-in-out;
+    }
+    &.expand {
+      width: 26rem;
+    }
   }
   .sidenav__profile-img {
     display: block;
+  }
+}
+
+@include respond(desktop) {
+  .sidenav {
+    &.retract {
+      width: 26rem !important;
+    }
   }
 }

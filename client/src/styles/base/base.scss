@@ -7,16 +7,20 @@
 }
 html {
   font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+  height: 100%;
 }
 
 body {
-  font-family: 'Varela Round', sans-serif;
-  line-height: 1.6;
   background-color: #fbf7f5;
+  font-family: 'Varela Round', sans-serif;
+  height: 100%;
+  line-height: 1.6;
 }
 
 #root,
 #modal {
+  height: 100vh;
+
   --box-shadow-light: 0 0.1rem 0.2rem #bdbdbd;
   --box-shadow-medium: 0 0.2rem 0.5rem #bdbdbd;
 

@@ -1,9 +1,9 @@
 .job-card {
   cursor: pointer;
-  height: 34rem;
   margin-bottom: 0.5rem;
   position: relative;
-  width: 100%;
+  height: 34rem;
+  width: 34rem;
 
   &__header {
     align-items: center;
@@ -50,5 +50,16 @@
       cursor: pointer;
       font-size: 3.2rem;
     }
+  }
+}
+
+@include respond(tablet) {
+  .job-card {
+    width: 49%;
+  }
+}
+@include respond(desktop) {
+  .job-card {
+    width: 33%;
   }
 }

@@ -1,5 +1,9 @@
 .notifications-screen {
+  display: grid;
+  grid-template-rows: 80px auto;
   height: 100%;
+  overflow-y: scroll;
+
   &__main {
     height: calc(100% - 80px);
     overflow-y: scroll;

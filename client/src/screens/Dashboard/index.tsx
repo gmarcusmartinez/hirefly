@@ -48,13 +48,11 @@ export const Dashboard = () => {
   }, [messageSent]);
 
   return (
-    <div className='dashboard'>
-      <div className={`dashboard__panel ${mode}`}>
-        <Sidenav />
-        <div className='dashboard__main'>
-          <AlertContainer />
-          <DashboardRoutes />
-        </div>
+    <div className={`dashboard ${mode}`}>
+      <Sidenav />
+      <div className='dashboard__main'>
+        <AlertContainer />
+        <DashboardRoutes />
       </div>
     </div>
   );

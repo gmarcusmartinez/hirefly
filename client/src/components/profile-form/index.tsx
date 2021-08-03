@@ -35,15 +35,11 @@ export const ProfileForm: FC<IProps> = ({ step, setStep, me }) => {
   };
 
   const props = { formData, onChange, setStep };
+  const style = { transform: `translateX(-${step * 100}%)` };
 
   return (
     <div className='profile-form__steps-active'>
-      <div
-        className='profile-form__steps-wrapper'
-        style={{
-          transform: `translateX(-${step * 100}%)`,
-        }}
-      >
+      <div className='profile-form__steps-wrapper' style={style}>
         <BasicInfo {...props} />
         <ImgBio {...props} imageData={imageData} onImgChange={onImgChange} />
         <CreateProfileSkills {...props} handleSubmit={handleSubmit} />

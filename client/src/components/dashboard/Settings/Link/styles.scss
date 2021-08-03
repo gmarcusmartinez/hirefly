@@ -3,7 +3,7 @@
   color: var(--color-grey-tertiary);
   cursor: pointer;
   display: flex;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   height: 15%;
   justify-content: center;
   letter-spacing: var(--letter-spacing-md);
@@ -25,6 +25,7 @@
 
 @include respond(tablet) {
   .settings__link {
+    font-size: 1.4rem;
     height: 4rem;
     justify-content: unset;
     line-height: 4rem;

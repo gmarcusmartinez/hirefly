@@ -1,83 +1,12 @@
 .profile-form__step {
-  height: calc(100% - 20px);
+  height: 100%;
   padding: 0 1rem;
-  width: 100%;
   position: absolute;
-  top: 2rem;
+  width: 100%;
 }
-
 #bio {
   transform: translateX(100%);
 }
 #cp-skills {
   transform: translateX(200%);
-}
-
-.step-btn {
-  border: none;
-  border-radius: 0.4rem;
-  background-color: var(--color-primary);
-  color: #fff;
-  height: 4rem;
-  letter-spacing: var(--letter-spacing-sm);
-  margin-right: 0.5rem;
-  width: 12rem;
-  &.disabled {
-    background-color: var(--color-grey-primary);
-  }
-  &:active {
-    transform: translate(2px, 2px);
-  }
-}
-
-.profile-form__title {
-  margin-top: 10rem;
-  margin-bottom: 2rem;
-  color: var(--color-white);
-  font-size: 1.5rem;
-  letter-spacing: var(--letter-spacing-sm);
-  @include respond(tablet) {
-    align-self: flex-start;
-  }
-}
-
-.profile-form__inputs {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  @include respond(tablet) {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-}
-.profile-form__btns {
-  justify-content: flex-start;
-  display: flex;
-  width: 100%;
-}
-.profile-form__btn {
-  align-self: flex-end;
-  background-color: var(--color-primary);
-  border: none;
-  border-radius: 0.4rem;
-  color: var(--color-white);
-  cursor: pointer;
-  height: 4rem;
-  letter-spacing: var(--letter-spacing-sm);
-  margin-top: 2rem;
-  margin-right: 1rem;
-  width: 10rem;
-  &.disabled {
-    background-color: var(--color-grey-secondary);
-    cursor: unset;
-    &:hover {
-      filter: brightness(100%);
-    }
-  }
-  &:active {
-    transform: translate(2px, 2px);
-  }
-  &:hover {
-    filter: brightness(110%);
-  }
 }

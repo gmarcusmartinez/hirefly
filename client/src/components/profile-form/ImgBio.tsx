@@ -20,7 +20,7 @@ export const ImgBio: FC<IProps> = ({
   const prev = () => setStep(0);
   const next = () => setStep(2);
 
-  const disabled = !imageData;
+  const disabled = imageData || formData.imgUrl ? false : true;
   const btnClassName = disabled ? 'disabled' : '';
 
   const texts = [{ label: 'Bio', name: 'bio' }];

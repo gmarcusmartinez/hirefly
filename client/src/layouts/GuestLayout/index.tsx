@@ -6,7 +6,9 @@ export const GuestLayout: React.FC = ({ children }) => {
   return (
     <>
       <Navigation />
-      <div className='main-content'>{children}</div>
+      <div className='main-content' style={{ marginTop: '10vh' }}>
+        {children}
+      </div>
       <Footer />
     </>
   );

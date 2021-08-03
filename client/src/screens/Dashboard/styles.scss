@@ -1,17 +1,17 @@
 .dashboard {
-  align-items: center;
   display: flex;
+  background-color: #f9f9f9;
+  height: 100%;
   justify-content: center;
-  height: 100vh;
-  &__panel {
-    background-color: #f9f9f9;
-    height: 100%;
-    position: relative;
-    transition: 0.1s ease-in;
-    width: 100%;
-    &.darkmode {
-      background-color: #242424 !important;
-    }
+  transition: 0.1s ease-in;
+  width: 100%;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  &.darkmode {
+    background-color: #242424 !important;
   }
   &__main {
     height: 100%;
@@ -21,13 +21,11 @@
 
 @include respond(desktop) {
   .dashboard {
-    &__panel {
-      display: grid;
-      grid-template-columns: 26rem auto;
-    }
+    display: grid;
+    grid-template-columns: 26rem auto;
+    position: relative;
     &__main {
-      height: 100%;
-      left: 26rem;
+      margin-left: 26rem;
       position: absolute;
       top: 0;
       width: calc(100% - 260px);
