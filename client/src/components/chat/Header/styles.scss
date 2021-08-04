@@ -22,13 +22,6 @@
     letter-spacing: var(--letter-spacing-sm);
     margin-left: var(--margin-sm);
   }
-  i {
-    color: var(--color-grey-secondary);
-    cursor: pointer;
-    font-size: 3.2rem;
-    position: absolute;
-    right: 1rem;
-  }
 }
 
 .chat__header.darkmode {
@@ -42,14 +35,6 @@
 }
 @include respond(tablet) {
   .chat__header {
-    margin-left: 7rem;
-    width: calc(100% - 70px);
-  }
-}
-
-@include respond(desktop) {
-  .chat__header {
-    margin-left: unset;
-    width: 100%;
+    grid-area: head;
   }
 }

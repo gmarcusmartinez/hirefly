@@ -9,6 +9,8 @@ import { SocketContext } from 'context/socket';
 import { AlertContainer } from 'components/alerts/AlertContainer';
 import { DashboardRoutes } from './routes';
 import { DashHeader } from 'components/common/DashHeader';
+import { ChatHeader } from 'components/chat/Header';
+import { useHistory } from 'react-router-dom';
 
 export const Dashboard = () => {
   const socket = React.useContext(SocketContext);
@@ -48,10 +50,13 @@ export const Dashboard = () => {
     // eslint-disable-next-line
   }, [messageSent]);
 
+  const history = useHistory();
+  const path = history.location.pathname.split('/')[2];
+
   return (
     <div className={`dashboard ${mode}`}>
       <Sidenav />
-      <DashHeader />
+      {path === 'connections' ? <ChatHeader /> : <DashHeader />}
       <div className='dashboard__main'>
         <AlertContainer />
         <DashboardRoutes />

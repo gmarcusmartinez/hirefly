@@ -1,9 +1,8 @@
-// $header-height: 8rem;
 // $footer-height: 6.4rem;
 
 .chat {
   height: 100%;
   &__main {
-    height: calc(100% - 144px);
+    height: calc(100% - 64px);
   }
 }

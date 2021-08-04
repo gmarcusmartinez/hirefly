@@ -3,8 +3,10 @@ import { useState } from 'react';
 import { Signin } from './Signin';
 import { Signup } from './Signup';
 import { ErrorsContainer } from 'components/common/ErrorsContainer';
+import { SelectAccountType } from './SelectAccountType';
 
 export const AuthForm = () => {
+  const [accountType, setAccountType] = useState('');
   const [formDisplay, setFormDisplay] = useState('RENDER_SIGNIN');
   const { errors } = useTypedSelector(({ auth }) => auth);
 
@@ -13,7 +15,16 @@ export const AuthForm = () => {
       case 'RENDER_SIGNIN':
         return <Signin setFormDisplay={setFormDisplay} />;
       case 'RENDER_SIGNUP':
-        return <Signup setFormDisplay={setFormDisplay} />;
+        return (
+          <Signup setFormDisplay={setFormDisplay} accountType={accountType} />
+        );
+      case 'RENDER_SELECT':
+        return (
+          <SelectAccountType
+            setFormDisplay={setFormDisplay}
+            setAccountType={setAccountType}
+          />
+        );
     }
   };
 

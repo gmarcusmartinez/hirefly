@@ -3,7 +3,6 @@ import { MessageBubble } from 'components/chat/MessageBubble';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { Spinner } from 'components/common/Spinner';
 import { IMessage } from 'interfaces';
-import { TypingIndicator } from '../TypingIndicator';
 
 export const ChatMain = () => {
   const chatRef = useRef<any>(null);
@@ -23,7 +22,6 @@ export const ChatMain = () => {
   return (
     <div className='chat__main' ref={chatRef}>
       {renderList()}
-      {false && <TypingIndicator />}
     </div>
   );
 };

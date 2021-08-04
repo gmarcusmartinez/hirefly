@@ -24,25 +24,4 @@
     font-weight: 400;
     letter-spacing: var(--letter-spacing-md);
   }
-  button {
-    background-color: var(--color-primary);
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    height: 4rem;
-    font-size: 1.4rem;
-    font-weight: 300;
-    letter-spacing: var(--letter-spacing-lg);
-    outline: none;
-    text-transform: uppercase;
-    text-align: center;
-    width: 100%;
-
-    &:active {
-      transform: translateY(3px);
-    }
-    &:hover {
-      transition: background-color 0.2s ease-in;
-    }
-  }
 }

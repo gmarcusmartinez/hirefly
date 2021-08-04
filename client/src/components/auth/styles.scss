@@ -26,7 +26,8 @@
 }
 
 .signin,
-.signup {
+.signup,
+.select-account-type {
   @include default-form;
   display: grid;
   height: 100%;
@@ -46,4 +47,7 @@
 }
 .signup {
   grid-template-rows: 6rem 10rem 10rem 6rem 4rem 4rem;
+}
+.select-account-type {
+  grid-template-rows: 6rem 6rem 6rem 6rem;
 }

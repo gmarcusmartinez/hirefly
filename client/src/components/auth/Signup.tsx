@@ -5,11 +5,16 @@ import { useActions } from 'hooks/use-actions';
 
 interface IProps {
   setFormDisplay: Function;
+  accountType: string;
 }
 
-export const Signup: FC<IProps> = ({ setFormDisplay }) => {
+export const Signup: FC<IProps> = ({ setFormDisplay, accountType }) => {
   const { signup } = useActions();
-  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    accountType,
+  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,10 +23,11 @@ export const Signup: FC<IProps> = ({ setFormDisplay }) => {
     e.preventDefault();
     signup(formData);
   };
+  const title = accountType === 'applicant' ? 'an Applicant' : 'a Recruiter';
 
   return (
     <form className='signup' onSubmit={handleSubmit}>
-      <h3>Signup For An Account</h3>
+      <h3>Signup as {title} </h3>
 
       {signupInputs.map((i, idx) => (
         <Text
@@ -39,8 +45,11 @@ export const Signup: FC<IProps> = ({ setFormDisplay }) => {
 
       <button className='btn-primary'>Signup</button>
       <div className='auth-form-wrapper__switch'>
-        Already have an account?
-        <span onClick={() => setFormDisplay('RENDER_SIGNIN')}> Signin </span>
+        Change
+        <span onClick={() => setFormDisplay('RENDER_SELECT')}>
+          {' '}
+          Account Type{' '}
+        </span>
       </div>
     </form>
   );

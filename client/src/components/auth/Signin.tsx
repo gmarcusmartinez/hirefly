@@ -1,6 +1,6 @@
 import { useState, FC } from 'react';
 import { Text } from 'components/common/TextInput';
-import { signinInputs } from '../inputs';
+import { signinInputs } from './inputs';
 import { useActions } from 'hooks/use-actions';
 
 interface IProps {
@@ -38,7 +38,7 @@ export const Signin: FC<IProps> = ({ setFormDisplay }) => {
       <button className='btn-primary'>Signin</button>
       <div className='auth-form-wrapper__switch'>
         Dont have an account?
-        <span onClick={() => setFormDisplay('RENDER_SIGNUP')}> Signup </span>
+        <span onClick={() => setFormDisplay('RENDER_SELECT')}> Signup </span>
       </div>
     </form>
   );
