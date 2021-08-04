@@ -40,18 +40,18 @@ exports.signup = void 0;
 var common_1 = require("../../../common");
 var User_1 = require("../../../models/User");
 exports.signup = common_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, email, password, existingUser, msg, user, token;
+    var _a, email, password, accountType, existingUser, msg, user, token;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
-                _a = req.body, email = _a.email, password = _a.password;
+                _a = req.body, email = _a.email, password = _a.password, accountType = _a.accountType;
                 return [4 /*yield*/, User_1.User.findOne({ email: email })];
             case 1:
                 existingUser = _b.sent();
                 msg = 'This email is currently registered to an active account.';
                 if (existingUser)
                     throw new common_1.BadRequestError(msg);
-                user = User_1.User.build({ email: email, password: password });
+                user = User_1.User.build({ email: email, password: password, accountType: accountType });
                 return [4 /*yield*/, user.save()];
             case 2:
                 _b.sent();

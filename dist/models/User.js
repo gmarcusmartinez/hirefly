@@ -39,14 +39,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
+exports.User = exports.AccountType = void 0;
 var keys_1 = __importDefault(require("../config/keys"));
 var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 var mongoose_1 = __importDefault(require("mongoose"));
 var PasswordManager_1 = require("../services/PasswordManager");
+var AccountType;
+(function (AccountType) {
+    AccountType["applicant"] = "applicant";
+    AccountType["recruiter"] = "recruiter";
+})(AccountType = exports.AccountType || (exports.AccountType = {}));
 var userSchema = new mongoose_1.default.Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    accountType: {
+        type: String,
+        enum: Object.values(AccountType),
+        default: AccountType.applicant,
+    },
 }, {
     toJSON: {
         transform: function (doc, ret) {
@@ -56,7 +66,7 @@ var userSchema = new mongoose_1.default.Schema({
 });
 userSchema.statics.build = function (attrs) { return new User(attrs); };
 userSchema.methods.getSignedJwtToken = function () {
-    return jsonwebtoken_1.default.sign({ _id: this._id }, keys_1.default.jwtSecret);
+    return jsonwebtoken_1.default.sign({ _id: this._id, accountType: this.accountType }, keys_1.default.jwtSecret);
 };
 userSchema.pre('save', function (done) {
     return __awaiter(this, void 0, void 0, function () {
