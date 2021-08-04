@@ -1,42 +1,22 @@
 .my-jobs {
-  display: grid;
-  grid-template-rows: 80px auto;
-  height: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   overflow-y: scroll;
-
-  &__main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: var(--padding-sm);
-    width: 100%;
-  }
+  padding: var(--padding-sm);
 }
 
 @include respond(tablet) {
   .my-jobs {
-    margin-left: 7rem;
-
-    &__main {
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      max-width: 70rem;
-    }
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 70rem;
   }
 }
 
 @include respond(desktop) {
   .my-jobs {
-    margin-left: unset;
-    &__header {
-      h2 {
-        margin-left: var(--margin-md);
-      }
-    }
-    &__main {
-      max-width: 90rem;
-      margin-left: unset;
-    }
+    max-width: 90rem;
   }
 }

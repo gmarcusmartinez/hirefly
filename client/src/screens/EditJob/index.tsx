@@ -1,6 +1,5 @@
 import React from 'react';
 import { useTypedSelector } from 'hooks/use-typed-selector';
-import { DashHeader } from 'components/common/DashHeader';
 import { ErrorsContainer } from 'components/common/ErrorsContainer';
 import { PostJobSteps } from 'components/job-form/Steps';
 import { JobForm } from 'components/job-form';
@@ -11,12 +10,9 @@ export const EditJob = () => {
 
   return (
     <div className='job-form'>
-      <DashHeader title='Edit Job' />
-      <div className='job-form__main'>
-        <PostJobSteps step={step} />
-        <JobForm setStep={setStep} step={step} selected={selected} />
-        <ErrorsContainer errors={errors ? errors : null} />
-      </div>
+      <PostJobSteps step={step} />
+      <JobForm setStep={setStep} step={step} selected={selected} />
+      <ErrorsContainer errors={errors ? errors : null} />
     </div>
   );
 };

@@ -4,7 +4,6 @@ import { SwiperCard } from 'components/swiper-card';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { IJob } from 'interfaces';
 import { Spinner } from 'components/common/Spinner';
-import { DashHeader } from 'components/common/DashHeader';
 import { NoItems } from 'components/common/NoMoreItemsMsg';
 
 export const Jobs = () => {
@@ -19,9 +18,9 @@ export const Jobs = () => {
   }, [getAllJobs, clearJobs]);
 
   const last = items.length - 1;
-
   const approve = (jobId: string) =>
     createApplication({ current, last, jobId });
+
   const decline = (jobId: string) => declineJob({ current, last, jobId });
 
   const list = items.map((item: IJob) => (
@@ -35,14 +34,11 @@ export const Jobs = () => {
   ));
 
   if (loading) return <Spinner />;
-  if (!items.length) return <NoItems type='applicant' />;
+  if (!items.length) return <NoItems type='jobs' />;
   return (
     <div className='jobs-screen'>
-      <DashHeader title='Find Jobs' />
-      <div className='jobs-screen__main'>
-        <div className='jobs-screen__list'>{list}</div>
-        {list[current]}
-      </div>
+      <div className='jobs-screen__list'>{list}</div>
+      {list[current]}
     </div>
   );
 };

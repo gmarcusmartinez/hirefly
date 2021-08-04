@@ -46,6 +46,7 @@ export enum ChatActionTypes {
 export enum DashboardActionTypes {
   SET_COMPONENT = 'SET_COMPONENT',
   SET_EXPAND = 'SET_EXPAND',
+  SET_HEADER_TEXT = 'SET_HEADER_TEXT',
   TOGGLE_MODE = 'TOGGLE_MODE',
 }
 

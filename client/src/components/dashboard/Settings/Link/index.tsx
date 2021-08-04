@@ -9,11 +9,11 @@ interface IProps {
   text: string;
   icon: string;
   path: string;
+  headerText: string;
   disabled?: boolean;
 }
-export const SettingsLink: FC<IProps> = ({ text, icon, path }) => {
-  const { toggleSidenav, setSidenavComponent, fetchNotifications } =
-    useActions();
+export const SettingsLink: FC<IProps> = ({ text, icon, path, headerText }) => {
+  const { toggleSidenav, setHeaderText, fetchNotifications } = useActions();
 
   const { mode, expanded } = useTypedSelector((state) => state.dashboard);
 
@@ -24,7 +24,7 @@ export const SettingsLink: FC<IProps> = ({ text, icon, path }) => {
   const redirect = (route: string) => {
     history.push(route);
     toggleSidenav(false);
-    if (path === '/dashboard/jobs') setSidenavComponent('MESSAGES');
+    setHeaderText(headerText);
   };
 
   React.useEffect(() => {

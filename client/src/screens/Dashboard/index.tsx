@@ -8,6 +8,7 @@ import { SocketActionTypes } from 'state';
 import { SocketContext } from 'context/socket';
 import { AlertContainer } from 'components/alerts/AlertContainer';
 import { DashboardRoutes } from './routes';
+import { DashHeader } from 'components/common/DashHeader';
 
 export const Dashboard = () => {
   const socket = React.useContext(SocketContext);
@@ -50,6 +51,7 @@ export const Dashboard = () => {
   return (
     <div className={`dashboard ${mode}`}>
       <Sidenav />
+      <DashHeader />
       <div className='dashboard__main'>
         <AlertContainer />
         <DashboardRoutes />

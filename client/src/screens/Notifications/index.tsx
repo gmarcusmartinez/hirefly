@@ -1,7 +1,6 @@
 import React from 'react';
 import { INotification } from 'interfaces';
 import { useActions } from 'hooks/use-actions';
-import { DashHeader } from 'components/common/DashHeader';
 import { NotificationItem } from 'components/notifications/NotificationItem';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 
@@ -19,10 +18,5 @@ export const Notifications = () => {
     if (unreadNotifications.length) markAsRead();
   }, [fetchNotifications, markAsRead, unreadNotifications.length]);
 
-  return (
-    <div className='notifications-screen'>
-      <DashHeader title='Notifications' />
-      <div className='notifications-screen__main'>{list}</div>
-    </div>
-  );
+  return <div className='notifications'>{list}</div>;
 };

@@ -1,35 +1,7 @@
 .jobs-screen {
-  display: grid;
-  grid-template-rows: 80px auto;
-  height: 100%;
-  overflow-y: scroll;
-
-  &__main {
-    display: flex;
-    justify-content: center;
-    height: calc(100% - 100px);
-    overflow-y: scroll;
-    padding: var(--padding-sm);
-    // For alert container
-    position: relative;
-  }
+  // For alert container
+  position: relative;
   &__list {
     display: none;
-  }
-}
-
-@include respond(tablet) {
-  .jobs-screen {
-    margin-left: 7rem;
-  }
-}
-
-@include respond(desktop) {
-  .jobs-screen {
-    margin-left: unset;
-    &__main {
-      margin-left: unset;
-      align-items: center;
-    }
   }
 }

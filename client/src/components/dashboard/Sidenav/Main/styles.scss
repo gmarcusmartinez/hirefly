@@ -6,7 +6,8 @@
   left: 0;
   background-color: #f9f9f9;
   width: 0rem;
-  z-index: 1;
+  z-index: 2;
+
   &.retract {
     transition: 0.2s ease-in-out;
   }
@@ -14,10 +15,12 @@
     transition: 0.2s ease-in-out;
     width: 99%;
   }
+
   &.darkmode {
-    background-color: #242424;
+    background-color: #242424 !important;
     box-shadow: 0 0.2rem 0.5rem #000;
   }
+
   &__profile-img {
     border-radius: 50%;
     height: 5rem;
@@ -38,8 +41,10 @@
   .sidenav {
     height: 100%;
     margin-top: unset;
+    grid-area: sidenav;
+
     &.retract {
-      width: 7rem !important;
+      width: 7rem;
       transition: width 0.2s ease-in-out;
     }
     &.expand {

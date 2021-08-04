@@ -1,24 +1,3 @@
-.notifications-screen {
-  display: grid;
-  grid-template-rows: 80px auto;
-  height: 100%;
-  overflow-y: scroll;
-
-  &__main {
-    height: calc(100% - 80px);
-    overflow-y: scroll;
-    padding: var(--padding-sm);
-  }
-}
-
-@include respond(tablet) {
-  .notifications-screen {
-    margin-left: 7rem;
-  }
-}
-
-@include respond(desktop) {
-  .notifications-screen {
-    margin-left: unset;
-  }
+.notifications {
+  padding: var(--padding-sm);
 }

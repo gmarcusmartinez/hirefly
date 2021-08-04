@@ -1,21 +1,7 @@
 .applicants {
-  height: 100%;
-  margin-left: 7rem;
-  &__main {
-    height: calc(100% - 100px);
-    overflow-y: scroll;
-    padding: var(--padding-sm);
-  }
+  // For alert container
+  position: relative;
   &__list {
     display: none;
-  }
-}
-
-@include respond(desktop) {
-  .applicants {
-    margin-left: unset;
-    &__main {
-      margin-left: unset;
-    }
   }
 }

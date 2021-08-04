@@ -1,36 +1,21 @@
 .job-form {
-  display: grid;
-  grid-template-rows: 80px auto;
   font-family: 'Varela Round', sans-serif;
   height: 100%;
-
-  &__main {
-    height: 100%;
-    overflow-y: scroll;
-    padding: var(--padding-sm);
-  }
+  padding: 0 1rem;
   &__steps-active {
     display: flex;
-    height: calc(100% - 80px);
-    margin: auto;
+    height: calc(100% - 60px);
     max-width: 55rem;
+    margin: auto;
     overflow-x: hidden;
+    position: relative;
     width: 100%;
   }
   &__steps-wrapper {
     display: flex;
-    height: calc(100% - 80px);
+    height: 100%;
     width: 100%;
+    position: absolute;
     transition: transform 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
-  }
-}
-@include respond(tablet) {
-  .job-form {
-    margin-left: 7rem;
-  }
-}
-@include respond(desktop) {
-  .job-form {
-    margin-left: unset;
   }
 }

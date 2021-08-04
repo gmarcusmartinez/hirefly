@@ -5,12 +5,14 @@ interface DashboardState {
   sidenavComponent: string;
   expanded: boolean;
   mode: string;
+  header: string;
 }
 
 const initialState = {
   sidenavComponent: 'SETTINGS',
   expanded: false,
   mode: 'darkmode',
+  header: '',
 };
 
 export const dashboard = (
@@ -26,6 +28,8 @@ export const dashboard = (
       return { ...state, expanded: payload };
     case DashboardActionTypes.TOGGLE_MODE:
       return { ...state, mode: payload };
+    case DashboardActionTypes.SET_HEADER_TEXT:
+      return { ...state, header: payload };
     default:
       return state;
   }

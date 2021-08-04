@@ -47,7 +47,6 @@ export const Applicants = () => {
   if (!items.length) return <NoItems type='applicant' />;
   return (
     <div className='applicants'>
-      <DashHeader title={`Applicants for ${selected!.title}`} />
       <div className='applicants__main'>
         <div className='applicants__list'>{list}</div>
         <div className='applicants__selected'>{list[current]}</div>

@@ -3,7 +3,6 @@ import { IJob } from 'interfaces';
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { SingleCard } from 'components/job-card';
-import { DashHeader } from 'components/common/DashHeader';
 
 export const MyJobs = () => {
   const { getPostedJobs } = useActions();
@@ -11,17 +10,11 @@ export const MyJobs = () => {
 
   React.useEffect(() => {
     getPostedJobs();
-    // eslint-disable-next-line
-  }, []);
+  }, [getPostedJobs]);
 
   const list = items.map((item: IJob) => (
     <SingleCard key={item._id} job={item} />
   ));
 
-  return (
-    <div className='my-jobs'>
-      <DashHeader title='My Posted Jobs' />
-      <div className='my-jobs__main'>{list}</div>
-    </div>
-  );
+  return <div className='my-jobs'>{list}</div>;
 };
