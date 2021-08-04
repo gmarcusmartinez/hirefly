@@ -75,5 +75,5 @@ export interface ProfileSubDoc {
 
 export interface IUser {
   _id: string;
-  accountStatus: string;
+  accountType: string;
 }

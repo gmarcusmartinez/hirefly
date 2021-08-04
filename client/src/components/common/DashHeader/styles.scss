@@ -11,6 +11,7 @@
     font-size: 1.25rem;
     margin-left: var(--margin-md);
     letter-spacing: var(--letter-spacing-md);
+    text-transform: capitalize;
   }
   &.darkmode {
     box-shadow: 0 0.1rem 0.2rem #000;

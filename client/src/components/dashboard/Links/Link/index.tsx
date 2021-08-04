@@ -1,4 +1,3 @@
-import React from 'react';
 import { FC } from 'react';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { useHistory } from 'react-router-dom';
@@ -9,38 +8,34 @@ interface IProps {
   text: string;
   icon: string;
   path: string;
-  headerText: string;
   disabled?: boolean;
 }
-export const SettingsLink: FC<IProps> = ({ text, icon, path, headerText }) => {
-  const { toggleSidenav, setHeaderText, fetchNotifications } = useActions();
+export const DashLink: FC<IProps> = ({ text, icon, path, disabled }) => {
+  const { toggleSidenav, setHeaderText } = useActions();
 
   const { mode, expanded } = useTypedSelector((state) => state.dashboard);
 
   const history = useHistory();
   const active = history.location.pathname === path;
   const displayText = !expanded ? 'hide-text' : 'display-text';
+  const btnStyle = disabled ? 'disabled' : '';
 
   const redirect = (route: string) => {
     history.push(route);
     toggleSidenav(false);
-    setHeaderText(headerText);
+    setHeaderText(text);
   };
 
-  React.useEffect(() => {
-    if (text === 'Notifications') {
-      fetchNotifications();
-    }
-  }, [fetchNotifications, text]);
   return (
-    <div
-      className={`settings__link ${mode} ${active}`}
+    <button
+      className={`settings__link ${mode} ${active} ${btnStyle}`}
       onClick={() => redirect(path)}
       style={active ? { color: '#838dec' } : { color: '' }}
+      disabled={disabled}
     >
       <span className='material-icons'>{icon}</span>
       <span className={`${displayText}`}>{text}</span>
       {text === 'Notifications' && <NotificationsBadge />}
-    </div>
+    </button>
   );
 };

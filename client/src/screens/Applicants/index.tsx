@@ -1,5 +1,4 @@
 import React from 'react';
-import { DashHeader } from 'components/common/DashHeader';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { SocketContext } from 'context/socket';
 import { useActions } from 'hooks/use-actions';

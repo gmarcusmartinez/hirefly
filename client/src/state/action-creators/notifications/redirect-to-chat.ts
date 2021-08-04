@@ -28,7 +28,7 @@ export const redirectToChat =
       const { data } = await messages.get(`/${entityId}`);
       dispatch({ type: FETCH_MESSAGES_SUCCESS, payload: data });
 
-      dispatch({ type: SET_COMPONENT, payload: 'MESSAGES' });
+      dispatch({ type: SET_COMPONENT, payload: 'CHATS' });
       history.push('/dashboard/connections');
     } catch (e) {
       dispatch({ type: FETCH_MESSAGES_FAILURE, payload: null });

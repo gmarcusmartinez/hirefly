@@ -4,6 +4,7 @@ import keys from '../../config/keys';
 
 interface UserPayload {
   _id: string;
+  accountType: string;
 }
 
 declare global {

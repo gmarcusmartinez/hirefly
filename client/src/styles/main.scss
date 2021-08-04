@@ -33,12 +33,10 @@
 @import '../components/chat/Main/styles.scss';
 @import '../components/chat/MessageBubble/styles.scss';
 
-@import '../components/profile-form/styles.scss';
-@import '../components/dashboard/Sidenav/Main/styles.scss';
-
-@import '../components/dashboard/Settings/styles.scss';
-@import '../components/dashboard/Settings/Link/styles.scss';
-@import '../components/dashboard/Settings/Modes/styles.scss';
+@import '../components/dashboard/Links/styles.scss';
+@import '../components/dashboard/Links/Link/styles.scss';
+@import '../components/dashboard/Links/Modes/styles.scss';
+@import '../components/dashboard/Sidenav/styles.scss';
 
 @import '../components/job-card/styles.scss';
 @import '../components/modal/styles.scss';

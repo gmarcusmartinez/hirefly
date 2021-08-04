@@ -3,10 +3,9 @@ import { Dispatch } from 'redux';
 import applicants from 'api/profiles';
 import { IProfileForm } from 'interfaces/forms';
 import history from 'core/history';
-import { DashboardActionTypes, ProfileActionTypes } from 'state/types';
-
+import { ProfileActionTypes } from 'state/types';
+import { DashboardActionTypes } from 'state/types';
 const { CREATE_PROFILE_FAILURE, CREATE_PROFILE_SUCCESS } = ProfileActionTypes;
-const { SET_COMPONENT } = DashboardActionTypes;
 
 export const createProfile =
   (formData: IProfileForm, imageData: { type: string } | null) =>
@@ -32,12 +31,12 @@ export const createProfile =
 
       const config = { headers: { 'Content-Type': 'application/json' } };
       const requestBody = { ...formData, imgUrl: uploadConfig.data.key };
+
       const { data } = await applicants.post('/', requestBody, config);
-
       dispatch({ type: CREATE_PROFILE_SUCCESS, payload: data });
-      history.push('/dashboard/jobs');
 
-      dispatch({ type: SET_COMPONENT, payload: 'MESSAGES' });
+      dispatch({ type: DashboardActionTypes.SET_HEADER_TEXT, payload: 'Jobs' });
+      history.push('/dashboard/jobs');
     } catch (e) {
       const payload = e.response.data.errors;
       dispatch({ type: CREATE_PROFILE_FAILURE, payload });

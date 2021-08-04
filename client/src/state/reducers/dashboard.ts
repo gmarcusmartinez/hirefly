@@ -9,7 +9,7 @@ interface DashboardState {
 }
 
 const initialState = {
-  sidenavComponent: 'SETTINGS',
+  sidenavComponent: 'LINKS',
   expanded: false,
   mode: 'darkmode',
   header: '',

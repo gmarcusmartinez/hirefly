@@ -43,23 +43,23 @@ export const SingleCard: FC<IProps> = ({ job }) => {
         <span>
           {job.city} {job.country}
         </span>
-        <span>
+        {/* <span>
           {job.minSalary} - {job.maxSalary} €
-        </span>
-      </div>
-      <div className='job-card__actions'>
-        <i className='material-icons' onClick={redirectToEditJob}>
-          edit
-        </i>
-        <i
-          className='material-icons'
-          onClick={(e) => {
-            e.stopPropagation();
-            deleteJob(job._id);
-          }}
-        >
-          delete
-        </i>
+        </span> */}
+        <div className='job-card__actions'>
+          <i className='material-icons' onClick={redirectToEditJob}>
+            edit
+          </i>
+          <i
+            className='material-icons'
+            onClick={(e) => {
+              e.stopPropagation();
+              deleteJob(job._id);
+            }}
+          >
+            delete
+          </i>
+        </div>
       </div>
     </div>
   );

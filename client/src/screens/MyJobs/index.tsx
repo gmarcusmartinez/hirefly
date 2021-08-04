@@ -15,6 +15,15 @@ export const MyJobs = () => {
   const list = items.map((item: IJob) => (
     <SingleCard key={item._id} job={item} />
   ));
-
-  return <div className='my-jobs'>{list}</div>;
+  return (
+    <div className='my-jobs'>
+      {items.length === 0 && (
+        <span className='my-jobs__msg'>
+          You havent posted any jobs yet. Post a job to start mathcing with
+          applicants!
+        </span>
+      )}
+      <div className='my-jobs__list'>{list}</div>
+    </div>
+  );
 };

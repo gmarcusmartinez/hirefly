@@ -20,8 +20,8 @@ export const Dashboard = () => {
   const { mode } = useTypedSelector(({ dashboard }) => dashboard);
 
   React.useEffect(() => {
-    getMe();
-  }, [getMe]);
+    getMe(currentUser!.accountType);
+  }, [getMe, currentUser!.accountType]);
 
   React.useEffect(() => {
     socket.emit('init', currentUser!._id);
