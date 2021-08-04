@@ -1,23 +1,22 @@
 .no-items {
-  align-items: center;
   color: var(--color-grey-tertiary);
   display: flex;
-  height: 100%;
   justify-content: center;
-  margin-left: 7rem;
-  width: calc(100% - 7rem);
   span {
-    font-size: 1.45rem;
+    font-size: 1.25rem;
+    margin-top: 4rem;
     letter-spacing: var(--letter-spacing-sm);
+    text-align: center;
+    width: 30rem;
+  }
+  &.darkmode {
+    color: var(--color-white);
   }
 }
-.no-items.darkmode {
-  color: var(--color-white);
-}
-
-@include respond(desktop) {
+@include respond(tablet) {
   .no-items {
-    margin-left: unset;
-    width: 100%;
+    span {
+      font-size: 1.4rem;
+    }
   }
 }

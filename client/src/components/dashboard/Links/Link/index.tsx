@@ -11,7 +11,7 @@ interface IProps {
   disabled?: boolean;
 }
 export const DashLink: FC<IProps> = ({ text, icon, path, disabled }) => {
-  const { toggleSidenav, setHeaderText } = useActions();
+  const { toggleSidenav, setHeaderText, setSidenavComponent } = useActions();
 
   const { mode, expanded } = useTypedSelector((state) => state.dashboard);
 
@@ -24,6 +24,10 @@ export const DashLink: FC<IProps> = ({ text, icon, path, disabled }) => {
     history.push(route);
     toggleSidenav(false);
     setHeaderText(text);
+    if (route === '/dashboard/messenger') {
+      setSidenavComponent('CHATS');
+      toggleSidenav(true);
+    }
   };
 
   return (

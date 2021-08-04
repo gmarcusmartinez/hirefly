@@ -6,7 +6,6 @@ export const ChatHeader = () => {
   const { toggleSidenav } = useActions();
   const { mode, expanded } = useTypedSelector((state) => state.dashboard);
   const { header } = useTypedSelector((state) => state.chats);
-  const { imgUrl, firstName } = header!;
 
   const bar = `bar ${expanded ? 'change' : ''}`;
   const bars = [...Array(3)].map((_, i) => <div key={i} className={bar} />);
@@ -17,10 +16,14 @@ export const ChatHeader = () => {
   };
   return (
     <div className={`chat__header ${mode}`}>
-      <div className='chat__header__imgUrl'>
-        <img src={`${s3Url}/${imgUrl}`} alt='' />
-      </div>
-      <span>{firstName}</span>
+      {header?.imgUrl && header?.firstName && (
+        <>
+          <div className='chat__header__imgUrl'>
+            <img src={`${s3Url}/${header.imgUrl}`} alt='' />
+          </div>
+          <span>{header.firstName}</span>
+        </>
+      )}
       <div className={`menu-bars ${mode}`} onClick={toggle}>
         {bars}
       </div>

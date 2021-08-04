@@ -3,14 +3,3 @@
   overflow-y: scroll;
   width: 100%;
 }
-@include respond(desktop) {
-  .chat-list {
-    .back-to-jobs {
-      .retract {
-        display: block;
-        opacity: 1;
-        visibility: visible;
-      }
-    }
-  }
-}

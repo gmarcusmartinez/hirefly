@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { IMessage } from 'interfaces';
 import { useTypedSelector } from 'hooks/use-typed-selector';
-import { Sidenav } from 'components/dashboard/Sidenav';
+import { DashboardNav } from 'components/dashboard/DashboardNav';
 import { useActions } from 'hooks/use-actions';
 import { SocketActionTypes } from 'state';
 import { SocketContext } from 'context/socket';
@@ -21,7 +21,7 @@ export const Dashboard = () => {
 
   React.useEffect(() => {
     getMe(currentUser!.accountType);
-  }, [getMe, currentUser!.accountType]);
+  }, [getMe, currentUser]);
 
   React.useEffect(() => {
     socket.emit('init', currentUser!._id);
@@ -55,8 +55,8 @@ export const Dashboard = () => {
 
   return (
     <div className={`dashboard ${mode}`}>
-      <Sidenav />
-      {path === 'connections' ? <ChatHeader /> : <DashHeader />}
+      <DashboardNav />
+      {path === 'messenger' ? <ChatHeader /> : <DashHeader />}
       <div className='dashboard__main'>
         <AlertContainer />
         <DashboardRoutes />

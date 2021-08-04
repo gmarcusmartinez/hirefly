@@ -27,7 +27,7 @@ export const ChatInput = () => {
     messageSent(data);
     setContent('');
   };
-
+  if (!selectedChatId) return null;
   return (
     <form onSubmit={handleSubmit} className={`chat__input ${mode}`}>
       <input type='text' value={content} onChange={handleChange} />

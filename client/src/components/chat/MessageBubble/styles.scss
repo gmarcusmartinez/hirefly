@@ -6,9 +6,10 @@
   padding: 1rem;
   font-family: 'Varela Round', sans-serif;
   width: max-content;
-  max-width: 34rem;
+  max-width: 90%;
+
   &.mine {
-    background-color: #fff !important;
+    background-color: #fff;
     margin-left: auto;
     border-bottom-right-radius: unset;
   }
@@ -18,5 +19,10 @@
     filter: brightness(120%);
     margin-right: auto;
     border-bottom-left-radius: unset;
+  }
+}
+@include respond(tablet) {
+  .message-bubble {
+    max-width: 48rem;
   }
 }

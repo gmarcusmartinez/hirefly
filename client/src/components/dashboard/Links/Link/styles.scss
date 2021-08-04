@@ -1,5 +1,7 @@
 .settings__link {
   align-items: center;
+  background-color: transparent;
+
   border: none;
   color: var(--color-grey-tertiary);
   cursor: pointer;
@@ -14,7 +16,6 @@
   text-transform: uppercase;
 
   &.darkmode {
-    background-color: #242424 !important;
     color: #e5e5e5;
   }
   .material-icons {

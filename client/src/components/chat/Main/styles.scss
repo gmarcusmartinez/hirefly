@@ -4,17 +4,3 @@
   padding: var(--padding-sm);
   overflow-y: scroll;
 }
-
-@include respond(tablet) {
-  .chat__main {
-    margin-left: 7rem;
-    width: calc(100%-7rem);
-  }
-}
-
-@include respond(desktop) {
-  .chat__main {
-    margin-left: unset;
-    width: 100%;
-  }
-}

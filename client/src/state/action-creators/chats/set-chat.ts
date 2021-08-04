@@ -25,7 +25,7 @@ export const setChat =
       dispatch({ type: FETCH_MESSAGES_SUCCESS, payload: res.data });
 
       dispatch({ type: DashboardActionTypes.SET_EXPAND, payload: false });
-      history.push('/dashboard/connections');
+      history.push('/dashboard/messenger');
     } catch (e) {
       dispatch({ type: FETCH_MESSAGES_FAILURE, payload: null });
     }

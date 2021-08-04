@@ -11,7 +11,7 @@ export const DashboardRoutes = () => {
       <RecruiterRoute path='/dashboard/post-job' component={s.PostJob} />
       <RecruiterRoute path='/dashboard/my-jobs' component={s.MyJobs} />
 
-      <Route path='/dashboard/connections' component={s.Chat} />
+      <Route path='/dashboard/messenger' component={s.Chat} />
       <Route path='/dashboard/create-profile' component={s.CreateProfile} />
       <Route path='/dashboard/edit-profile' component={s.EditProfile} />
       <Route path='/dashboard/notifications' component={s.Notifications} />

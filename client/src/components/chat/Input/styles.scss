@@ -42,26 +42,12 @@
       font-size: 2.1rem;
     }
   }
-}
 
-.chat__input.darkmode {
-  input {
-    border: 2px solid var(--color-grey-tertiary);
-    background-color: #242424;
-    color: #fff;
-  }
-}
-
-@include respond(tablet) {
-  .chat__input {
-    margin-left: 7rem;
-    width: calc(100% - 70px);
-  }
-}
-
-@include respond(desktop) {
-  .chat__input {
-    margin-left: unset;
-    width: 100%;
+  &.darkmode {
+    input {
+      border: 2px solid var(--color-grey-tertiary);
+      background-color: #242424;
+      color: #fff;
+    }
   }
 }

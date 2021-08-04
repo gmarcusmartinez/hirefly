@@ -5,11 +5,19 @@
   height: 100%;
   width: 100%;
 
+  position: fixed;
+  top: 0;
+  left: 0;
+
   &__header {
-    height: 8rem;
+    height: 10vh;
+  }
+  &__nav {
+    height: 90vh;
+    margin-top: calc(10vh + 1px);
   }
   &__main {
-    height: calc(100% - 80px);
+    height: 90vh;
     overflow-y: scroll;
   }
   &.darkmode {
@@ -21,16 +29,21 @@
   .dashboard {
     display: grid;
     grid-template-areas:
-      'sidenav head'
-      'sidenav mainarea';
+      'dashnav head'
+      'dashnav mainarea';
+
     grid-template-columns: 7rem auto;
     grid-template-rows: 8rem auto;
     &__header {
       grid-area: head;
     }
+    &__nav {
+      grid-area: dashnav;
+      height: 100vh;
+      margin-top: 0;
+    }
     &__main {
       grid-area: mainarea;
-      height: 100%;
     }
   }
 }

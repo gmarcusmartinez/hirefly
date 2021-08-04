@@ -10,6 +10,12 @@ export const Links = () => {
 
   return (
     <div className='settings'>
+      <DashLink
+        text='Messenger'
+        icon='chat_bubble_outline'
+        path='/dashboard/messenger'
+        disabled={!me}
+      />
       {applicant && (
         <DashLink
           text='Jobs'

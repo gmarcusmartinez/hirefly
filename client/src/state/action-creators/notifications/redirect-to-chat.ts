@@ -29,7 +29,7 @@ export const redirectToChat =
       dispatch({ type: FETCH_MESSAGES_SUCCESS, payload: data });
 
       dispatch({ type: SET_COMPONENT, payload: 'CHATS' });
-      history.push('/dashboard/connections');
+      history.push('/dashboard/messenger');
     } catch (e) {
       dispatch({ type: FETCH_MESSAGES_FAILURE, payload: null });
     }

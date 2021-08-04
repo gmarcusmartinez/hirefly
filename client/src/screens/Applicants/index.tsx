@@ -44,12 +44,11 @@ export const Applicants = () => {
 
   if (loading) return <Spinner />;
   if (!items.length) return <NoItems type='applicant' />;
+
   return (
     <div className='applicants'>
-      <div className='applicants__main'>
-        <div className='applicants__list'>{list}</div>
-        <div className='applicants__selected'>{list[current]}</div>
-      </div>
+      <div className='applicants__list'>{list}</div>
+      {list[current]}
     </div>
   );
 };
