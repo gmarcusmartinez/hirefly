@@ -36,5 +36,6 @@
 @include respond(tablet) {
   .chat__header {
     grid-area: head;
+    height: 8rem;
   }
 }

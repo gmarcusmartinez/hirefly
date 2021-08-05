@@ -17,7 +17,6 @@ export const BasicInfo: FC<IProps> = ({ setStep, onChange, formData }) => {
     { label: 'Family Name', name: 'lastName', required: true },
     { label: 'City', name: 'city' },
     { label: 'Country', name: 'country' },
-    { label: 'Linkedin Link', name: 'link' },
   ];
 
   const selects = [
@@ -34,7 +33,6 @@ export const BasicInfo: FC<IProps> = ({ setStep, onChange, formData }) => {
       <Text item={texts[1]} onChange={onChange} value={formData.lastName} />
       <Text item={texts[2]} onChange={onChange} value={formData.city} />
       <Text item={texts[3]} onChange={onChange} value={formData.country} />
-      <Text item={texts[4]} onChange={onChange} value={formData.link} />
       <Select item={selects[0]} onChange={onChange} value={formData.gender} />
       <button
         onClick={next}

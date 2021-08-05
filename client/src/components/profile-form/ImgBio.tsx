@@ -1,4 +1,5 @@
 import { FC, ChangeEvent } from 'react';
+import { Text } from 'components/common/DashInputs';
 import { TextArea } from 'components/common/DashInputs/TextArea';
 import { FileInput } from 'components/common/DashInputs/FileInput';
 
@@ -23,7 +24,11 @@ export const ImgBio: FC<IProps> = ({
   const disabled = imageData || formData.imgUrl ? false : true;
   const btnClassName = disabled ? 'disabled' : '';
 
-  const texts = [{ label: 'Bio', name: 'bio' }];
+  const texts = [
+    { label: 'Bio', name: 'bio' },
+    { label: 'Linkedin Link', name: 'link' },
+  ];
+
   const files = [
     {
       label: 'Choose Image',
@@ -41,6 +46,8 @@ export const ImgBio: FC<IProps> = ({
         file={imageData}
         url={formData.imgUrl}
       />
+      <Text item={texts[1]} onChange={onChange} value={formData.link} />
+
       <TextArea
         onChange={onChange}
         item={texts[0]}

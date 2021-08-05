@@ -1,11 +1,11 @@
-import { useRef, useEffect } from 'react';
+import React from 'react';
 import { MessageBubble } from 'components/chat/MessageBubble';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { Spinner } from 'components/common/Spinner';
 import { IMessage } from 'interfaces';
 
 export const ChatMain = () => {
-  const chatRef = useRef<any>(null);
+  const chatRef = React.useRef<any>(null);
   const { messageItems, loading } = useTypedSelector((state) => state.chats);
 
   const list = messageItems.map((msg: IMessage) => (
@@ -13,10 +13,13 @@ export const ChatMain = () => {
   ));
   const renderList = () => (loading ? <Spinner /> : <>{list}</>);
 
-  useEffect(() => {
-    if (chatRef.current) {
-      chatRef.current.scrollTo({ top: chatRef.current.scrollHeight });
-    }
+  React.useEffect(() => {
+    setTimeout(() => {
+      chatRef.current.scrollTo({
+        top: chatRef.current.scrollHeight,
+        behavior: 'smooth',
+      });
+    }, 100);
   }, []);
 
   return (

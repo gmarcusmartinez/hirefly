@@ -1,6 +1,4 @@
 .dashboard__nav {
-  box-shadow: var(--box-shadow-medium);
-
   position: absolute;
   left: 0;
   background-color: #f9f9f9;
@@ -12,12 +10,11 @@
   }
   &.expand {
     transition: 0.2s ease-in-out;
-    width: 99%;
+    width: 100%;
   }
 
   &.darkmode {
     background-color: #242424 !important;
-    box-shadow: 0 0.2rem 0.5rem #000;
   }
 
   &__profile-img {
@@ -38,12 +35,16 @@
 
 @include respond(tablet) {
   .dashboard__nav {
+    box-shadow: var(--box-shadow-medium);
     &.retract {
       width: 7rem;
       transition: width 0.2s ease-in-out;
     }
     &.expand {
       width: 26rem;
+    }
+    &.darkmode {
+      box-shadow: 0 0.2rem 0.5rem #000;
     }
   }
   .dashboard__nav__profile-img {

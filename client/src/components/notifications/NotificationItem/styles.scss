@@ -4,7 +4,7 @@
   cursor: pointer;
   display: grid;
   grid-template-columns: 6rem auto 4rem;
-  height: 6rem;
+  height: 10vh;
   margin-bottom: 0.25rem;
   opacity: 0.9;
   padding: 0.75rem;
@@ -20,7 +20,7 @@
     overflow-y: hidden;
     span {
       color: var(--color-grey-tertiary);
-      font-size: 1.1rem;
+      font-size: 1.25rem;
     }
   }
   &__trash {
@@ -45,12 +45,9 @@
     transform: translate(2px, 2px);
   }
 }
+
 @include respond(tablet) {
   .notification-item {
-    &__content {
-      span {
-        font-size: 1.25rem;
-      }
-    }
+    height: 6rem;
   }
 }

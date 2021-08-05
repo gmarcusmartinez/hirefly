@@ -14,11 +14,11 @@
   }
   &__nav {
     height: 90vh;
-    margin-top: calc(10vh + 1px);
+    margin-top: 10vh;
   }
   &__main {
-    height: 90vh;
     overflow-y: scroll;
+    height: 90vh;
   }
   &.darkmode {
     background-color: #242424 !important;
@@ -36,6 +36,7 @@
     grid-template-rows: 8rem auto;
     &__header {
       grid-area: head;
+      height: 8rem;
     }
     &__nav {
       grid-area: dashnav;

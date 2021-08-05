@@ -50,6 +50,16 @@ export const Dashboard = () => {
     // eslint-disable-next-line
   }, [messageSent]);
 
+  React.useEffect(() => {
+    if (navigator.userAgent.match(/iPhone/i)) {
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          window.scrollTo(0, 1);
+        }, 1000);
+      });
+    }
+  }, []);
+
   const history = useHistory();
   const path = history.location.pathname.split('/')[2];
 
