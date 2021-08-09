@@ -8,10 +8,6 @@
   position: relative;
   width: 32rem;
 
-  form {
-    animation: 0.25s ease-out slide-in-from-right;
-    transition: var(--transition-fast);
-  }
   &__switch {
     color: var(--color-grey-tertiary);
     font-size: 1.25rem;
@@ -28,6 +24,9 @@
 .signin,
 .signup,
 .select-account-type {
+  animation: 0.25s ease-out slide-in-from-right;
+  transition: var(--transition-fast);
+
   @include default-form;
   display: grid;
   height: 100%;

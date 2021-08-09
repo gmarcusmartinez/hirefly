@@ -1,0 +1,17 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.authRouter = void 0;
+var express_1 = require("express");
+var common_1 = require("../../common");
+var validation_1 = require("./signin/validation");
+var validation_2 = require("./signup/validation");
+var signin_1 = require("./signin");
+var signup_1 = require("./signup");
+var current_user_1 = require("./current-user");
+var signout_1 = require("./signout");
+var router = express_1.Router();
+exports.authRouter = router;
+router.get('/currentuser', common_1.currentUser, common_1.requireAuth, current_user_1.getCurrentUser);
+router.post('/signin', validation_1.signinValidation, common_1.validateRequest, signin_1.signin);
+router.post('/signout', signout_1.signout);
+router.post('/signup', validation_2.signupValidation, common_1.validateRequest, signup_1.signup);

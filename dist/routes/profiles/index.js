@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.profileRouter = void 0;
+var express_1 = require("express");
+var common_1 = require("../../common");
+var create_profile_1 = require("./create-profile");
+var validation_1 = require("./create-profile/validation");
+var get_me_1 = require("./get-me");
+var get_profile_1 = require("./get-profile");
+var update_profile_1 = require("./update-profile");
+var router = express_1.Router();
+exports.profileRouter = router;
+router.get('/me', common_1.currentUser, common_1.requireAuth, get_me_1.getMe);
+router.get('/:id', common_1.currentUser, common_1.requireAuth, get_profile_1.getProfile);
+router.post('/', common_1.currentUser, common_1.requireAuth, validation_1.profileValidation, common_1.validateRequest, create_profile_1.createProfile);
+router.put('/', common_1.currentUser, common_1.requireAuth, validation_1.profileValidation, common_1.validateRequest, update_profile_1.updateProfile);
