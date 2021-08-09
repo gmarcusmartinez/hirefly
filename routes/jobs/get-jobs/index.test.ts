@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import request from 'supertest';
 import { app } from '../../../app';
 import { Job } from '../../../models/Job';
-import { fakeAuthCookie } from '../../../test/auth-helper';
+import { fakeApplicantCookie } from '../../../test/auth-helper';
 
 describe('Route Access', () => {
   it('has a route handler listening to /api/jobs for get requests', async () => {
@@ -19,7 +19,7 @@ describe('Route Access', () => {
   it('returns a status other than 401 if the user is signed in', async () => {
     const response = await request(app)
       .get('/api/jobs')
-      .set('Cookie', fakeAuthCookie());
+      .set('Cookie', fakeApplicantCookie());
     expect(response.status).not.toEqual(401);
   });
 });
@@ -27,25 +27,29 @@ describe('Route Access', () => {
 describe('Successfull Jobs Fetch', () => {
   beforeEach(async () => {
     const title = 'Node Js Backend Developer';
-    const description = 'lorem ipsum';
-    const location = 'Berlin';
-    const salary = 50000;
-    const creator = mongoose.Types.ObjectId().toHexString();
+    const city = 'berlin';
+    const country = 'germany';
+    const minSalary = 42000;
+    const maxSalary = 50000;
     const imgUrl = 'fakeimage.com';
+    const creator = mongoose.Types.ObjectId().toHexString();
 
     const job1 = new Job({
       title,
-      description,
-      location,
-      salary,
+      city,
+      country,
+      minSalary,
+      maxSalary,
       creator,
       imgUrl,
     });
+
     const job2 = new Job({
       title,
-      description,
-      location,
-      salary,
+      city,
+      country,
+      minSalary,
+      maxSalary,
       creator,
       imgUrl,
     });
@@ -54,10 +58,25 @@ describe('Successfull Jobs Fetch', () => {
   });
 
   it('will return 2 jobs', async () => {
-    const response = await request(app)
+    // Applicant creates account
+    const res = await request(app).post('/api/auth/signup').send({
+      email: 'test@test.com',
+      password: 'password',
+      accountType: 'applicant',
+    });
+    const cookie = res.header['set-cookie'][0];
+
+    // Applicant creates profile
+    await request(app)
+      .post('/api/profiles')
+      .set('Cookie', cookie)
+      .send({ firstName: 'Test', lastName: 'User', imgUrl: 'testimg.com' })
+      .expect(201);
+
+    const { body } = await request(app)
       .get('/api/jobs')
-      .set('Cookie', fakeAuthCookie())
+      .set('Cookie', cookie)
       .expect(200);
-    expect(response.body.length).toEqual(2);
+    expect(body.length).toEqual(2);
   });
 });

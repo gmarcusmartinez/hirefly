@@ -1,6 +1,6 @@
 import request from 'supertest';
 import { app } from '../../../app';
-import { fakeAuthCookie } from '../../../test/auth-helper';
+import { fakeAuthCookie, fakeRecruiterCookie } from '../../../test/auth-helper';
 
 describe('Route Access', () => {
   it('has a route handler listening to /api/jobs for put requests', async () => {
@@ -20,16 +20,18 @@ describe('Route Access', () => {
 
 describe('Unsuccessful Job Update: User is not Job Creator', () => {
   const title = 'Node Js Backend Developer';
-  const description = 'lorem ipsum';
-  const location = 'Berlin';
-  const salary = 50000;
+  const city = 'berlin';
+  const country = 'germany';
+  const minSalary = 42000;
+  const maxSalary = 50000;
   const imgUrl = 'fakeimage.com';
+  const recruiter = fakeRecruiterCookie();
 
   it('returns a 401', async () => {
     const { body } = await request(app)
       .post('/api/jobs')
-      .set('Cookie', fakeAuthCookie())
-      .send({ title, description, location, salary, imgUrl })
+      .set('Cookie', recruiter)
+      .send({ title, city, country, minSalary, maxSalary, imgUrl })
       .expect(201);
 
     await request(app)
@@ -41,22 +43,23 @@ describe('Unsuccessful Job Update: User is not Job Creator', () => {
 
 describe('Successful Job Update', () => {
   const title = 'Node Js Backend Developer';
-  const description = 'lorem ipsum';
-  const location = 'Berlin';
-  const salary = 50000;
+  const city = 'berlin';
+  const country = 'germany';
+  const minSalary = 42000;
+  const maxSalary = 50000;
   const imgUrl = 'fakeimage.com';
+  const recruiter = fakeRecruiterCookie();
 
-  const user = fakeAuthCookie();
   it('returns a 201', async () => {
     const { body } = await request(app)
       .post('/api/jobs')
-      .set('Cookie', user)
-      .send({ title, description, location, salary, imgUrl })
+      .set('Cookie', recruiter)
+      .send({ title, city, country, minSalary, maxSalary, imgUrl })
       .expect(201);
 
     const res = await request(app)
       .put(`/api/jobs/${body._id}`)
-      .set('Cookie', user)
+      .set('Cookie', recruiter)
       .send({ title: 'New Title' })
       .expect(200);
     expect(res.body.title).toBe('New Title');
