@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import request from 'supertest';
 import { app } from '../../../app';
 import { Job } from '../../../models/Job';
-import { fakeAuthCookie } from '../../../test/auth-helper';
+import { fakeAuthCookie, fakeRecruiterCookie } from '../../../test/auth-helper';
 
 describe('Route Access', () => {
   it('has a route handler listening to /api/jobs/my-jobs for get requests', async () => {
@@ -25,28 +25,32 @@ describe('Route Access', () => {
 });
 
 describe('Successfull My Jobs Fetch', () => {
-  const recruiter = fakeAuthCookie();
+  const recruiter = fakeRecruiterCookie();
   beforeEach(async () => {
     const title = 'Node Js Backend Developer';
-    const description = 'lorem ipsum';
-    const location = 'Berlin';
-    const salary = 50000;
-    const creator = mongoose.Types.ObjectId().toHexString();
+    const city = 'berlin';
+    const country = 'germany';
+    const minSalary = 42000;
+    const maxSalary = 50000;
     const imgUrl = 'fakeimage.com';
+    const creator = mongoose.Types.ObjectId().toHexString();
 
     const job1 = new Job({
       title,
-      description,
-      location,
-      salary,
+      city,
+      country,
+      minSalary,
+      maxSalary,
       creator,
       imgUrl,
     });
+
     const job2 = new Job({
       title,
-      description,
-      location,
-      salary,
+      city,
+      country,
+      minSalary,
+      maxSalary,
       creator,
       imgUrl,
     });
@@ -56,7 +60,7 @@ describe('Successfull My Jobs Fetch', () => {
     await request(app)
       .post('/api/jobs')
       .set('Cookie', recruiter)
-      .send({ title, description, location, salary, imgUrl })
+      .send({ title, city, country, minSalary, maxSalary, imgUrl })
       .expect(201);
   });
 
@@ -66,13 +70,5 @@ describe('Successfull My Jobs Fetch', () => {
       .set('Cookie', recruiter)
       .expect(200);
     expect(response.body.length).toEqual(1);
-  });
-
-  it('will return 3 jobs total, 2 of which the current user has not created', async () => {
-    const response = await request(app)
-      .get('/api/jobs')
-      .set('Cookie', recruiter)
-      .expect(200);
-    expect(response.body.length).toEqual(3);
   });
 });

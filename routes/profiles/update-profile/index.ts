@@ -15,5 +15,6 @@ export const updateProfile = async (req: Request, res: Response) => {
   if (!profile) throw new BadRequestError('Profile not found');
   profile = await Profile.findOne({ userId });
 
+  await profile!.save();
   res.send(profile);
 };

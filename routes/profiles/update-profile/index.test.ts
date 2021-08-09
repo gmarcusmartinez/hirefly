@@ -33,13 +33,11 @@ describe('Unsuccessful Profile Update: Profile does not exist', () => {
     const imgUrl = 'test@test.com';
     const firstName = 'Marcus';
     const lastName = 'Martinez';
-    const period = 'full-time';
-    const position = 'backend';
 
     const response = await request(app)
       .put('/api/profiles')
       .set('Cookie', fakeAuthCookie())
-      .send({ firstName, lastName, imgUrl, period, position })
+      .send({ firstName, lastName, imgUrl })
       .expect(400);
 
     const errMsg = 'Profile not found';
@@ -62,26 +60,24 @@ describe('Successful Profile Update', () => {
     const imgUrl = 'test@test.com';
     const firstName = 'Marcus';
     const lastName = 'Martinez';
-    const period = 'full-time';
-    const position = 'backend';
 
     const cookie = res.header['set-cookie'][0];
     await request(app)
       .post('/api/profiles')
       .set('Cookie', cookie)
-      .send({ firstName, lastName, imgUrl, period, position })
+      .send({ firstName, lastName, imgUrl })
       .expect(201);
 
-    await request(app)
+    const { body } = await request(app)
       .put('/api/profiles')
       .set('Cookie', cookie)
       .send({
         firstName: 'Updated First name',
         lastName,
         imgUrl,
-        period,
-        position,
       })
-      .expect(204);
+      .expect(200);
+
+    expect(body.firstName).toBe('Updated First name');
   });
 });
