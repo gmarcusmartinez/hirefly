@@ -27,6 +27,7 @@ describe('Succesfull Chat Creation', () => {
   let user: { header: any };
   let partner: { header: any };
   let partnerId: string;
+
   beforeEach(async () => {
     // Create User
     user = await request(app)

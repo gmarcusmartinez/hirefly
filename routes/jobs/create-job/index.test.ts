@@ -25,71 +25,103 @@ describe('Route Access', () => {
 
 describe('Unsuccesfull Job Creation', () => {
   const title = 'Node Js Backend Developer';
-  const description = 'lorem ipsum';
-  const location = 'Berlin';
-  const salary = 50000;
+  const city = 'berlin';
+  const country = 'germany';
+  const minSalary = 42000;
+  const maxSalary = 50000;
   const imgUrl = 'fakeimage.com';
-  const skills = 'nodejs, react, javascript';
 
   it('returns a 400 w/ no title is provided', async () => {
     const response = await request(app)
       .post('/api/jobs')
       .set('Cookie', fakeAuthCookie())
-      .send({ title: '', description, location, salary, imgUrl, skills })
+      .send({ title: '', city, country, minSalary, maxSalary, imgUrl })
       .expect(400);
 
     const errMsg = 'Title field can not be empty.';
     expect(response.body.errors[0].message).toBe(errMsg);
   });
 
-  it('returns a 400 w/ no location is provided', async () => {
+  it('returns a 400 w/ no minSalary is provided', async () => {
     const response = await request(app)
       .post('/api/jobs')
       .set('Cookie', fakeAuthCookie())
-      .send({ title, description, location: '', salary, imgUrl, skills })
+      .send({ title, city: '', country, minSalary, maxSalary, imgUrl })
       .expect(400);
 
-    const errMsg = 'Location field can not be empty.';
+    const errMsg = 'City field can not be empty.';
     expect(response.body.errors[0].message).toBe(errMsg);
   });
 
-  it('returns a 400 w/ no salary is provided', async () => {
+  it('returns a 400 w/ no minSalary is provided', async () => {
     const response = await request(app)
       .post('/api/jobs')
       .set('Cookie', fakeAuthCookie())
-      .send({ title, description, location, salary: '', imgUrl, skills })
+      .send({ title, city, country, minSalary: '', maxSalary, imgUrl })
       .expect(400);
 
-    const errMsg = 'Salary field can not be empty.';
+    const errMsg = 'Min field can not be empty.';
     expect(response.body.errors[0].message).toBe(errMsg);
   });
 
-  it('returns a 400 w/ salary is not of type number', async () => {
+  it('returns a 400 when minSalary is not a number', async () => {
     const response = await request(app)
       .post('/api/jobs')
       .set('Cookie', fakeAuthCookie())
-      .send({ title, description, location, salary: '50,000', imgUrl, skills })
+      .send({ title, city, country, minSalary: 'notanum', maxSalary, imgUrl })
       .expect(400);
 
-    const errMsg = 'Salary must be of type number.';
+    const errMsg = 'Min Salary must be of type number.';
+    expect(response.body.errors[0].message).toBe(errMsg);
+  });
+
+  it('returns a 400 w/ no maxSalary is provided', async () => {
+    const response = await request(app)
+      .post('/api/jobs')
+      .set('Cookie', fakeAuthCookie())
+      .send({ title, city, country, minSalary, maxSalary: '', imgUrl })
+      .expect(400);
+
+    const errMsg = 'Max field can not be empty.';
+    expect(response.body.errors[0].message).toBe(errMsg);
+  });
+
+  it('returns a 400 when maxSalary is not a number', async () => {
+    const response = await request(app)
+      .post('/api/jobs')
+      .set('Cookie', fakeAuthCookie())
+      .send({ title, city, country, minSalary, maxSalary: 'notanum', imgUrl })
+      .expect(400);
+
+    const errMsg = 'Max Salary must be of type number.';
+    expect(response.body.errors[0].message).toBe(errMsg);
+  });
+
+  it('returns a 400 w/ no imgUrl is provided', async () => {
+    const response = await request(app)
+      .post('/api/jobs')
+      .set('Cookie', fakeAuthCookie())
+      .send({ title, city, country, minSalary, maxSalary, imgUrl: '' })
+      .expect(400);
+
+    const errMsg = 'ImgUrl required.';
     expect(response.body.errors[0].message).toBe(errMsg);
   });
 });
 
 describe('Succesfull Job Creation', () => {
   const title = 'Node Js Backend Developer';
-  const description = 'lorem ipsum';
-  const location = 'Berlin';
-  const salary = 50000;
+  const city = 'berlin';
+  const country = 'germany';
+  const minSalary = 42000;
+  const maxSalary = 50000;
   const imgUrl = 'fakeimage.com';
-  const skills = 'nodejs, react, javascript';
-  const duration = 2;
 
   it('returns a 201', async () => {
-    const { body } = await request(app)
+    await request(app)
       .post('/api/jobs')
       .set('Cookie', fakeAuthCookie())
-      .send({ title, description, location, salary, imgUrl, skills, duration })
+      .send({ title, city, country, minSalary, maxSalary, imgUrl })
       .expect(201);
   });
 });
