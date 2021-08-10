@@ -1,4 +1,5 @@
 import { useActions } from 'hooks/use-actions';
+import { Wrapper } from './styles';
 
 export const DeleteNotification = ({ id }: { id: string }) => {
   const { deleteNotification } = useActions();
@@ -9,14 +10,10 @@ export const DeleteNotification = ({ id }: { id: string }) => {
   };
 
   return (
-    <div className='notification-item__trash'>
-      <span
-        className='material-icons'
-        style={{ color: '#838dec' }}
-        onClick={handleDelete}
-      >
+    <Wrapper>
+      <span className='material-icons' onClick={handleDelete}>
         delete
       </span>
-    </div>
+    </Wrapper>
   );
 };

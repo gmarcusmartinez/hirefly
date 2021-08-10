@@ -1,3 +1,4 @@
+import { Badge } from './styles';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 
 export const NotificationsBadge = () => {
@@ -6,8 +7,8 @@ export const NotificationsBadge = () => {
   const unreadNotifications = items.filter((item) => item.opened === false);
   if (unreadNotifications.length === 0) return null;
   return (
-    <div className='notifications-badge'>
+    <Badge>
       <span>{unreadNotifications.length}</span>
-    </div>
+    </Badge>
   );
 };
