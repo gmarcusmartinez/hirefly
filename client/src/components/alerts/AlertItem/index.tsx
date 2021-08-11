@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { Container, Message } from './styles';
 
 interface IProps {
   alert: {
@@ -9,10 +10,10 @@ interface IProps {
 }
 
 export const AlertItem: FC<IProps> = ({ alert }) => {
-  const className = `alert-item ${alert.alertType}`;
+  const className = `${alert.alertType}`;
   return (
-    <div className={className}>
-      <span>{alert.msg}</span>
-    </div>
+    <Container>
+      <Message className={className}>{alert.msg}</Message>
+    </Container>
   );
 };

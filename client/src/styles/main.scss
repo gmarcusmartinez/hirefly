@@ -16,13 +16,8 @@
 @import '../components/about-us/BlockInfo/styles.scss';
 @import '../components/auth/styles.scss';
 
-@import '../components/alerts/AlertContainer/styles.scss';
-@import '../components/alerts/AlertItem/styles.scss';
-
-@import '../components/common/DashHeader/styles.scss';
 @import '../components/common/NoMoreItemsMsg/styles.scss';
 @import '../components/common/TextInput/styles.scss';
-@import '../components/common/Spinner/styles.scss';
 @import '../components/common/ErrorsContainer/styles.scss';
 
 @import '../components/chat/NavSwitch/styles.scss';
@@ -55,7 +50,6 @@
 
 @import '../screens/Auth/styles.scss';
 @import '../screens/CreateProfile/styles.scss';
-@import '../screens/Dashboard/styles.scss';
 @import '../screens/MyJobs/styles.scss';
 @import '../screens/PostJob/styles.scss';
 @import '../screens/Signout/styles.scss';

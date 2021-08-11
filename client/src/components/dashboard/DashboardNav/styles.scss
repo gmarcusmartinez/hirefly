@@ -2,6 +2,8 @@
   position: absolute;
   left: 0;
   background-color: #f9f9f9;
+  height: 90vh;
+  margin-top: 10vh;
   width: 0rem;
   z-index: 2;
 
@@ -36,6 +38,9 @@
 @include respond(tablet) {
   .dashboard__nav {
     box-shadow: var(--box-shadow-medium);
+    grid-area: dashnav;
+    height: 100vh;
+    margin-top: 0;
     &.retract {
       width: 7rem;
       transition: width 0.2s ease-in-out;

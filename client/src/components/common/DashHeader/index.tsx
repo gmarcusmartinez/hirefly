@@ -1,5 +1,7 @@
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
+import { MenuBars, Bar } from '../MenuBars';
+import { Container, Title } from './styles';
 
 export const DashHeader = () => {
   const { toggleSidenav } = useActions();
@@ -8,15 +10,15 @@ export const DashHeader = () => {
   );
 
   const toggle = () => toggleSidenav(!expanded);
-  const bar = `bar ${expanded ? 'change' : ''}`;
-  const bars = [...Array(3)].map((_, i) => <div key={i} className={bar} />);
+  const className = `bar ${expanded ? 'change' : ''}`;
+  const bars = [...Array(3)].map((_, i) => <Bar className={className} />);
 
   return (
-    <div className={`dashboard__header ${mode}`}>
-      <h2>{header}</h2>
-      <div className={`menu-bars ${mode}`} onClick={toggle}>
+    <Container className={mode}>
+      <Title>{header}</Title>
+      <MenuBars color={mode} onClick={toggle}>
         {bars}
-      </div>
-    </div>
+      </MenuBars>
+    </Container>
   );
 };

@@ -1,14 +1,14 @@
 import { s3Url } from 'api/s3url';
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
-
+import { MenuBars, Bar } from 'components/common/MenuBars';
 export const ChatHeader = () => {
   const { toggleSidenav } = useActions();
   const { mode, expanded } = useTypedSelector((state) => state.dashboard);
   const { header } = useTypedSelector((state) => state.chats);
 
   const bar = `bar ${expanded ? 'change' : ''}`;
-  const bars = [...Array(3)].map((_, i) => <div key={i} className={bar} />);
+  const bars = [...Array(3)].map((_, i) => <Bar className={bar} />);
 
   const toggle = (e: any) => {
     e.stopPropagation();
@@ -24,9 +24,9 @@ export const ChatHeader = () => {
           <span>{header.firstName}</span>
         </>
       )}
-      <div className={`menu-bars ${mode}`} onClick={toggle}>
+      <MenuBars color={mode} onClick={toggle}>
         {bars}
-      </div>
+      </MenuBars>
     </div>
   );
 };

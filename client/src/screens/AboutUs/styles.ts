@@ -5,6 +5,7 @@ export const Container = styled.div`
     align-items: center;
     display: flex;
     flex-direction: column;
+    height: 80vh;
     margin: 0 auto;
     width: 100%;
     @media (min-width: ${theme.screenSize.desktop}) {

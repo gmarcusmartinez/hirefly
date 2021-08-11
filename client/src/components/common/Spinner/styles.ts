@@ -1,4 +1,6 @@
-.spinner-overlay {
+import styled, { css } from 'styled-components';
+
+export const OverLay = styled.div`
   align-items: center;
   align-self: center;
   display: flex;
@@ -6,16 +8,22 @@
   height: 80%;
   justify-content: center;
   width: 100%;
-  .spinner-message {
-    color: var(--color-grey-primary);
+`;
+
+export const Message = styled.div`
+  ${({ theme }) => css`
+    color: ${theme.colors.greyPrimary}
     font-size: 1.4rem;
-    letter-spacing: var(--letter-spacing-md);
-    margin-bottom: var(--margin-md);
-  }
-  .spinner-container {
+    letter-spacing: ${theme.letterSpacing.md};
+    margin-bottom: ${theme.spacing.md};
+  `}
+`;
+
+export const Container = styled.div`
+  ${({ theme }) => css`
     animation: spin 1s ease-in-out infinite;
     border: 8px solid rgba(195, 195, 195, 0.6);
-    border-top-color: var(--color-primary);
+    border-top-color: ${theme.colors.primary};
     border-radius: 50%;
     height: 12rem;
     width: 12rem;
@@ -31,5 +39,5 @@
         -webkit-transform: rotate(360deg);
       }
     }
-  }
-}
+  `}
+`;

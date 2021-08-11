@@ -11,6 +11,7 @@ import { DashboardRoutes } from './routes';
 import { DashHeader } from 'components/common/DashHeader';
 import { ChatHeader } from 'components/chat/Header';
 import { useHistory } from 'react-router-dom';
+import { Container, Main } from './styles';
 
 export const Dashboard = () => {
   const socket = React.useContext(SocketContext);
@@ -64,13 +65,13 @@ export const Dashboard = () => {
   const path = history.location.pathname.split('/')[2];
 
   return (
-    <div className={`dashboard ${mode}`}>
+    <Container className={mode}>
       <DashboardNav />
       {path === 'messenger' ? <ChatHeader /> : <DashHeader />}
-      <div className='dashboard__main'>
+      <Main>
         <AlertContainer />
         <DashboardRoutes />
-      </div>
-    </div>
+      </Main>
+    </Container>
   );
 };

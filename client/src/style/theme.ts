@@ -24,8 +24,9 @@ export default {
     desktop: '769px',
   },
   spacing: {
-    sm: '0.5rem',
-    md: '1rem',
-    lg: '2rem',
+    xs: '0.5rem',
+    sm: '1',
+    md: '2rem',
+    lg: '4rem',
   },
 };
