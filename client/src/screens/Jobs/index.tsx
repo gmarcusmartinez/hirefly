@@ -5,6 +5,7 @@ import { useTypedSelector } from 'hooks/use-typed-selector';
 import { IJob } from 'interfaces';
 import { Spinner } from 'components/common/Spinner';
 import { NoItems } from 'components/common/NoMoreItemsMsg';
+import { Container, List } from './styles';
 
 export const Jobs = () => {
   const { items, loading, current } = useTypedSelector(({ jobs }) => jobs);
@@ -36,9 +37,9 @@ export const Jobs = () => {
   if (loading) return <Spinner />;
   if (!items.length) return <NoItems type='jobs' />;
   return (
-    <div className='jobs-screen'>
-      <div className='jobs-screen__list'>{list}</div>
+    <Container>
+      <List>{list}</List>
       {list[current]}
-    </div>
+    </Container>
   );
 };

@@ -1,5 +1,6 @@
 import { Block } from 'components/about-us/Block';
 import { GuestLayout } from 'layouts/GuestLayout';
+import { Container } from './styles';
 
 const blocks = [
   {
@@ -23,7 +24,7 @@ export const AboutUs = () => {
   const list = blocks.map((b, i) => <Block key={i} b={b} />);
   return (
     <GuestLayout>
-      <div className='about-us-screen'>{list}</div>;
+      <Container>{list}</Container>;
     </GuestLayout>
   );
 };

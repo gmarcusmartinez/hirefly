@@ -21,6 +21,7 @@ export default {
   },
   screenSize: {
     tablet: '512px',
+    desktop: '769px',
   },
   spacing: {
     sm: '0.5rem',

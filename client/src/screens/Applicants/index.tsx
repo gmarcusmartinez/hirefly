@@ -5,6 +5,7 @@ import { useActions } from 'hooks/use-actions';
 import { SwiperCard } from 'components/swiper-card';
 import { Spinner } from 'components/common/Spinner';
 import { NoItems } from 'components/common/NoMoreItemsMsg';
+import { Container, List } from './styles';
 
 export const Applicants = () => {
   const socket = React.useContext(SocketContext);
@@ -46,9 +47,9 @@ export const Applicants = () => {
   if (!items.length) return <NoItems type='applicant' />;
 
   return (
-    <div className='applicants'>
-      <div className='applicants__list'>{list}</div>
+    <Container>
+      <List>{list}</List>
       {list[current]}
-    </div>
+    </Container>
   );
 };

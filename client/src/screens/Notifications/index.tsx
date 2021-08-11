@@ -3,6 +3,7 @@ import { INotification } from 'interfaces';
 import { useActions } from 'hooks/use-actions';
 import { NotificationItem } from 'components/notifications/NotificationItem';
 import { useTypedSelector } from 'hooks/use-typed-selector';
+import { Container } from './styles';
 
 export const Notifications = () => {
   const { fetchNotifications, markAsRead } = useActions();
@@ -18,5 +19,5 @@ export const Notifications = () => {
     if (unreadNotifications.length) markAsRead();
   }, [fetchNotifications, markAsRead, unreadNotifications.length]);
 
-  return <div className='notifications'>{list}</div>;
+  return <Container>{list}</Container>;
 };

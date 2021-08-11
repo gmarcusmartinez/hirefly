@@ -29,9 +29,6 @@
 @import '../components/chat/Header/styles.scss';
 @import '../components/chat/Input/styles.scss';
 @import '../components/chat/Item/styles.scss';
-@import '../components/chat/List/styles.scss';
-@import '../components/chat/Main/styles.scss';
-@import '../components/chat/MessageBubble/styles.scss';
 
 @import '../components/dashboard/Links/styles.scss';
 @import '../components/dashboard/Links/Link/styles.scss';
@@ -56,14 +53,9 @@
 @import '../components/swiper-card/JobDetails/styles.scss';
 @import '../components/swiper-card/ApplicantDetails/styles.scss';
 
-@import '../screens/AboutUs/styles.scss';
-@import '../screens/Applicants/styles.scss';
 @import '../screens/Auth/styles.scss';
-@import '../screens/Chat/styles.scss';
 @import '../screens/CreateProfile/styles.scss';
 @import '../screens/Dashboard/styles.scss';
-@import '../screens/Jobs/styles.scss';
 @import '../screens/MyJobs/styles.scss';
-@import '../screens/Notifications/styles.scss';
 @import '../screens/PostJob/styles.scss';
 @import '../screens/Signout/styles.scss';
