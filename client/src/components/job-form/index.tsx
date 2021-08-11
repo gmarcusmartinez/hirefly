@@ -5,6 +5,7 @@ import { PostJobDesc } from 'components/job-form/Desc';
 import { PostJobSkills } from 'components/job-form/Skills';
 import { blankForm } from './form';
 import { useActions } from 'hooks/use-actions';
+import { Active, Wrapper } from 'components/common/Form';
 
 interface IProps {
   selected?: any;
@@ -34,16 +35,13 @@ export const JobForm: FC<IProps> = ({ step, setStep, selected }) => {
       ? updateJob(formData, imageData, selected._id)
       : createJob(formData, imageData);
   };
+
   const props = { formData, onChange, setStep };
+  const style = { transform: `translateX(-${step * 100}%)` };
 
   return (
-    <div className='job-form__steps-active'>
-      <div
-        className='job-form__steps-wrapper'
-        style={{
-          transform: `translateX(-${step * 100}%)`,
-        }}
-      >
+    <Active>
+      <Wrapper style={style}>
         <PostJobDetails {...props} />
         <PostJobPayment {...props} />
         <PostJobDesc
@@ -52,7 +50,7 @@ export const JobForm: FC<IProps> = ({ step, setStep, selected }) => {
           onImgChange={onImgChange}
         />
         <PostJobSkills {...props} handleSubmit={handleSubmit} />
-      </div>
-    </div>
+      </Wrapper>
+    </Active>
   );
 };

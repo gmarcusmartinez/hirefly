@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { useActions } from 'hooks/use-actions';
 import { SwiperCard } from 'components/swiper-card';
 import { useTypedSelector } from 'hooks/use-typed-selector';
@@ -9,9 +9,9 @@ import { Container, List } from './styles';
 
 export const Jobs = () => {
   const { items, loading, current } = useTypedSelector(({ jobs }) => jobs);
-  const { clearJobs, getAllJobs, createApplication, declineJob } = useActions();
+  const { clearJobs, getAllJobs, apply, declineJob } = useActions();
 
-  React.useEffect(() => {
+  useEffect(() => {
     getAllJobs();
     return () => {
       clearJobs();
@@ -19,9 +19,7 @@ export const Jobs = () => {
   }, [getAllJobs, clearJobs]);
 
   const last = items.length - 1;
-  const approve = (jobId: string) =>
-    createApplication({ current, last, jobId });
-
+  const approve = (jobId: string) => apply({ current, last, jobId });
   const decline = (jobId: string) => declineJob({ current, last, jobId });
 
   const list = items.map((item: IJob) => (
@@ -36,6 +34,7 @@ export const Jobs = () => {
 
   if (loading) return <Spinner />;
   if (!items.length) return <NoItems type='jobs' />;
+
   return (
     <Container>
       <List>{list}</List>

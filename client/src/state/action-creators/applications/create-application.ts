@@ -15,7 +15,7 @@ interface IArgs {
   jobId: string;
 }
 
-export const createApplication =
+export const apply =
   ({ current, last, jobId }: IArgs) =>
   async (dispatch: Dispatch) => {
     const config = { headers: { 'Content-Type': 'application/json' } };
@@ -36,6 +36,7 @@ export const createApplication =
 
       const msg = 'Applicantion Successfully Sent!';
       const id = v4();
+
       dispatch({
         type: AlertActionTypes.SET_ALERT,
         payload: { msg, id, alertType: 'success' },

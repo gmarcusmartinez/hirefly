@@ -4,6 +4,7 @@ import { ImgBio } from 'components/profile-form/ImgBio';
 import { CreateProfileSkills } from 'components/profile-form/Skills';
 import { blankForm } from './form';
 import { useActions } from 'hooks/use-actions';
+import { Active, Wrapper } from 'components/common/Form';
 
 interface IProps {
   me?: any;
@@ -38,12 +39,12 @@ export const ProfileForm: FC<IProps> = ({ step, setStep, me }) => {
   const style = { transform: `translateX(-${step * 100}%)` };
 
   return (
-    <div className='profile-form__steps-active'>
-      <div className='profile-form__steps-wrapper' style={style}>
+    <Active>
+      <Wrapper style={style}>
         <BasicInfo {...props} />
         <ImgBio {...props} imageData={imageData} onImgChange={onImgChange} />
         <CreateProfileSkills {...props} handleSubmit={handleSubmit} />
-      </div>
-    </div>
+      </Wrapper>
+    </Active>
   );
 };
