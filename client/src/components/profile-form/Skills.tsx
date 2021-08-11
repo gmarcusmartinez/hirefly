@@ -1,5 +1,6 @@
 import { FC, ChangeEvent } from 'react';
 import { Text } from 'components/common/DashInputs';
+import { FormStep, FormStepBtn } from 'components/common/FormStep';
 
 interface IProps {
   setStep: Function;
@@ -29,18 +30,16 @@ export const CreateProfileSkills: FC<IProps> = ({
   ];
 
   return (
-    <div className='profile-form__step' id='cp-skills'>
+    <FormStep id='cp-skills'>
       <Text item={texts[0]} onChange={onChange} value={formData.skills} />
-      <button onClick={prev} className='step-btn'>
-        Back
-      </button>
-      <button
+      <FormStepBtn onClick={prev}>Back</FormStepBtn>
+      <FormStepBtn
         onClick={() => handleSubmit()}
-        className={`step-btn ${btnClassName}`}
+        className={btnClassName}
         disabled={disabled}
       >
         Submit
-      </button>
-    </div>
+      </FormStepBtn>
+    </FormStep>
   );
 };

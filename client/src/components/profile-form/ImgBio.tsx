@@ -2,6 +2,8 @@ import { FC, ChangeEvent } from 'react';
 import { Text } from 'components/common/DashInputs';
 import { TextArea } from 'components/common/DashInputs/TextArea';
 import { FileInput } from 'components/common/DashInputs/FileInput';
+import { FormStep, FormStepBtn } from 'components/common/FormStep';
+import { texts, files } from './form';
 
 interface IProps {
   setStep: Function;
@@ -22,47 +24,27 @@ export const ImgBio: FC<IProps> = ({
   const next = () => setStep(2);
 
   const disabled = imageData || formData.imgUrl ? false : true;
-  const btnClassName = disabled ? 'disabled' : '';
-
-  const texts = [
-    { label: 'Bio', name: 'bio' },
-    { label: 'Linkedin Link', name: 'link' },
-  ];
-
-  const files = [
-    {
-      label: 'Choose Image',
-      accept: 'image/*',
-      required: true,
-      icon: 'photo_camera',
-    },
-  ];
+  const className = disabled ? 'disabled' : '';
 
   return (
-    <div className='profile-form__step' id='bio'>
+    <FormStep id='bio'>
       <FileInput
         item={files[0]}
         onChange={onImgChange}
         file={imageData}
         url={formData.imgUrl}
       />
-      <Text item={texts[1]} onChange={onChange} value={formData.link} />
+      <Text item={texts[4]} onChange={onChange} value={formData.link} />
 
       <TextArea
         onChange={onChange}
-        item={texts[0]}
+        item={texts[5]}
         value={formData.description}
       />
-      <button onClick={prev} className='step-btn'>
-        Back
-      </button>
-      <button
-        onClick={next}
-        className={`step-btn ${btnClassName}`}
-        disabled={disabled}
-      >
+      <FormStepBtn onClick={prev}>Back</FormStepBtn>
+      <FormStepBtn onClick={next} className={className} disabled={disabled}>
         Next
-      </button>
-    </div>
+      </FormStepBtn>
+    </FormStep>
   );
 };

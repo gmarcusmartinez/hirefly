@@ -1,6 +1,7 @@
 import { FC, ChangeEvent } from 'react';
 import { TextArea } from 'components/common/DashInputs/TextArea';
 import { FileInput } from 'components/common/DashInputs/FileInput';
+import { FormStep, FormStepBtn } from 'components/common/FormStep';
 
 interface IProps {
   setStep: Function;
@@ -19,8 +20,6 @@ export const PostJobDesc: FC<IProps> = ({
 }) => {
   const prev = () => setStep(1);
   const next = () => setStep(3);
-  const disabled = !formData.imgUrl;
-  const btnClassName = disabled ? 'disabled' : '';
 
   const texts = [{ label: 'Description', name: 'description' }];
   const files = [
@@ -32,7 +31,7 @@ export const PostJobDesc: FC<IProps> = ({
     },
   ];
   return (
-    <div className='job-form__step' id='desc'>
+    <FormStep id='desc'>
       <FileInput
         item={files[0]}
         onChange={onImgChange}
@@ -44,16 +43,8 @@ export const PostJobDesc: FC<IProps> = ({
         item={texts[0]}
         value={formData.description}
       />
-      <button onClick={prev} className='step-btn'>
-        Back
-      </button>
-      <button
-        onClick={next}
-        className={`step-btn ${btnClassName}`}
-        disabled={disabled}
-      >
-        Next
-      </button>
-    </div>
+      <FormStepBtn onClick={prev}>Back</FormStepBtn>
+      <FormStepBtn onClick={next}>Next</FormStepBtn>
+    </FormStep>
   );
 };

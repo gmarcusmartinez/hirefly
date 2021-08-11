@@ -5,7 +5,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding: ${theme.spacing.sm};
+    padding: ${theme.spacing.xs};
     overflow-y: scroll;
   `}
 `;

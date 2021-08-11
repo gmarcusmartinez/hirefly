@@ -1,5 +1,6 @@
 import { FC, ChangeEvent } from 'react';
 import { Text, Select } from 'components/common/DashInputs';
+import { FormStep, FormStepBtn } from 'components/common/FormStep';
 
 interface IProps {
   setStep: Function;
@@ -33,19 +34,15 @@ export const PostJobDetails: FC<IProps> = ({ setStep, onChange, formData }) => {
     },
   ];
   return (
-    <div className='job-form__step' id='details'>
+    <FormStep id='details'>
       <Text item={texts[0]} onChange={onChange} value={formData.title} />
       <Text item={texts[1]} onChange={onChange} value={formData.company} />
       <Text item={texts[2]} onChange={onChange} value={formData.link} />
       <Select item={selects[0]} onChange={onChange} value={formData.position} />
       <Select item={selects[1]} onChange={onChange} value={formData.category} />
-      <button
-        onClick={next}
-        className={`step-btn ${btnClassName}`}
-        disabled={disabled}
-      >
+      <FormStepBtn onClick={next} className={btnClassName} disabled={disabled}>
         Next
-      </button>
-    </div>
+      </FormStepBtn>
+    </FormStep>
   );
 };
